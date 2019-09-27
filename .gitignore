@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+#Compiled Header
+*.ipch
+
+#Chaceh File
+*.opendb
