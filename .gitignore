@@ -36,3 +36,10 @@
 
 #Chaceh File
 *.opendb
+
+#ログファイル
+Logs/
+
+#ビルドで出来たファイル
+Release/
+Debug/
