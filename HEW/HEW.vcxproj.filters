@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\CommonClass">
+      <UniqueIdentifier>{ef6de127-5cde-49d2-9f8c-ffe6cea28c08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\BaseClass">
+      <UniqueIdentifier>{4a6a7aae-632b-4b7c-9671-36fb469524d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Manager">
+      <UniqueIdentifier>{3f5eef5e-220c-4289-ab71-6fc46b6df379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\CommonClass">
+      <UniqueIdentifier>{b9e212b5-4842-44fd-b719-2b0de520d963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\BaseClass">
+      <UniqueIdentifier>{4013932f-6b7e-42b2-8224-0da1f44e92dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Manager">
+      <UniqueIdentifier>{e8e89c94-9f45-4514-ab0a-0b0fc8929b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Components">
+      <UniqueIdentifier>{7497717a-3ff6-457f-864a-1d215fa72968}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scripts">
+      <UniqueIdentifier>{c688cf9b-8e53-4e71-a81a-da21c04bef50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Components">
+      <UniqueIdentifier>{826ac6ce-75a6-44fb-beae-17e73385ffae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scripts">
+      <UniqueIdentifier>{fc421a19-61e9-43a5-9977-1dab0f09ca9d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>ソース ファイル\CommonClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>ソース ファイル\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>ソース ファイル\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="NonComponentGameObject.cpp">
+      <Filter>ソース ファイル\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>ソース ファイル\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>ソース ファイル\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="ScriptBase.cpp">
+      <Filter>ソース ファイル\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="VisualComponent.cpp">
+      <Filter>ソース ファイル\BaseClass</Filter>
+    </ClCompile>
+    <ClCompile Include="LogWriter.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveManager.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>ソース ファイル\CommonClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MyDirect3D.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>ソース ファイル\Components</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>ヘッダー ファイル\CommonClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>ヘッダー ファイル\CommonClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>ヘッダー ファイル\CommonClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>ヘッダー ファイル\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>ヘッダー ファイル\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="NonComponentGameObject.h">
+      <Filter>ヘッダー ファイル\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>ヘッダー ファイル\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>ヘッダー ファイル\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptBase.h">
+      <Filter>ヘッダー ファイル\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>ヘッダー ファイル\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="VisualComponent.h">
+      <Filter>ヘッダー ファイル\BaseClass</Filter>
+    </ClInclude>
+    <ClInclude Include="LogWriter.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveManager.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Setting.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>ヘッダー ファイル\CommonClass</Filter>
+    </ClInclude>
+    <ClInclude Include="MyDirect3D.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>ヘッダー ファイル\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="OriginalHeaders.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
