@@ -1,0 +1,216 @@
+#pragma comment(lib,"d3d9.lib")
+#pragma comment(lib,"d3dx9.lib")
+#pragma comment(lib,"dxguid.lib")
+#pragma comment(lib,"dinput8.lib")
+
+#include "main.h"
+
+#include <stdio.h>
+#include"Vector3.h"
+#include"Vector2.h"
+#include"ObjectManager.h"
+#include"SceneManager.h"
+#include"Singleton.h"
+#include"SaveManager.h"
+#include"LogWriter.h"
+#include"Time.h"
+#include"Color.h"
+#include"Object.h"
+#include"Component.h"
+#include"ScriptBase.h"
+#include"GameObject.h"
+#include"MyDirect3D.h"
+#include"Setting.h"
+#include"Input.h"
+#include"Sprite.h"
+
+/*------------------------------------------------------------------------------
+グローバル変数宣言
+------------------------------------------------------------------------------*/
+static HWND hWnd;                           // ウィンドウハンドル
+static LPDIRECT3D9 g_pD3D = NULL;             // Direct3Dインターフェース
+// Direct3Dデバイス
+static LPDIRECT3DTEXTURE9 g_pTexture = NULL;  // テクスチャインターフェース
+
+static float g_UVScrollValue = 0.0f;
+
+
+int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+	// 使用しない一時変数を明示。ログ回避
+	UNREFERENCED_PARAMETER(hPrevInstance);
+	UNREFERENCED_PARAMETER(lpCmdLine);
+
+	// ウィンドウクラス構造体の設定
+	WNDCLASS wc = {};
+	wc.lpfnWndProc = WndProc;                          // ウィンドウプロシージャの指定
+	wc.lpszClassName = CLASS_NAME;                     // クラス名の設定
+	wc.hInstance = hInstance;                          // インスタンスハンドルの指定
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW);          // マウスカーソルを指定
+	wc.hbrBackground = (HBRUSH)(COLOR_BACKGROUND + 1); // ウインドウのクライアント領域の背景色を設定
+
+													   // クラス登録
+	RegisterClass(&wc);
+
+
+	// ウィンドウスタイル
+	DWORD window_style = WS_OVERLAPPEDWINDOW & ~(WS_MAXIMIZEBOX | WS_THICKFRAME);
+
+	// 基本矩形座標
+	RECT window_rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
+
+	// 指定したクライアント領域を確保するために新たな矩形座標を計算
+	AdjustWindowRect(&window_rect, window_style, FALSE);
+
+	// 新たなWindowの矩形座標から幅と高さを算出
+	int window_width = window_rect.right - window_rect.left;
+	int window_height = window_rect.bottom - window_rect.top;
+
+	// プライマリモニターの画面解像度取得
+	int desktop_width = GetSystemMetrics(SM_CXSCREEN);
+	int desktop_height = GetSystemMetrics(SM_CYSCREEN);
+
+	// デスクトップの真ん中にウィンドウが生成されるように座標を計算
+	// ※ただし万が一、デスクトップよりウィンドウが大きい場合は左上に表示
+	int window_x = max((desktop_width - window_width) / 2, 0);
+	int window_y = max((desktop_height - window_height) / 2, 0);
+
+	// ウィンドウの生成
+	hWnd = CreateWindow
+	(
+		CLASS_NAME,     // ウィンドウクラス
+		WINDOW_CAPTION, // ウィンドウテキスト
+		window_style,   // ウィンドウスタイル
+		window_x,       // ウィンドウ座標x
+		window_y,       // ウィンドウ座標y
+		window_width,   // ウィンドウの幅
+		window_height,  // ウィンドウの高さ
+		NULL,           // 親ウィンドウハンドル
+		NULL,           // メニューハンドル
+		hInstance,      // インスタンスハンドル
+		NULL            // 追加のアプリケーションデータ
+	);
+
+	if (hWnd == NULL) {
+		// ウィンドウハンドルが何らかの理由で生成出来なかった
+		return -1;
+	}
+
+
+	Input::GetInstance().Init(hInstance, hWnd);
+
+	// 指定のウィンドウハンドルのウィンドウを指定の方法で表示
+	ShowWindow(hWnd, nCmdShow);
+
+
+	// ゲームの初期化(Direct3Dの初期化)
+	if (!Init()) {
+		// ゲームの初期化に失敗した
+		return -1;
+	}
+
+	// Windowsゲーム用メインループ
+	MSG msg = {}; // msg.message == WM_NULL
+
+	while (WM_QUIT != msg.message) {
+
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
+			// メッセージがある場合はメッセージ処理を優先
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		} else {
+			if (Time::GetInstance().IsUpdate()) {
+				// ゲームの更新
+				Update();
+				//キーボードの入力状態の確認
+				Input::GetInstance().Update();
+				// ゲームの描画
+				Draw();
+			}
+		}
+	}
+
+	// ゲームの終了処理(Direct3Dの終了処理)
+	Input::GetInstance().Uninit();
+	Uninit();
+
+	return (int)msg.wParam;
+}
+
+//初期化処理
+bool Init(){
+	//MyDirect3D::GetInstance().Initialize(hwnd);
+
+	if (!MyDirect3D::GetInstance().Init(hWnd)) {
+		return false;
+	}
+
+	LogWriter::GetInstance();
+	SaveManager::GetInstance();
+	ObjectManager::GetInstance();
+	SceneManager::GetInstance();
+	
+	//ーーーーーー初期化はここからーーーーーーーーーーーー
+
+	//例。こんな感じで初期化する。シーンにまとめるのを推奨
+	/*GameObject* obj = new GameObject();
+	ObjectManager::GetInstance().Instantiate(obj);
+
+	sampleComponent* samp = new sampleComponent();
+	obj->AddComponent(samp);*/
+	
+	//ーーーーーー初期化はここまでに入力ーーーーーーーーー
+
+	ObjectManager::GetInstance().Awake();
+	ObjectManager::GetInstance().Start();
+
+	return true;
+}
+
+//終了処理
+void Uninit() {
+
+}
+
+//処理関係
+void Update() {
+	ObjectManager::GetInstance().FirstUpdate();
+	ObjectManager::GetInstance().Update();
+	ObjectManager::GetInstance().LateUpdate();
+	
+}
+
+//描画関係
+void Draw() {
+	ObjectManager::GetInstance().Draw();
+	ObjectManager::GetInstance().LateDraw();
+}
+
+
+
+
+
+//ーーーーーここから必須関数。中身をいじらないことーーーーー
+
+// ウィンドウプロシージャ(コールバック関数)
+LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+	switch (uMsg) {
+		case WM_KEYDOWN:
+			if (wParam == VK_ESCAPE) {
+				SendMessage(hWnd, WM_CLOSE, 0, 0); // WM_CLOSEメッセージの送信
+			}
+			break;
+
+		case WM_CLOSE:
+			if (MessageBox(hWnd, END_CONFIRMATION, END_WINDOW_CAPTION, MB_OKCANCEL | MB_DEFBUTTON2) == IDOK) {
+				DestroyWindow(hWnd); // 指定のウィンドウにWM_DESTROYメッセージを送る
+			}
+			return 0; // DefWindowProc関数にメッセージを流さず終了することによって何もなかったことにする
+
+		case WM_DESTROY: // ウィンドウの破棄メッセージ
+			PostQuitMessage(0); // WM_QUITメッセージの送信
+			return 0;
+	};
+
+	// 通常メッセージ処理はこの関数に任せる
+	return DefWindowProc(hWnd, uMsg, wParam, lParam);
+}
