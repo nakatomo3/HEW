@@ -36,6 +36,7 @@
 
 #Chaceh File
 *.opendb
+*.VC.db
 
 #ログファイル
 Logs/
