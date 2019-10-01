@@ -3,15 +3,15 @@
 
 //ポジションの基準値。基本は真ん中だが変更可能
 typedef enum Criterion {
-	CENTER,
-	LEFT_UP,
-	UP,
-	RIGHT_UP,
-	RIGHT,
-	RIGHT_DOWN,
-	DOWN,
-	DOWN_LEFT,
-	LEFT
+	CENTER = (0 + 0),
+	LEFT = (0 + 1),
+	RIGHT = (0 + 2),
+	UP = (4 + 0),
+	UP_LEFT = (4 + 1),
+	UP_RIGHT = (4 + 2),
+	DOWN = (8 + 0),
+	DOWN_LEFT = (8 + 1),
+	DOWN_RIGHT = (8 + 2),
 };
 
 class VisualComponent :	public Component {
