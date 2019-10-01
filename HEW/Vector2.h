@@ -3,8 +3,6 @@
 class Vector2 {
 public:
 
-	float x, y;
-
 	//x,y¬•ª‚ğ0‚É‚·‚é‰Šú‰»
 	Vector2() {
 		x, y = 0;
@@ -18,6 +16,13 @@ public:
 
 	~Vector2() {
 
+	}
+
+	float GetX() {
+		return x;
+	}
+	float GetY() {
+		return y;
 	}
 
 
@@ -73,4 +78,5 @@ public:
 
 private:
 
+	float x, y;
 };

@@ -1,4 +1,5 @@
 #pragma once
+#include "LogWriter.h"
 class Vector3 {
 public:
 
@@ -111,6 +112,10 @@ public:
 
 	float GetZ() {
 		return z;
+	}
+
+	Vector3 returnVector3() {
+		return Vector3(x,y,z);
 	}
 
 private:
