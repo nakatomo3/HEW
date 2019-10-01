@@ -32,13 +32,6 @@ static LPDIRECT3D9 g_pD3D = NULL;             // Direct3Dインターフェース
 // Direct3Dデバイス
 static LPDIRECT3DTEXTURE9 g_pTexture = NULL;  // テクスチャインターフェース
 
-static float g_UVScrollValue = 0.0f;
-
-
-GameObject* hoge;
-Sprite* sprite;
-Texture* texture;
-
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	// 使用しない一時変数を明示。ログ回避
 	UNREFERENCED_PARAMETER(hPrevInstance);

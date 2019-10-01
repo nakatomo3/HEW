@@ -144,12 +144,11 @@
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="LogWriter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyDirect3D.cpp" />
-    <ClCompile Include="NonComponentGameObject.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="SaveManager.cpp" />
@@ -164,12 +163,11 @@
   <ItemGroup>
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
-    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="LogWriter.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MyDirect3D.h" />
-    <ClInclude Include="NonComponentGameObject.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="OriginalHeaders.h" />

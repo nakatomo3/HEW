@@ -54,12 +54,6 @@
     <ClCompile Include="Component.cpp">
       <Filter>ソース ファイル\BaseClass</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>ソース ファイル\BaseClass</Filter>
-    </ClCompile>
-    <ClCompile Include="NonComponentGameObject.cpp">
-      <Filter>ソース ファイル\BaseClass</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>ソース ファイル\BaseClass</Filter>
     </ClCompile>
@@ -99,6 +93,9 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>ソース ファイル\Components</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>ソース ファイル\BaseClass</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -114,12 +111,6 @@
       <Filter>ヘッダー ファイル\CommonClass</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>ヘッダー ファイル\BaseClass</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>ヘッダー ファイル\BaseClass</Filter>
-    </ClInclude>
-    <ClInclude Include="NonComponentGameObject.h">
       <Filter>ヘッダー ファイル\BaseClass</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
@@ -169,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="OriginalHeaders.h">
       <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>ヘッダー ファイル\BaseClass</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
