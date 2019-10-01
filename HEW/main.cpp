@@ -35,6 +35,10 @@ static LPDIRECT3DTEXTURE9 g_pTexture = NULL;  // テクスチャインターフェース
 static float g_UVScrollValue = 0.0f;
 
 
+GameObject* hoge;
+Sprite* sprite;
+Texture* texture;
+
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	// 使用しない一時変数を明示。ログ回避
 	UNREFERENCED_PARAMETER(hPrevInstance);
@@ -138,8 +142,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 //初期化処理
 bool Init(){
-	//MyDirect3D::GetInstance().Initialize(hwnd);
-
 	if (!MyDirect3D::GetInstance().Init(hWnd)) {
 		return false;
 	}
@@ -148,6 +150,8 @@ bool Init(){
 	SaveManager::GetInstance();
 	ObjectManager::GetInstance();
 	SceneManager::GetInstance();
+
+	Sprite::Init();
 	
 	//ーーーーーー初期化はここからーーーーーーーーーーーー
 
@@ -176,18 +180,42 @@ void Update() {
 	ObjectManager::GetInstance().FirstUpdate();
 	ObjectManager::GetInstance().Update();
 	ObjectManager::GetInstance().LateUpdate();
-	
 }
 
 //描画関係
 void Draw() {
+
+	static LPDIRECT3DDEVICE9 pDevice = MyDirect3D::GetInstance().GetDevice();
+
+	// 画面のクリア
+	pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_RGBA(80, 80, 80, 255), 1.0f, 0);
+
+	// 描画バッチ命令の開始
+	pDevice->BeginScene();
+
+	pDevice->SetFVF(FVF_VERTEX2D);
+
+	//ブレンド設定
+	pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, TRUE);			// αブレンドを行う
+	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);		// αソースカラーの指定
+	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);	// αデスティネーションカラーの指定
+	// サンプラーステートパラメータの設定
+	pDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_WRAP);// テクスチャアドレッシング方法(U値)を設定
+	pDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_WRAP);// テクスチャアドレッシング方法(V値)を設定
+	pDevice->SetSamplerState(0, D3DSAMP_MINFILTER, D3DTEXF_LINEAR);	// テクスチャ縮小フィルタモードを設定
+	pDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, D3DTEXF_LINEAR);	// テクスチャ拡大フィルタモードを設定
+
 	ObjectManager::GetInstance().Draw();
 	ObjectManager::GetInstance().LateDraw();
+
+	pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
+
+	// 描画バッチ命令の終了
+	pDevice->EndScene();
+
+	// バックバッファをフリップ（タイミングはD3DPRESENT_PARAMETERSの設定による）
+	pDevice->Present(NULL, NULL, NULL, NULL);
 }
-
-
-
-
 
 //ーーーーーここから必須関数。中身をいじらないことーーーーー
 

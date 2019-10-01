@@ -6,6 +6,14 @@
 Texture::Texture() {
 }
 
+Texture::Texture(string _path, int _width, int _height, string _name) {
+	path = _path;
+	name = _name;
+	width = _width;
+	height = _height;
+	LoadTexture(_path, _name);
+}
+
 
 Texture::~Texture() {
 }
