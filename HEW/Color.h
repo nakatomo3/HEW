@@ -2,7 +2,16 @@
 
 class Color {
 public:
-	unsigned char r, g, b, a;
+
+	unsigned int GetR();
+	unsigned int GetG();
+	unsigned int GetB();
+	unsigned int GetA();
+
+	void SetR(unsigned int _r);
+	void SetG(unsigned int _g);
+	void SetB(unsigned int _b);
+	void SetA(unsigned int _a);
 
 	Color(unsigned int R, unsigned int G, unsigned int B);
 	Color(unsigned int R, unsigned int G, unsigned int B, unsigned int A);
@@ -31,5 +40,5 @@ public:
 
 	~Color();
 private :
-
+	unsigned char r, g, b, a;
 };

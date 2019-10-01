@@ -4,6 +4,38 @@
 #define COLOR_FLOAT_MAX 1.0f
 #define COLOR_MIN 0
 
+unsigned int Color::GetR() {
+	return r;
+}
+
+unsigned int Color::GetG() {
+	return g;
+}
+
+unsigned int Color::GetB() {
+	return b;
+}
+
+unsigned int Color::GetA() {
+	return a;
+}
+
+void Color::SetR(unsigned int _r) {
+	r = _r;
+}
+
+void Color::SetG(unsigned int _g) {
+	g = _g;
+}
+
+void Color::SetB(unsigned int _b) {
+	b = _b;
+}
+
+void Color::SetA(unsigned int _a) {
+	a = _a;
+}
+
 Color::Color(unsigned int R, unsigned int G, unsigned int B) {
 	if (R > COLOR_INT_MAX || G > COLOR_INT_MAX || B > COLOR_INT_MAX) {
 		LogWriter::GetInstance().LogWorning("Colorをint型で初期化する場合は0～255の範囲で指定してください。　指定したRGB=(%d,%d,%d)", R, G, B);
