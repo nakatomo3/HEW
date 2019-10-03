@@ -4,7 +4,7 @@ public:
 	Object();
 	~Object();
 
-	void Destroy();
+	void virtual Destroy();
 
 	bool IsActive();
 	void SetActive(bool active);
