@@ -35,6 +35,8 @@ public:
 	GameObject* GetGameObject();
 	void SetGameObject(GameObject* _gameObject);
 
+	void Destroy() override final;
+
 protected :
 	GameObject* gameObject;
 
