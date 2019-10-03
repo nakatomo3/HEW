@@ -5,7 +5,6 @@ class GameObject;
 class Component : public Object {
 public:
 	Component();
-	~Component();
 
 	//初期化の一番最初に使用。
 	virtual void Awake() {
@@ -35,10 +34,12 @@ public:
 	GameObject* GetGameObject();
 	void SetGameObject(GameObject* _gameObject);
 
+	//使用禁止。gameObject.RemoveComponent(this)をすること
 	void Destroy() override final;
 
 protected :
 	GameObject* gameObject;
+	~Component();
 
 };
 
