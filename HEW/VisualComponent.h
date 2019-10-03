@@ -2,7 +2,7 @@
 #include "Component.h"
 
 //ポジションの基準値。基本は真ん中だが変更可能
-typedef enum Criterion {
+typedef enum{
 	CENTER = (0 + 0),
 	LEFT = (0 + 1),
 	RIGHT = (0 + 2),
@@ -12,7 +12,7 @@ typedef enum Criterion {
 	DOWN = (8 + 0),
 	DOWN_LEFT = (8 + 1),
 	DOWN_RIGHT = (8 + 2),
-};
+}Criterion;
 
 class VisualComponent :	public Component {
 public:
