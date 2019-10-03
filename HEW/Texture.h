@@ -9,7 +9,6 @@ class Texture {
 public:
 	Texture();
 	Texture(string _path, int width, int height, string _name = "newTexture");
-	~Texture();
 
 	//テクスチャのロード
 	bool LoadTexture(string _path, string _name);
@@ -30,6 +29,11 @@ public:
 	string GetName();
 	string GetPath();
 
+	void Destroy() {
+		Release();
+		delete this;
+	}
+
 private :
 	LPDIRECT3DTEXTURE9 texture;
 
@@ -37,5 +41,7 @@ private :
 
 	string path;
 	string name;
+
+	~Texture();
 };
 

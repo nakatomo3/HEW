@@ -14,10 +14,6 @@ public:
 		y = Y;
 	}
 
-	~Vector2() {
-
-	}
-
 	float GetX() {
 		return x;
 	}
@@ -76,7 +72,15 @@ public:
 		return Vector2(x / Magnitude(), y / Magnitude());
 	}
 
+	void Destroy() {
+		delete this;
+	}
+
 private:
 
 	float x, y;
+
+	~Vector2() {
+
+	}
 };

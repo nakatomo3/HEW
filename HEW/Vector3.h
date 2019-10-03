@@ -22,10 +22,6 @@ public:
 		z = Z;
 	}
 
-	~Vector3() {
-
-	}
-
 	//-------------------------operator-----------------------
 
 	//‘«‚µŽZ
@@ -118,8 +114,16 @@ public:
 		return Vector3(x,y,z);
 	}
 
+	void Destroy() {
+		delete this;
+	}
+
 private:
 	float x, y, z;
+
+	~Vector3() {
+
+	}
 };
 
 

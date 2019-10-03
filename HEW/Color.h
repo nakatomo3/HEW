@@ -38,7 +38,11 @@ public:
 		return Color((unsigned int)newR, (unsigned int)newG, (unsigned int)newB);
 	}
 
-	~Color();
+	void Destroy() {
+		delete this;
+	}
+
 private :
+	~Color();
 	unsigned char r, g, b, a;
 };
