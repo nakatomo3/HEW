@@ -105,7 +105,10 @@ public:
 				Component* checkComponent = dynamic_cast<T*>(components[i]);
 				if (checkComponent != NULL) {
 					//³í‚ÉŒ©‚Â‚©‚Á‚½
-					components.erase(components.begin() + i);
+					Component* cacheComponent = components[i];
+					components[i] = components[components.size()];
+					components.pop_back();
+					cacheComponent->Destroy();
 					return;
 				}
 			}

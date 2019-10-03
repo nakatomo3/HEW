@@ -10,8 +10,11 @@ void ObjectManager::Instantiate(GameObject* instance) {
 void ObjectManager::Destroy(GameObject* instance) {
 	for (int i = 0; i < objects.size(); i++) {
 		if (objects[i] == instance) {
-			objects.erase(objects.begin() + i);
+			GameObject* removeObject = instance;
+			objects[i] = objects[objects.size()];
+			objects.pop_back();
 			instance->Destroy();
+			return;
 		}
 	}
 	LogWriter::GetInstance().LogError("オブジェクトマネージャーに登録されていないオブジェクトがDestroyされました");
