@@ -81,7 +81,7 @@ void Sprite::SetColor(Color* _color) {
 
 void Sprite::SetColor(D3DCOLOR _color) {
 	g_Color = _color;
-	delete color;
+	color->Destroy();
 	color = new Color((_color&0xff)<<16, (_color & 0xff) << 8, (_color & 0xff), (_color & 0xff) << 24);
 }
 
@@ -121,31 +121,31 @@ void Sprite::Draw() {
 			pos = GetGameObject()->GetPosition();
 		}
 
-		int positionX = pos->GetX() + position->GetX();
-		int positionY = pos->GetY() + position->GetY();
-		int positionZ = pos->GetZ() + position->GetZ();
+		float positionX = (float)(pos->GetX() + position->GetX());
+		float positionY = (float)(pos->GetY() + position->GetY());
+		float positionZ = (float)(pos->GetZ() + position->GetZ());
 
-		int left = (int)-scale->GetX()/2;
-		int right = (int)scale->GetX()/2;
+		float left = -scale->GetX()/2;
+		float right = scale->GetX()/2;
 
-		int up = (int)-scale->GetY() / 2;
-		int down = (int)scale->GetY() / 2;
+		float up = -scale->GetY() / 2;
+		float down = scale->GetY() / 2;
 
 		if (criterion & 1) {
 			left = 0;
-			right = (int)scale->GetX();
+			right = scale->GetX();
 		}
 		if (criterion & 2) {
-			left = (int)-scale->GetX();
+			left = -scale->GetX();
 			right = 0;
 		}
 
 		if (criterion & 4) {
 			up = 0;
-			down = (int)scale->GetY();
+			down = scale->GetY();
 		}
 		if (criterion & 8) {
-			up = (int)-scale->GetY();
+			up = -scale->GetY();
 			down = 0;
 		}
 
@@ -181,31 +181,31 @@ void Sprite::Draw(Texture * _texture) {
 		pos = GetGameObject()->GetPosition();
 	}
 
-	int positionX = pos->GetX() + position->GetX();
-	int positionY = pos->GetY() + position->GetY();
-	int positionZ = pos->GetZ() + position->GetZ();
+	float positionX = pos->GetX() + position->GetX();
+	float positionY = pos->GetY() + position->GetY();
+	float positionZ = pos->GetZ() + position->GetZ();
 
-	int left = (int)-scale->GetX() / 2;
-	int right = (int)scale->GetX() / 2;
+	float left = -scale->GetX() / 2;
+	float right = scale->GetX() / 2;
 
-	int up = (int)-scale->GetY() / 2;
-	int down = (int)scale->GetY() / 2;
+	float up = -scale->GetY() / 2;
+	float down = scale->GetY() / 2;
 
 	if (criterion & 1) {
 		left = 0;
-		right = (int)scale->GetX();
+		right = scale->GetX();
 	}
 	if (criterion & 2) {
-		left = (int)-scale->GetX();
+		left = -scale->GetX();
 		right = 0;
 	}
 
 	if (criterion & 4) {
 		up = 0;
-		down = (int)scale->GetY();
+		down = scale->GetY();
 	}
 	if (criterion & 8) {
-		up = (int)-scale->GetY();
+		up = -scale->GetY();
 		down = 0;
 	}
 
