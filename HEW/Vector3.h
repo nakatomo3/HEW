@@ -117,13 +117,13 @@ public:
 	void Destroy() {
 		delete this;
 	}
+	~Vector3() {
+
+	}
 
 private:
 	float x, y, z;
 
-	~Vector3() {
-
-	}
 };
 
 

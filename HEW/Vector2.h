@@ -75,12 +75,12 @@ public:
 	void Destroy() {
 		delete this;
 	}
+	~Vector2() {
+
+	}
 
 private:
 
 	float x, y;
 
-	~Vector2() {
-
-	}
 };
