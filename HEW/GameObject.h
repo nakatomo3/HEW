@@ -118,8 +118,10 @@ public:
 
 	}
 
+	//使用禁止。オブジェクトマネージャーからDestroyしてください
+	void Destroy() override final;
+
 	GameObject();
-	~GameObject();
 
 protected:
 	bool isActive;
@@ -135,8 +137,10 @@ protected:
 	string tag;
 
 	GameObject* parent;
-	vector<GameObject*> child{};
+	vector<GameObject*> children{};
 
 	vector<Component*> components;
+
+	~GameObject();
 };
 

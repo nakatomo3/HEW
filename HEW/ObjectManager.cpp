@@ -7,6 +7,26 @@ void ObjectManager::Instantiate(GameObject* instance) {
 	objects.emplace_back(instance);
 }
 
+void ObjectManager::Destroy(GameObject* instance) {
+	for (int i = 0; i < objects.size(); i++) {
+		if (objects[i] == instance) {
+			objects.erase(objects.begin() + i);
+			instance->Destroy();
+		}
+	}
+	LogWriter::GetInstance().LogError("オブジェクトマネージャーに登録されていないオブジェクトがDestroyされました");
+	instance->Destroy();
+}
+
+bool ObjectManager::CheckInstance(GameObject* instance) {
+	for (int i = 0; i < objects.size(); i++) {
+		if (objects[i] == instance) {
+			return true;
+		}
+	}
+	return false;
+}
+
 void ObjectManager::Awake() {
 	for (unsigned int i = 0; i < objects.size(); i++) {
 		for (unsigned int j = 0; j < objects[i]->GetComponentCount(); j++) {

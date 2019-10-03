@@ -11,6 +11,12 @@ public:
 	//オブジェクトマネージャーに登録する。管理対象でないと自動的にStartもUpdateも呼ばれない。
 	void Instantiate(GameObject* instance);
 
+	//管理対象から外しdeleteする。
+	void Destroy(GameObject* instance);
+
+	//instanceが管理対象に入っているかどうかの確認
+	bool CheckInstance(GameObject* instance);
+
 	void Awake();
 	void Start();
 	void FirstUpdate();
@@ -25,7 +31,7 @@ private:
 
 	ObjectManager();
 	~ObjectManager() {
-
+		
 	}
 	
 	vector<GameObject*> objects;
