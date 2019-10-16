@@ -24,7 +24,6 @@ public:
 
 	Sprite();
 	Sprite(Texture* _texture, Vector2* _scale = new Vector2(1,1), Vector2* uv = new Vector2(0,0), Vector2* _textureScale = new Vector2(1,1), Vector3* _position = new Vector3(0,0,0),Criterion _criterion = CENTER);
-	~Sprite();
 
 	void SetTexture(Texture* _texture);
 	void SetScale(Vector2* _scale);
@@ -55,4 +54,5 @@ protected :
 	void Draw(Texture* _texture);
 
 	float tx, ty, tw, th;
+	~Sprite();
 };
