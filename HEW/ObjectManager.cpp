@@ -8,7 +8,7 @@ void ObjectManager::Instantiate(GameObject* instance) {
 }
 
 void ObjectManager::Destroy(GameObject* instance) {
-	for (int i = 0; i < objects.size(); i++) {
+	for (unsigned int i = 0; i < objects.size(); i++) {
 		if (objects[i] == instance) {
 			GameObject* removeObject = instance;
 			objects[i] = objects[objects.size()];
@@ -22,7 +22,7 @@ void ObjectManager::Destroy(GameObject* instance) {
 }
 
 bool ObjectManager::CheckInstance(GameObject* instance) {
-	for (int i = 0; i < objects.size(); i++) {
+	for (unsigned int i = 0; i < objects.size(); i++) {
 		if (objects[i] == instance) {
 			return true;
 		}
