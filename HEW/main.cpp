@@ -2,7 +2,7 @@
 #pragma comment(lib,"d3dx9.lib")
 #pragma comment(lib,"dxguid.lib")
 #pragma comment(lib,"dinput8.lib")
-
+#define _CRT_SECURE_NO_WARNINGS
 #include "main.h"
 
 #include <stdio.h>
@@ -23,6 +23,7 @@
 #include"Setting.h"
 #include"Input.h"
 #include"Sprite.h"
+#include"Text.h"
 
 /*------------------------------------------------------------------------------
 グローバル変数宣言
@@ -145,6 +146,7 @@ bool Init(){
 	SceneManager::GetInstance();
 
 	Sprite::Init();
+	Text::Init();
 	
 	//ーーーーーー初期化はここからーーーーーーーーーーーー
 
