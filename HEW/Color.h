@@ -41,8 +41,8 @@ public:
 	void Destroy() {
 		delete this;
 	}
+	~Color();
 
 private :
-	~Color();
 	unsigned char r, g, b, a;
 };
