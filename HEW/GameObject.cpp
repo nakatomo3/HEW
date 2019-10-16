@@ -4,12 +4,12 @@
 
 void GameObject::Destroy() {
 
-	for (int i = 0; i < components.size(); i++) {
+	for (unsigned int i = 0; i < components.size(); i++) {
 		Component* removeComponent = components.at(0);
 		RemoveComponent(removeComponent);
 	}
 
-	for (int i = 0; i < children.size(); i++) {
+	for (unsigned int i = 0; i < children.size(); i++) {
 		GameObject* child = children.at(0);
 		child->Destroy();
 	}
