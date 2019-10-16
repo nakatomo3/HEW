@@ -8,7 +8,7 @@ void Object::Destroy() {
 	delete this;
 }
 
-bool Object::IsActive() {
+bool Object::GetActive() {
 	return isActive;
 }
 

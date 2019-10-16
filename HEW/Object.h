@@ -6,7 +6,7 @@ public:
 
 	void virtual Destroy();
 
-	bool IsActive();
+	bool GetActive();
 	void SetActive(bool active);
 
 protected:
