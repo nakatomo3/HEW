@@ -60,7 +60,13 @@ public :
 	void SetSize(int _size);
 	int GetSize();
 
-private:
+	bool isOutline = false;
+	bool isBeautifulOutline = false;
+	LONG outlineDistance = 1;
+	void SetOutlineColor(Color* _color);
+	void SetOutlineColor(D3DCOLOR _color);
+
+protected:
 
 	FONT type;
 	int size = DEFAULT_TEXT_SIZE;
@@ -71,6 +77,11 @@ private:
 
 	D3DCOLOR g_Color;
 	Color* color;
+
+	D3DCOLOR g_outlineColor;
+	Color* outlineColor;
+
+	void TextDraw(LONG x, LONG y, D3DCOLOR _color);
 
 	~Text();
 };

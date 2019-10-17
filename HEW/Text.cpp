@@ -81,6 +81,7 @@ void Text::SetColor(Color * _color) {
 
 void Text::SetColor(D3DCOLOR _color) {
 	g_Color = _color;
+	delete color;
 	color = new Color((_color & 0xff) << 16, (_color & 0xff) << 8, (_color & 0xff), (_color & 0xff) << 24);
 }
 
@@ -89,16 +90,21 @@ Color * Text::GetColor() {
 }
 
 void Text::LateDraw() {
-	RECT rect = {(LONG)(position->GetX() + gameObject->GetPosition()->GetX()), (LONG)(position->GetY() + gameObject->GetPosition()->GetY()), (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT
-	};
-
-	char buf[TEXT_BUFFER_MAX];
-	strcpy(buf, text.c_str());
-
-	font->DrawText(NULL,
-		buf,
-		-1, &rect, DT_LEFT,
-		g_Color);
+	LONG defaultPosX = (LONG)(position->GetX() + gameObject->GetPosition()->GetX());
+	LONG defaultPosY = (LONG)(position->GetY() + gameObject->GetPosition()->GetY());
+	if (isOutline == true) {
+		TextDraw(defaultPosX + outlineDistance, defaultPosY, g_outlineColor);
+		TextDraw(defaultPosX - outlineDistance, defaultPosY, g_outlineColor);
+		TextDraw(defaultPosX, defaultPosY + outlineDistance, g_outlineColor);
+		TextDraw(defaultPosX, defaultPosY - outlineDistance, g_outlineColor);
+		if (isBeautifulOutline == true) {
+			TextDraw(defaultPosX + outlineDistance, defaultPosY + outlineDistance, g_outlineColor);
+			TextDraw(defaultPosX - outlineDistance, defaultPosY + outlineDistance, g_outlineColor);
+			TextDraw(defaultPosX - outlineDistance, defaultPosY - outlineDistance, g_outlineColor);
+			TextDraw(defaultPosX + outlineDistance, defaultPosY - outlineDistance, g_outlineColor);
+		}
+	}
+	TextDraw(defaultPosX, defaultPosY, g_Color);
 }
 
 void Text::SetSize(int _size) {
@@ -129,8 +135,20 @@ int Text::GetSize() {
 	return size;
 }
 
+void Text::SetOutlineColor(Color * _color) {
+	delete outlineColor;
+	outlineColor = _color;
+	int r = _color->GetR(), g = _color->GetB(), b = _color->GetB(), a = _color->GetA();
+	g_outlineColor = D3DCOLOR_RGBA(r, g, b, a);
+}
+
+void Text::SetOutlineColor(D3DCOLOR _color) {
+	g_outlineColor = _color;
+	delete outlineColor;
+	color = new Color((_color & 0xff) << 16, (_color & 0xff) << 8, (_color & 0xff), (_color & 0xff) << 24);
+}
+
 Text::Text() {
-	text = "hoge";
 	position = new Vector3();
 	color = new Color(255,255,255,255);
 	g_Color = D3DCOLOR_RGBA(255,255,255,255);
@@ -159,6 +177,16 @@ Text::Text(int _size, FONT type) {
 }
 
 
+void Text::TextDraw(LONG x, LONG y, D3DCOLOR _color) {
+	RECT rect = { (LONG)x, (LONG)y, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT };
+
+	char buf[TEXT_BUFFER_MAX];
+	strcpy(buf, text.c_str());
+
+	font->DrawText(NULL, buf, -1, &rect, DT_LEFT, _color);
+}
+
 Text::~Text() {
+	font->Release();
 }
 
