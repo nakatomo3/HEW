@@ -28,7 +28,8 @@ public :
 
 	void AddScene(Scene* scene);
 
-	string GetNowScene();
+	Scene* GetNowScene();
+	string GetNowSceneName();
 	int GetNowSceneNumber();
 
 private:

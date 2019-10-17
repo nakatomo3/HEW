@@ -174,6 +174,7 @@ void Uninit() {
 void Update() {
 	ObjectManager::GetInstance().FirstUpdate();
 	ObjectManager::GetInstance().Update();
+	SceneManager::GetInstance().GetNowScene()->Update();
 	ObjectManager::GetInstance().LateUpdate();
 }
 

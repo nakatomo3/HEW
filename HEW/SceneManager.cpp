@@ -96,7 +96,11 @@ void SceneManager::AddScene(Scene * scene) {
 	sceneList.push_back(scene);
 }
 
-string SceneManager::GetNowScene() {
+Scene * SceneManager::GetNowScene() {
+	return nowScene;
+}
+
+string SceneManager::GetNowSceneName() {
 	return nowScene->name;
 }
 
