@@ -11,7 +11,7 @@ Scene::~Scene() {
 }
 
 void Scene::Start() {
-
+	
 }
 
 void Scene::Load() {
@@ -19,4 +19,12 @@ void Scene::Load() {
 }
 
 void Scene::UnLoad() {
+	delete this;
+}
+
+void Scene::Update() {
+}
+
+void Scene::Destroy() {
+	delete this;
 }
