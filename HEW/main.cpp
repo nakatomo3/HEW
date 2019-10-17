@@ -144,6 +144,7 @@ bool Init(){
 	SaveManager::GetInstance();
 	ObjectManager::GetInstance();
 	SceneManager::GetInstance();
+	Time::GetInstance();
 
 	Sprite::Init();
 	Text::Init();
@@ -174,7 +175,9 @@ void Uninit() {
 void Update() {
 	ObjectManager::GetInstance().FirstUpdate();
 	ObjectManager::GetInstance().Update();
-	SceneManager::GetInstance().GetNowScene()->Update();
+	if (SceneManager::GetInstance().GetNowScene() != nullptr) {
+		SceneManager::GetInstance().GetNowScene()->Update();
+	}
 	ObjectManager::GetInstance().LateUpdate();
 }
 
