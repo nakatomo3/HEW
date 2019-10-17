@@ -97,7 +97,7 @@
       <Filter>ソース ファイル\BaseClass</Filter>
     </ClCompile>
     <ClCompile Include="Text.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +168,7 @@
       <Filter>ヘッダー ファイル\BaseClass</Filter>
     </ClInclude>
     <ClInclude Include="Text.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
