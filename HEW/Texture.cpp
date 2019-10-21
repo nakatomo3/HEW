@@ -3,9 +3,6 @@
 #include <d3d.h>
 #include <d3dx9.h>
 
-Texture::Texture() {
-}
-
 Texture::Texture(string _path, int _width, int _height, string _name) {
 	path = _path;
 	name = _name;

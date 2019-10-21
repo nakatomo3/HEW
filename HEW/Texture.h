@@ -7,7 +7,6 @@ using namespace std;
 
 class Texture {
 public:
-	Texture();
 	Texture(string _path, int width, int height, string _name = "newTexture");
 
 	//テクスチャのロード
