@@ -48,8 +48,8 @@ protected :
 	Criterion criterion = CENTER;
 	Vector3* position;
 
-	D3DCOLOR g_Color;
-	Color* color;
+	D3DCOLOR g_Color = D3DCOLOR_RGBA(255,255,255,255);
+	Color* color = new Color(255,255,255,255);
 
 	void Draw(Texture* _texture);
 
