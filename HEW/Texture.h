@@ -7,7 +7,7 @@ using namespace std;
 
 class Texture {
 public:
-	Texture(string _path, int width, int height, string _name = "newTexture");
+	Texture(string _path, string _name = "newTexture");
 
 	//テクスチャのロード
 	bool LoadTexture(string _path, string _name);
@@ -19,12 +19,6 @@ public:
 	LPDIRECT3DTEXTURE9 GetTexture();
 	void SetTexture(LPDIRECT3DTEXTURE9 _texture);
 
-	void SetWidth(int _width);
-	void SetHeight(int _height);
-
-	int GetWidth();
-	int GetHeight();//画像サイズの習得
-
 	string GetName();
 	string GetPath();
 
@@ -35,8 +29,6 @@ public:
 
 private :
 	LPDIRECT3DTEXTURE9 texture;
-
-	int width, height;
 
 	string path;
 	string name;

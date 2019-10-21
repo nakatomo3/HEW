@@ -3,11 +3,9 @@
 #include <d3d.h>
 #include <d3dx9.h>
 
-Texture::Texture(string _path, int _width, int _height, string _name) {
+Texture::Texture(string _path, string _name) {
 	path = _path;
 	name = _name;
-	width = _width;
-	height = _height;
 	LoadTexture(_path, _name);
 }
 
@@ -37,22 +35,6 @@ LPDIRECT3DTEXTURE9 Texture::GetTexture() {
 
 void Texture::SetTexture(LPDIRECT3DTEXTURE9 _texture) {
 	texture = _texture;
-}
-
-void Texture::SetWidth(int _width) {
-	width = _width;
-}
-
-void Texture::SetHeight(int _height) {
-	height = _height;
-}
-
-int Texture::GetWidth() {
-	return width;
-}
-
-int Texture::GetHeight() {
-	return height;
 }
 
 string Texture::GetName() {
