@@ -43,6 +43,18 @@
     <Filter Include="ソース ファイル\Scripts">
       <UniqueIdentifier>{fc421a19-61e9-43a5-9977-1dab0f09ca9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scenes">
+      <UniqueIdentifier>{3a9c8f4b-2edf-4c7d-8093-8886d4aa3374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scenes">
+      <UniqueIdentifier>{9e0bb4cd-5f90-4cc7-b22a-c439db067e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scripts\Run">
+      <UniqueIdentifier>{a5d95075-b21e-4c0e-8c96-13a4475e62bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scripts\Run">
+      <UniqueIdentifier>{675f7120-d37d-49c3-8d36-72a2250b61ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -98,6 +110,18 @@
     </ClCompile>
     <ClCompile Include="Text.cpp">
       <Filter>ソース ファイル\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Run.cpp">
+      <Filter>ソース ファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerRun.cpp">
+      <Filter>ソース ファイル\Scripts\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="ChargeGaugeRun.cpp">
+      <Filter>ソース ファイル\Scripts\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="BalloonRun.cpp">
+      <Filter>ソース ファイル\Scripts\Run</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +193,18 @@
     </ClInclude>
     <ClInclude Include="Text.h">
       <Filter>ヘッダー ファイル\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Run.h">
+      <Filter>ヘッダー ファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerRun.h">
+      <Filter>ヘッダー ファイル\Scripts\Run</Filter>
+    </ClInclude>
+    <ClInclude Include="ChargeGaugeRun.h">
+      <Filter>ヘッダー ファイル\Scripts\Run</Filter>
+    </ClInclude>
+    <ClInclude Include="BalloonRun.h">
+      <Filter>ヘッダー ファイル\Scripts\Run</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

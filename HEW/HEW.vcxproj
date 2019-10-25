@@ -142,6 +142,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BalloonRun.cpp" />
+    <ClCompile Include="ChargeGaugeRun.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -151,6 +153,8 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="PlayerRun.cpp" />
+    <ClCompile Include="Run.cpp" />
     <ClCompile Include="SaveManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -162,6 +166,8 @@
     <ClCompile Include="VisualComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BalloonRun.h" />
+    <ClInclude Include="ChargeGaugeRun.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Input.h" />
@@ -172,6 +178,8 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="OriginalHeaders.h" />
+    <ClInclude Include="PlayerRun.h" />
+    <ClInclude Include="Run.h" />
     <ClInclude Include="SaveManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />

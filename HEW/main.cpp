@@ -25,6 +25,7 @@
 #include"Sprite.h"
 #include"Text.h"
 
+#include "Run.h"
 /*------------------------------------------------------------------------------
 グローバル変数宣言
 ------------------------------------------------------------------------------*/
@@ -150,6 +151,11 @@ bool Init(){
 	Text::Init();
 	
 	//ーーーーーー初期化はここからーーーーーーーーーーーー
+
+	Scene* run = new Run("run");
+	SceneManager::GetInstance().AddScene(run);
+
+	SceneManager::GetInstance().LoadScene("run");
 
 	//例。こんな感じで初期化する。シーンにまとめるのを推奨
 	/*GameObject* obj = new GameObject();
