@@ -46,4 +46,4 @@ Release/
 Debug/
 
 #ユーザ設定ファイル
-*.suo
+.vs/HEW/v15/
