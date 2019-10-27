@@ -12,19 +12,34 @@ Run::~Run() {
 void Run::Start() {
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Instantiate(playerObjects[i]);
+		ObjectManager::GetInstance().Instantiate(gaugeObjects[i]);
 	}
 }
 
 void Run::Load() {
 	for (int i = 0; i < playerCount; i++) {
-		players[i] = new PlayerRun();
+		gauges.emplace_back(new ChargeGaugeRun());
+		gaugeSprites.emplace_back(new Sprite());
+		gaugeObjects.emplace_back(new GameObject());
+		gaugeObjects[i]->AddComponent(gauges[i]);
+		gaugeObjects[i]->AddComponent(gaugeSprites[i]);
+
+		players.emplace_back(new PlayerRun());
 		players[i]->SetplayerID(i);
+		playerSprite.emplace_back(new Sprite());
+		playerObjects.emplace_back(new GameObject());
+		playerObjects[i]->AddComponent(players[i]);
+		playerObjects[i]->AddComponent(playerSprite[i]);
 
-		gauge[i] = new ChargeGaugeRun();
-		playerSprite[i] = new Sprite();
-
-		playerObjects[i] = new GameObject();
 	}
+
+	//このコメントの下にゲージ関連の処理を追加
+
+
+	//このコメントの下にプレイヤー関連の処理を追加
+
+	
+
 }
 
 void Run::Update() {
@@ -42,4 +57,8 @@ void Run::ChangePlayerCount(unsigned int num) {
 		return;
 	}
 	playerCount = num;
+}
+
+int Run::GetPlayerCount() {
+	return playerCount;
 }

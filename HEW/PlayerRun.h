@@ -1,6 +1,5 @@
 #pragma once
 #include "ScriptBase.h"
-#include "Run.h"
 #include "SceneManager.h"
 class PlayerRun : public ScriptBase {
 public:
