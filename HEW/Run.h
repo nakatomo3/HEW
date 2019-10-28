@@ -28,7 +28,7 @@ private:
 
 	float timer = -COUNT_DOWN_MAX;
 
-	int playerCount = 0;
+	int playerCount = 4;
 
 	//吹き出しのオブジェクト
 	GameObject* balloon;

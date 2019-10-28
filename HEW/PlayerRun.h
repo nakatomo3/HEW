@@ -9,7 +9,7 @@ public:
 	float GetCharge();
 	int SetplayerID(int id);
 
-	void Update();
+	void Update()override;
 
 private:
 	float charge = 0;

@@ -157,6 +157,9 @@ bool Init(){
 
 	SceneManager::GetInstance().LoadScene("run");
 
+	
+
+
 	//例。こんな感じで初期化する。シーンにまとめるのを推奨
 	/*GameObject* obj = new GameObject();
 	ObjectManager::GetInstance().Instantiate(obj);
@@ -185,6 +188,7 @@ void Update() {
 		SceneManager::GetInstance().GetNowScene()->Update();
 	}
 	ObjectManager::GetInstance().LateUpdate();
+
 }
 
 //描画関係
