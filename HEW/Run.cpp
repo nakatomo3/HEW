@@ -23,6 +23,7 @@ void Run::Load() {
 		gaugeObjects.emplace_back(new GameObject());
 		gaugeObjects[i]->AddComponent(gauges[i]);
 		gaugeObjects[i]->AddComponent(gaugeSprites[i]);
+		gaugeSprites[i]->SetCriterion(DOWN);
 
 		players.emplace_back(new PlayerRun());
 		players[i]->SetplayerID(i);
@@ -35,31 +36,36 @@ void Run::Load() {
 
 	//‚±‚ÌƒRƒƒ“ƒg‚Ì‰º‚ÉƒQ[ƒWŠÖ˜A‚Ìˆ—‚ð’Ç‰Á
 
+	float gaugeWidth = SCREEN_WIDTH / 30;	//ƒQ[ƒW‚Ì‰¡‚Ì‘å‚«‚³
+	float gaugeHeight = SCREEN_HEIGHT / 3;	//ƒQ[ƒW‚Ìc‚Ì‘å‚«‚³
+
+	float sideBuffer = SCREEN_WIDTH / 18;	//‰æ–Ê‚Ìã‰º¶‰E‚©‚ç‚Ì‹——£
+
 	if (playerCount >= 1) {
 		//¶ã‰¼ƒQ[ƒW
-		gaugeSprites[0]->SetScale(new Vector2(25, 200));//‰¡,c ‚Ì‘å‚«‚³
-		gaugeObjects[0]->SetPosition(new Vector3(50, 150, 0));//x,y,zÀ•W
+		gaugeSprites[0]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//‰¡,c ‚Ì‘å‚«‚³
+		gaugeObjects[0]->SetPosition(new Vector3(sideBuffer, sideBuffer + gaugeHeight, 0));//x,y,zÀ•W
 		gaugeObjects[0]->AddComponent(gaugeSprites[0]);
 	}
 
 	if (playerCount >= 2) {
 		//‰Eã‰¼ƒQ[ƒW
-		gaugeSprites[1]->SetScale(new Vector2(25, 200));//‰¡,c ‚Ì‘å‚«‚³
-		gaugeObjects[1]->SetPosition(new Vector3(550, 150, 0));//x,y,zÀ•W
+		gaugeSprites[1]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//‰¡,c ‚Ì‘å‚«‚³
+		gaugeObjects[1]->SetPosition(new Vector3(SCREEN_WIDTH - sideBuffer, sideBuffer + gaugeHeight, 0));//x,y,zÀ•W
 		gaugeObjects[1]->AddComponent(gaugeSprites[1]);
 	}
 
 	if (playerCount >= 3) {
 		//¶‰º‰¼ƒQ[ƒW
-		gaugeSprites[2]->SetScale(new Vector2(25, 200));//‰¡,c ‚Ì‘å‚«‚³
-		gaugeObjects[2]->SetPosition(new Vector3(50, 450, 0));//x,y,zÀ•W
+		gaugeSprites[2]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//‰¡,c ‚Ì‘å‚«‚³
+		gaugeObjects[2]->SetPosition(new Vector3(sideBuffer, SCREEN_HEIGHT - sideBuffer, 0));//x,y,zÀ•W
 		gaugeObjects[2]->AddComponent(gaugeSprites[2]);
 	}
 
 	if (playerCount >= 4) {
 		//‰E‰º‰¼ƒQ[ƒW
-		gaugeSprites[3]->SetScale(new Vector2(25, 200));//‰¡,c ‚Ì‘å‚«‚³
-		gaugeObjects[3]->SetPosition(new Vector3(550, 450, 0));//x,y,zÀ•W
+		gaugeSprites[3]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//‰¡,c ‚Ì‘å‚«‚³
+		gaugeObjects[3]->SetPosition(new Vector3(SCREEN_WIDTH - sideBuffer, SCREEN_HEIGHT - sideBuffer, 0));//x,y,zÀ•W
 		gaugeObjects[3]->AddComponent(gaugeSprites[3]);
 	}
 
