@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "Texture.h"
 #include "Run.h"
+#include "SceneManager.h"
 
 PlayerRun::PlayerRun() {
 
@@ -64,8 +65,17 @@ void PlayerRun::Update() {
 	else if (charge >= 600.0f) {
 		sprite->SetColor(D3DCOLOR_RGBA(200, 0, 0, 230));
 	}
+
+	//Šp“x8“x‚®‚ç‚¢‚ð0.1•b‚ÅˆÚ“®
+	if (run->GetTimer() >= 1) {
+		gameObject->Move(Vector3(charge * 0.05f * SCREEN_WIDTH/1024, charge * -0.007f * SCREEN_HEIGHT/576, 0));
+	}
 }
 
 void PlayerRun::SetSprite(Sprite * _sprite){
 	sprite = _sprite;
+}
+
+void PlayerRun::SetScene(Run * _run){
+	run = _run;
 }
