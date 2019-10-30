@@ -15,11 +15,13 @@ public:
 	void Update()override;
 
 	void SetSprite(Sprite* sprite);
+	void SetScene(Run* run);
 
 private:
-	float charge = 0;
+	float charge = 1000;
 
 	int playerID = 0;
 
 	Sprite* sprite;
+	Run* run;
 };
