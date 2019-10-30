@@ -17,13 +17,15 @@ void Run::Start() {
 }
 
 void Run::Load() {
-	for (int i = 0; i < playerCount; i++) {
+	for (int i = 0; i < playerCount; i++) {//プレイヤーのカウント(playerCount)の数によってゲージの表示
 		gauges.emplace_back(new ChargeGaugeRun());
 		gaugeSprites.emplace_back(new Sprite());
 		gaugeObjects.emplace_back(new GameObject());
 		gaugeObjects[i]->AddComponent(gauges[i]);
 		gaugeObjects[i]->AddComponent(gaugeSprites[i]);
 		gaugeSprites[i]->SetCriterion(DOWN);
+		gauges[i]->SetSprite(gaugeSprites[i]);
+		
 
 		players.emplace_back(new PlayerRun());
 		players[i]->SetplayerID(i);
@@ -31,6 +33,8 @@ void Run::Load() {
 		playerObjects.emplace_back(new GameObject());
 		playerObjects[i]->AddComponent(players[i]);
 		playerObjects[i]->AddComponent(playerSprite[i]);
+
+		gauges[i]->SetPlayer(players[i]);
 
 	}
 
@@ -46,6 +50,8 @@ void Run::Load() {
 		gaugeSprites[0]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//横,縦 の大きさ
 		gaugeObjects[0]->SetPosition(new Vector3(sideBuffer, sideBuffer + gaugeHeight, 0));//x,y,z座標
 		gaugeObjects[0]->AddComponent(gaugeSprites[0]);
+		playerObjects[1]->SetName("1");
+		playerObjects[2]->SetName("2");
 	}
 
 	if (playerCount >= 2) {
@@ -69,6 +75,7 @@ void Run::Load() {
 		gaugeObjects[3]->AddComponent(gaugeSprites[3]);
 	}
 
+
 	//このコメントの下にプレイヤー関連の処理を追加
 	if (playerCount >= 1) {
 		//一番目のプレイヤー
@@ -79,14 +86,14 @@ void Run::Load() {
 	
 	if (playerCount >= 2) {
 		//二番目のプレイヤー
-		playerObjects[1]->SetPosition(new Vector3(99, 425, 0));
+		playerObjects[1]->SetPosition(new Vector3(925, 155, 0));
 		playerSprite[1]->SetScale(new Vector2(50, 50));
 		players[1]->SetSprite(playerSprite[1]);
 	}
 
 	if (playerCount >= 3) {
 		//三番目のプレイヤー
-		playerObjects[2]->SetPosition(new Vector3(925, 155, 0));
+		playerObjects[2]->SetPosition(new Vector3(95,425, 0));
 		playerSprite[2]->SetScale(new Vector2(50, 50));
 		players[2]->SetSprite(playerSprite[2]);
 	}

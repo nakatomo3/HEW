@@ -25,14 +25,13 @@ public:
 
 	Sprite* GetPlayerSprite(int playerID);
 
-
 private:
 
 	const float COUNT_DOWN_MAX = 3;
 
 	float timer = -COUNT_DOWN_MAX;
 
-	int playerCount = 4;
+	int playerCount = 4;//とりあえずは4人分にしている(デフォは0)
 
 	//吹き出しのオブジェクト
 	GameObject* balloon;
