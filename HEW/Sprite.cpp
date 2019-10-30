@@ -118,7 +118,7 @@ void Sprite::Draw() {
 			LogWriter::GetInstance().Log("スプライトがGameObjectにアタッチされずに使用されました。GameObjectにアタッチしたうえで使用してください");
 			pos = new Vector3(0,0,0);
 		} else {
-			pos = GetGameObject()->GetPosition();
+			pos = gameObject->GetPosition();
 		}
 
 		float positionX = (float)(pos->GetX() + position->GetX());

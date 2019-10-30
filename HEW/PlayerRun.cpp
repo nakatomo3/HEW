@@ -26,43 +26,42 @@ int PlayerRun::SetplayerID(int id) {
 
 void PlayerRun::Update() {
 	//LogWriter::GetInstance().Log("hoge");
-	//LogWriter::GetInstance().Log("%d:%f", playerID, charge);
 	switch (playerID) {
 	case 0:
-		if (Input::GetInstance().GetKey(DIK_A)) {
-			charge += 0.1f; //値は調整
+		if (Input::GetInstance().GetKey(DIK_A)) {//左上ゲージ
+			charge += 10.0f; //値は調整
 			LogWriter::GetInstance().Log("A");
 			LogWriter::GetInstance().Log("%d:%f", playerID, charge);
 		}
 		break;
 	case 1:
-		if (Input::GetInstance().GetKey(DIK_S)) {
-			charge += 0.1f; //値は調整
+		if (Input::GetInstance().GetKey(DIK_S)) {//右上ゲージ
+			charge += 10.0f; //値は調整
 			LogWriter::GetInstance().Log("S");
 			LogWriter::GetInstance().Log("%d:%f", playerID, charge);
 		}
 		break;
 	case 2:
-		if (Input::GetInstance().GetKey(DIK_W)) {
-			charge += 0.1f; //値は調整
-			LogWriter::GetInstance().Log("W");
-			LogWriter::GetInstance().Log("%d:%f", playerID, charge);
-		}
-		break;
-	case 3:
-		if (Input::GetInstance().GetKey(DIK_D)) {
-			charge += 0.1f; //値は調整
+		if (Input::GetInstance().GetKey(DIK_D)) {//左下ゲージ
+			charge += 10.0f; //値は調整
 			LogWriter::GetInstance().Log("D");
 			LogWriter::GetInstance().Log("%d:%f", playerID, charge);
 		}
 		break;
+	case 3:
+		if (Input::GetInstance().GetKey(DIK_F)) {//右下ゲージ
+			charge += 10.0f; //値は調整
+			LogWriter::GetInstance().Log("F");
+			LogWriter::GetInstance().Log("%d:%f", playerID, charge);
+		}
+		break;
 	}
 
-	if (charge >= 300.0f) {
+	if (charge >= 600.0f) {
 		sprite->SetColor(D3DCOLOR_RGBA(100, 100, 0, 230));
 	}
 
-	else if (charge >= 600.0f) {
+	else if (charge >= 300.0f) {
 		sprite->SetColor(D3DCOLOR_RGBA(200, 0, 0, 230));
 	}
 
