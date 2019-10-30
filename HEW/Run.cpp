@@ -70,8 +70,33 @@ void Run::Load() {
 	}
 
 	//このコメントの下にプレイヤー関連の処理を追加
-
+	if (playerCount >= 1) {
+		//一番目のプレイヤー
+		playerObjects[0]->SetPosition(new Vector3(99, 155, 0));
+		playerSprite[0]->SetScale(new Vector2(50, 50));
+		players[0]->SetSprite(playerSprite[0]);
+	}
 	
+	if (playerCount >= 2) {
+		//二番目のプレイヤー
+		playerObjects[1]->SetPosition(new Vector3(99, 425, 0));
+		playerSprite[1]->SetScale(new Vector2(50, 50));
+		players[1]->SetSprite(playerSprite[1]);
+	}
+
+	if (playerCount >= 3) {
+		//三番目のプレイヤー
+		playerObjects[2]->SetPosition(new Vector3(925, 155, 0));
+		playerSprite[2]->SetScale(new Vector2(50, 50));
+		players[2]->SetSprite(playerSprite[2]);
+	}
+
+	if (playerCount >= 4) {
+		//四番目のプレイヤー
+		playerObjects[3]->SetPosition(new Vector3(925, 425, 0));
+		playerSprite[3]->SetScale(new Vector2(50, 50));
+		players[3]->SetSprite(playerSprite[3]);
+	}
 
 }
 
@@ -94,4 +119,8 @@ void Run::ChangePlayerCount(unsigned int num) {
 
 int Run::GetPlayerCount() {
 	return playerCount;
+}
+
+Sprite * Run::GetPlayerSprite(int playerID){
+	return playerSprite[playerID];
 }
