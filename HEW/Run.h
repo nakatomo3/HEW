@@ -4,6 +4,7 @@
 #include "Time.h"
 #include "ChargeGaugeRun.h"
 #include "PlayerRun.h"
+#include "BalloonRun.h"
 
 using namespace std;
 
@@ -22,6 +23,9 @@ public:
 	void ChangePlayerCount(unsigned int num);
 	int GetPlayerCount();
 
+	Sprite* GetPlayerSprite(int playerID);
+
+
 private:
 
 	const float COUNT_DOWN_MAX = 3;
@@ -35,6 +39,11 @@ private:
 
 	//吹き出しのスプライト
 	Sprite* balloonSprite;
+
+	//吹き出しのテキスチャー
+	Texture* balloonTexture;
+
+	BalloonRun* balloonRun;
 
 
 	//プレイヤースクリプト

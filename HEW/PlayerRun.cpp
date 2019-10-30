@@ -1,7 +1,9 @@
 #include "PlayerRun.h"
 #include "Input.h"
 
-
+#include "Sprite.h"
+#include "Texture.h"
+#include "Run.h"
 
 PlayerRun::PlayerRun() {
 
@@ -54,4 +56,16 @@ void PlayerRun::Update() {
 		}
 		break;
 	}
+
+	if (charge >= 300.0f) {
+		sprite->SetColor(D3DCOLOR_RGBA(100, 100, 0, 230));
+	}
+
+	else if (charge >= 600.0f) {
+		sprite->SetColor(D3DCOLOR_RGBA(200, 0, 0, 230));
+	}
+}
+
+void PlayerRun::SetSprite(Sprite * _sprite){
+	sprite = _sprite;
 }
