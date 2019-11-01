@@ -155,6 +155,8 @@
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="PlayerRun.cpp" />
     <ClCompile Include="Run.cpp" />
+    <ClCompile Include="RunTitle.cpp" />
+    <ClCompile Include="RunTitleAnimation.cpp" />
     <ClCompile Include="SaveManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -163,6 +165,8 @@
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Title.cpp" />
+    <ClCompile Include="TitleAnimation.cpp" />
     <ClCompile Include="VariableManager.cpp" />
     <ClCompile Include="VisualComponent.cpp" />
   </ItemGroup>
@@ -181,6 +185,8 @@
     <ClInclude Include="OriginalHeaders.h" />
     <ClInclude Include="PlayerRun.h" />
     <ClInclude Include="Run.h" />
+    <ClInclude Include="RunTitle.h" />
+    <ClInclude Include="RunTitleAnimation.h" />
     <ClInclude Include="SaveManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
@@ -191,6 +197,8 @@
     <ClInclude Include="Text.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="Title.h" />
+    <ClInclude Include="TitleAnimation.h" />
     <ClInclude Include="VariableManager.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />

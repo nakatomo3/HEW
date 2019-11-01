@@ -27,6 +27,8 @@
 #include"Text.h"
 
 #include "Run.h"
+#include "RunTitle.h"
+#include "RunResult.h"
 /*------------------------------------------------------------------------------
 グローバル変数宣言
 ------------------------------------------------------------------------------*/
@@ -155,7 +157,12 @@ bool Init(){
 	//ーーーーーー初期化はここからーーーーーーーーーーーー
 
 	Scene* run = new Run("run");
+	Scene* runTitle = new RunTitle("runTitle");
+	Scene* runResult = new RunResult("runResult");
+
 	SceneManager::GetInstance().AddScene(run);
+	SceneManager::GetInstance().AddScene(runTitle);
+	SceneManager::GetInstance().AddScene(runResult);
 
 	SceneManager::GetInstance().LoadScene("run");
 

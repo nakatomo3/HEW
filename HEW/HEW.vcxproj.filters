@@ -55,6 +55,15 @@
     <Filter Include="ソース ファイル\Scripts\Run">
       <UniqueIdentifier>{675f7120-d37d-49c3-8d36-72a2250b61ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Scripts\Title">
+      <UniqueIdentifier>{38453c25-1a22-480d-8b42-628b844d5ccf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scripts\Title">
+      <UniqueIdentifier>{9d30c669-0bee-4a2f-b5ba-32f9bc8a2a1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scenes\Run">
+      <UniqueIdentifier>{e0de87ae-aaf7-4941-b4d9-c1ae2055258f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -111,9 +120,6 @@
     <ClCompile Include="Text.cpp">
       <Filter>ソース ファイル\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Run.cpp">
-      <Filter>ソース ファイル\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerRun.cpp">
       <Filter>ソース ファイル\Scripts\Run</Filter>
     </ClCompile>
@@ -123,7 +129,22 @@
     <ClCompile Include="BalloonRun.cpp">
       <Filter>ソース ファイル\Scripts\Run</Filter>
     </ClCompile>
+    <ClCompile Include="TitleAnimation.cpp">
+      <Filter>ソース ファイル\Scripts\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>ソース ファイル\Scenes</Filter>
+    </ClCompile>
     <ClCompile Include="VariableManager.cpp">
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Run.cpp">
+      <Filter>ソース ファイル\Scenes\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="RunTitle.cpp">
+      <Filter>ソース ファイル\Scenes\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="RunTitleAnimation.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -210,6 +231,18 @@
       <Filter>ヘッダー ファイル\Scripts\Run</Filter>
     </ClInclude>
     <ClInclude Include="VariableManager.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>ヘッダー ファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleAnimation.h">
+      <Filter>ヘッダー ファイル\Scripts\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="RunTitle.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="RunTitleAnimation.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
