@@ -14,6 +14,7 @@
 #include"SaveManager.h"
 #include"LogWriter.h"
 #include"Time.h"
+#include"VariableManager.h"
 #include"Color.h"
 #include"Object.h"
 #include"Component.h"
@@ -146,6 +147,7 @@ bool Init(){
 	ObjectManager::GetInstance();
 	SceneManager::GetInstance();
 	Time::GetInstance();
+	VariableManager::GetInstance();
 
 	Sprite::Init();
 	Text::Init();
@@ -156,9 +158,6 @@ bool Init(){
 	SceneManager::GetInstance().AddScene(run);
 
 	SceneManager::GetInstance().LoadScene("run");
-
-	
-
 
 	//例。こんな感じで初期化する。シーンにまとめるのを推奨
 	/*GameObject* obj = new GameObject();
