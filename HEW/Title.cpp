@@ -11,18 +11,17 @@ Title::~Title() {
 }
 
 void Title::Start() {
-	ObjectManager::GetInstance().Instantiate(titleObjct);
+	ObjectManager::GetInstance().Instantiate(titleObject);
 }
 
 void Title::Load() {
-	titleObjct = new GameObject();
+	titleObject = new GameObject();
 	titleSprite = new Sprite();
-	titleObjct->AddComponent(titleSprite);
+	titleObject->AddComponent(titleSprite);
 	titleAnimation = new TitleAnimation();
-	titleObjct->AddComponent(titleAnimation);
+	titleObject->AddComponent(titleAnimation);
 
 	//ƒ^ƒCƒgƒ‹‚Ì‰Šú‰»ü‚è‚Í‚±‚Ì‰º‚É
-
 }
 
 void Title::Update() {

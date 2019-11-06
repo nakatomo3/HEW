@@ -141,9 +141,6 @@
     <ClCompile Include="Run.cpp">
       <Filter>ソース ファイル\Scenes\Run</Filter>
     </ClCompile>
-    <ClCompile Include="RunTitle.cpp">
-      <Filter>ソース ファイル\Scenes\Run</Filter>
-    </ClCompile>
     <ClCompile Include="RunTitleAnimation.cpp">
       <Filter>ソース ファイル\Scripts\Run</Filter>
     </ClCompile>
@@ -152,6 +149,9 @@
     </ClCompile>
     <ClCompile Include="RunResult.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="RunTitle.cpp">
+      <Filter>ソース ファイル\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

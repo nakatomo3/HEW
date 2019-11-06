@@ -14,9 +14,12 @@ public:
 	void Update();
 
 private:
-	GameObject* titleObjct;
+	GameObject* titleObject;
 	Sprite* titleSprite;
 
 	TitleAnimation* titleAnimation;
+
+	//GameObject* player1Object;
+	//Sprite* player1Sprite;
 };
 
