@@ -25,6 +25,17 @@ void RunTitle::Load() {
 	runManual = new RunManual();
 	manualObject->AddComponent(manualSprite);
 	manualObject->AddComponent(runManual);
+
+	backgroundObject = new GameObject();
+	backgroundSprite = new Sprite();
+	backgroundObject->AddComponent(backgroundSprite);
+
+	backgroundObject->SetPosition(new Vector3(1, 1, 0));
+	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+
+	titleObject->SetPosition(new Vector3(500, 100, 0));
+	titleSprite->SetScale(new Vector2(300, 300));
+
 }
 
 void RunTitle::Update() {
