@@ -7,6 +7,11 @@ public:
 	BalloonRun();
 	~BalloonRun();
 
+	void Start();
+	void Update();
+
+	void SetSprite(Sprite* _sprite);
+
 private:
 	Sprite* sprite;
 };

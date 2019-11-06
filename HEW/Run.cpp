@@ -14,6 +14,8 @@ void Run::Start() {
 		ObjectManager::GetInstance().Instantiate(playerObjects[i]);
 		ObjectManager::GetInstance().Instantiate(gaugeObjects[i]);
 	}
+	
+	ObjectManager::GetInstance().Instantiate(balloon);
 }
 
 void Run::Load() {
@@ -109,6 +111,15 @@ void Run::Load() {
 		players[3]->SetScene(this);
 	}
 
+	//‚«o‚µ‚Ìˆ—
+	balloonSprite = new Sprite();
+	balloonSprite->SetScale(new Vector2(0, 0)); //saisyohahihyouzi 
+	balloon = new GameObject();
+	balloon->SetPosition(new Vector3(500, 300, 0));
+	balloon->AddComponent(balloonSprite);
+	balloonRun = new BalloonRun();
+	balloon->AddComponent(balloonRun);
+	balloonRun->SetSprite(balloonSprite);
 }
 
 void Run::Update() {
