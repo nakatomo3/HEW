@@ -132,9 +132,6 @@
     <ClCompile Include="TitleAnimation.cpp">
       <Filter>ソース ファイル\Scripts\Title</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>ソース ファイル\Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="VariableManager.cpp">
       <Filter>ソース ファイル\Manager</Filter>
     </ClCompile>
@@ -152,6 +149,9 @@
     </ClCompile>
     <ClCompile Include="RunTitle.cpp">
       <Filter>ソース ファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>ソース ファイル\Scripts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

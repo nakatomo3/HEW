@@ -21,5 +21,9 @@ private:
 
 	//GameObject* player1Object;
 	//Sprite* player1Sprite;
+
+	//‚¢‚é‚Ì‚©‚í‚©‚ç‚È‚¢‚¯‚Ç”wŒi‚Ì‚â‚Â
+	/*GameObject* backgroundObject;
+	Sprite* backgroundSprite;*/
 };
 
