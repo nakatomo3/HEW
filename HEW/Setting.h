@@ -6,10 +6,18 @@
 //ログファイルを作るかどうか
 #define IS_CREATE_FILE (true)
 
+//画面の比率(16:9)
+#define WINDOW_ASPECT (16.0f/9.0f)
+
 //画面の横幅
 #define SCREEN_WIDTH (1024)
 //画面の縦幅
-#define SCREEN_HEIGHT (576)
+#define SCREEN_HEIGHT (SCREEN_WIDTH / WINDOW_ASPECT)
+
+//画面の中心(横)
+#define SCREEN_CEMTER_X (SCREEN_WIDTH/2)
+//画面の中心(縦)
+#define SCREEN_CEMTER_Y (SCREEN_HEIGHT/2)
 
 // ウインドウクラスの名前
 #define CLASS_NAME     "GameWindow"       
