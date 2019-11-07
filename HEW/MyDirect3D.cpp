@@ -24,8 +24,8 @@ bool MyDirect3D::Init(HWND hwnd) {
 	// デバイスの生成に利用する情報構造体の作成
 	D3DPRESENT_PARAMETERS d3dpp = {};
 
-	d3dpp.BackBufferWidth = SCREEN_WIDTH;            // バックバッファの横幅				
-	d3dpp.BackBufferHeight = SCREEN_HEIGHT;           // バックバッファの縦幅
+	d3dpp.BackBufferWidth = (UINT)SCREEN_WIDTH;            // バックバッファの横幅				
+	d3dpp.BackBufferHeight = (UINT)SCREEN_HEIGHT;           // バックバッファの縦幅
 	d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;          // バックバッファのフォーマット指定
 	d3dpp.BackBufferCount = 1;                       // バックバッファの数
 	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;   // スワップエフェクト（スワップ方法）の設定		

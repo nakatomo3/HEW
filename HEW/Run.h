@@ -18,7 +18,7 @@ public:
 
 	void Update();
 
-	float GetTimer();
+	double GetTimer();
 
 	void ChangePlayerCount(unsigned int num);
 	int GetPlayerCount();
@@ -29,7 +29,7 @@ private:
 
 	const float COUNT_DOWN_MAX = 3;
 
-	float timer = -COUNT_DOWN_MAX;
+	double timer = -COUNT_DOWN_MAX;
 
 	int playerCount = 4;//とりあえずは4人分にしている(デフォは0)
 

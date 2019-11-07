@@ -127,7 +127,7 @@ void Run::Update() {
 	timer += Time::GetInstance().GetDeltaTime();
 }
 
-float Run::GetTimer() {
+double Run::GetTimer() {
 	return timer;
 }
 
