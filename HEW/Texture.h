@@ -13,7 +13,7 @@ public:
 	bool LoadTexture(string _path, string _name);
 
 	//テクスチャのリリース
-	void Release(void);
+	void Release();
 
 	//テクスチャインターフェースの習得
 	LPDIRECT3DTEXTURE9 GetTexture();

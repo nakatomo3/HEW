@@ -18,12 +18,13 @@ typedef struct Vertex2D_tag {
 static LPDIRECT3DVERTEXBUFFER9 g_pVertexBuffer;
 static LPDIRECT3DINDEXBUFFER9 g_pIndexBuffer;
 
+static Texture* nullTexture;
+
 class Sprite : public VisualComponent{
 public:
 	static void Init();
 
-	Sprite();
-	Sprite(Texture* _texture, Vector2* _scale = new Vector2(1,1), Vector2* uv = new Vector2(0,0), Vector2* _textureScale = new Vector2(1,1), Vector3* _position = new Vector3(0,0,0),Criterion _criterion = CENTER);
+	Sprite(Texture* _texture = nullTexture, Vector2* _scale = new Vector2(1,1), Vector2* uv = new Vector2(0,0), Vector2* _textureScale = new Vector2(1,1), Vector3* _position = new Vector3(0,0,0),Criterion _criterion = CENTER);
 
 	void SetTexture(Texture* _texture);
 	void SetScale(Vector2* _scale);
@@ -55,4 +56,5 @@ protected :
 
 	float tx, ty, tw, th;
 	~Sprite();
+
 };
