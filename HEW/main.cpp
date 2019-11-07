@@ -101,9 +101,12 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	Input::GetInstance().Init(hInstance, hWnd);
 
+	if (IS_VIEW_CAPTION != true) {
+		SetWindowLong(hWnd, GWL_STYLE, WS_POPUP);
+	}
+
 	// 指定のウィンドウハンドルのウィンドウを指定の方法で表示
 	ShowWindow(hWnd, nCmdShow);
-
 
 	// ゲームの初期化(Direct3Dの初期化)
 	if (!Init()) {

@@ -9,6 +9,9 @@
 //画面の比率(16:9)
 #define WINDOW_ASPECT (16.0f/9.0f)
 
+//キャプションを表示するか否か
+#define IS_VIEW_CAPTION (true)
+
 //画面の横幅
 #define SCREEN_WIDTH (1024)
 //画面の縦幅
