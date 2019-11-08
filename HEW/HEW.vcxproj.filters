@@ -215,9 +215,6 @@
     <ClInclude Include="Sprite.h">
       <Filter>ヘッダー ファイル\Components</Filter>
     </ClInclude>
-    <ClInclude Include="OriginalHeaders.h">
-      <Filter>ヘッダー ファイル\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>ヘッダー ファイル\BaseClass</Filter>
     </ClInclude>
@@ -256,6 +253,9 @@
     </ClInclude>
     <ClInclude Include="RunResult.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="HeroEngine.h">
+      <Filter>ヘッダー ファイル\Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
