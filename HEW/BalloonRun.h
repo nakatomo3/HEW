@@ -14,5 +14,9 @@ public:
 
 private:
 	Sprite* sprite;
+
+	Sprite* threeSprite;
+	Sprite* twoSprite;
+	Sprite* oneSprite;
 };
 
