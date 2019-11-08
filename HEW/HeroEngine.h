@@ -3,7 +3,6 @@
 //BaseClass
 #include "Component.h"
 #include "GameObject.h"
-#include "NonComponentGameObject.h"
 #include "Object.h"
 #include "Scene.h"
 #include "ScriptBase.h"
@@ -25,8 +24,10 @@
 #include "SceneManager.h"
 #include "Setting.h"
 #include "Time.h"
+#include "VariableManager.h"
 
 //Components
 #include "Sprite.h"
+#include "Text.h"
 
 //Scripts
