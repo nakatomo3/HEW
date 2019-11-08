@@ -9,6 +9,10 @@ VariableManager::VariableManager() {
 VariableManager::~VariableManager() {
 }
 
+bool VariableManager::GetBool(string name) {
+	return boolMap[name];
+}
+
 int VariableManager::GetInt(string name) {
 	return intMap[name];
 }
@@ -19,6 +23,10 @@ float VariableManager::GetFloat(string name) {
 
 string VariableManager::GetString(string name) {
 	return stringMap[name];
+}
+
+void VariableManager::SetBool(string name, bool value) {
+	boolMap[name] = value;
 }
 
 void VariableManager::SetInt(string name, int value) {
