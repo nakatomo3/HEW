@@ -113,7 +113,7 @@ void Run::Load() {
 
 	//‚«o‚µ‚Ìˆ—
 	balloonSprite = new Sprite();
-	balloonSprite->SetScale(new Vector2(0, 0)); //saisyohahihyouzi 
+	balloonSprite->SetScale(new Vector2(0, 0)); //Å‰‚Í”ñ•\Ž¦
 	balloon = new GameObject();
 	balloon->SetPosition(new Vector3(500, 300, 0));
 	balloon->AddComponent(balloonSprite);
