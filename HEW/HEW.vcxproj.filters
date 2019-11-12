@@ -64,6 +64,27 @@
     <Filter Include="ソース ファイル\Scenes\Run">
       <UniqueIdentifier>{e0de87ae-aaf7-4941-b4d9-c1ae2055258f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scenes\MegatonPunch">
+      <UniqueIdentifier>{7bfe82f9-6342-4a0f-9c9a-19d9737d2d38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scripts\MegatonPunch">
+      <UniqueIdentifier>{2828601e-f7c9-4427-82cc-0ade4da2a4ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scripts\MegatonPunch">
+      <UniqueIdentifier>{6dcbfef0-d013-465b-ba5e-3124ffaeb502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scenes\Title">
+      <UniqueIdentifier>{aaec3c1d-f828-4a4f-83c2-f2108c1fd7b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scenes\Run">
+      <UniqueIdentifier>{fa2b0f36-83cc-4e36-97f3-4b522b6bec29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scenes\Title">
+      <UniqueIdentifier>{145707c7-c9da-4c25-9d7f-ec9128a3fd80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scenes\MegatonPunch">
+      <UniqueIdentifier>{956be611-dd80-4b5f-a5ce-06e03ac13093}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -144,14 +165,35 @@
     <ClCompile Include="RunManual.cpp">
       <Filter>ソース ファイル\Scripts\Run</Filter>
     </ClCompile>
-    <ClCompile Include="RunResult.cpp">
+    <ClCompile Include="AudioSource.cpp">
+      <Filter>ソース ファイル\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioClip.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="RunTitle.cpp">
-      <Filter>ソース ファイル\Scenes</Filter>
+      <Filter>ソース ファイル\Scenes\Run</Filter>
     </ClCompile>
     <ClCompile Include="Title.cpp">
-      <Filter>ソース ファイル\Scripts</Filter>
+      <Filter>ソース ファイル\Scenes\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="RunResult.cpp">
+      <Filter>ソース ファイル\Scenes\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="MegatonPunch.cpp">
+      <Filter>ソース ファイル\Scenes\MegatonPunch</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerPunch.cpp">
+      <Filter>ソース ファイル\Scripts\MegatonPunch</Filter>
+    </ClCompile>
+    <ClCompile Include="GaugePunch.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="AimingPunch.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="PendulumPunch.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -221,9 +263,6 @@
     <ClInclude Include="Text.h">
       <Filter>ヘッダー ファイル\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Run.h">
-      <Filter>ヘッダー ファイル\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerRun.h">
       <Filter>ヘッダー ファイル\Scripts\Run</Filter>
     </ClInclude>
@@ -236,14 +275,8 @@
     <ClInclude Include="VariableManager.h">
       <Filter>ヘッダー ファイル\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="Title.h">
-      <Filter>ヘッダー ファイル\Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="TitleAnimation.h">
       <Filter>ヘッダー ファイル\Scripts\Title</Filter>
-    </ClInclude>
-    <ClInclude Include="RunTitle.h">
-      <Filter>ヘッダー ファイル\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="RunManual.h">
       <Filter>ヘッダー ファイル\Scripts\Run</Filter>
@@ -251,11 +284,44 @@
     <ClInclude Include="RunTitleAnimation.h">
       <Filter>ヘッダー ファイル\Scripts\Run</Filter>
     </ClInclude>
-    <ClInclude Include="RunResult.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="HeroEngine.h">
       <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSource.h">
+      <Filter>ヘッダー ファイル\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioClip.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Run.h">
+      <Filter>ヘッダー ファイル\Scenes\Run</Filter>
+    </ClInclude>
+    <ClInclude Include="RunResult.h">
+      <Filter>ヘッダー ファイル\Scenes\Run</Filter>
+    </ClInclude>
+    <ClInclude Include="RunTitle.h">
+      <Filter>ヘッダー ファイル\Scenes\Run</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>ヘッダー ファイル\Scenes\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="MegatonPunch.h">
+      <Filter>ヘッダー ファイル\Scenes\MegatonPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerPunch.h">
+      <Filter>ヘッダー ファイル\Scripts\MegatonPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="GaugePunch.h">
+      <Filter>ヘッダー ファイル\Scripts\MegatonPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="AimingPunch.h">
+      <Filter>ヘッダー ファイル\Scripts\MegatonPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="PendulumPunch.h">
+      <Filter>ヘッダー ファイル\Scripts\MegatonPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>ヘッダー ファイル\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

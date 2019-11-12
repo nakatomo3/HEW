@@ -63,6 +63,7 @@ void Sprite::SetTexture(Texture * _texture) {
 }
 
 void Sprite::SetScale(Vector2* _scale) {
+	delete scale;
 	scale = _scale;
 }
 
@@ -75,6 +76,7 @@ void Sprite::SetPosition(Vector3* _position) {
 }
 
 void Sprite::SetColor(Color* _color) {
+	delete color;
 	color = _color;
 	int r = _color->GetR(), g = _color->GetB(), b = _color->GetB(), a = _color->GetA();
 	g_Color = D3DCOLOR_RGBA(r,g,b,a);

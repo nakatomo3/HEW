@@ -142,17 +142,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AimingPunch.cpp" />
+    <ClCompile Include="AudioClip.cpp" />
+    <ClCompile Include="AudioSource.cpp" />
     <ClCompile Include="BalloonRun.cpp" />
     <ClCompile Include="ChargeGaugeRun.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="GaugePunch.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="LogWriter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MegatonPunch.cpp" />
     <ClCompile Include="MyDirect3D.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="PendulumPunch.cpp" />
+    <ClCompile Include="PlayerPunch.cpp" />
     <ClCompile Include="PlayerRun.cpp" />
     <ClCompile Include="Run.cpp" />
     <ClCompile Include="RunManual.cpp" />
@@ -173,18 +180,26 @@
     <ClCompile Include="VisualComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AimingPunch.h" />
+    <ClInclude Include="AudioClip.h" />
+    <ClInclude Include="AudioSource.h" />
     <ClInclude Include="BalloonRun.h" />
     <ClInclude Include="ChargeGaugeRun.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="GaugePunch.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="LogWriter.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="MegatonPunch.h" />
     <ClInclude Include="MyDirect3D.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="HeroEngine.h" />
+    <ClInclude Include="PendulumPunch.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerPunch.h" />
     <ClInclude Include="PlayerRun.h" />
     <ClInclude Include="Run.h" />
     <ClInclude Include="RunManual.h" />

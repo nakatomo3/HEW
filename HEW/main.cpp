@@ -6,30 +6,13 @@
 #include "main.h"
 
 #include <stdio.h>
-#include"Vector3.h"
-#include"Vector2.h"
-#include"ObjectManager.h"
-#include"SceneManager.h"
-#include"Singleton.h"
-#include"SaveManager.h"
-#include"LogWriter.h"
-#include"Time.h"
-#include"VariableManager.h"
-#include"Color.h"
-#include"Object.h"
-#include"Component.h"
-#include"ScriptBase.h"
-#include"GameObject.h"
-#include"MyDirect3D.h"
-#include"Setting.h"
-#include"Input.h"
-#include"Sprite.h"
-#include"Text.h"
+#include "HeroEngine.h"
 
 #include "Title.h"
 #include "Run.h"
 #include "RunTitle.h"
 #include "RunResult.h"
+#include "MegatonPunch.h"
 /*------------------------------------------------------------------------------
 グローバル変数宣言
 ------------------------------------------------------------------------------*/
@@ -159,10 +142,14 @@ bool Init(){
 	Text::Init();
 	
 	//ーーーーーー初期化はここからーーーーーーーーーーーー
+	VariableManager::GetInstance().SetInt("playerCount",4);
+
 	Scene* title = new Title("Title");
 	Scene* run = new Run("run");
 	Scene* runTitle = new RunTitle("runTitle");
 	Scene* runResult = new RunResult("runResult");
+	
+	Scene* megatonPunch = new MegatonPunch("megatonPunch");
 
 	SceneManager::GetInstance().AddScene(run);
 	SceneManager::GetInstance().AddScene(runTitle);
