@@ -16,8 +16,20 @@ void BalloonRun::Start(){
 void BalloonRun::Update(){
 
 
+	//ƒhƒ“ƒb 1•bŒã
+	if (run->GetTimer() >= 11) {
+		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.4f, SCREEN_WIDTH*0.4f * 9 / 16.0f));
+		sprite->SetColor(D3DCOLOR_RGBA(250, 0, 0, 230));
+	}
+
+	//‚æ[‚¢ 2•bŒã
+	else if (run->GetTimer() >= 10) {
+		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.4f, SCREEN_WIDTH*0.4f * 9 / 16.0f));
+		sprite->SetColor(D3DCOLOR_RGBA(0, 250, 0, 230));
+	}
+
 	//‚Q‰ñ–Ú‚ÌƒAƒbƒv
-	if (run->GetTimer() >= 8) {
+	else if (run->GetTimer() >= 8) {
 		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
 	}
 
