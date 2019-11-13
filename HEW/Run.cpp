@@ -1,4 +1,4 @@
-#include "Run.h"
+﻿#include "Run.h"
 #include "Input.h"
 #include "Sprite.h"
 #include "Texture.h"
@@ -57,8 +57,6 @@ void Run::Load() {
 	//このコメントの下にゲージ関連の処理を追加
 	float gaugeWidth = SD_WIDTH * 0.5f;		//ゲージの横の大きさ
 	float gaugeHeight = SD_HEIGHT * 2.5f;	//ゲージの縦の大きさ
-
-	float playerWidth, playerHeight = SD_HEIGHT * 2.0f;	//プレイヤーの大きさ
 
 	float sideBuffer = SCREEN_WIDTH / 18;	//画面の上下左右からの距離
 
@@ -156,7 +154,7 @@ double Run::GetTimer() {
 
 void Run::ChangePlayerCount(unsigned int num) {
 	if (num > 4) {
-		LogWriter::GetInstance().LogError("プレイヤーの数は最大4です");
+		//LogWriter::GetInstance().LogError("プレイヤーの最大数は４です");
 		return;
 	}
 	playerCount = num;

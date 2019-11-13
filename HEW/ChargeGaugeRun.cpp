@@ -1,7 +1,6 @@
 #include "ChargeGaugeRun.h"
 
 
-
 ChargeGaugeRun::ChargeGaugeRun() {
 }
 
