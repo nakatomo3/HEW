@@ -186,14 +186,14 @@
     <ClCompile Include="PlayerPunch.cpp">
       <Filter>ソース ファイル\Scripts\MegatonPunch</Filter>
     </ClCompile>
-    <ClCompile Include="GaugePunch.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="AimingPunch.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scripts\MegatonPunch</Filter>
+    </ClCompile>
+    <ClCompile Include="GaugePunch.cpp">
+      <Filter>ソース ファイル\Scripts\MegatonPunch</Filter>
     </ClCompile>
     <ClCompile Include="PendulumPunch.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scripts\MegatonPunch</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
