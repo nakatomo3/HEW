@@ -49,7 +49,6 @@ void Run::Load() {
 		playerObjects[i]->AddComponent(players[i]);
 		playerObjects[i]->AddComponent(playerSprite[i]);
 
-		LogWriter::GetInstance().Log("%d", player);
 		gauge->SetPlayer(player);
 		gauge->SetBrokenTexture(brokenGaugeTexture);
 	}
