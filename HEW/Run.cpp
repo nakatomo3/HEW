@@ -38,7 +38,7 @@ void Run::Load() {
 		gauge->SetScalerSprite(scaler);
 		gaugeObjects[i]->AddComponent(gaugeSprites[i]);
 		gaugeObjects[i]->AddComponent(scaler);
-		scaler->SetScale(new Vector2(SCREEN_WIDTH / 30, SCREEN_HEIGHT / 3 * 1.0f));
+		scaler->SetScale(new Vector2(SCREEN_WIDTH * 0.05f , SCREEN_HEIGHT * 0.25f));
 		scaler->SetCriterion(DOWN);
 
 		PlayerRun* player = new PlayerRun();
@@ -54,43 +54,35 @@ void Run::Load() {
 	}
 
 	//このコメントの下にゲージ関連の処理を追加
-	float sdWidth = SCREEN_WIDTH / 10;
-	float sdHeight = SCREEN_HEIGHT / 10;
+	float gaugeWidth = SD_WIDTH * 0.5f;		//ゲージの横の大きさ
+	float gaugeHeight = SD_HEIGHT * 2.5f;	//ゲージの縦の大きさ
 
-	float gaugeWidth = SCREEN_WIDTH / 30;	//ゲージの横の大きさ
-	float gaugeHeight = SCREEN_HEIGHT / 3;	//ゲージの縦の大きさ
-
-	float playerWidth = gaugeHeight / 5;
-	float playerHeight = gaugeHeight / 5 * 4;
+	float playerWidth, playerHeight = SD_HEIGHT * 2.0f;	//プレイヤーの大きさ
 
 	float sideBuffer = SCREEN_WIDTH / 18;	//画面の上下左右からの距離
 
 
 	if (playerCount >= 1) {
 		//左上仮ゲージ
-		gaugeSprites[0]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//横,縦 の大きさ
-		gaugeObjects[0]->SetPosition(new Vector3(sideBuffer, sideBuffer + gaugeHeight, 0));//x,y,z座標
+		gaugeObjects[0]->SetPosition(new Vector3(SD_WIDTH * 0.95f ,SD_HEIGHT * 3.6f, 0));//x,y,z座標
 		gaugeSprites[0]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 	if (playerCount >= 2) {
 		//右上仮ゲージ
-		gaugeSprites[1]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//横,縦 の大きさ
-		gaugeObjects[1]->SetPosition(new Vector3(SCREEN_WIDTH - sideBuffer, sideBuffer + gaugeHeight - 0.0f, 0));//x,y,z座標
+		gaugeObjects[1]->SetPosition(new Vector3(SD_WIDTH * 9.3f, SD_HEIGHT * 3.6f, 0));//x,y,z座標
 		gaugeSprites[1]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 	if (playerCount >= 3) {
 		//左下仮ゲージ
-		gaugeSprites[2]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//横,縦 の大きさ
-		gaugeObjects[2]->SetPosition(new Vector3(sideBuffer, SCREEN_HEIGHT - sideBuffer, 0));//x,y,z座標
+		gaugeObjects[2]->SetPosition(new Vector3(SD_WIDTH * 0.95f, SD_HEIGHT * 8.6f, 0));//x,y,z座標
 		gaugeSprites[2]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 	if (playerCount >= 4) {
 		//右下仮ゲージ
-		gaugeSprites[3]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//横,縦 の大きさ
-		gaugeObjects[3]->SetPosition(new Vector3(SCREEN_WIDTH - sideBuffer, SCREEN_HEIGHT - sideBuffer, 0));//x,y,z座標
+		gaugeObjects[3]->SetPosition(new Vector3(SD_WIDTH * 9.3f, SD_HEIGHT * 8.6f, 0));//x,y,z座標
 		gaugeSprites[3]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
@@ -98,32 +90,32 @@ void Run::Load() {
 	//このコメントの下にプレイヤー関連の処理を追加
 	if (playerCount >= 1) {
 		//一番目のプレイヤー
-		playerSprite[0]->SetScale(new Vector2(50, 50));
-		playerObjects[0]->SetPosition(new Vector3(99, 155, 0));
+		playerSprite[0]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
+		playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 3.3f, 0));
 		players[0]->SetSprite(playerSprite[0]);
 		players[0]->SetScene(this);
 	}
 	
 	if (playerCount >= 2) {
 		//二番目のプレイヤー
-		playerSprite[1]->SetScale(new Vector2(50, 50));
-		playerObjects[1]->SetPosition(new Vector3(925, 155, 0));
+		playerSprite[1]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
+		playerObjects[1]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 3.3f, 0));
 		players[1]->SetSprite(playerSprite[1]);
 		players[1]->SetScene(this);
 	}
 
 	if (playerCount >= 3) {
 		//三番目のプレイヤー
-		playerSprite[2]->SetScale(new Vector2(50, 50));
-		playerObjects[2]->SetPosition(new Vector3(99,425, 0));
+		playerSprite[2]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
+		playerObjects[2]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 8.3f, 0));
 		players[2]->SetSprite(playerSprite[2]);
 		players[2]->SetScene(this);
 	}
 
 	if (playerCount >= 4) {
 		//四番目のプレイヤー
-		playerSprite[3]->SetScale(new Vector2(50, 50));
-		playerObjects[3]->SetPosition(new Vector3(925, 425, 0));
+		playerSprite[3]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
+		playerObjects[3]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 8.3f, 0));
 		players[3]->SetSprite(playerSprite[3]);
 		players[3]->SetScene(this);
 	}
