@@ -18,7 +18,7 @@ public:
 	void SetScene(Run* run);
 
 private:
-	float charge = 1000;
+	float charge = 0;
 
 	int playerID = 0;
 
