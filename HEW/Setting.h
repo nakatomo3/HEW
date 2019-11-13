@@ -17,6 +17,11 @@
 //‰æ–Ê‚Ìc•
 #define SCREEN_HEIGHT (SCREEN_WIDTH / WINDOW_ASPECT)
 
+//‰æ–Ê‚Ì‰¡• (Stardard Unit)
+#define SD_WIDTH (SCREEN_WIDTH / 10)
+//‰æ–Ê‚Ìc• (Stardard Unit)
+#define SD_HEIGHT (SCREEN_HEIGHT / 10)
+
 //‰æ–Ê‚Ì’†S(‰¡)
 #define SCREEN_CEMTER_X (SCREEN_WIDTH/2)
 //‰æ–Ê‚Ì’†S(c)
