@@ -1,7 +1,5 @@
 #include "Run.h"
 
-
-
 Run::Run(string name) : Scene(name){
 }
 
@@ -10,6 +8,8 @@ Run::~Run() {
 }
 
 void Run::Start() {
+	ObjectManager::GetInstance().Instantiate(lane);
+
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Instantiate(playerObjects[i]);
 		ObjectManager::GetInstance().Instantiate(gaugeObjects[i]);
@@ -27,7 +27,7 @@ void Run::Load() {
 		gaugeObjects[i]->AddComponent(gaugeSprites[i]);
 		gaugeSprites[i]->SetCriterion(DOWN);
 		gauges[i]->SetSprite(gaugeSprites[i]);
-		
+
 
 		players.emplace_back(new PlayerRun());
 		players[i]->SetplayerID(i);
@@ -81,32 +81,32 @@ void Run::Load() {
 	//このコメントの下にプレイヤー関連の処理を追加
 	if (playerCount >= 1) {
 		//一番目のプレイヤー
-		playerObjects[0]->SetPosition(new Vector3(99, 155, 0));
-		playerSprite[0]->SetScale(new Vector2(50, 50));
+		playerObjects[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.1f, SCREEN_HEIGHT*0.275f, 0));
+		playerSprite[0]->SetScale(new Vector2(SCREEN_HEIGHT*0.2f, SCREEN_HEIGHT*0.2f));
 		players[0]->SetSprite(playerSprite[0]);
 		players[0]->SetScene(this);
 	}
-	
+
 	if (playerCount >= 2) {
 		//二番目のプレイヤー
-		playerObjects[1]->SetPosition(new Vector3(925, 155, 0));
-		playerSprite[1]->SetScale(new Vector2(50, 50));
+		playerObjects[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.1f, SCREEN_HEIGHT*0.475f, 0));
+		playerSprite[1]->SetScale(new Vector2(SCREEN_HEIGHT*0.2f, SCREEN_HEIGHT*0.2f));
 		players[1]->SetSprite(playerSprite[1]);
 		players[1]->SetScene(this);
 	}
 
 	if (playerCount >= 3) {
 		//三番目のプレイヤー
-		playerObjects[2]->SetPosition(new Vector3(95,425, 0));
-		playerSprite[2]->SetScale(new Vector2(50, 50));
+		playerObjects[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.1f, SCREEN_HEIGHT*0.675f, 0));
+		playerSprite[2]->SetScale(new Vector2(SCREEN_HEIGHT*0.2f, SCREEN_HEIGHT*0.2f));
 		players[2]->SetSprite(playerSprite[2]);
 		players[2]->SetScene(this);
 	}
 
 	if (playerCount >= 4) {
 		//四番目のプレイヤー
-		playerObjects[3]->SetPosition(new Vector3(925, 425, 0));
-		playerSprite[3]->SetScale(new Vector2(50, 50));
+		playerObjects[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.1f, SCREEN_HEIGHT*0.875f, 0));
+		playerSprite[3]->SetScale(new Vector2(SCREEN_HEIGHT*0.2f, SCREEN_HEIGHT*0.2f));
 		players[3]->SetSprite(playerSprite[3]);
 		players[3]->SetScene(this);
 	}
@@ -120,11 +120,24 @@ void Run::Load() {
 	balloonRun = new BalloonRun();
 	balloon->AddComponent(balloonRun);
 	balloonRun->SetSprite(balloonSprite);
+
+	//レーンの処理
+	laneSprite = new Sprite();
+	laneSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	laneSprite->SetColor(D3DCOLOR_RGBA(125, 200, 233, 0));
+	lane = new GameObject();
+	lane->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.8f, 0));
+	lane->AddComponent(laneSprite);
+	lane->SetActive(false);
 }
 
 void Run::Update() {
 	//これ以外何も書かないでください！
 	timer += Time::GetInstance().GetDeltaTime();
+
+	if (timer >= 1) {
+		lane->SetActive(true);
+	}
 }
 
 double Run::GetTimer() {

@@ -10,8 +10,6 @@ RunResult::~RunResult() {
 }
 
 void RunResult::Start() {
-	Run* run;
-	run = dynamic_cast<Run*>(SceneManager::GetInstance().GetNowScene());
 
 	ObjectManager::GetInstance().Instantiate(background);
 	ObjectManager::GetInstance().Instantiate(ranking);

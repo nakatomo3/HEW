@@ -39,7 +39,7 @@ private:
 	//吹き出しのスプライト
 	Sprite* balloonSprite;
 
-	//吹き出しのテキスチャー
+	//吹き出しのテクスチャー
 	Texture* balloonTexture;
 
 	BalloonRun* balloonRun;
@@ -63,4 +63,13 @@ private:
 
 	//ゲージのオブジェクト
 	vector<GameObject*> gaugeObjects;
+
+	//レーンのオブジェクト
+	GameObject* lane;
+
+	//レーンのスプライト
+	Sprite* laneSprite;
+
+	//レーンのテクスチャ
+	Texture* laneTexture;
 };
