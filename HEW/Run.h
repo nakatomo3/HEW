@@ -6,6 +6,7 @@
 #include "PlayerRun.h"
 #include "BalloonRun.h"
 
+
 using namespace std;
 
 class Run :	public Scene {
@@ -24,6 +25,8 @@ public:
 	int GetPlayerCount();
 
 	Sprite* GetPlayerSprite(int playerID);
+
+	void SetSprite(Sprite* _sprite);
 
 private:
 
@@ -63,4 +66,5 @@ private:
 
 	//ゲージのオブジェクト
 	vector<GameObject*> gaugeObjects;
+
 };

@@ -25,7 +25,6 @@ int PlayerRun::SetplayerID(int id) {
 }
 
 void PlayerRun::Update() {
-	//LogWriter::GetInstance().Log("hoge");
 	switch (playerID) {
 	case 0:
 		if (Input::GetInstance().GetKey(DIK_A)) {//ç∂è„ÉQÅ[ÉW
