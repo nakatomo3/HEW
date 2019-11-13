@@ -155,7 +155,7 @@ bool Init(){
 	SceneManager::GetInstance().AddScene(runTitle);
 	SceneManager::GetInstance().AddScene(runResult);
 
-	SceneManager::GetInstance().LoadScene("run");//仮のScene遷移機能
+	SceneManager::GetInstance().LoadScene("megatonPunch");//仮のScene遷移機能
 
 	//例。こんな感じで初期化する。シーンにまとめるのを推奨
 	/*GameObject* obj = new GameObject();
