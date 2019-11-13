@@ -6,6 +6,7 @@
 #include "PlayerRun.h"
 #include "BalloonRun.h"
 
+
 using namespace std;
 
 class Run :	public Scene {
@@ -25,51 +26,54 @@ public:
 
 	Sprite* GetPlayerSprite(int playerID);
 
+	void SetSprite(Sprite* _sprite);
+
 private:
 
 	const float COUNT_DOWN_MAX = 3;
 
 	double timer = -COUNT_DOWN_MAX;
 
-	int playerCount = 4;//‚Æ‚è‚ ‚¦‚¸‚Í4l•ª‚É‚µ‚Ä‚¢‚é(ƒfƒtƒH‚Í0)
+	int playerCount = 4;//ã¨ã‚Šã‚ãˆãšã¯4äººåˆ†ã«ã—ã¦ã„ã‚‹(ãƒ‡ãƒ•ã‚©ã¯0)
 
-	//‚«o‚µ‚ÌƒIƒuƒWƒFƒNƒg
+	//å¹ãå‡ºã—ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	GameObject* balloon;
 
-	//‚«o‚µ‚ÌƒXƒvƒ‰ƒCƒg
+	//å¹ãå‡ºã—ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 	Sprite* balloonSprite;
 
-	//‚«o‚µ‚ÌƒeƒNƒXƒ`ƒƒ[
+	//å¹ãå‡ºã—ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒ¼
 	Texture* balloonTexture;
 
 	BalloonRun* balloonRun;
 
 
-	//ƒvƒŒƒCƒ„[ƒXƒNƒŠƒvƒg
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
 	vector<PlayerRun*> players{};
 
-	//ƒvƒŒƒCƒ„[‚ÌƒXƒvƒ‰ƒCƒg
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 	vector<Sprite*> playerSprite{};
 
-	//ƒvƒŒƒCƒ„[‚ÌƒIƒuƒWƒFƒNƒg
+	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	vector<GameObject*> playerObjects{};
 
 
-	//ƒQ[ƒWƒXƒNƒŠƒvƒg
+	//ã‚²ãƒ¼ã‚¸ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
 	vector<ChargeGaugeRun*> gauges{};
 
-	//ƒQ[ƒW‚ÌƒXƒvƒ‰ƒCƒg
+	//ã‚²ãƒ¼ã‚¸ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 	vector<Sprite*> gaugeSprites{};
 
-	//ƒQ[ƒW‚ÌƒIƒuƒWƒFƒNƒg
+	//ã‚²ãƒ¼ã‚¸ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	vector<GameObject*> gaugeObjects;
 
-	//ƒŒ[ƒ“‚ÌƒIƒuƒWƒFƒNƒg
+	//ãƒ¬ãƒ¼ãƒ³ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	GameObject* lane;
 
-	//ƒŒ[ƒ“‚ÌƒXƒvƒ‰ƒCƒg
+	//ãƒ¬ãƒ¼ãƒ³ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 	Sprite* laneSprite;
 
-	//ƒŒ[ƒ“‚ÌƒeƒNƒXƒ`ƒƒ
+	//ãƒ¬ãƒ¼ãƒ³ã®ãƒ†ã‚¯ã‚¹ãƒãƒ£
 	Texture* laneTexture;
+
 };

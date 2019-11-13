@@ -1,4 +1,8 @@
 #include "Run.h"
+#include "Input.h"
+#include "Sprite.h"
+#include "Texture.h"
+#include "PlayerRun.h"
 
 Run::Run(string name) : Scene(name){
 }
@@ -6,6 +10,7 @@ Run::Run(string name) : Scene(name){
 
 Run::~Run() {
 }
+
 
 void Run::Start() {
 	ObjectManager::GetInstance().Instantiate(lane);
@@ -19,101 +24,106 @@ void Run::Start() {
 }
 
 void Run::Load() {
-	for (int i = 0; i < playerCount; i++) {//ƒvƒŒƒCƒ„[‚ÌƒJƒEƒ“ƒg(playerCount)‚Ì”‚É‚æ‚Á‚ÄƒQ[ƒW‚Ì•\¦
-		gauges.emplace_back(new ChargeGaugeRun());
+	Texture* normalGaugeTexture = new Texture("assets/textures/Run/UI/gauge.png");
+	Texture* brokenGaugeTexture = new Texture("assets/textures/Run/UI/gauge2.png");
+	for (int i = 0; i < playerCount; i++) {//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚«ã‚¦ãƒ³ãƒˆ(playerCount)ã®æ•°ã«ã‚ˆã£ã¦ã‚²ãƒ¼ã‚¸ã®è¡¨ç¤º
+		ChargeGaugeRun* gauge = new ChargeGaugeRun();
+		gauges.emplace_back(gauge);
 		gaugeSprites.emplace_back(new Sprite());
 		gaugeObjects.emplace_back(new GameObject());
 		gaugeObjects[i]->AddComponent(gauges[i]);
-		gaugeObjects[i]->AddComponent(gaugeSprites[i]);
 		gaugeSprites[i]->SetCriterion(DOWN);
 		gauges[i]->SetSprite(gaugeSprites[i]);
 
+		Sprite* scaler = new Sprite(normalGaugeTexture);
+		gauge->SetScalerSprite(scaler);
+		gaugeObjects[i]->AddComponent(gaugeSprites[i]);
+		gaugeObjects[i]->AddComponent(scaler);
+		scaler->SetScale(new Vector2(SCREEN_WIDTH * 0.05f , SCREEN_HEIGHT * 0.25f));
+		scaler->SetCriterion(DOWN);
 
-		players.emplace_back(new PlayerRun());
+		PlayerRun* player = new PlayerRun();
+		players.emplace_back(player);
 		players[i]->SetplayerID(i);
 		playerSprite.emplace_back(new Sprite());
 		playerObjects.emplace_back(new GameObject());
 		playerObjects[i]->AddComponent(players[i]);
 		playerObjects[i]->AddComponent(playerSprite[i]);
 
-		gauges[i]->SetPlayer(players[i]);
-
+		gauge->SetPlayer(player);
+		gauge->SetBrokenTexture(brokenGaugeTexture);
 	}
 
-	//‚±‚ÌƒRƒƒ“ƒg‚Ì‰º‚ÉƒQ[ƒWŠÖ˜A‚Ìˆ—‚ğ’Ç‰Á
+	//ã“ã®ã‚³ãƒ¡ãƒ³ãƒˆã®ä¸‹ã«ã‚²ãƒ¼ã‚¸é–¢é€£ã®å‡¦ç†ã‚’è¿½åŠ 
+	float gaugeWidth = SD_WIDTH * 0.5f;		//ã‚²ãƒ¼ã‚¸ã®æ¨ªã®å¤§ãã•
+	float gaugeHeight = SD_HEIGHT * 2.5f;	//ã‚²ãƒ¼ã‚¸ã®ç¸¦ã®å¤§ãã•
 
-	float gaugeWidth = SCREEN_WIDTH / 30;	//ƒQ[ƒW‚Ì‰¡‚Ì‘å‚«‚³
-	float gaugeHeight = SCREEN_HEIGHT / 3;	//ƒQ[ƒW‚Ìc‚Ì‘å‚«‚³
+	float playerWidth, playerHeight = SD_HEIGHT * 2.0f;	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¤§ãã•
 
-	float sideBuffer = SCREEN_WIDTH / 18;	//‰æ–Ê‚Ìã‰º¶‰E‚©‚ç‚Ì‹——£
+	float sideBuffer = SCREEN_WIDTH / 18;	//ç”»é¢ã®ä¸Šä¸‹å·¦å³ã‹ã‚‰ã®è·é›¢
+
 
 	if (playerCount >= 1) {
-		//¶ã‰¼ƒQ[ƒW
-		gaugeSprites[0]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//‰¡,c ‚Ì‘å‚«‚³
-		gaugeObjects[0]->SetPosition(new Vector3(sideBuffer, sideBuffer + gaugeHeight, 0));//x,y,zÀ•W
-		gaugeObjects[0]->AddComponent(gaugeSprites[0]);
-		playerObjects[1]->SetName("1");
-		playerObjects[2]->SetName("2");
+		//å·¦ä¸Šä»®ã‚²ãƒ¼ã‚¸
+		gaugeObjects[0]->SetPosition(new Vector3(SD_WIDTH * 0.95f ,SD_HEIGHT * 3.6f, 0));//x,y,zåº§æ¨™
+		gaugeSprites[0]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 	if (playerCount >= 2) {
-		//‰Eã‰¼ƒQ[ƒW
-		gaugeSprites[1]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//‰¡,c ‚Ì‘å‚«‚³
-		gaugeObjects[1]->SetPosition(new Vector3(SCREEN_WIDTH - sideBuffer, sideBuffer + gaugeHeight, 0));//x,y,zÀ•W
-		gaugeObjects[1]->AddComponent(gaugeSprites[1]);
+		//å³ä¸Šä»®ã‚²ãƒ¼ã‚¸
+		gaugeObjects[1]->SetPosition(new Vector3(SD_WIDTH * 9.3f, SD_HEIGHT * 3.6f, 0));//x,y,zåº§æ¨™
+		gaugeSprites[1]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 	if (playerCount >= 3) {
-		//¶‰º‰¼ƒQ[ƒW
-		gaugeSprites[2]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//‰¡,c ‚Ì‘å‚«‚³
-		gaugeObjects[2]->SetPosition(new Vector3(sideBuffer, SCREEN_HEIGHT - sideBuffer, 0));//x,y,zÀ•W
-		gaugeObjects[2]->AddComponent(gaugeSprites[2]);
+		//å·¦ä¸‹ä»®ã‚²ãƒ¼ã‚¸
+		gaugeObjects[2]->SetPosition(new Vector3(SD_WIDTH * 0.95f, SD_HEIGHT * 8.6f, 0));//x,y,zåº§æ¨™
+		gaugeSprites[2]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 	if (playerCount >= 4) {
-		//‰E‰º‰¼ƒQ[ƒW
-		gaugeSprites[3]->SetScale(new Vector2(gaugeWidth, gaugeHeight));//‰¡,c ‚Ì‘å‚«‚³
-		gaugeObjects[3]->SetPosition(new Vector3(SCREEN_WIDTH - sideBuffer, SCREEN_HEIGHT - sideBuffer, 0));//x,y,zÀ•W
-		gaugeObjects[3]->AddComponent(gaugeSprites[3]);
+		//å³ä¸‹ä»®ã‚²ãƒ¼ã‚¸
+		gaugeObjects[3]->SetPosition(new Vector3(SD_WIDTH * 9.3f, SD_HEIGHT * 8.6f, 0));//x,y,zåº§æ¨™
+		gaugeSprites[3]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 
-	//‚±‚ÌƒRƒƒ“ƒg‚Ì‰º‚ÉƒvƒŒƒCƒ„[ŠÖ˜A‚Ìˆ—‚ğ’Ç‰Á
+	//ã“ã®ã‚³ãƒ¡ãƒ³ãƒˆã®ä¸‹ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼é–¢é€£ã®å‡¦ç†ã‚’è¿½åŠ 
 	if (playerCount >= 1) {
-		//ˆê”Ô–Ú‚ÌƒvƒŒƒCƒ„[
-		playerObjects[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.1f, SCREEN_HEIGHT*0.275f, 0));
-		playerSprite[0]->SetScale(new Vector2(SCREEN_HEIGHT*0.2f, SCREEN_HEIGHT*0.2f));
+		//ä¸€ç•ªç›®ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
+		playerSprite[0]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
+		playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 3.3f, 0));
 		players[0]->SetSprite(playerSprite[0]);
 		players[0]->SetScene(this);
 	}
 
 	if (playerCount >= 2) {
-		//“ñ”Ô–Ú‚ÌƒvƒŒƒCƒ„[
-		playerObjects[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.1f, SCREEN_HEIGHT*0.475f, 0));
-		playerSprite[1]->SetScale(new Vector2(SCREEN_HEIGHT*0.2f, SCREEN_HEIGHT*0.2f));
+		//äºŒç•ªç›®ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
+		playerSprite[1]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
+		playerObjects[1]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 3.3f, 0));
 		players[1]->SetSprite(playerSprite[1]);
 		players[1]->SetScene(this);
 	}
 
 	if (playerCount >= 3) {
-		//O”Ô–Ú‚ÌƒvƒŒƒCƒ„[
-		playerObjects[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.1f, SCREEN_HEIGHT*0.675f, 0));
-		playerSprite[2]->SetScale(new Vector2(SCREEN_HEIGHT*0.2f, SCREEN_HEIGHT*0.2f));
+		//ä¸‰ç•ªç›®ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
+		playerSprite[2]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
+		playerObjects[2]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 8.3f, 0));
 		players[2]->SetSprite(playerSprite[2]);
 		players[2]->SetScene(this);
 	}
 
 	if (playerCount >= 4) {
-		//l”Ô–Ú‚ÌƒvƒŒƒCƒ„[
-		playerObjects[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.1f, SCREEN_HEIGHT*0.875f, 0));
-		playerSprite[3]->SetScale(new Vector2(SCREEN_HEIGHT*0.2f, SCREEN_HEIGHT*0.2f));
+		//å››ç•ªç›®ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
+		playerSprite[3]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
+		playerObjects[3]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 8.3f, 0));
 		players[3]->SetSprite(playerSprite[3]);
 		players[3]->SetScene(this);
 	}
 
-	//‚«o‚µ‚Ìˆ—
+	//å¹ãå‡ºã—ã®å‡¦ç†
 	balloonSprite = new Sprite();
-	balloonSprite->SetScale(new Vector2(0, 0)); //Å‰‚Í”ñ•\¦
+	balloonSprite->SetScale(new Vector2(0, 0)); //æœ€åˆã¯éè¡¨ç¤º
 	balloon = new GameObject();
 	balloon->SetPosition(new Vector3(500, 300, 0));
 	balloon->AddComponent(balloonSprite);
@@ -121,7 +131,7 @@ void Run::Load() {
 	balloon->AddComponent(balloonRun);
 	balloonRun->SetSprite(balloonSprite);
 
-	//ƒŒ[ƒ“‚Ìˆ—
+	//ãƒ¬ãƒ¼ãƒ³ã®å‡¦ç†
 	laneSprite = new Sprite();
 	laneSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
 	laneSprite->SetColor(D3DCOLOR_RGBA(125, 200, 233, 0));
@@ -132,7 +142,7 @@ void Run::Load() {
 }
 
 void Run::Update() {
-	//‚±‚êˆÈŠO‰½‚à‘‚©‚È‚¢‚Å‚­‚¾‚³‚¢I
+	//ã“ã‚Œä»¥å¤–ä½•ã‚‚æ›¸ã‹ãªã„ã§ãã ã•ã„ï¼
 	timer += Time::GetInstance().GetDeltaTime();
 
 	if (timer >= 1) {
@@ -146,7 +156,7 @@ double Run::GetTimer() {
 
 void Run::ChangePlayerCount(unsigned int num) {
 	if (num > 4) {
-		LogWriter::GetInstance().LogError("ƒvƒŒƒCƒ„[‚Ì”‚ÍÅ‘å4‚Å‚·");
+		LogWriter::GetInstance().LogError("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ•°ã¯æœ€å¤§4ã§ã™");
 		return;
 	}
 	playerCount = num;
