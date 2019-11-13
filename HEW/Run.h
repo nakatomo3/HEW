@@ -34,37 +34,46 @@ private:
 
 	double timer = -COUNT_DOWN_MAX;
 
-	int playerCount = 4;//�Ƃ肠������4�l���ɂ��Ă���(�f�t�H��0)
+	int playerCount = 4;//とりあえずは4人分にしている(デフォは0)
 
-	//�����o���̃I�u�W�F�N�g
+	//吹き出しのオブジェクト
 	GameObject* balloon;
 
-	//�����o���̃X�v���C�g
+	//吹き出しのスプライト
 	Sprite* balloonSprite;
 
-	//�����o���̃e�L�X�`���[
+	//吹き出しのテクスチャー
 	Texture* balloonTexture;
 
 	BalloonRun* balloonRun;
 
 
-	//�v���C���[�X�N���v�g
+	//プレイヤースクリプト
 	vector<PlayerRun*> players{};
 
-	//�v���C���[�̃X�v���C�g
+	//プレイヤーのスプライト
 	vector<Sprite*> playerSprite{};
 
-	//�v���C���[�̃I�u�W�F�N�g
+	//プレイヤーのオブジェクト
 	vector<GameObject*> playerObjects{};
 
 
-	//�Q�[�W�X�N���v�g
+	//ゲージスクリプト
 	vector<ChargeGaugeRun*> gauges{};
 
-	//�Q�[�W�̃X�v���C�g
+	//ゲージのスプライト
 	vector<Sprite*> gaugeSprites{};
 
-	//�Q�[�W�̃I�u�W�F�N�g
+	//ゲージのオブジェクト
 	vector<GameObject*> gaugeObjects;
+
+	//レーンのオブジェクト
+	GameObject* lane;
+
+	//レーンのスプライト
+	Sprite* laneSprite;
+
+	//レーンのテクスチャ
+	Texture* laneTexture;
 
 };

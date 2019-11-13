@@ -66,7 +66,7 @@ void PlayerRun::Update() {
 
 	//Šp“x8“x‚®‚ç‚¢‚ð0.1•b‚ÅˆÚ“®
 	if (run->GetTimer() >= 1) {
-		gameObject->Move(Vector3(charge * 0.05f * SCREEN_WIDTH/1024, charge * -0.007f * SCREEN_HEIGHT/576, 0));
+		gameObject->Move(Vector3(charge * 0.05f * SCREEN_WIDTH/1024, charge * -0.00f  * SCREEN_HEIGHT/576, 0));
 	}
 }
 

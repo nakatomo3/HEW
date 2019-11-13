@@ -2,7 +2,6 @@
 #include "Run.h"
 
 Run* run;
-
 BalloonRun::BalloonRun() {
 }
 

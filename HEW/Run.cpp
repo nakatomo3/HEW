@@ -1,10 +1,8 @@
 #include "Run.h"
 #include "Input.h"
-
 #include "Sprite.h"
 #include "Texture.h"
 #include "PlayerRun.h"
-
 
 Run::Run(string name) : Scene(name){
 }
@@ -15,6 +13,8 @@ Run::~Run() {
 
 
 void Run::Start() {
+	ObjectManager::GetInstance().Instantiate(lane);
+
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Instantiate(playerObjects[i]);
 		ObjectManager::GetInstance().Instantiate(gaugeObjects[i]);
@@ -26,7 +26,7 @@ void Run::Start() {
 void Run::Load() {
 	Texture* normalGaugeTexture = new Texture("assets/textures/Run/UI/gauge.png");
 	Texture* brokenGaugeTexture = new Texture("assets/textures/Run/UI/gauge2.png");
-	for (int i = 0; i < playerCount; i++) {//ƒvƒŒƒCƒ„[‚ÌƒJƒEƒ“ƒg(playerCount)‚Ì”‚É‚æ‚Á‚ÄƒQ[ƒW‚Ì•\¦
+	for (int i = 0; i < playerCount; i++) {//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚«ã‚¦ãƒ³ãƒˆ(playerCount)ã®æ•°ã«ã‚ˆã£ã¦ã‚²ãƒ¼ã‚¸ã®è¡¨ç¤º
 		ChargeGaugeRun* gauge = new ChargeGaugeRun();
 		gauges.emplace_back(gauge);
 		gaugeSprites.emplace_back(new Sprite());
@@ -34,6 +34,7 @@ void Run::Load() {
 		gaugeObjects[i]->AddComponent(gauges[i]);
 		gaugeSprites[i]->SetCriterion(DOWN);
 		gauges[i]->SetSprite(gaugeSprites[i]);
+
 		Sprite* scaler = new Sprite(normalGaugeTexture);
 		gauge->SetScalerSprite(scaler);
 		gaugeObjects[i]->AddComponent(gaugeSprites[i]);
@@ -53,51 +54,51 @@ void Run::Load() {
 		gauge->SetBrokenTexture(brokenGaugeTexture);
 	}
 
-	//‚±‚ÌƒRƒƒ“ƒg‚Ì‰º‚ÉƒQ[ƒWŠÖ˜A‚Ìˆ—‚ğ’Ç‰Á
-	float gaugeWidth = SD_WIDTH * 0.5f;		//ƒQ[ƒW‚Ì‰¡‚Ì‘å‚«‚³
-	float gaugeHeight = SD_HEIGHT * 2.5f;	//ƒQ[ƒW‚Ìc‚Ì‘å‚«‚³
+	//ã“ã®ã‚³ãƒ¡ãƒ³ãƒˆã®ä¸‹ã«ã‚²ãƒ¼ã‚¸é–¢é€£ã®å‡¦ç†ã‚’è¿½åŠ 
+	float gaugeWidth = SD_WIDTH * 0.5f;		//ã‚²ãƒ¼ã‚¸ã®æ¨ªã®å¤§ãã•
+	float gaugeHeight = SD_HEIGHT * 2.5f;	//ã‚²ãƒ¼ã‚¸ã®ç¸¦ã®å¤§ãã•
 
-	float playerWidth, playerHeight = SD_HEIGHT * 2.0f;	//ƒvƒŒƒCƒ„[‚Ì‘å‚«‚³
+	float playerWidth, playerHeight = SD_HEIGHT * 2.0f;	//ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å¤§ãã•
 
-	float sideBuffer = SCREEN_WIDTH / 18;	//‰æ–Ê‚Ìã‰º¶‰E‚©‚ç‚Ì‹——£
+	float sideBuffer = SCREEN_WIDTH / 18;	//ç”»é¢ã®ä¸Šä¸‹å·¦å³ã‹ã‚‰ã®è·é›¢
 
 
 	if (playerCount >= 1) {
-		//¶ã‰¼ƒQ[ƒW
-		gaugeObjects[0]->SetPosition(new Vector3(SD_WIDTH * 0.95f ,SD_HEIGHT * 3.6f, 0));//x,y,zÀ•W
+		//å·¦ä¸Šä»®ã‚²ãƒ¼ã‚¸
+		gaugeObjects[0]->SetPosition(new Vector3(SD_WIDTH * 0.95f ,SD_HEIGHT * 3.6f, 0));//x,y,zåº§æ¨™
 		gaugeSprites[0]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 	if (playerCount >= 2) {
-		//‰Eã‰¼ƒQ[ƒW
-		gaugeObjects[1]->SetPosition(new Vector3(SD_WIDTH * 9.3f, SD_HEIGHT * 3.6f, 0));//x,y,zÀ•W
+		//å³ä¸Šä»®ã‚²ãƒ¼ã‚¸
+		gaugeObjects[1]->SetPosition(new Vector3(SD_WIDTH * 9.3f, SD_HEIGHT * 3.6f, 0));//x,y,zåº§æ¨™
 		gaugeSprites[1]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 	if (playerCount >= 3) {
-		//¶‰º‰¼ƒQ[ƒW
-		gaugeObjects[2]->SetPosition(new Vector3(SD_WIDTH * 0.95f, SD_HEIGHT * 8.6f, 0));//x,y,zÀ•W
+		//å·¦ä¸‹ä»®ã‚²ãƒ¼ã‚¸
+		gaugeObjects[2]->SetPosition(new Vector3(SD_WIDTH * 0.95f, SD_HEIGHT * 8.6f, 0));//x,y,zåº§æ¨™
 		gaugeSprites[2]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 	if (playerCount >= 4) {
-		//‰E‰º‰¼ƒQ[ƒW
-		gaugeObjects[3]->SetPosition(new Vector3(SD_WIDTH * 9.3f, SD_HEIGHT * 8.6f, 0));//x,y,zÀ•W
+		//å³ä¸‹ä»®ã‚²ãƒ¼ã‚¸
+		gaugeObjects[3]->SetPosition(new Vector3(SD_WIDTH * 9.3f, SD_HEIGHT * 8.6f, 0));//x,y,zåº§æ¨™
 		gaugeSprites[3]->SetPosition(new Vector3(0, SCREEN_HEIGHT * -0.007f, 0));
 	}
 
 
-	//‚±‚ÌƒRƒƒ“ƒg‚Ì‰º‚ÉƒvƒŒƒCƒ„[ŠÖ˜A‚Ìˆ—‚ğ’Ç‰Á
+	//ã“ã®ã‚³ãƒ¡ãƒ³ãƒˆã®ä¸‹ã«ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼é–¢é€£ã®å‡¦ç†ã‚’è¿½åŠ 
 	if (playerCount >= 1) {
-		//ˆê”Ô–Ú‚ÌƒvƒŒƒCƒ„[
+		//ä¸€ç•ªç›®ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 		playerSprite[0]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
 		playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 3.3f, 0));
 		players[0]->SetSprite(playerSprite[0]);
 		players[0]->SetScene(this);
 	}
-	
+
 	if (playerCount >= 2) {
-		//“ñ”Ô–Ú‚ÌƒvƒŒƒCƒ„[
+		//äºŒç•ªç›®ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 		playerSprite[1]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
 		playerObjects[1]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 3.3f, 0));
 		players[1]->SetSprite(playerSprite[1]);
@@ -105,7 +106,7 @@ void Run::Load() {
 	}
 
 	if (playerCount >= 3) {
-		//O”Ô–Ú‚ÌƒvƒŒƒCƒ„[
+		//ä¸‰ç•ªç›®ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 		playerSprite[2]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
 		playerObjects[2]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 8.3f, 0));
 		players[2]->SetSprite(playerSprite[2]);
@@ -113,27 +114,40 @@ void Run::Load() {
 	}
 
 	if (playerCount >= 4) {
-		//l”Ô–Ú‚ÌƒvƒŒƒCƒ„[
+		//å››ç•ªç›®ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 		playerSprite[3]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
 		playerObjects[3]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 8.3f, 0));
 		players[3]->SetSprite(playerSprite[3]);
 		players[3]->SetScene(this);
 	}
 
-	//‚«o‚µ‚Ìˆ—
+	//å¹ãå‡ºã—ã®å‡¦ç†
 	balloonSprite = new Sprite();
-	balloonSprite->SetScale(new Vector2(0, 0)); //Å‰‚Í”ñ•\¦
+	balloonSprite->SetScale(new Vector2(0, 0)); //æœ€åˆã¯éè¡¨ç¤º
 	balloon = new GameObject();
 	balloon->SetPosition(new Vector3(500, 300, 0));
 	balloon->AddComponent(balloonSprite);
 	balloonRun = new BalloonRun();
 	balloon->AddComponent(balloonRun);
 	balloonRun->SetSprite(balloonSprite);
+
+	//ãƒ¬ãƒ¼ãƒ³ã®å‡¦ç†
+	laneSprite = new Sprite();
+	laneSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	laneSprite->SetColor(D3DCOLOR_RGBA(125, 200, 233, 0));
+	lane = new GameObject();
+	lane->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.8f, 0));
+	lane->AddComponent(laneSprite);
+	lane->SetActive(false);
 }
 
 void Run::Update() {
-	//‚±‚êˆÈŠO‰½‚à‘‚©‚È‚¢‚Å‚­‚¾‚³‚¢I
+	//ã“ã‚Œä»¥å¤–ä½•ã‚‚æ›¸ã‹ãªã„ã§ãã ã•ã„ï¼
 	timer += Time::GetInstance().GetDeltaTime();
+
+	if (timer >= 1) {
+		lane->SetActive(true);
+	}
 }
 
 double Run::GetTimer() {
@@ -142,7 +156,7 @@ double Run::GetTimer() {
 
 void Run::ChangePlayerCount(unsigned int num) {
 	if (num > 4) {
-		LogWriter::GetInstance().LogError("ƒvƒŒƒCƒ„[‚Ì”‚ÍÅ‘å4‚Å‚·");
+		LogWriter::GetInstance().LogError("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ•°ã¯æœ€å¤§4ã§ã™");
 		return;
 	}
 	playerCount = num;
