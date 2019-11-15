@@ -13,6 +13,8 @@ public:
 
 	void Update();
 
+	void UnLoad();
+
 private:
 	GameObject* titleObject;
 	Sprite* titleSprite;
