@@ -21,10 +21,7 @@ void BalloonRun::Update(){
 	}else if (run->GetTimer() >= 10) { // よーい 2秒後
 		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.4f, SCREEN_WIDTH*0.4f * 9 / 16.0f));
 		sprite->SetColor(D3DCOLOR_RGBA(0, 250, 0, 230));
-	}
-
-	//２回目のアップ
-	else if (run->GetTimer() >= 8) {
+	}else if (run->GetTimer() >= 8) { //２回目のアップ
 		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
 	}
 
