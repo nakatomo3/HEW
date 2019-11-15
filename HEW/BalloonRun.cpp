@@ -15,15 +15,10 @@ void BalloonRun::Start(){
 
 void BalloonRun::Update(){
 
-
-	//ƒhƒ“ƒb 1•bŒã
-	if (run->GetTimer() >= 11) {
+	if (run->GetTimer() >= 11) {       // ƒhƒ“ƒb 1•bŒã
 		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.4f, SCREEN_WIDTH*0.4f * 9 / 16.0f));
 		sprite->SetColor(D3DCOLOR_RGBA(250, 0, 0, 230));
-	}
-
-	//‚æ[‚¢ 2•bŒã
-	else if (run->GetTimer() >= 10) {
+	}else if (run->GetTimer() >= 10) { // ‚æ[‚¢ 2•bŒã
 		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.4f, SCREEN_WIDTH*0.4f * 9 / 16.0f));
 		sprite->SetColor(D3DCOLOR_RGBA(0, 250, 0, 230));
 	}
