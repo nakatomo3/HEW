@@ -11,7 +11,7 @@ void ObjectManager::Destroy(GameObject* instance) {
 	for (unsigned int i = 0; i < objects.size(); i++) {
 		if (objects[i] == instance) {
 			GameObject* removeObject = instance;
-			objects[i] = objects[objects.size()];
+			objects[i] = objects[objects.size() - 1];
 			objects.pop_back();
 			instance->Destroy();
 			return;
