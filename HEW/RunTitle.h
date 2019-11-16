@@ -27,5 +27,17 @@ private:
 
 	GameObject* backgroundObject;
 	Sprite* backgroundSprite;
+
+
+	Sprite* titleLogo1;
+	Sprite* titleLogo2;
+
+	Texture* logoTexture1;
+	Texture* logoTexture2;
+
+	float timer;
+
+	int logoSpeed = 4000;
+
 };
 
