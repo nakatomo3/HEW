@@ -22,8 +22,11 @@ void MegatonPunch::Load() {
 	//pendulumTexture = new Texture("");
 
 	const float PLAYER_WIDTH = SCREEN_WIDTH/10;
+
 	const float GAUGE_WIDTH = SCREEN_WIDTH/20;
 	const float GAUGE_HEIGHT = SCREEN_HEIGHT/5*2;
+
+	const float AIMING_WIDTH = SCREEN_WIDTH / 15;
 
 	for (int i = 0; i < playerCount; i++) {
 		auto player = new PlayerPunch();
@@ -36,6 +39,8 @@ void MegatonPunch::Load() {
 		player->SetSprite(playerSprite);
 		playerObject->AddComponent(playerSprite);
 		playerSprite->SetScale(new Vector2(PLAYER_WIDTH, 100));
+		player->SetPlayerNumber(i);
+		isWaitings.emplace_back(false);
 
 		auto gauge = new GaugePunch();
 		auto gaugeObject = new GameObject();
@@ -53,6 +58,7 @@ void MegatonPunch::Load() {
 		gaugeObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i) - SCREEN_WIDTH/10, SCREEN_HEIGHT / 3*2, 0));
 		gauge->SetSprite(gaugeSprite);
 		gaugeSprite->SetPosition(new Vector3(0,-SCREEN_HEIGHT*0.01f,0));
+		player->SetGauge(gauge);
 
 		auto aiming = new AimingPunch();
 		auto aimingObject = new GameObject();
@@ -63,6 +69,12 @@ void MegatonPunch::Load() {
 		aimingObject->AddComponent(aimingSpriteB);
 		aimingSpriteA->SetTexture(aimingTexture);
 		aimingSpriteB->SetTexture(aimingTexture);
+		player->SetAiming(aiming);
+		aiming->SetSprite(true, aimingSpriteA);
+		aiming->SetSprite(false, aimingSpriteB);
+		aimingSpriteA->SetScale(new Vector2(AIMING_WIDTH, AIMING_WIDTH));
+		aimingSpriteB->SetScale(new Vector2(AIMING_WIDTH, AIMING_WIDTH));
+		aimingObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i), SCREEN_HEIGHT / 2 + SCREEN_HEIGHT* 0.2f, 0));
 
 		auto pendulum = new PendulumPunch();
 		auto pendulumObject = new GameObject();
@@ -71,6 +83,13 @@ void MegatonPunch::Load() {
 		auto pendulumSprite = new Sprite();
 		pendulumCenterSprite->SetTexture(pendulumTexture);
 		pendulumSprite->SetTexture(pendulumTexture);
+		player->SetPendulum(pendulum);
+		pendulum->SetSprite(pendulumSprite);
+		pendulumSprite->SetScale(new Vector2(30, 30));
+		pendulumCenterSprite->SetScale(new Vector2(30, 30));
+		pendulumObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i), SCREEN_HEIGHT / 2 - SCREEN_HEIGHT * 0.2f, 0));
+		pendulumObject->AddComponent(pendulumCenterSprite);
+		pendulumObject->AddComponent(pendulumSprite);
 	}
 
 

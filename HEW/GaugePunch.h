@@ -10,8 +10,14 @@ public:
 
 	void SetSprite(Sprite* _sprite);
 
+	void SetPlayer(int value);
+
+	float GetValue();
+
 private:
 	Sprite* sprite;
+
+	int player;
 
 	bool isUp = true;
 	float value = 0;
