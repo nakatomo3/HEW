@@ -5,12 +5,12 @@
 void GameObject::Destroy() {
 
 	for (unsigned int i = 0; i < components.size(); i++) {
-		Component* removeComponent = components.at(0);
+		Component* removeComponent = components.at(i);
 		RemoveComponent(removeComponent);
 	}
 
 	for (unsigned int i = 0; i < children.size(); i++) {
-		GameObject* child = children.at(0);
+		GameObject* child = children.at(i);
 		child->Destroy();
 	}
 
@@ -23,7 +23,7 @@ GameObject::GameObject() {
 	scale = new Vector3(1, 1, 1);
 	localScale = new Vector3(1, 1, 1);
 	rotation = new Vector3(0, 0, 0);
-	velocity = new Vector3(0,0,0);
+	velocity = new Vector3(0, 0, 0);
 	LogWriter::GetInstance().Log("ゲームオブジェクトが生成されました\n");
 }
 
