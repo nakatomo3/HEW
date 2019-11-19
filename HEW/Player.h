@@ -5,4 +5,4 @@ typedef enum Player {
 	KASIKO_MK2 = 1,
 	SEN_CHAN = 2,
 	UTIU_JIN = 3
-};
+}Player;
