@@ -12,6 +12,7 @@ public:
 	float GetCharge();
 	int SetplayerID(int id);
 
+	void Start();
 	void Update()override;
 
 	void SetSprite(Sprite* sprite);
