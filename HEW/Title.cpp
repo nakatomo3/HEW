@@ -43,7 +43,7 @@ void Title::Load() {
 	titleLogo1 = new Sprite(logoTexture1);
 	titleObject->AddComponent(titleLogo1);
 	titleLogo1->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_WIDTH));// 画像の横、横の大きさ
-	titleLogo1->SetPosition(new Vector3(SCREEN_WIDTH / 18, SCREEN_HEIGHT / 2, 0));// 開始位置 x,y,z座標 /18, /2, 0
+	titleLogo1->SetPosition(new Vector3(SCREEN_WIDTH / 21, SCREEN_HEIGHT / 2, 0));// 開始位置 x,y,z座標 /21, /2, 0
 
 
 	logoTexture2 = new Texture("assets/textures/Title/Title2.png", "Title2");// 超人　右から左

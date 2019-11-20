@@ -6,6 +6,8 @@
 #include "Run.h"
 #include "SceneManager.h"
 
+
+
 PlayerRun::PlayerRun() {
 
 }
@@ -13,6 +15,10 @@ PlayerRun::PlayerRun() {
 
 PlayerRun::~PlayerRun() {
 
+}
+
+void PlayerRun::Start() {
+	run = dynamic_cast<Run*>(SceneManager::GetInstance().GetNowScene());
 }
 
 float PlayerRun::GetCharge() {
@@ -27,31 +33,31 @@ int PlayerRun::SetplayerID(int id) {
 void PlayerRun::Update() {
 	switch (playerID) {
 	case 0:
-		if (Input::GetInstance().GetKey(DIK_A)) {//左上ゲージ
-			charge += 10.0f; //値は調整
-			LogWriter::GetInstance().Log("A");
-			LogWriter::GetInstance().Log("%d:%f", playerID, charge);
+		if (Input::GetInstance().GetKey(DIK_A) && run->GetTimer() >= 4 && run->GetTimer() <= 10) { // 左上ゲージ 小さい振ってが表示されると同時にAキーでチャージ可能
+			charge += 10.0f; // 値は調整                                                                         よーいが表示されるとチャージは不可能
+			LogWriter::GetInstance().Log("A"); // 押されているかの確認ログ 表示：A
+			LogWriter::GetInstance().Log("%d:%f", playerID, charge); // チャージされているかのログ
 		}
 		break;
 	case 1:
-		if (Input::GetInstance().GetKey(DIK_S)) {//右上ゲージ
-			charge += 10.0f; //値は調整
-			LogWriter::GetInstance().Log("S");
-			LogWriter::GetInstance().Log("%d:%f", playerID, charge);
+		if (Input::GetInstance().GetKey(DIK_S) && run->GetTimer() >= 4 && run->GetTimer() <= 10) { // 右上ゲージ 小さい振ってが表示されると同時にSキーでチャージ可能
+			charge += 10.0f; // 値は調整                                                                         よーいが表示されるとチャージは不可能
+			LogWriter::GetInstance().Log("S"); // 押されているかの確認ログ 表示：S
+			LogWriter::GetInstance().Log("%d:%f", playerID, charge); // チャージされているかのログ
 		}
 		break;
 	case 2:
-		if (Input::GetInstance().GetKey(DIK_D)) {//左下ゲージ
-			charge += 10.0f; //値は調整
-			LogWriter::GetInstance().Log("D");
-			LogWriter::GetInstance().Log("%d:%f", playerID, charge);
+		if (Input::GetInstance().GetKey(DIK_D) && run->GetTimer() >= 4 && run->GetTimer() <= 10) { // 左下ゲージ 小さい振ってが表示されると同時にDキーでチャージ可能
+			charge += 10.0f; // 値は調整                                                                         よーいが表示されるとチャージは不可能
+			LogWriter::GetInstance().Log("D"); // 押されているかの確認ログ 表示：D
+			LogWriter::GetInstance().Log("%d:%f", playerID, charge); // チャージされているかのログ
 		}
 		break;
 	case 3:
-		if (Input::GetInstance().GetKey(DIK_F)) {//右下ゲージ
-			charge += 10.0f; //値は調整
-			LogWriter::GetInstance().Log("F");
-			LogWriter::GetInstance().Log("%d:%f", playerID, charge);
+		if (Input::GetInstance().GetKey(DIK_F) && run->GetTimer() >= 4 && run->GetTimer() <= 10) { // 右下ゲージ 小さい振ってが表示されると同時にFキーでチャージ可能
+			charge += 10.0f; // 値は調整                                                                         よーいが表示されるとチャージは不可能
+			LogWriter::GetInstance().Log("F"); // 押されているかの確認ログ 表示：F
+			LogWriter::GetInstance().Log("%d:%f", playerID, charge); // チャージされているかのログ
 		}
 		break;
 	}
