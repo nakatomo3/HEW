@@ -33,5 +33,6 @@ private :
 	Texture* pendulumCenterTexture;
 	Texture* pendulumTexture;
 
+	vector<bool> isWaitings;
 };
 

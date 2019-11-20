@@ -36,3 +36,11 @@ void GaugePunch::Update() {
 void GaugePunch::SetSprite(Sprite * _sprite) {
 	sprite = _sprite;
 }
+
+void GaugePunch::SetPlayer(int value) {
+	player = value;
+}
+
+float GaugePunch::GetValue() {
+	return value;
+}

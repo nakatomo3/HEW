@@ -106,7 +106,7 @@ public:
 				if (checkComponent != NULL) {
 					//³í‚ÉŒ©‚Â‚©‚Á‚½
 					Component* cacheComponent = components[i];
-					components[i] = components[components.size()];
+					components[i] = components[components.size() - 1];
 					components.pop_back();
 					cacheComponent->Destroy();
 					return;
