@@ -1,8 +1,7 @@
 #include "Title.h"
 #include "Time.h"
 #include "Input.h"
-
-
+#include "SceneManager.h"
 
 Title::Title(string name) : Scene(name) {
 
@@ -141,5 +140,13 @@ void Title::Update() {
 			titleLogo6->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));// “®‚©‚·ˆÊ’u
 		}
 	}
-	
+
+	if (Input::GetInstance().GetKey(DIK_Q)) {
+		SceneManager::GetInstance().LoadScene("runTitle");
+	}
+
+}
+
+void Title::UnLoad() {
+	ObjectManager::GetInstance().Destroy(titleObject);
 }
