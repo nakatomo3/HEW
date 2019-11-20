@@ -13,7 +13,7 @@ void AimingPunch::Start() {
 }
 
 void AimingPunch::Update() {
-	rad += 0.1f;
+	rad += 0.07f;
 
 	aimingA->SetPosition(new Vector3(cos(rad) * 50, sin(rad) * 10 + 10, 0));
 	aimingB->SetPosition(new Vector3(cos(rad + PI) * 50, sin(rad + PI) * 10 - 10, 0));

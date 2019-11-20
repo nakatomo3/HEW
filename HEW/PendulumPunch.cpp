@@ -16,9 +16,9 @@ void PendulumPunch::Start() {
 
 void PendulumPunch::Update() {
 	if (isRight == true) {
-		rad += 0.1f;
+		rad += 0.05f;
 	} else {
-		rad -= 0.1f;
+		rad -= 0.05f;
 	}
 
 	if (rad >= 0) {

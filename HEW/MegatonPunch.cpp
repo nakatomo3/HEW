@@ -18,8 +18,11 @@ void MegatonPunch::Load() {
 
 	int playerCount = VariableManager::GetInstance().GetInt("playerCount");
 	gaugeTexture = new Texture("assets/textures/Run/UI/gauge.png");
+
+	aimingTexture = new Texture("assets/textures/MegatonPunch/UI/Aiming.png");
+
 	//pendulumCenterTexture = new Texture("");
-	//pendulumTexture = new Texture("");
+	pendulumTexture = new Texture("assets/textures/MegatonPunch/UI/Pendulum.png");
 
 	const float PLAYER_WIDTH = SCREEN_WIDTH/10;
 
@@ -81,7 +84,7 @@ void MegatonPunch::Load() {
 		pendulumObject->AddComponent(pendulum);
 		auto pendulumCenterSprite = new Sprite();
 		auto pendulumSprite = new Sprite();
-		pendulumCenterSprite->SetTexture(pendulumTexture);
+		pendulumCenterSprite->SetTexture(pendulumCenterTexture);
 		pendulumSprite->SetTexture(pendulumTexture);
 		player->SetPendulum(pendulum);
 		pendulum->SetSprite(pendulumSprite);
