@@ -71,8 +71,13 @@ void PlayerRun::Update() {
 	}
 
 	//角度8度ぐらいを0.1秒で移動
-	if (run->GetTimer() >= 1) {
+	if (run->GetTimer() >= 12 && isReplay == false) {
 		gameObject->Move(Vector3(charge * 0.05f * SCREEN_WIDTH/1024, charge * -0.00f  * SCREEN_HEIGHT/576, 0));
+	}
+
+	//リプレイ速度の移動
+	if (isReplay == true) {
+		gameObject->Move(Vector3(charge * 0.005f * SCREEN_WIDTH / 1024, charge * -0.00f  * SCREEN_HEIGHT / 576, 0));
 	}
 }
 

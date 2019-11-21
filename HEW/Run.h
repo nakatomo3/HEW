@@ -76,4 +76,16 @@ private:
 	//レーンのテクスチャ
 	Texture* laneTexture;
 
+	//背景のオブジェクト
+	GameObject* Background;
+
+	//背景のスプライト
+	Sprite* BackgroundSprite;
+
+	//背景のテクスチャ
+	Texture* BackgroundTexture;
+
+	bool isReady = false;
+	bool isGoalCamera = false;
+
 };

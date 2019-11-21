@@ -13,13 +13,15 @@ Run::~Run() {
 
 
 void Run::Start() {
+	//背景のインスタンス
+	ObjectManager::GetInstance().Instantiate(Background);
+	//レーンのインスタンス
 	ObjectManager::GetInstance().Instantiate(lane);
-
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Instantiate(playerObjects[i]);
 		ObjectManager::GetInstance().Instantiate(gaugeObjects[i]);
 	}
-	
+	//吹き出しのインスタンス
 	ObjectManager::GetInstance().Instantiate(balloon);
 }
 
@@ -131,20 +133,104 @@ void Run::Load() {
 
 	//レーンの処理
 	laneSprite = new Sprite();
-	laneSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	laneSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*0.7f));
 	laneSprite->SetColor(D3DCOLOR_RGBA(125, 200, 233, 0));
 	lane = new GameObject();
-	lane->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.8f, 0));
+	lane->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.65f, 0));
 	lane->AddComponent(laneSprite);
 	lane->SetActive(false);
+
+	//背景の処理
+	BackgroundSprite = new Sprite();
+	BackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*0.3f));
+	BackgroundSprite->SetColor(D3DCOLOR_RGBA(94, 186, 83, 0));
+	Background = new GameObject();
+	Background->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.15f, 0));
+	Background->AddComponent(BackgroundSprite);
+	Background->SetActive(false);
+	
 }
 
 void Run::Update() {
 	//これ以外何も書かないでください！
 	timer += Time::GetInstance().GetDeltaTime();
 
-	if (timer >= 1) {
+	//走っている時の処理（前半）
+	if (timer >= 12) {
+
+		//レーンの表示
 		lane->SetActive(true);
+		//背景の表示
+		Background->SetActive(true);
+
+		//プレイヤーの走る処理
+		if (isReady == false) {
+			//セット
+			//一番目のプレイヤーの処理（前半）
+			if (playerCount >= 1) {
+				playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 3.75f, 0));
+				ObjectManager::GetInstance().Destroy(gaugeObjects[0]);
+			}
+
+			
+			//二番目のプレイヤーの処理（前半）
+			if (playerCount >= 2) {
+				playerObjects[1]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 5.50f, 0));
+				ObjectManager::GetInstance().Destroy(gaugeObjects[1]);
+			}
+
+			
+			//三番目のプレイヤーの処理（前半）
+			if (playerCount >= 3) {
+				playerObjects[2]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 7.25f, 0));
+				ObjectManager::GetInstance().Destroy(gaugeObjects[2]);
+			}
+
+			//四番目のプレイヤーの処理（前半）
+			if (playerCount >= 4) {
+				playerObjects[3]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 9.0f, 0));
+				ObjectManager::GetInstance().Destroy(gaugeObjects[3]);
+			}
+			
+			//スタートしたら吹き出し消す
+			ObjectManager::GetInstance().Destroy(balloon);
+			
+		}
+		isReady = true;
+	}
+
+	//走っている時の処理（後半）
+	if (timer >= 13) {
+
+		//レーンの表示
+		laneSprite->SetColor(D3DCOLOR_RGBA(126, 15, 133, 0));
+		//背景の表示
+		BackgroundSprite->SetColor(D3DCOLOR_RGBA(76, 108, 179, 0));
+
+		//プレイヤーの走る処理
+		if (isGoalCamera == false) {
+			//セット
+			//一番目のプレイヤーの処理
+			if (playerCount >= 1) {
+				playerObjects[0]->Move(Vector3(-SCREEN_WIDTH, 0, 0));
+			}
+
+			//二番目のプレイヤーの処理
+			if (playerCount >= 2) {
+				playerObjects[1]->Move(Vector3(-SCREEN_WIDTH, 0, 0));
+			}
+
+			//三番目のプレイヤーの処理
+			if (playerCount >= 3) {
+				playerObjects[2]->Move(Vector3(-SCREEN_WIDTH, 0, 0));
+			}
+
+			//四番目のプレイヤーの処理
+			if (playerCount >= 4) {
+				playerObjects[3]->Move(Vector3(-SCREEN_WIDTH, 0, 0));
+			}
+		}
+		isGoalCamera = true;
 	}
 }
 

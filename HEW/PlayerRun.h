@@ -25,4 +25,6 @@ private:
 
 	Sprite* sprite;
 	Run* run;
+
+	bool isReplay;
 };
