@@ -20,9 +20,11 @@ void MegatonPunch::Load() {
 	gaugeTexture = new Texture("assets/textures/Run/UI/gauge.png");
 
 	aimingTexture = new Texture("assets/textures/MegatonPunch/UI/Aiming.png");
+	aimingWhiteTexture = new Texture("assets/textures/MegatonPunch/UI/AimingWhite.png");
 
-	//pendulumCenterTexture = new Texture("");
+	pendulumCenterTexture = new Texture("assets/textures/MegatonPunch/UI/PendulumCenter.png");
 	pendulumTexture = new Texture("assets/textures/MegatonPunch/UI/Pendulum.png");
+	pendulumWhiteTexture = new Texture("assets/textures/MegatonPunch/UI/PendulumWhite.png");
 
 	const float PLAYER_WIDTH = SCREEN_WIDTH/10;
 
@@ -78,6 +80,8 @@ void MegatonPunch::Load() {
 		aimingSpriteA->SetScale(new Vector2(AIMING_WIDTH, AIMING_WIDTH));
 		aimingSpriteB->SetScale(new Vector2(AIMING_WIDTH, AIMING_WIDTH));
 		aimingObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i), SCREEN_HEIGHT / 2 + SCREEN_HEIGHT* 0.2f, 0));
+		aiming->SetNormalTexture(aimingTexture);
+		aiming->SetWhiteTexture(aimingWhiteTexture);
 
 		auto pendulum = new PendulumPunch();
 		auto pendulumObject = new GameObject();
@@ -85,6 +89,7 @@ void MegatonPunch::Load() {
 		auto pendulumCenterSprite = new Sprite();
 		auto pendulumSprite = new Sprite();
 		pendulumCenterSprite->SetTexture(pendulumCenterTexture);
+		pendulumCenterSprite->SetColor(new Color(255,50,50));
 		pendulumSprite->SetTexture(pendulumTexture);
 		player->SetPendulum(pendulum);
 		pendulum->SetSprite(pendulumSprite);
@@ -93,6 +98,9 @@ void MegatonPunch::Load() {
 		pendulumObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i), SCREEN_HEIGHT / 2 - SCREEN_HEIGHT * 0.2f, 0));
 		pendulumObject->AddComponent(pendulumCenterSprite);
 		pendulumObject->AddComponent(pendulumSprite);
+
+		pendulum->SetNormalTexture(pendulumTexture);
+		pendulum->SetWhiteTexutre(pendulumWhiteTexture);
 	}
 
 

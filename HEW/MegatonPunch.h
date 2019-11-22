@@ -27,11 +27,13 @@ private :
 	vector<AimingPunch*> aimings;
 	vector<GameObject*> aimingObjects;
 	Texture* aimingTexture;
+	Texture* aimingWhiteTexture;
 
 	vector<PendulumPunch*> pendulums;
 	vector<GameObject*> pendulumObjects;
 	Texture* pendulumCenterTexture;
 	Texture* pendulumTexture;
+	Texture* pendulumWhiteTexture;
 
 	vector<bool> isWaitings;
 };

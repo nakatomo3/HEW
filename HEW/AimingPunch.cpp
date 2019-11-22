@@ -13,10 +13,22 @@ void AimingPunch::Start() {
 }
 
 void AimingPunch::Update() {
-	rad += 0.07f;
+	rad += speed;
 
-	aimingA->SetPosition(new Vector3(cos(rad) * 50, sin(rad) * 10 + 10, 0));
-	aimingB->SetPosition(new Vector3(cos(rad + PI) * 50, sin(rad + PI) * 10 - 10, 0));
+	aimingA->SetPosition(new Vector3(cos(rad) * radiusX, sin(rad) * radiusY + radiusY, 0));
+	aimingB->SetPosition(new Vector3(cos(rad + PI) * radiusX, sin(rad + PI) * radiusY - radiusY, 0));
+
+	if (abs(rad - PI * 3 / 2.0f) <= whiteRange) {
+		aimingA->SetTexture(white);
+		aimingB->SetTexture(white);
+	} else {
+		aimingA->SetTexture(normal);
+		aimingB->SetTexture(normal);
+	}
+
+	if (rad >= 2 * PI) {
+		rad -= PI * 2;
+	}
 }
 
 void AimingPunch::SetSprite(bool isA, Sprite* sprite) {
@@ -29,8 +41,16 @@ void AimingPunch::SetSprite(bool isA, Sprite* sprite) {
 
 float AimingPunch::GetValue() {
 	float value = rad;
-	while (value >= PI) {
-		value -= PI;
+	while (value >= PI * 2) {
+		value -= PI * 2;
 	}
-	return abs(value - PI / 2 * 3);
+	return abs(rad - PI * 3 / 2.0f);
+}
+
+void AimingPunch::SetNormalTexture(Texture* _texture) {
+	normal = _texture;
+}
+
+void AimingPunch::SetWhiteTexture(Texture * _texture) {
+	white = _texture;
 }

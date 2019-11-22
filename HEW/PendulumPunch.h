@@ -13,8 +13,14 @@ public:
 
 	float GetValue();
 
+	void SetNormalTexture(Texture* _texture);
+	void SetWhiteTexutre(Texture* _texture);
+
 private:
 	Sprite* sprite;
+
+	Texture* normal;
+	Texture* white;
 
 	bool isRight = true;
 

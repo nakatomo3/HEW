@@ -29,6 +29,12 @@ void PendulumPunch::Update() {
 	}
 
 	sprite->SetPosition(new Vector3(cos(rad) * 80, -sin(rad) * 80 - 80, 0));
+
+	if (abs(rad + PI / 2) <= 0.1f) {
+		sprite->SetTexture(white);
+	} else {
+		sprite->SetTexture(normal);
+	}
 }
 
 void PendulumPunch::SetSprite(Sprite * _sprite) {
@@ -37,4 +43,12 @@ void PendulumPunch::SetSprite(Sprite * _sprite) {
 
 float PendulumPunch::GetValue() {
 	return rad;
+}
+
+void PendulumPunch::SetNormalTexture(Texture * _texture) {
+	normal = _texture;
+}
+
+void PendulumPunch::SetWhiteTexutre(Texture * _texture) {
+	white = _texture;
 }
