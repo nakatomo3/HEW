@@ -17,52 +17,44 @@ void BalloonRun::Update(){
 
 	if (run->GetTimer() >= 11) {       // ƒhƒ“ƒb 1•bŒã
 		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.4f, SCREEN_WIDTH*0.4f * 9 / 16.0f));
-		sprite->SetColor(D3DCOLOR_RGBA(250, 0, 0, 230));
-	}else if (run->GetTimer() >= 10) { // ‚æ[‚¢ 2•bŒã
-		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.4f, SCREEN_WIDTH*0.4f * 9 / 16.0f));
-		sprite->SetColor(D3DCOLOR_RGBA(0, 250, 0, 230));
-	}else if (run->GetTimer() >= 8) { //‚Q‰ñ–Ú‚ÌƒAƒbƒv
-		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
-	}
+		sprite->SetTexture(textures[5]);
 
-	//‚P‰ñ–Ú‚ÌƒAƒbƒv
-	else if (run->GetTimer() >= 6) {
+	} else if (run->GetTimer() >= 10) { // ‚æ[‚¢ 2•bŒã
+		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.4f, SCREEN_WIDTH*0.4f * 9 / 16.0f));
+		sprite->SetTexture(textures[4]);
+
+	} else if (run->GetTimer() >= 8) { //‚Q‰ñ–Ú‚ÌƒAƒbƒv
+		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
+
+	} else if (run->GetTimer() >= 6) { //‚P‰ñ–Ú‚ÌƒAƒbƒv
 		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.6f, SCREEN_WIDTH*0.6f * 9 / 16.0f));
-	}
-
-	//¬‚³‚¢U‚Á‚Ä‚Ì•\Ž¦
-	else if (run->GetTimer() >= 4) {
+	
+	} else if (run->GetTimer() >= 4) { //¬‚³‚¢U‚Á‚Ä‚Ì•\Ž¦
 		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.4f, SCREEN_WIDTH*0.4f * 9 / 16.0f));
-	}
-
-	//‘å‚«U‚Á‚Ä‚Ì•\Ž¦
-	else if (run->GetTimer() >= 3) {
+	
+	} else if (run->GetTimer() >= 3) { //‘å‚«U‚Á‚Ä‚Ì•\Ž¦
 		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
-		sprite->SetColor(D3DCOLOR_RGBA(0, 0, 0, 230));
-	}
+		sprite->SetTexture(textures[3]);
+	
+	} else if (run->GetTimer() >= 2) { //Žc‚è1•b‚Ì•\Ž¦
+		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
+		sprite->SetTexture(textures[2]);
+	
+	} else if (run->GetTimer() >= 1) { //Žc‚è2•b‚Ì•\Ž¦
+		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
+		sprite->SetTexture(textures[1]);
+	
+	} else if (run->GetTimer() >= 0) { //Žc‚è3•b‚Ì•\Ž¦
+		sprite->SetTexture(textures[0]);
+		sprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
 
-	//Žc‚è1•b‚Ì•\Ž¦
-	else if (run->GetTimer() >= 2) {
-		oneSprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
-		oneSprite->SetColor(D3DCOLOR_RGBA(0, 0, 100, 230));
-	}
-
-	//Žc‚è2•b‚Ì•\Ž¦
-	else if (run->GetTimer() >= 1) {
-		twoSprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
-		twoSprite->SetColor(D3DCOLOR_RGBA(0, 100, 0, 230));
-	}
-
-	//Žc‚è3•b‚Ì•\Ž¦
-	else if (run->GetTimer() >= 0) {
-		threeSprite->SetScale(new Vector2(SCREEN_HEIGHT*0.8f, SCREEN_WIDTH*0.8f * 9 / 16.0f));
-		threeSprite->SetColor(D3DCOLOR_RGBA(100, 0, 0, 230));
 	}
 }
 
 void BalloonRun::SetSprite(Sprite * _sprite){
 	sprite = _sprite;
-	oneSprite = _sprite;
-	twoSprite = _sprite;
-	threeSprite = _sprite;
+}
+
+void BalloonRun::SetTexture(Texture * texture) {
+	textures.emplace_back(texture);
 }
