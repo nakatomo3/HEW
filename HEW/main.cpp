@@ -166,9 +166,6 @@ bool Init(){
 	
 	//ーーーーーー初期化はここまでに入力ーーーーーーーーー
 
-	ObjectManager::GetInstance().Awake();
-	ObjectManager::GetInstance().Start();
-
 	return true;
 }
 
