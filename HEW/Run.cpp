@@ -28,6 +28,7 @@ void Run::Start() {
 void Run::Load() {
 	Texture* normalGaugeTexture = new Texture("assets/textures/Run/UI/gauge.png");
 	Texture* brokenGaugeTexture = new Texture("assets/textures/Run/UI/gauge2.png");
+
 	for (int i = 0; i < playerCount; i++) {//プレイヤーのカウント(playerCount)の数によってゲージの表示
 		ChargeGaugeRun* gauge = new ChargeGaugeRun();
 		gauges.emplace_back(gauge);
@@ -125,11 +126,18 @@ void Run::Load() {
 	balloonSprite = new Sprite();
 	balloonSprite->SetScale(new Vector2(0, 0)); //最初は非表示
 	balloon = new GameObject();
-	balloon->SetPosition(new Vector3(500, 300, 0));
+	balloon->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0));
 	balloon->AddComponent(balloonSprite);
 	balloonRun = new BalloonRun();
 	balloon->AddComponent(balloonRun);
 	balloonRun->SetSprite(balloonSprite);
+
+	balloonRun->SetTexture(new Texture("assets/textures/Run/UI/3.png", "3"));
+	balloonRun->SetTexture(new Texture("assets/textures/Run/UI/2.png", "2"));
+	balloonRun->SetTexture(new Texture("assets/textures/Run/UI/1.png", "1"));
+	balloonRun->SetTexture(new Texture("assets/textures/Run/UI/Shake.png", "shake"));
+	balloonRun->SetTexture(new Texture("assets/textures/Run/UI/Ready.png", "ready"));
+	balloonRun->SetTexture(new Texture("assets/textures/Run/UI/Start.png", "start"));
 
 	//レーンの処理
 	laneSprite = new Sprite();

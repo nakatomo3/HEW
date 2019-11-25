@@ -1,6 +1,9 @@
 #pragma once
 #include "ScriptBase.h"
 #include "Sprite.h"
+#include <vector>
+
+using namespace std;
 
 class BalloonRun : public ScriptBase {
 public:
@@ -12,13 +15,15 @@ public:
 
 	void SetSprite(Sprite* _sprite);
 
+	void SetTexture(Texture* texture);
+
 private:
+
+	GameObject* runObject;
+
 	Sprite* sprite;
 
-	Sprite* threeSprite;
-	Sprite* twoSprite;
-	Sprite* oneSprite;
-
+	vector<Texture*> textures;
 
 };
 
