@@ -249,7 +249,7 @@ void Sprite::Draw() {
 
 	} else {
 		//Draw(texture);
-		LogWriter::GetInstance().Log("テクスチャがnullです");
+		//LogWriter::GetInstance().Log("テクスチャがnullです");
 		texture = nullTexture;
 	}
 }
