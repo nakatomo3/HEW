@@ -77,15 +77,34 @@ private:
 	Texture* laneTexture;
 
 	//背景のオブジェクト
-	GameObject* Background;
+	GameObject* background;
 
 	//背景のスプライト
-	Sprite* BackgroundSprite;
+	Sprite* backgroundSprite;
 
 	//背景のテクスチャ
-	Texture* BackgroundTexture;
+	Texture* backgroundTexture;
+
+	//リプレイロゴのオブジェクト
+	GameObject* replayRogo;
+
+	//リプレイロゴのスプライト
+	Sprite* replayRogoSprite;
+
+	//リプレイロゴのテクスチャ
+	Texture* replayRogoTexture;
+
+	//リプレイロゴ背景のオブジェクト
+	GameObject* replayRogoBackground;
+
+	//リプレイロゴ背景のスプライト
+	Sprite* replayRogoBackgroundSprite;
+
+	//リプレイロゴ背景のテクスチャ
+	Texture* replayRogoBackgroundTexture;
 
 	bool isReady = false;
 	bool isGoalCamera = false;
+	bool isReplay = false;
 
 };

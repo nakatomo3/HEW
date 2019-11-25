@@ -14,7 +14,9 @@ Run::~Run() {
 
 void Run::Start() {
 	//背景のインスタンス
-	ObjectManager::GetInstance().Instantiate(Background);
+	ObjectManager::GetInstance().Instantiate(background);
+	//リプレイロゴ背景のインスタンス
+	ObjectManager::GetInstance().Instantiate(replayRogoBackground);
 	//レーンのインスタンス
 	ObjectManager::GetInstance().Instantiate(lane);
 	for (int i = 0; i < playerCount; i++) {
@@ -23,6 +25,8 @@ void Run::Start() {
 	}
 	//吹き出しのインスタンス
 	ObjectManager::GetInstance().Instantiate(balloon);
+	//リプレイロゴのインスタンス
+	ObjectManager::GetInstance().Instantiate(replayRogo);
 }
 
 void Run::Load() {
@@ -149,13 +153,31 @@ void Run::Load() {
 	lane->SetActive(false);
 
 	//背景の処理
-	BackgroundSprite = new Sprite();
-	BackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*0.3f));
-	BackgroundSprite->SetColor(D3DCOLOR_RGBA(94, 186, 83, 0));
-	Background = new GameObject();
-	Background->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.15f, 0));
-	Background->AddComponent(BackgroundSprite);
-	Background->SetActive(false);
+	backgroundSprite = new Sprite();
+	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*0.3f));
+	backgroundSprite->SetColor(D3DCOLOR_RGBA(94, 186, 83, 0));
+	background = new GameObject();
+	background->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.15f, 0));
+	background->AddComponent(backgroundSprite);
+	background->SetActive(false);
+
+	//リプレイロゴの処理
+	replayRogoSprite = new Sprite();
+	replayRogoSprite->SetScale(new Vector2(SCREEN_WIDTH*0.6f, SCREEN_HEIGHT*0.6f));
+	replayRogoSprite->SetColor(D3DCOLOR_RGBA(245, 212, 47, 0));
+	replayRogo = new GameObject();
+	replayRogo->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0));
+	replayRogo->AddComponent(replayRogoSprite);
+	replayRogo->SetActive(false);
+
+	//リプレイロゴ背景の処理
+	replayRogoBackgroundSprite = new Sprite();
+	replayRogoBackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	replayRogoBackgroundSprite->SetColor(D3DCOLOR_RGBA(104, 158, 205, 0));
+	replayRogoBackground = new GameObject();
+	replayRogoBackground->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0));
+	replayRogoBackground->AddComponent(replayRogoBackgroundSprite);
+	replayRogoBackground->SetActive(false);
 	
 }
 
@@ -164,12 +186,12 @@ void Run::Update() {
 	timer += Time::GetInstance().GetDeltaTime();
 
 	//走っている時の処理（前半）
-	if (timer >= 12) {
+	if (timer >= 12.0f) {
 
 		//レーンの表示
 		lane->SetActive(true);
 		//背景の表示
-		Background->SetActive(true);
+		background->SetActive(true);
 
 		//プレイヤーの走る処理
 		if (isReady == false) {
@@ -208,12 +230,12 @@ void Run::Update() {
 	}
 
 	//走っている時の処理（後半）
-	if (timer >= 13) {
+	if (timer >= 12.5f) {
 
 		//レーンの表示
 		laneSprite->SetColor(D3DCOLOR_RGBA(126, 15, 133, 0));
 		//背景の表示
-		BackgroundSprite->SetColor(D3DCOLOR_RGBA(76, 108, 179, 0));
+		backgroundSprite->SetColor(D3DCOLOR_RGBA(76, 108, 179, 0));
 
 		//プレイヤーの走る処理
 		if (isGoalCamera == false) {
@@ -239,6 +261,21 @@ void Run::Update() {
 			}
 		}
 		isGoalCamera = true;
+	}
+
+	//リプレイロゴの処理
+	if (timer >= 13.5f) {
+		//リプレイロゴ背景の表示
+		replayRogoBackground->SetActive(true);
+		//リプレイロゴの表示
+		replayRogo->SetActive(true);
+
+		//レーンと走っているときの背景を消す
+		if (isReplay == false) {
+			ObjectManager::GetInstance().Destroy(lane);
+			ObjectManager::GetInstance().Destroy(background);
+		}
+		isReplay = true;
 	}
 }
 
