@@ -54,7 +54,7 @@ void Run::Load() {
 		players[i]->SetplayerID(i);
 		playerSprite.emplace_back(new Sprite());
 		playerObjects.emplace_back(new GameObject());
-		playerObjects[i]->AddComponent(players[i]);
+		playerObjects[i]->AddComponent(player);
 		playerObjects[i]->AddComponent(playerSprite[i]);
 
 		gauge->SetPlayer(player);
