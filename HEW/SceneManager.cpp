@@ -21,6 +21,10 @@ void SceneManager::LoadScene(string name) {
 		if (sceneList[i]->name == name) {
 			sceneList[i]->Load();
 			sceneList[i]->Start();
+			if (nowScene != nullptr) {
+				nowScene->UnLoad();
+				LogWriter::GetInstance().Log("%sというシーンをアンロードしました", nowScene->name.c_str());
+			}
 			LogWriter::GetInstance().Log("%sというシーンを読み込みました", name.c_str());
 			nowScene = sceneList[i];
 			return;
