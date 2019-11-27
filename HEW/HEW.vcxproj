@@ -162,6 +162,7 @@
     <ClCompile Include="PendulumPunch.cpp" />
     <ClCompile Include="PlayerPunch.cpp" />
     <ClCompile Include="PlayerRun.cpp" />
+    <ClCompile Include="Rule.cpp" />
     <ClCompile Include="Run.cpp" />
     <ClCompile Include="RunManual.cpp" />
     <ClCompile Include="RunResult.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerPunch.h" />
     <ClInclude Include="PlayerRun.h" />
+    <ClInclude Include="Rule.h" />
     <ClInclude Include="Run.h" />
     <ClInclude Include="RunManual.h" />
     <ClInclude Include="RunResult.h" />

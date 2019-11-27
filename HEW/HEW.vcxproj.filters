@@ -201,6 +201,9 @@
     <ClCompile Include="MegatonPunchTitle.cpp">
       <Filter>ソース ファイル\Scenes\MegatonPunch</Filter>
     </ClCompile>
+    <ClCompile Include="Rule.cpp">
+      <Filter>ソース ファイル\Scripts\Title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -334,6 +337,9 @@
     </ClInclude>
     <ClInclude Include="MegatonPunchTitle.h">
       <Filter>ヘッダー ファイル\Scenes\MegatonPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="Rule.h">
+      <Filter>ヘッダー ファイル\Scenes\Title</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
