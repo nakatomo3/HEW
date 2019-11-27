@@ -154,6 +154,7 @@
     <ClCompile Include="LogWriter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MegatonPunch.cpp" />
+    <ClCompile Include="MegatonPunchTitle.cpp" />
     <ClCompile Include="MyDirect3D.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ScriptBase.cpp" />
+    <ClCompile Include="SelectCharacter.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -192,6 +194,7 @@
     <ClInclude Include="LogWriter.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MegatonPunch.h" />
+    <ClInclude Include="MegatonPunchTitle.h" />
     <ClInclude Include="MyDirect3D.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Object.h" />
@@ -210,6 +213,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ScriptBase.h" />
+    <ClInclude Include="SelectCharacter.h" />
     <ClInclude Include="Setting.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Sprite.h" />

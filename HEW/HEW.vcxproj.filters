@@ -195,6 +195,12 @@
     <ClCompile Include="PendulumPunch.cpp">
       <Filter>ソース ファイル\Scripts\MegatonPunch</Filter>
     </ClCompile>
+    <ClCompile Include="SelectCharacter.cpp">
+      <Filter>ソース ファイル\Scenes\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="MegatonPunchTitle.cpp">
+      <Filter>ソース ファイル\Scenes\MegatonPunch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -322,6 +328,12 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>ヘッダー ファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectCharacter.h">
+      <Filter>ヘッダー ファイル\Scenes\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="MegatonPunchTitle.h">
+      <Filter>ヘッダー ファイル\Scenes\MegatonPunch</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
