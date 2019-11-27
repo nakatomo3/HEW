@@ -28,6 +28,8 @@ public:
 
 	void SetSprite(Sprite* _sprite);
 
+	void SetTime(int playerNumber, float time);
+
 	double timer = -COUNT_DOWN_MAX;
 private:
 
@@ -106,5 +108,7 @@ private:
 	bool isReady = false;
 	bool isGoalCamera = false;
 	bool isReplay = false;
+
+	vector<float> times;
 
 };
