@@ -127,22 +127,22 @@ void RunTitle::Update() {
 		if (isManual == false) {
 
 			if (playerCount >= 1) {
-				if (timer >= 5 == true) {// 5経ったらtrueにする
+				if (timer >= 5 ) {// 5経ったらtrueにする
 					isReady[0] = true;
 				}
 			}
 			if (playerCount >= 2) {
-				if (timer >= 5 == true) {// 5経ったらtrueにする
+				if (timer >= 5 ) {// 5経ったらtrueにする
 					isReady[1] = true;
 				}
 			}
 			if (playerCount >= 3) {
-				if (timer >= 5 == true) {// 5経ったらtrueにする
+				if (timer >= 5 ) {// 5経ったらtrueにする
 					isReady[2] = true;
 				}
 			}
 			if (playerCount >= 4) {
-				if (timer >= 5 == true) {// 5経ったらtrueにする
+				if (timer >= 5 ) {// 5経ったらtrueにする
 					isReady[3] = true;
 				}
 			}
