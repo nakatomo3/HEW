@@ -179,6 +179,11 @@ void Run::Load() {
 	replayRogoBackground->AddComponent(replayRogoBackgroundSprite);
 	replayRogoBackground->SetActive(false);
 	
+	//タイム系の処理
+	for (int i = 0; i < 4; i++) {
+		times.emplace_back(-1);
+	}
+
 }
 
 void Run::Update() {
@@ -298,4 +303,8 @@ int Run::GetPlayerCount() {
 
 Sprite * Run::GetPlayerSprite(int playerID){
 	return playerSprite[playerID];
+}
+
+void Run::SetTime(int playerNumber, float time) {
+	times[playerNumber] = time;
 }
