@@ -127,6 +127,28 @@ void RunTitle::Update() {
 		if (isManual == false) {
 
 			if (playerCount >= 1) {
+				if (timer >= 5 ) {// 5経ったらtrueにする
+					isReady[0] = true;
+				}
+			}
+			if (playerCount >= 2) {
+				if (timer >= 5 ) {// 5経ったらtrueにする
+					isReady[1] = true;
+				}
+			}
+			if (playerCount >= 3) {
+				if (timer >= 5 ) {// 5経ったらtrueにする
+					isReady[2] = true;
+				}
+			}
+			if (playerCount >= 4) {
+				if (timer >= 5 ) {// 5経ったらtrueにする
+					isReady[3] = true;
+				}
+			}
+
+			//-----↓キー入力でもできる奴はとりあえず残してます。------
+			/*if (playerCount >= 1) {
 				if (Input::GetInstance().GetKeyDown(DIK_A) == true) {
 					isReady[0] = true;
 				}
@@ -145,7 +167,8 @@ void RunTitle::Update() {
 				if (Input::GetInstance().GetKeyDown(DIK_F) == true) {
 					isReady[3] = true;
 				}
-			}
+			}*/
+			//-----------------------------------------------------------
 
 			bool isAllReady = true;
 			for (int i = 0; i < playerCount; i++) {
@@ -166,22 +189,22 @@ void RunTitle::Update() {
 		} else {
 
 			if (playerCount >= 1) {
-				if (Input::GetInstance().GetKeyDown(DIK_A) == true) {
+				if (Input::GetInstance().GetKeyDown(DIK_A) == true) {// Aを押したらtrue
 					isReady[0] = true;
 				}
 			}
 			if (playerCount >= 2) {
-				if (Input::GetInstance().GetKeyDown(DIK_S) == true) {
+				if (Input::GetInstance().GetKeyDown(DIK_S) == true) {// Sを押したらtrue
 					isReady[1] = true;
 				}
 			}
 			if (playerCount >= 3) {
-				if (Input::GetInstance().GetKeyDown(DIK_D) == true) {
+				if (Input::GetInstance().GetKeyDown(DIK_D) == true) {// Dを押したらtrue
 					isReady[2] = true;
 				}
 			}
 			if (playerCount >= 4) {
-				if (Input::GetInstance().GetKeyDown(DIK_F) == true) {
+				if (Input::GetInstance().GetKeyDown(DIK_F) == true) {// Fを押したらtrue
 					isReady[3] = true;
 				}
 			}
@@ -195,7 +218,7 @@ void RunTitle::Update() {
 			}
 
 			if (isAllReady == true) {
-				SceneManager::GetInstance().LoadScene("run");
+				SceneManager::GetInstance().LoadScene("run");// 全員がOKしたら100m走のゲーム画面へ遷移
 			}
 
 
