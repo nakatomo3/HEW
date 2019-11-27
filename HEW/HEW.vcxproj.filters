@@ -202,7 +202,7 @@
       <Filter>ソース ファイル\Scenes\MegatonPunch</Filter>
     </ClCompile>
     <ClCompile Include="Rule.cpp">
-      <Filter>ソース ファイル\Scripts\Title</Filter>
+      <Filter>ソース ファイル\Scenes\Title</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
