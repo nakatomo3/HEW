@@ -271,10 +271,9 @@ void Run::Update() {
 	//リプレイロゴの処理
 	if (timer >= 14.5f) {
 		//リプレイロゴ中はプレイヤー消す
-		playerObjects[0]->SetActive(false);
-		playerObjects[1]->SetActive(false);
-		playerObjects[2]->SetActive(false);
-		playerObjects[3]->SetActive(false);
+		for (int i = 0; i < playerCount; i++) {
+			playerObjects[i]->SetActive(false);
+		}
 		//リプレイロゴ背景の表示
 		replayRogoBackground->SetActive(true);
 		//リプレイロゴの表示
