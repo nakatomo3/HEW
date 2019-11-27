@@ -26,6 +26,8 @@ void SceneManager::LoadScene(string name) {
 				LogWriter::GetInstance().Log("%sというシーンをアンロードしました", nowScene->name.c_str());
 			}
 			LogWriter::GetInstance().Log("%sというシーンを読み込みました", name.c_str());
+			ObjectManager::GetInstance().Awake();
+			ObjectManager::GetInstance().Start();
 			nowScene = sceneList[i];
 			return;
 		}

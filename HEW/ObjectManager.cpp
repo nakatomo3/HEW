@@ -5,10 +5,6 @@
 
 void ObjectManager::Instantiate(GameObject* instance) {
 	objects.emplace_back(instance);
-	for (int i = 0; i < instance->GetComponentCount(); i++) {
-		instance->GetComponent(i)->Awake();
-		instance->GetComponent(i)->Start();
-	}
 }
 
 void ObjectManager::Destroy(GameObject* instance) {
