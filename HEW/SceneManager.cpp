@@ -25,10 +25,10 @@ void SceneManager::LoadScene(string name) {
 				nowScene->UnLoad();
 				LogWriter::GetInstance().Log("%sというシーンをアンロードしました", nowScene->name.c_str());
 			}
+			nowScene = sceneList[i];
 			LogWriter::GetInstance().Log("%sというシーンを読み込みました", name.c_str());
 			ObjectManager::GetInstance().Awake();
 			ObjectManager::GetInstance().Start();
-			nowScene = sceneList[i];
 			return;
 		}
 	}
