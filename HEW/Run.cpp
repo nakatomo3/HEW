@@ -269,14 +269,19 @@ void Run::Update() {
 	}
 
 	//リプレイロゴの処理
-	if (timer >= 13.5f) {
+	if (timer >= 14.5f) {
+		//リプレイロゴ中はプレイヤー消す
+		playerObjects[0]->SetActive(false);
+		playerObjects[1]->SetActive(false);
+		playerObjects[2]->SetActive(false);
+		playerObjects[3]->SetActive(false);
 		//リプレイロゴ背景の表示
 		replayRogoBackground->SetActive(true);
 		//リプレイロゴの表示
 		replayRogo->SetActive(true);
 
 		//レーンと走っているときの背景を消す
-		if (isReplay == false) {
+		if (isReplay == true) {
 			lane->SetActive(false);
 			background->SetActive(false);
 		}
