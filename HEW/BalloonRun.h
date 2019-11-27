@@ -5,6 +5,7 @@
 
 using namespace std;
 
+class Run;
 class BalloonRun : public ScriptBase {
 public:
 	BalloonRun();
@@ -25,5 +26,6 @@ private:
 
 	vector<Texture*> textures;
 
+	Run* run = nullptr;
 };
 

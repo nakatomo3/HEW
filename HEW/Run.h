@@ -28,11 +28,11 @@ public:
 
 	void SetSprite(Sprite* _sprite);
 
+	double timer = -COUNT_DOWN_MAX;
 private:
 
 	const float COUNT_DOWN_MAX = 3;
 
-	double timer = -COUNT_DOWN_MAX;
 
 	int playerCount = 4;//とりあえずは4人分にしている(デフォは0)
 

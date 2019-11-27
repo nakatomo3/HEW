@@ -44,7 +44,7 @@ private:
 	Texture* logoTexture1;
 	Texture* logoTexture2;
 
-	float timer;
+	float timer = 0;
 
 	int logoSpeed = 4000;
 

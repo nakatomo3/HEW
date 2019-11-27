@@ -24,7 +24,7 @@ private:
 	int playerID = 0;
 
 	Sprite* sprite;
-	Run* run;
+	Run* run = NULL;
 
 	bool isReplay;
 };

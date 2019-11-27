@@ -90,6 +90,9 @@ void RunTitle::Load() {
 }
 
 void RunTitle::UnLoad() {
+	ObjectManager::GetInstance().Destroy(titleObject);
+	ObjectManager::GetInstance().Destroy(manualObject);
+	ObjectManager::GetInstance().Destroy(backgroundObject);
 
 }
 
@@ -122,7 +125,6 @@ void RunTitle::Update() {
 	if (timer > 2) {
 
 		if (isManual == false) {
-			LogWriter::GetInstance().Log("タイトルです");
 
 			if (playerCount >= 1) {
 				if (Input::GetInstance().GetKeyDown(DIK_A) == true) {
@@ -156,13 +158,13 @@ void RunTitle::Update() {
 			if (isAllReady == true) {
 				isManual = true;
 				ObjectManager::GetInstance().Instantiate(manualObject);
-				ObjectManager::GetInstance().Destroy(titleObject);
+				titleObject->SetActive(false);
 				for (int i = 0; i < 4; i++) {
 					isReady[i] = false;
 				}
 			}
 		} else {
-			LogWriter::GetInstance().Log("マニュアルです");
+
 			if (playerCount >= 1) {
 				if (Input::GetInstance().GetKeyDown(DIK_A) == true) {
 					isReady[0] = true;

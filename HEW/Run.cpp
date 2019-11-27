@@ -223,7 +223,7 @@ void Run::Update() {
 			}
 			
 			//スタートしたら吹き出し消す
-			ObjectManager::GetInstance().Destroy(balloon);
+			balloon->SetActive(false);
 			
 		}
 		isReady = true;
@@ -272,15 +272,16 @@ void Run::Update() {
 
 		//レーンと走っているときの背景を消す
 		if (isReplay == false) {
-			ObjectManager::GetInstance().Destroy(lane);
-			ObjectManager::GetInstance().Destroy(background);
+			lane->SetActive(false);
+			background->SetActive(false);
 		}
 		isReplay = true;
 	}
 }
 
 double Run::GetTimer() {
-	return timer;
+	//LogWriter::GetInstance().Log("%f", timer);
+	return 0;
 }
 
 void Run::ChangePlayerCount(unsigned int num) {
