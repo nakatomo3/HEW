@@ -145,6 +145,10 @@ void Title::Update() {
 		SceneManager::GetInstance().LoadScene("runTitle");
 	}
 
+	if (timer >= 8) {
+		SceneManager::GetInstance().LoadScene("Rule");
+	}
+
 }
 
 void Title::UnLoad() {
