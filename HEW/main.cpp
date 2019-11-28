@@ -9,6 +9,7 @@
 #include "HeroEngine.h"
 
 #include "Title.h"
+#include "Rule.h"
 #include "Run.h"
 #include "RunTitle.h"
 #include "RunResult.h"
@@ -145,6 +146,7 @@ bool Init(){
 	VariableManager::GetInstance().SetInt("playerCount",4);
 
 	Scene* title = new Title("Title");
+	Scene* rule = new Rule("Rule");
 	Scene* run = new Run("run");
 	Scene* runTitle = new RunTitle("runTitle");
 	Scene* runResult = new RunResult("runResult");

@@ -37,7 +37,6 @@ private:
 
 	//GameObject* player1Object;
 	//Sprite* player1Sprite;
-
 	float timer;
 
 	int logoSpeed = 4000;
