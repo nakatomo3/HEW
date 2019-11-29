@@ -27,6 +27,8 @@ void Run::Start() {
 	ObjectManager::GetInstance().Instantiate(balloon);
 	//リプレイロゴのインスタンス
 	ObjectManager::GetInstance().Instantiate(replayRogo);
+	//タイム表示のインスタンス
+	ObjectManager::GetInstance().Instantiate(runTime);
 }
 
 void Run::Load() {
@@ -180,6 +182,12 @@ void Run::Load() {
 	replayRogoBackground->SetActive(false);
 	
 	//タイム系の処理
+	runTimeText = new Text();
+	runTime = new GameObject();
+	runTimeText->SetPosition(new Vector3(SD_WIDTH*0.5, SD_HEIGHT*0.5));
+	runTime->AddComponent(runTimeText);
+	runTime->SetActive(false);
+
 	for (int i = 0; i < 4; i++) {
 		times.emplace_back(-1);
 	}
@@ -190,52 +198,75 @@ void Run::Update() {
 	//これ以外何も書かないでください！
 	timer += Time::GetInstance().GetDeltaTime();
 
-	//走っている時の処理（前半）
-	if (timer >= 12.0f) {
-
-		//レーンの表示
-		lane->SetActive(true);
-		//背景の表示
-		background->SetActive(true);
-
-		//プレイヤーの走る処理
+	//リプレイの処理
+	if (timer >= 16.5f) {
+		replayTimer += Time::GetInstance().GetDeltaTime() / 10;
+		//タイムを小数点第二位まで表示させる
+		int intTimer = floor(replayTimer);
+		int dicimalTimer = floor(replayTimer * 100 - intTimer * 100);
+		runTimeText->text = to_string(intTimer) + "." + to_string(dicimalTimer);
 		if (isReady == false) {
-			//セット
-			//一番目のプレイヤーの処理（前半）
-			if (playerCount >= 1) {
-				playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 3.75f, 0));
-				ObjectManager::GetInstance().Destroy(gaugeObjects[0]);
+			//タイム表示
+			runTime->SetActive(true);
+			//リプレイロゴ背景を消す
+			replayRogoBackground->SetActive(false);
+			//リプレイロゴを消す
+			replayRogo->SetActive(false);
+			//レーンの表示
+			lane->SetActive(true);
+			laneSprite->SetColor(D3DCOLOR_RGBA(126, 15, 133, 0));
+			//背景の表示
+			background->SetActive(true);
+			backgroundSprite->SetColor(D3DCOLOR_RGBA(76, 108, 179, 0));
+
+			//リプレイロゴ中はプレイヤー消す
+			for (int i = 0; i < playerCount; i++) {
+				playerObjects[i]->SetActive(true);
 			}
 
-			
+			//リプレイ速度(ゆっくり）で走る
+				//セット
+				//一番目のプレイヤーの処理（前半）
+			if (playerCount >= 1) {
+				playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 3.75f, 0));
+			}
+
+
 			//二番目のプレイヤーの処理（前半）
 			if (playerCount >= 2) {
 				playerObjects[1]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 5.50f, 0));
-				ObjectManager::GetInstance().Destroy(gaugeObjects[1]);
 			}
 
-			
+
 			//三番目のプレイヤーの処理（前半）
 			if (playerCount >= 3) {
 				playerObjects[2]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 7.25f, 0));
-				ObjectManager::GetInstance().Destroy(gaugeObjects[2]);
 			}
 
 			//四番目のプレイヤーの処理（前半）
 			if (playerCount >= 4) {
 				playerObjects[3]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 9.0f, 0));
-				ObjectManager::GetInstance().Destroy(gaugeObjects[3]);
 			}
-			
-			//スタートしたら吹き出し消す
-			balloon->SetActive(false);
-			
 		}
 		isReady = true;
-	}
+	} else /*リプレイロゴの処理*/ if (timer >= 14.5f) {
+		//リプレイロゴ中はプレイヤー消す
+		for (int i = 0; i < playerCount; i++) {
+			playerObjects[i]->SetActive(false);
+		}
+		//リプレイロゴ背景の表示
+		replayRogoBackground->SetActive(true);
+		//リプレイロゴの表示
+		replayRogo->SetActive(true);
 
-	//走っている時の処理（後半）
-	if (timer >= 12.5f) {
+		//レーンと走っているときの背景を消す
+		if (isReplay == true) {
+			lane->SetActive(false);
+			background->SetActive(false);
+		}
+		isReplay = true;
+		isReady = false;
+	} else /*走っている時の処理（後半）*/ if (timer >= 12.5f) {
 
 		//レーンの表示
 		laneSprite->SetColor(D3DCOLOR_RGBA(126, 15, 133, 0));
@@ -266,26 +297,50 @@ void Run::Update() {
 			}
 		}
 		isGoalCamera = true;
+		//isReady = false;
+	} else /*走っている時の処理（前半）*/if (timer >= 12.0f) {
+
+		//レーンの表示
+		lane->SetActive(true);
+		//背景の表示
+		background->SetActive(true);
+
+		//プレイヤーの走る処理
+		if (isReady == false) {
+			//セット
+			//一番目のプレイヤーの処理（前半）
+			if (playerCount >= 1) {
+				playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 3.75f, 0));
+				gaugeObjects[0]->SetActive(false);
+			}
+
+
+			//二番目のプレイヤーの処理（前半）
+			if (playerCount >= 2) {
+				playerObjects[1]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 5.50f, 0));
+				gaugeObjects[1]->SetActive(false);
+			}
+
+
+			//三番目のプレイヤーの処理（前半）
+			if (playerCount >= 3) {
+				playerObjects[2]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 7.25f, 0));
+				gaugeObjects[2]->SetActive(false);
+			}
+
+			//四番目のプレイヤーの処理（前半）
+			if (playerCount >= 4) {
+				playerObjects[3]->SetPosition(new Vector3(SD_WIDTH * 1.0f, SD_HEIGHT * 9.0f, 0));
+				gaugeObjects[3]->SetActive(false);
+			}
+
+			//スタートしたら吹き出し消す
+			balloon->SetActive(false);
+
+		}
+		isReady = true;
 	}
 
-	//リプレイロゴの処理
-	if (timer >= 14.5f) {
-		//リプレイロゴ中はプレイヤー消す
-		for (int i = 0; i < playerCount; i++) {
-			playerObjects[i]->SetActive(false);
-		}
-		//リプレイロゴ背景の表示
-		replayRogoBackground->SetActive(true);
-		//リプレイロゴの表示
-		replayRogo->SetActive(true);
-
-		//レーンと走っているときの背景を消す
-		if (isReplay == true) {
-			lane->SetActive(false);
-			background->SetActive(false);
-		}
-		isReplay = true;
-	}
 }
 
 double Run::GetTimer() {
