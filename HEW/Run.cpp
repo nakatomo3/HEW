@@ -194,12 +194,28 @@ void Run::Load() {
 
 }
 
+void Run::Unload() {
+	ObjectManager::GetInstance().Destroy(balloon);
+	for (int i = 0; i < playerCount; i++) {
+		ObjectManager::GetInstance().Destroy(playerObjects[i]);
+		ObjectManager::GetInstance().Destroy(gaugeObjects[i]);
+	}
+	ObjectManager::GetInstance().Destroy(lane);
+	ObjectManager::GetInstance().Destroy(background);
+	ObjectManager::GetInstance().Destroy(replayRogo);
+	ObjectManager::GetInstance().Destroy(replayRogoBackground);
+	ObjectManager::GetInstance().Destroy(runTime);
+}
+
 void Run::Update() {
 	//これ以外何も書かないでください！
 	timer += Time::GetInstance().GetDeltaTime();
 
-	//リプレイの処理
-	if (timer >= 16.5f) {
+	//ランキングへの移行処理
+	if (timer >= 22.5f) {
+		runTime->SetActive(false);
+		SceneManager::GetInstance().LoadScene("runResult");
+    } else/*リプレイの処理*/if (timer >= 16.5f) {
 		replayTimer += Time::GetInstance().GetDeltaTime() / 10;
 		//タイムを小数点第二位まで表示させる
 		int intTimer = floor(replayTimer);
