@@ -9,6 +9,7 @@ public:
 
 	void Start();
 	void Load();
+	void UnLoad();
 	void Update();
 
 private:
@@ -25,4 +26,6 @@ private:
 	Sprite* backgroundSprite;
 
 	RunResult* runResult;
+
+	float timer = 0;
 };

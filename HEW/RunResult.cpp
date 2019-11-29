@@ -32,5 +32,15 @@ void RunResult::Load() {
 	background->AddComponent(backgroundSprite);
 }
 
+void RunResult::UnLoad() {
+	ObjectManager::GetInstance().Destroy(ranking);
+	ObjectManager::GetInstance().Destroy(background);
+}
+
 void RunResult::Update() {
+	timer += Time::GetInstance().GetDeltaTime();
+
+	if (timer > 5) {
+		SceneManager::GetInstance().LoadScene("megatonPunchTitle");// megatonPunchTitle‚É‘JˆÚ
+	}
 }
