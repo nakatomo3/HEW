@@ -5,6 +5,7 @@
 #include "ChargeGaugeRun.h"
 #include "PlayerRun.h"
 #include "BalloonRun.h"
+#include "HeroEngine.h"
 
 
 using namespace std;
@@ -37,6 +38,8 @@ private:
 
 
 	int playerCount = 4;//とりあえずは4人分にしている(デフォは0)
+
+	double replayTimer = 0;
 
 	//吹き出しのオブジェクト
 	GameObject* balloon;
@@ -104,6 +107,12 @@ private:
 
 	//リプレイロゴ背景のテクスチャ
 	Texture* replayRogoBackgroundTexture;
+
+	//タイムのオブジェクト
+	GameObject* runTime;
+
+	//タイムのテキスト
+	Text* runTimeText;
 
 	bool isReady = false;
 	bool isGoalCamera = false;

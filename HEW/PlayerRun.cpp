@@ -81,9 +81,16 @@ void PlayerRun::Update() {
 		run->SetTime(playerID, 500 / charge);
 	}
 
+	if (run->timer >= 16.5f) {
+		isReplay = true;
+		
+	}
+
 	//ƒŠƒvƒŒƒC‘¬“x‚ÌˆÚ“®
 	if (isReplay == true) {
-		gameObject->Move(Vector3(charge * 0.005f * SCREEN_WIDTH / 1024, charge * -0.00f  * SCREEN_HEIGHT / 576, 0));
+		LogWriter::GetInstance().Log("charge:%f", charge);
+		LogWriter::GetInstance().Log("all:%f", charge * 0.005 * SCREEN_WIDTH / 1024.0);
+		gameObject->Move(Vector3(charge * 0.005 * SCREEN_WIDTH / 1024.0, charge * -0.00f  * SCREEN_HEIGHT / 576, 0));
 	}
 }
 
