@@ -44,7 +44,7 @@ float AimingPunch::GetValue() {
 	while (value >= PI * 2) {
 		value -= PI * 2;
 	}
-	return abs(rad - PI * 3 / 2.0f);
+	return abs(rad - PI * 3 / 2.0f)/ PI * 3 / 2.0f;
 }
 
 void AimingPunch::SetNormalTexture(Texture* _texture) {

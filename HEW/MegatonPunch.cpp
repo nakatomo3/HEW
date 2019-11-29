@@ -16,7 +16,7 @@ void MegatonPunch::Load() {
 	playerTextures[2] = new Texture("");
 	playerTextures[3] = new Texture("");*/
 
-	int playerCount = VariableManager::GetInstance().GetInt("playerCount");
+	playerCount = VariableManager::GetInstance().GetInt("playerCount");
 	gaugeTexture = new Texture("assets/textures/Run/UI/gauge.png");
 
 	aimingTexture = new Texture("assets/textures/MegatonPunch/UI/Aiming.png");
@@ -101,6 +101,18 @@ void MegatonPunch::Load() {
 
 		pendulum->SetNormalTexture(pendulumTexture);
 		pendulum->SetWhiteTexutre(pendulumWhiteTexture);
+
+		Text* text = new Text();
+		text->SetActive(false);
+		playerObject->AddComponent(text);
+		texts.emplace_back(text);
+		player->SetText(text);
+		text->SetPosition(new Vector3(-SCREEN_WIDTH * 0.1f,-SCREEN_HEIGHT * 0.2,0));
+		text->isOutline = true;
+		text->isBeautifulOutline = true;
+		text->SetOutlineColor(new Color(0, 0, 0, 255));
+		text->outlineDistance = SCREEN_HEIGHT * 0.007f;
+		text->SetSize(SCREEN_HEIGHT*0.1f);
 	}
 
 
@@ -121,6 +133,7 @@ void MegatonPunch::Load() {
 		Player player = (Player)VariableManager::GetInstance().GetInt("player4");
 		players[3]->SetPlayer(player);
 	}
+
 }
 
 void MegatonPunch::Start() {
@@ -129,4 +142,25 @@ void MegatonPunch::Start() {
 		ObjectManager::GetInstance().Instantiate(gaugeObjects[i]);
 		
 	}
+}
+
+void MegatonPunch::Update() {
+	bool isAllWaiting = true;
+	for (int i = 0; i < playerCount; i++) {
+		if (isWaitings[i] == false) {
+			isAllWaiting = false;
+			break;
+		}
+	}
+
+	if (isAllWaiting == true && isBreaking == false) {
+		for (int i = 0; i < playerCount; i++) {
+			players[i]->SetBreakingFlag();
+		}
+		isBreaking = true;
+	}
+}
+
+void MegatonPunch::SetWaiting(int number) {
+	isWaitings[number] = true;
 }

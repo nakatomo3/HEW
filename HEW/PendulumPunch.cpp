@@ -42,7 +42,7 @@ void PendulumPunch::SetSprite(Sprite * _sprite) {
 }
 
 float PendulumPunch::GetValue() {
-	return rad;
+	return abs(rad + PI / 2)/PI;
 }
 
 void PendulumPunch::SetNormalTexture(Texture * _texture) {

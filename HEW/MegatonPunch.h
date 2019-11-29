@@ -15,7 +15,13 @@ public:
 	void Load();
 	void Start();
 
+	void Update();
+
+	void SetWaiting(int number);
+
 private :
+	int playerCount;
+
 	vector<Texture*> playerTextures;
 	vector<PlayerPunch*> players;
 	vector<GameObject*> playerObjects;
@@ -36,5 +42,8 @@ private :
 	Texture* pendulumWhiteTexture;
 
 	vector<bool> isWaitings;
+	bool isBreaking = false;
+
+	vector<Text*> texts;
 };
 

@@ -6,6 +6,9 @@
 
 #include "AimingPunch.h"
 #include "PendulumPunch.h"
+#include "Text.h"
+
+class MegatonPunch;
 
 typedef enum MegatonMode {
 	GAUGE,
@@ -32,6 +35,10 @@ public:
 	void Start();
 	void Update();
 
+	void SetBreakingFlag();
+
+	void SetText(Text* _text);
+
 private :
 	Player thisPlayer;
 
@@ -51,5 +58,13 @@ private :
 	float gaugeValue;
 	float aimingValue;
 	float pendulumValue;
+
+	double value = 0;
+
+	int KEY;
+
+	MegatonPunch* megatonPunch;
+
+	Text* text;
 };
 
