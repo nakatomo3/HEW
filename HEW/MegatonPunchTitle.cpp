@@ -56,7 +56,8 @@ void MegatonPunchTitle::Load() {
 }
 
 void MegatonPunchTitle::UnLoad() {
-
+	ObjectManager::GetInstance().Destroy(titleObject);// オブジェクトを消している(こうしないと画面に残って遷移しちゃうから)
+	ObjectManager::GetInstance().Destroy(backgroundObject);
 }
 
 void MegatonPunchTitle::Update() {
@@ -84,6 +85,9 @@ void MegatonPunchTitle::Update() {
 		LogWriter::GetInstance().Log("hoge");// 確認ログ
 		titleLogo1->SetTexture(logoTexture3);// 割られてない瓦割から割られてる瓦割に切替
 
+	}
+	if (timer > 5.5) {
+		SceneManager::GetInstance().LoadScene("megatonPunch");// megatonPunchに遷移
 	}
 
 }
