@@ -17,6 +17,8 @@ void Run::Start() {
 	ObjectManager::GetInstance().Instantiate(background);
 	//リプレイロゴ背景のインスタンス
 	ObjectManager::GetInstance().Instantiate(replayRogoBackground);
+	//ハイライト背景のインスタンス
+	ObjectManager::GetInstance().Instantiate(highlightBackground);
 	//レーンのインスタンス
 	ObjectManager::GetInstance().Instantiate(lane);
 	for (int i = 0; i < playerCount; i++) {
@@ -29,6 +31,8 @@ void Run::Start() {
 	ObjectManager::GetInstance().Instantiate(replayRogo);
 	//タイム表示のインスタンス
 	ObjectManager::GetInstance().Instantiate(runTime);
+	//ハイライトテキストのインスタンス
+	ObjectManager::GetInstance().Instantiate(runHighlight);
 }
 
 void Run::Load() {
@@ -180,6 +184,15 @@ void Run::Load() {
 	replayRogoBackground->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0));
 	replayRogoBackground->AddComponent(replayRogoBackgroundSprite);
 	replayRogoBackground->SetActive(false);
+
+	//ハイライト背景の処理
+	highlightBackgroundSprite = new Sprite();
+	highlightBackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	highlightBackgroundSprite->SetColor(D3DCOLOR_RGBA(0, 128, 128, 0));
+	highlightBackground = new GameObject();
+	highlightBackground->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0));
+	highlightBackground->AddComponent(highlightBackgroundSprite);
+	highlightBackground->SetActive(false);
 	
 	//タイム系の処理
 	runTimeText = new Text();
@@ -187,6 +200,14 @@ void Run::Load() {
 	runTimeText->SetPosition(new Vector3(SD_WIDTH*0.5, SD_HEIGHT*0.5));
 	runTime->AddComponent(runTimeText);
 	runTime->SetActive(false);
+
+	//ハイライトテキストの処理
+	runHighlightText = new Text();
+	runHighlight = new GameObject();
+	runHighlightText->SetPosition(new Vector3(SD_WIDTH*0.5, SD_HEIGHT*0.5, -0.1f));
+	runHighlight->AddComponent(runHighlightText);
+	runHighlight->SetActive(false);
+
 
 	for (int i = 0; i < 4; i++) {
 		times.emplace_back(-1);
@@ -205,6 +226,7 @@ void Run::Unload() {
 	ObjectManager::GetInstance().Destroy(replayRogo);
 	ObjectManager::GetInstance().Destroy(replayRogoBackground);
 	ObjectManager::GetInstance().Destroy(runTime);
+	ObjectManager::GetInstance().Destroy(highlightBackground);
 }
 
 void Run::Update() {
@@ -212,9 +234,19 @@ void Run::Update() {
 	timer += Time::GetInstance().GetDeltaTime();
 
 	//ランキングへの移行処理
-	if (timer >= 22.5f) {
-		runTime->SetActive(false);
+	if(timer >= 24.5f){
+		runHighlight->SetActive(false);
 		SceneManager::GetInstance().LoadScene("runResult");
+    }else/*ハイライトの処理*/ if (timer >= 22.5f) {
+		//いらないもの消す
+		runTime->SetActive(false);
+		background->SetActive(false);
+		lane->SetActive(false);
+		//背景とテキストの表示
+		highlightBackground->SetActive(true);
+		runHighlight->SetActive(true);
+		runHighlightText->text = "1位";
+		runHighlightText->SetSize(50);
     } else/*リプレイの処理*/if (timer >= 16.5f) {
 		replayTimer += Time::GetInstance().GetDeltaTime() / 10;
 		//タイムを小数点第二位まで表示させる
