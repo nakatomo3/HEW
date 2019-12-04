@@ -26,5 +26,10 @@ private:
 	Sprite* sprite;
 	Run* run = NULL;
 
+	Texture* playerTexture;
+	Texture* playerTexture2;
+	Texture* playerTexture3;
+	Texture* runTexture;
+
 	bool isReplay;
 };
