@@ -192,10 +192,10 @@ void Run::Load() {
 	highlightBackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
 	highlightBackgroundSprite->SetColor(D3DCOLOR_RGBA(0, 128, 128, 0));
 	highlightBackground = new GameObject();
-	highlightBackground->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0));
+	highlightBackground->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0.01f));
 	highlightBackground->AddComponent(highlightBackgroundSprite);
 	highlightBackground->SetActive(false);
-	
+
 	//タイム系の処理
 	runTimeText = new Text();
 	runTime = new GameObject();
@@ -236,20 +236,29 @@ void Run::Update() {
 	timer += Time::GetInstance().GetDeltaTime();
 
 	//ランキングへの移行処理
-	if(timer >= 24.5f){
-		runHighlight->SetActive(false);
-		SceneManager::GetInstance().LoadScene("runResult");
-    }else/*ハイライトの処理*/ if (timer >= 22.5f) {
+	if (timer >= 24.5f) {
 		//いらないもの消す
-		runTime->SetActive(false);
 		background->SetActive(false);
 		lane->SetActive(false);
+		runHighlight->SetActive(false);
+		//ランキングをロードする
+		SceneManager::GetInstance().LoadScene("runResult");
+	} else/*ハイライトの処理*/ if (timer >= 22.5f) {
+		//いらないもの消す
+		runTime->SetActive(false);
 		//背景とテキストの表示
 		highlightBackground->SetActive(true);
 		runHighlight->SetActive(true);
 		runHighlightText->text = "1位";
 		runHighlightText->SetSize(50);
-    } else/*リプレイの処理*/if (timer >= 16.5f) {
+		//ハイライト映像の処理
+		laneSprite->SetScale(new Vector2(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.49f));
+		lane->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT, 0));
+		laneSprite->SetCriterion(DOWN_RIGHT);
+		backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.21f));
+		backgroundSprite->SetCriterion(DOWN_RIGHT);
+		background->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT*0.51f, 0));
+	} else/*リプレイの処理*/if (timer >= 16.5f) {
 		replayTimer += Time::GetInstance().GetDeltaTime() / 10;
 		//タイムを小数点第二位まで表示させる
 		int intTimer = floor(replayTimer);
