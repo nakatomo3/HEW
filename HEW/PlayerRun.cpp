@@ -18,9 +18,10 @@ PlayerRun::~PlayerRun() {
 }
 
 void PlayerRun::Start() {
-	sprite->SetTexture(new Texture("assets/textures/Run/Player/sennpai1.png", "sennpai1"));
-	playerTexture = new Texture("assets/textures/Run/Player/sennpai2.png", "sennpai2");
-	playerTexture2 = new Texture("assets/textures/Run/Player/sennpai3.png", "sennpai3");	
+	playerTexture = new Texture("assets/textures/Run/Player/sennpai1.png", "sennpai1");
+	sprite->SetTexture(playerTexture);
+	playerTexture2 = new Texture("assets/textures/Run/Player/sennpai2.png", "sennpai2");
+	playerTexture3 = new Texture("assets/textures/Run/Player/sennpai3.png", "sennpai3");	
 }
 
 float PlayerRun::GetCharge() {
@@ -70,15 +71,11 @@ void PlayerRun::Update() {
 	}
 
 	if (charge >= 600.0f) {
-		//sprite->SetColor(D3DCOLOR_RGBA(100, 100, 0, 230));
-		sprite->SetTexture(playerTexture2); 
-		//sprite = new Sprite(playerTexture);
+		sprite->SetTexture(playerTexture3); 
 	}
 
 	else if (charge >= 300.0f) {
-		//sprite->SetColor(D3DCOLOR_RGBA(200, 0, 0, 230));
-		sprite->SetTexture(playerTexture);// 100m  ‰E‚©‚ç¶
-		//sprite = new Sprite(playerTexture);
+		sprite->SetTexture(playerTexture2);
 	}
 
 	//Šp“x8“x‚®‚ç‚¢‚ð0.1•b‚ÅˆÚ“®

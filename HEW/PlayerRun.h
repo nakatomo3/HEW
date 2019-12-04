@@ -28,6 +28,7 @@ private:
 
 	Texture* playerTexture;
 	Texture* playerTexture2;
+	Texture* playerTexture3;
 	Texture* runTexture;
 
 	bool isReplay;
