@@ -53,7 +53,6 @@ private:
 
 	BalloonRun* balloonRun;
 
-
 	//プレイヤースクリプト
 	vector<PlayerRun*> players{};
 
@@ -62,7 +61,6 @@ private:
 
 	//プレイヤーのオブジェクト
 	vector<GameObject*> playerObjects{};
-
 
 	//ゲージスクリプト
 	vector<ChargeGaugeRun*> gauges{};

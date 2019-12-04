@@ -38,6 +38,7 @@ void Run::Start() {
 void Run::Load() {
 	Texture* normalGaugeTexture = new Texture("assets/textures/Run/UI/gauge.png");
 	Texture* brokenGaugeTexture = new Texture("assets/textures/Run/UI/gauge2.png");
+	Texture* playerTexture = new Texture("assets/textures/Run/Player/sennpai1.png", "sennpai1");
 
 	for (int i = 0; i < playerCount; i++) {//プレイヤーのカウント(playerCount)の数によってゲージの表示
 		ChargeGaugeRun* gauge = new ChargeGaugeRun();
@@ -106,6 +107,7 @@ void Run::Load() {
 		playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 3.3f, 0));
 		players[0]->SetSprite(playerSprite[0]);
 		players[0]->SetScene(this);
+		
 	}
 
 	if (playerCount >= 2) {
