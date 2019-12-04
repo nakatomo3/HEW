@@ -109,11 +109,26 @@ private:
 	//リプレイロゴ背景のテクスチャ
 	Texture* replayRogoBackgroundTexture;
 
+	//ハイライト背景のオブジェクト
+	GameObject* highlightBackground;
+
+	//ハイライト背景のスプライト
+	Sprite*  highlightBackgroundSprite;
+
+	//ハイライト背景のテクスチャ
+	Texture* highlightBackgroundTexture;
+
 	//タイムのオブジェクト
 	GameObject* runTime;
 
 	//タイムのテキスト
 	Text* runTimeText;
+
+	//ハイライトのオブジェクト
+	GameObject* runHighlight;
+
+	//ハイライトのテキスト
+	Text* runHighlightText;
 
 	bool isReady = false;
 	bool isGoalCamera = false;
