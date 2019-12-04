@@ -15,6 +15,7 @@
 #include "RunResult.h"
 #include "MegatonPunch.h"
 #include "MegatonPunchTitle.h"
+#include "SelectCharacter.h"
 /*------------------------------------------------------------------------------
 グローバル変数宣言
 ------------------------------------------------------------------------------*/
@@ -148,6 +149,7 @@ bool Init(){
 
 	Scene* title = new Title("Title");
 	Scene* rule = new Rule("Rule");
+	Scene* selectCharacter = new SelectCharacter("selectCharacter");
 	Scene* run = new Run("run");
 	Scene* runTitle = new RunTitle("runTitle");
 	Scene* runResult = new RunResult("runResult");
