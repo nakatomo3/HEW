@@ -10,6 +10,7 @@
 
 #include "Title.h"
 #include "Rule.h"
+#include "SelectCharacter.h"
 #include "Run.h"
 #include "RunTitle.h"
 #include "RunResult.h"

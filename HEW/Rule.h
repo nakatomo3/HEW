@@ -17,17 +17,22 @@ public:
 	void UnLoad();
 
 private:
+	bool isRule = false;
 
-	GameObject* manualObject;
-	Sprite* manualSprite;
+	GameObject* backgroundObject;
+	Sprite* backgroundSprite;
 
 	GameObject* ruleObject;
 	Sprite* ruleSprite;
 
-	int playerCount = 0;
-
 	vector<Sprite*> players;
 	vector<Sprite*> oks;
+
+	Texture* okTexture;
+	vector<Texture*> playerTexture;
+	vector<Sprite*> okSprites;
+
+	int playerCount = 0;
 
 	vector<bool> isReady;
 
