@@ -94,9 +94,12 @@ private:
 
 	//リプレイロゴのスプライト
 	Sprite* replayRogoSprite;
+	Sprite* replayRogoSprite2;
+	Sprite* replayRogoSprite3;
 
 	//リプレイロゴのテクスチャ
 	Texture* replayRogoTexture;
+	Texture* replayRogoTexture2;
 
 	//リプレイロゴ背景のオブジェクト
 	GameObject* replayRogoBackground;
@@ -131,6 +134,7 @@ private:
 	bool isReady = false;
 	bool isGoalCamera = false;
 	bool isReplay = false;
+	int logoSpeed = 1500;
 
 	vector<float> times;
 

@@ -170,12 +170,33 @@ void Run::Load() {
 	background->SetActive(false);
 
 	//リプレイロゴの処理
-	replayRogoSprite = new Sprite();
+	/*replayRogoSprite = new Sprite();
 	replayRogoSprite->SetScale(new Vector2(SCREEN_WIDTH*0.6f, SCREEN_HEIGHT*0.6f));
 	replayRogoSprite->SetColor(D3DCOLOR_RGBA(245, 212, 47, 0));
 	replayRogo = new GameObject();
 	replayRogo->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0));
 	replayRogo->AddComponent(replayRogoSprite);
+	replayRogo->SetActive(false);*/
+	replayRogo = new GameObject();
+
+	replayRogoTexture = new Texture("assets/textures/Run/UI/ReplayBar.png", "ReplayBar");// 右から左 ↑棒
+	replayRogoSprite = new Sprite(replayRogoTexture);
+	replayRogo->AddComponent(replayRogoSprite);
+	replayRogoSprite->SetScale(new Vector2(SCREEN_WIDTH*0.6, SCREEN_HEIGHT*0.2));// 画像の横、横の大きさ　縦の大きさ
+	replayRogoSprite->SetPosition(new Vector3(SCREEN_WIDTH * 2, SCREEN_HEIGHT/10, 0));// 開始位置 x,y,z
+	replayRogo->SetActive(false);
+
+	replayRogoSprite2 = new Sprite(replayRogoTexture);// 左から右 ↓棒
+	replayRogo->AddComponent(replayRogoSprite2);
+	replayRogoSprite2->SetScale(new Vector2(SCREEN_WIDTH*0.6, SCREEN_HEIGHT*0.2));// 画像の横、横の大きさ　縦の大きさ
+	replayRogoSprite2->SetPosition(new Vector3(-SCREEN_WIDTH /1, SCREEN_HEIGHT /1.1, 0));// 開始位置 x,y,z
+	replayRogo->SetActive(false);
+
+	replayRogoTexture2 = new Texture("assets/textures/Run/UI/Replay.png", "Replay");// 左から右 文字
+	replayRogoSprite3 = new Sprite(replayRogoTexture2);
+	replayRogo->AddComponent(replayRogoSprite3);
+	replayRogoSprite3->SetScale(new Vector2(SCREEN_WIDTH*0.8, SCREEN_HEIGHT*0.8));// 画像の横、横の大きさ　縦の大きさ
+	replayRogoSprite3->SetPosition(new Vector3(-SCREEN_WIDTH / 1, SCREEN_HEIGHT / 2, 0));// 開始位置 x,y,z
 	replayRogo->SetActive(false);
 
 	//リプレイロゴ背景の処理
@@ -236,14 +257,14 @@ void Run::Update() {
 	timer += Time::GetInstance().GetDeltaTime();
 
 	//ランキングへの移行処理
-	if (timer >= 24.5f) {
+	if (timer >= 25.0f) {
 		//いらないもの消す
 		background->SetActive(false);
 		lane->SetActive(false);
 		runHighlight->SetActive(false);
 		//ランキングをロードする
 		SceneManager::GetInstance().LoadScene("runResult");
-	} else/*ハイライトの処理*/ if (timer >= 22.5f) {
+	} else/*ハイライトの処理*/ if (timer >= 23.0f) {//22.5
 		//いらないもの消す
 		runTime->SetActive(false);
 		//背景とテキストの表示
@@ -258,7 +279,7 @@ void Run::Update() {
 		backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.21f));
 		backgroundSprite->SetCriterion(DOWN_RIGHT);
 		background->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT*0.51f, 0));
-	} else/*リプレイの処理*/if (timer >= 16.5f) {
+	} else/*リプレイの処理*/if (timer >= 17.0f) {//16.5
 		replayTimer += Time::GetInstance().GetDeltaTime() / 10;
 		//タイムを小数点第二位まで表示させる
 		int intTimer = floor(replayTimer);
@@ -308,7 +329,7 @@ void Run::Update() {
 			}
 		}
 		isReady = true;
-	} else /*リプレイロゴの処理*/ if (timer >= 14.5f) {
+	} else /*リプレイロゴの処理*/ if (timer >= 14.5f) {// 仮背景の色は水色黄色
 		//リプレイロゴ中はプレイヤー消す
 		for (int i = 0; i < playerCount; i++) {
 			playerObjects[i]->SetActive(false);
@@ -317,6 +338,32 @@ void Run::Update() {
 		replayRogoBackground->SetActive(true);
 		//リプレイロゴの表示
 		replayRogo->SetActive(true);
+		if (replayRogoSprite->GetPosition()->GetX() > SCREEN_WIDTH / 2 && timer > 4) {//  右から左
+		//                                                             ↑ここでタイミングの調整
+			replayRogoSprite->SetPosition(new Vector3(replayRogoSprite->GetPosition()->GetX() - logoSpeed * Time::GetInstance().GetDeltaTime(), SCREEN_HEIGHT / 10, 0));
+			//replayRogo->SetActive(true);
+			//                                                                      ↑ロゴの出る速さ
+			if (replayRogoSprite->GetPosition()->GetX() < SCREEN_WIDTH / 2) {
+				replayRogoSprite->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 10, 0));// 動かす位置
+				//replayRogo->SetActive(true);
+			}
+		}
+		if (replayRogoSprite2->GetPosition()->GetX() < SCREEN_WIDTH / 2 && timer > 4) {//  左から右
+		//                                                             ↑ここでタイミングの調整
+			replayRogoSprite2->SetPosition(new Vector3(replayRogoSprite2->GetPosition()->GetX() + logoSpeed * Time::GetInstance().GetDeltaTime(), SCREEN_HEIGHT / 1.1, 0));
+			//                                                                      ↑ロゴの出る速さ
+			if (replayRogoSprite2->GetPosition()->GetX() > SCREEN_WIDTH / 2) {
+				replayRogoSprite2->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 1.1, 0));// 動かす位置
+			}
+		}
+		if (replayRogoSprite3->GetPosition()->GetX() < SCREEN_WIDTH / 2 && timer > 2) {//  左から右
+		//                                                             ↑ここでタイミングの調整
+			replayRogoSprite3->SetPosition(new Vector3(replayRogoSprite3->GetPosition()->GetX() + 4000 * Time::GetInstance().GetDeltaTime(), SCREEN_HEIGHT / 2, 0));
+			//                                                                      ↑ロゴの出る速さ
+			if (replayRogoSprite3->GetPosition()->GetX() > SCREEN_WIDTH / 2) {
+				replayRogoSprite3->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));// 動かす位置
+			}
+		}
 
 		//レーンと走っているときの背景を消す
 		if (isReplay == true) {
