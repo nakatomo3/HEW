@@ -170,13 +170,6 @@ void Run::Load() {
 	background->SetActive(false);
 
 	//リプレイロゴの処理
-	/*replayRogoSprite = new Sprite();
-	replayRogoSprite->SetScale(new Vector2(SCREEN_WIDTH*0.6f, SCREEN_HEIGHT*0.6f));
-	replayRogoSprite->SetColor(D3DCOLOR_RGBA(245, 212, 47, 0));
-	replayRogo = new GameObject();
-	replayRogo->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0));
-	replayRogo->AddComponent(replayRogoSprite);
-	replayRogo->SetActive(false);*/
 	replayRogo = new GameObject();
 
 	replayRogoTexture = new Texture("assets/textures/Run/UI/ReplayBar.png", "ReplayBar");// 右から左 ↑棒
@@ -341,11 +334,9 @@ void Run::Update() {
 		if (replayRogoSprite->GetPosition()->GetX() > SCREEN_WIDTH / 2 && timer > 4) {//  右から左
 		//                                                             ↑ここでタイミングの調整
 			replayRogoSprite->SetPosition(new Vector3(replayRogoSprite->GetPosition()->GetX() - logoSpeed * Time::GetInstance().GetDeltaTime(), SCREEN_HEIGHT / 10, 0));
-			//replayRogo->SetActive(true);
 			//                                                                      ↑ロゴの出る速さ
 			if (replayRogoSprite->GetPosition()->GetX() < SCREEN_WIDTH / 2) {
 				replayRogoSprite->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 10, 0));// 動かす位置
-				//replayRogo->SetActive(true);
 			}
 		}
 		if (replayRogoSprite2->GetPosition()->GetX() < SCREEN_WIDTH / 2 && timer > 4) {//  左から右
