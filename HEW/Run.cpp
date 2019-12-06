@@ -244,20 +244,43 @@ void Run::Update() {
 		//ランキングをロードする
 		SceneManager::GetInstance().LoadScene("runResult");
 	} else/*ハイライトの処理*/ if (timer >= 22.5f) {
-		//いらないもの消す
-		runTime->SetActive(false);
-		//背景とテキストの表示
-		highlightBackground->SetActive(true);
-		runHighlight->SetActive(true);
-		runHighlightText->text = "1位";
-		runHighlightText->SetSize(50);
-		//ハイライト映像の処理
-		laneSprite->SetScale(new Vector2(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.49f));
-		lane->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT, 0));
-		laneSprite->SetCriterion(DOWN_RIGHT);
-		backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.21f));
-		backgroundSprite->SetCriterion(DOWN_RIGHT);
-		background->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT*0.51f, 0));
+		if (isReady == true) {
+			//いらないもの消す
+			runTime->SetActive(false);
+			//背景とテキストの表示
+			highlightBackground->SetActive(true);
+			runHighlight->SetActive(true);
+			runHighlightText->text = "1位";
+			runHighlightText->SetSize(50);
+			//ハイライト映像の処理
+			laneSprite->SetScale(new Vector2(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.49f));
+			lane->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT, 0));
+			laneSprite->SetCriterion(DOWN_RIGHT);
+			backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.21f));
+			backgroundSprite->SetCriterion(DOWN_RIGHT);
+			background->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT*0.51f, 0));
+			if (playerCount >= 1) {
+				playerSprite[0]->SetScale(new Vector2(SCREEN_HEIGHT*0.14f, SCREEN_HEIGHT*0.14f));
+				playerObjects[0]->SetPosition(new Vector3(playerObjects[0]->GetPosition()->GetX()*0.5f, SCREEN_HEIGHT*0.6f, 0));
+				playerSprite[0]->SetCriterion(DOWN_RIGHT);
+			}
+			if (playerCount >= 2) {
+				playerSprite[1]->SetScale(new Vector2(SCREEN_HEIGHT*0.14f, SCREEN_HEIGHT*0.14f));
+				playerObjects[1]->SetPosition(new Vector3(playerObjects[1]->GetPosition()->GetX()*0.5f, SCREEN_HEIGHT*0.74f, 0));
+				playerSprite[1]->SetCriterion(DOWN_RIGHT);
+			}
+			if (playerCount >= 3) {
+				playerSprite[2]->SetScale(new Vector2(SCREEN_HEIGHT*0.14f, SCREEN_HEIGHT*0.14f));
+				playerObjects[2]->SetPosition(new Vector3(playerObjects[2]->GetPosition()->GetX()*0.5f, SCREEN_HEIGHT*0.88f, 0));
+				playerSprite[2]->SetCriterion(DOWN_RIGHT);
+			}
+			if (playerCount >= 4) {
+				playerSprite[3]->SetScale(new Vector2(SCREEN_HEIGHT*0.14f, SCREEN_HEIGHT*0.14f));
+				playerObjects[3]->SetPosition(new Vector3(playerObjects[3]->GetPosition()->GetX()*0.6f, SCREEN_HEIGHT, 0));
+				playerSprite[3]->SetCriterion(DOWN_RIGHT);
+			}
+		}
+		isReady = false;
 	} else/*リプレイの処理*/if (timer >= 16.5f) {
 		replayTimer += Time::GetInstance().GetDeltaTime() / 10;
 		//タイムを小数点第二位まで表示させる
