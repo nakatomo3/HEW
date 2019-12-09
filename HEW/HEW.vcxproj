@@ -143,6 +143,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AimingPunch.cpp" />
+    <ClCompile Include="Archery.cpp" />
+    <ClCompile Include="ArcheryTitle.cpp" />
     <ClCompile Include="AudioClip.cpp" />
     <ClCompile Include="AudioSource.cpp" />
     <ClCompile Include="BalloonRun.cpp" />
@@ -184,6 +186,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AimingPunch.h" />
+    <ClInclude Include="Archery.h" />
+    <ClInclude Include="ArcheryTitle.h" />
     <ClInclude Include="AudioClip.h" />
     <ClInclude Include="AudioSource.h" />
     <ClInclude Include="BalloonRun.h" />

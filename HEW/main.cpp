@@ -17,6 +17,8 @@
 #include "MegatonPunch.h"
 #include "MegatonPunchTitle.h"
 #include "SelectCharacter.h"
+#include "Archery.h"
+#include "ArcheryTitle.h"
 /*------------------------------------------------------------------------------
 グローバル変数宣言
 ------------------------------------------------------------------------------*/
@@ -157,6 +159,9 @@ bool Init(){
 	
 	Scene* megatonPunch = new MegatonPunch("megatonPunch");
 	Scene* megatonPunchTitle = new MegatonPunchTitle("megatonPunchTitle");
+
+	Scene* archery = new Archery("archery");
+	Scene* archery = new ArcheryTitle("archeryTitle");
 
 	SceneManager::GetInstance().AddScene(run);
 	SceneManager::GetInstance().AddScene(runTitle);

@@ -85,6 +85,18 @@
     <Filter Include="ヘッダー ファイル\Scenes\MegatonPunch">
       <UniqueIdentifier>{956be611-dd80-4b5f-a5ce-06e03ac13093}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scenes\Archery">
+      <UniqueIdentifier>{55c5d9dd-68c2-458e-adb2-9d8a69deaa19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scenes\Archery">
+      <UniqueIdentifier>{aba6f5cb-170b-4b1e-bda1-4da7b352640c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scripts\Archery">
+      <UniqueIdentifier>{994c13fe-ee69-4f49-8241-59f8d697a632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scripts\Archery">
+      <UniqueIdentifier>{ba895d6a-5dc8-4668-a842-7b8c82614750}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -203,6 +215,12 @@
     </ClCompile>
     <ClCompile Include="Rule.cpp">
       <Filter>ソース ファイル\Scenes\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Archery.cpp">
+      <Filter>ソース ファイル\Scenes\Archery</Filter>
+    </ClCompile>
+    <ClCompile Include="ArcheryTitle.cpp">
+      <Filter>ソース ファイル\Scenes\Archery</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -340,6 +358,12 @@
     </ClInclude>
     <ClInclude Include="Rule.h">
       <Filter>ヘッダー ファイル\Scenes\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Archery.h">
+      <Filter>ヘッダー ファイル\Scenes\Archery</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcheryTitle.h">
+      <Filter>ヘッダー ファイル\Scenes\Archery</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
