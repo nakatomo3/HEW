@@ -103,8 +103,8 @@ void Run::Load() {
 	//このコメントの下にプレイヤー関連の処理を追加
 	if (playerCount >= 1) {
 		//一番目のプレイヤー
-		playerSprite[0]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
-		playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 3.3f, 0));
+		playerSprite[0]->SetScale(new Vector2(SD_HEIGHT * 4.0f, SD_HEIGHT * 4.0f));
+		playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 2.3f, 0));
 		players[0]->SetSprite(playerSprite[0]);
 		players[0]->SetScene(this);
 		
@@ -112,24 +112,24 @@ void Run::Load() {
 
 	if (playerCount >= 2) {
 		//二番目のプレイヤー
-		playerSprite[1]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
-		playerObjects[1]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 3.3f, 0));
+		playerSprite[1]->SetScale(new Vector2(SD_HEIGHT * 4.0f, SD_HEIGHT * 4.0f));
+		playerObjects[1]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 2.3f, 0));
 		players[1]->SetSprite(playerSprite[1]);
 		players[1]->SetScene(this);
 	}
 
 	if (playerCount >= 3) {
 		//三番目のプレイヤー
-		playerSprite[2]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
-		playerObjects[2]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 8.3f, 0));
+		playerSprite[2]->SetScale(new Vector2(SD_HEIGHT * 4.0f, SD_HEIGHT * 4.0f));
+		playerObjects[2]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 7.3f, 0));
 		players[2]->SetSprite(playerSprite[2]);
 		players[2]->SetScene(this);
 	}
 
 	if (playerCount >= 4) {
 		//四番目のプレイヤー
-		playerSprite[3]->SetScale(new Vector2(SD_HEIGHT * 2.0f, SD_HEIGHT * 2.0f));
-		playerObjects[3]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 8.3f, 0));
+		playerSprite[3]->SetScale(new Vector2(SD_HEIGHT * 4.0f, SD_HEIGHT * 4.0f));
+		playerObjects[3]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 7.3f, 0));
 		players[3]->SetSprite(playerSprite[3]);
 		players[3]->SetScene(this);
 	}
