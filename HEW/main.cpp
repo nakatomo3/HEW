@@ -163,10 +163,6 @@ bool Init(){
 	Scene* archery = new Archery("archery");
 	Scene* archeryTitle = new ArcheryTitle("archeryTitle");
 
-	SceneManager::GetInstance().AddScene(run);
-	SceneManager::GetInstance().AddScene(runTitle);
-	SceneManager::GetInstance().AddScene(runResult);
-
 	SceneManager::GetInstance().LoadScene("run");//仮のScene遷移機能
 	
 
