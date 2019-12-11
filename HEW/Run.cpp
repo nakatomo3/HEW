@@ -63,6 +63,7 @@ void Run::Load() {
 		playerObjects.emplace_back(new GameObject());
 		playerObjects[i]->AddComponent(player);
 		playerObjects[i]->AddComponent(playerSprite[i]);
+		charges.emplace_back(0);
 
 		gauge->SetPlayer(player);
 		gauge->SetBrokenTexture(brokenGaugeTexture);
@@ -297,11 +298,17 @@ void Run::Update() {
 		isReady = false;
 	} else/*リプレイの処理*/if (timer >= 17.0f) {//16.5
 		replayTimer += Time::GetInstance().GetDeltaTime() / 10;
+		
 		//タイムを小数点第二位まで表示させる
 		int intTimer = floor(replayTimer);
 		int dicimalTimer = floor(replayTimer * 100 - intTimer * 100);
 		runTimeText->text = to_string(intTimer) + "." + to_string(dicimalTimer);
 		if (isReady == false) {
+			for (int i = 0; i < playerCount; i++) {
+				charges[i] = players[i]->GetCharge();
+				times[i] = 500 / charges[i];
+				VariableManager::GetInstance().SetFloat("time" + to_string(i), times[i]);
+			}
 			//タイム表示
 			runTime->SetActive(true);
 			//リプレイロゴ背景を消す

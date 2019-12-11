@@ -137,5 +137,5 @@ private:
 	int logoSpeed = 1500;
 
 	vector<float> times;
-
+	vector<float> charges;
 };
