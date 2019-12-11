@@ -161,13 +161,14 @@ bool Init(){
 	Scene* megatonPunchTitle = new MegatonPunchTitle("megatonPunchTitle");
 
 	Scene* archery = new Archery("archery");
-	Scene* archery = new ArcheryTitle("archeryTitle");
+	Scene* archeryTitle = new ArcheryTitle("archeryTitle");
 
 	SceneManager::GetInstance().AddScene(run);
 	SceneManager::GetInstance().AddScene(runTitle);
 	SceneManager::GetInstance().AddScene(runResult);
 
 	SceneManager::GetInstance().LoadScene("run");//仮のScene遷移機能
+	
 
 	//例。こんな感じで初期化する。シーンにまとめるのを推奨
 	/*GameObject* obj = new GameObject();
