@@ -1,7 +1,9 @@
 #pragma once
 #include "Scene.h"
 #include "Sprite.h"
+#include <vector>
 
+using namespace std;
 class RunResult : public Scene {
 public:
 	RunResult(string name);
@@ -28,4 +30,7 @@ private:
 	RunResult* runResult;
 
 	float timer = 0;
+
+	vector<float> times;
+	vector<int> ranks;
 };
