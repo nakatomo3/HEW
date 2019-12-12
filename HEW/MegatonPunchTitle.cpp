@@ -82,7 +82,6 @@ void MegatonPunchTitle::Update() {
 		} 
 	}
 	if (timer > 3.48) {// Š„‚ç‚ê‚Ä‚éŠ¢Š„
-		LogWriter::GetInstance().Log("hoge");// Šm”FƒƒO
 		titleLogo1->SetTexture(logoTexture3);// Š„‚ç‚ê‚Ä‚È‚¢Š¢Š„‚©‚çŠ„‚ç‚ê‚Ä‚éŠ¢Š„‚ÉØ‘Ö
 
 	}
