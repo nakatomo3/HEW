@@ -21,15 +21,18 @@ private:
 	GameObject* backgroundObject;
 	Sprite* backgroundSprite;
 
+	GameObject* numberObject;
+	
 	vector<Sprite*> players;
-	vector<Sprite*> numbers;
-	vector<Sprite*> targets;
-
-	Texture* numberTexture;
 	vector<Texture*> playerTexture;
+	vector<Sprite*> playerSprites;
+
+	vector<Sprite*> numbers;
+	vector<Texture*> numberTexture;
 	vector<Sprite*> numberSprites;
 
-	Texture* targetTexture;
+	vector<Sprite*> targets;
+	vector<Texture*> targetTexture;
 	vector<Sprite*> targetSprites;
 
 	int playerCount = 0;
