@@ -23,9 +23,9 @@
 #define SD_HEIGHT (SCREEN_HEIGHT / 10)
 
 //画面の中心(横)
-#define SCREEN_CEMTER_X (SCREEN_WIDTH/2)
+#define SCREEN_CENTER_X (SCREEN_WIDTH/2)
 //画面の中心(縦)
-#define SCREEN_CEMTER_Y (SCREEN_HEIGHT/2)
+#define SCREEN_CENTER_Y (SCREEN_HEIGHT/2)
 
 // ウインドウクラスの名前
 #define CLASS_NAME     "GameWindow"       

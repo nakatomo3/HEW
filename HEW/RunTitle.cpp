@@ -64,7 +64,7 @@ void RunTitle::Load() {
 	manualSprite = new Sprite();
 	manualObject->AddComponent(manualSprite);
 	/*manualSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
-	manualSprite->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y));*/
+	manualSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y));*/
 
 	okTexture = new Texture("assets/textures/All/UI/OK.png");
 

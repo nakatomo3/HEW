@@ -139,7 +139,7 @@ void Run::Load() {
 	balloonSprite = new Sprite();
 	balloonSprite->SetScale(new Vector2(0, 0)); //最初は非表示
 	balloon = new GameObject();
-	balloon->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0));
+	balloon->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0));
 	balloon->AddComponent(balloonSprite);
 	balloonRun = new BalloonRun();
 	balloon->AddComponent(balloonRun);
@@ -198,7 +198,7 @@ void Run::Load() {
 	replayRogoBackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
 	replayRogoBackgroundSprite->SetColor(D3DCOLOR_RGBA(104, 158, 205, 0));
 	replayRogoBackground = new GameObject();
-	replayRogoBackground->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0));
+	replayRogoBackground->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0));
 	replayRogoBackground->AddComponent(replayRogoBackgroundSprite);
 	replayRogoBackground->SetActive(false);
 
@@ -207,7 +207,7 @@ void Run::Load() {
 	highlightBackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
 	highlightBackgroundSprite->SetColor(D3DCOLOR_RGBA(0, 128, 128, 0));
 	highlightBackground = new GameObject();
-	highlightBackground->SetPosition(new Vector3(SCREEN_CEMTER_X, SCREEN_CEMTER_Y, 0.01f));
+	highlightBackground->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0.01f));
 	highlightBackground->AddComponent(highlightBackgroundSprite);
 	highlightBackground->SetActive(false);
 
