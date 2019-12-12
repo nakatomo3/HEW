@@ -14,7 +14,9 @@ Archery::~Archery() {
 
 void Archery::Start() {
 	ObjectManager::GetInstance().Instantiate(backgroundObject);
+	ObjectManager::GetInstance().Instantiate(playerObject);
 	ObjectManager::GetInstance().Instantiate(numberObject);
+	ObjectManager::GetInstance().Instantiate(targetObject);
 }
 
 void Archery::Load() {
@@ -29,7 +31,9 @@ void Archery::Load() {
 	backgroundSprite->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.001));
 	backgroundSprite->SetColor(new Color(0, 0, 0, 0));
 
+	playerObject = new GameObject();
 	numberObject = new GameObject();
+	targetObject = new GameObject();
 
 	/*
 	Texture* playerTexture = new Texture("assets/textures/fish.png");
@@ -40,9 +44,9 @@ void Archery::Load() {
 	for (int i = 0; i < playerCount; i++) {
 		Sprite* player = new Sprite(/*playerTexture*/);
 		player->SetScale(new Vector2(SD_HEIGHT * 2.5f, SD_HEIGHT * 2.5f));
-		player->SetPosition(new Vector3(SD_WIDTH * 1.5 + SD_HEIGHT * 2.5, SD_HEIGHT * ( i * 2.5 + 1.25), 0));
+		player->SetPosition(new Vector3(SD_WIDTH * 1.5 + SD_HEIGHT * 2.5, SD_HEIGHT * ( i * 2.5 + 1.25), -0.001));
 		players.emplace_back(player);
-		numberObject->AddComponent(player);
+		playerObject->AddComponent(player);
 
 		Sprite* number = new Sprite(/*numberTexture*/);
 		number->SetScale(new Vector2(SD_HEIGHT * 0.5f, SD_HEIGHT * 0.5f));
@@ -52,9 +56,9 @@ void Archery::Load() {
 
 		Sprite* target = new Sprite(/*targetTexture*/);
 		target->SetScale(new Vector2(SD_HEIGHT * 1.5f, SD_HEIGHT * 1.5f));
-		target->SetPosition(new Vector3(SD_WIDTH * 9 - SD_HEIGHT * 0.75, SD_HEIGHT * (i * 2.5 + 1.25), 0));
+		target->SetPosition(new Vector3(SD_WIDTH * 9 - SD_HEIGHT * 0.75, SD_HEIGHT * (i * 2.5 + 1.25), -0.001));
 		targets.emplace_back(target);
-		numberObject->AddComponent(target);
+		targetObject->AddComponent(target);
 	}
 
 }

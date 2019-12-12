@@ -21,7 +21,9 @@ private:
 	GameObject* backgroundObject;
 	Sprite* backgroundSprite;
 
+	GameObject* playerObject;
 	GameObject* numberObject;
+	GameObject* targetObject;
 	
 	vector<Sprite*> players;
 	vector<Texture*> playerTexture;
