@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "Sprite.h"
+#include "HeroEngine.h"
 #include <vector>
 
 using namespace std;
@@ -15,6 +16,9 @@ public:
 	void Update();
 
 private:
+
+	int playerCount;
+
 	///ランキングのオブジェクト
 	GameObject* ranking;
 
@@ -27,9 +31,17 @@ private:
 	//ランキング背景のスプライト
 	Sprite* backgroundSprite;
 
+	//順位のオブジェクト
+	vector<GameObject*> rankingTime{};
+
+	//順位のテキスト
+	vector<Text*> rankingTimeText{};
+
 	RunResult* runResult;
 
 	float timer = 0;
+
+	bool isRanking = false;
 
 	vector<float> times;
 	vector<int> ranks;
