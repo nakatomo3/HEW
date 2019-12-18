@@ -24,6 +24,8 @@ private:
 	GameObject* playerObject;
 	GameObject* numberObject;
 	GameObject* targetObject;
+	GameObject* scoretitleObject;
+	GameObject* scoreObject;
 	
 	vector<Sprite*> players;
 	vector<Texture*> playerTexture;
@@ -37,7 +39,13 @@ private:
 	vector<Texture*> targetTexture;
 	vector<Sprite*> targetSprites;
 
-	int playerCount = 0;
+	vector<Sprite*> scoretitles;
+	vector<Texture*> scoretitleTexture;
+	vector<Sprite*> scoretitleSprite;
 
+	vector<int> scoreValues;
+
+	int playerCount = 0;
+	vector<Text*> marks;
 };
 
