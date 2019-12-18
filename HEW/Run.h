@@ -125,12 +125,6 @@ private:
 	//タイムのテキスト
 	Text* runTimeText;
 
-	//ハイライトのオブジェクト
-	GameObject* runHighlight;
-
-	//ハイライトのテキスト
-	Text* runHighlightText;
-
 	bool isReady = false;
 	bool isGoalCamera = false;
 	bool isReplay = false;
