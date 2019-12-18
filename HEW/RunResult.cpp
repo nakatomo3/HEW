@@ -41,7 +41,7 @@ void RunResult::Start() {
 		
 	}
 
-	//小数点第二位まで表示
+	//小数点第三位まで表示
 	for (int i = 0; i < playerCount; i++) {
 		int intTimer = floor(sortTimes[i].first);
 		int dicimalTimer = floor(sortTimes[i].first * 1000 - intTimer * 1000);
@@ -53,30 +53,25 @@ void RunResult::Start() {
 		//ここにランキングの処理を書く
 		if (playerCount >= 1) {
 			rankingTime[0]->SetActive(true);
-			//rankingTimeText[0]->text = to_string(sortTimes[0].first);
-			rankingTimeText[0]->SetSize(50);
+			rankingTimeText[0]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingTimeText[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.34f, 0));
-			LogWriter::GetInstance().Log("hoge");
 		}
 
 		if (playerCount >= 2) {
 			rankingTime[1]->SetActive(true);
-			//rankingTimeText[1]->text = to_string(sortTimes[1].first);
-			rankingTimeText[1]->SetSize(50);
+			rankingTimeText[1]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingTimeText[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.48f, 0));
 		}
 
 		if (playerCount >= 3) {
 			rankingTime[2]->SetActive(true);
-			//rankingTimeText[2]->text = to_string(sortTimes[2].first);
-			rankingTimeText[2]->SetSize(50);
+			rankingTimeText[2]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingTimeText[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.62f, 0));
 		}
 
 		if (playerCount >= 4) {
 			rankingTime[3]->SetActive(true);
-			//rankingTimeText[3]->text = to_string(sortTimes[3].first);
-			rankingTimeText[3]->SetSize(50);
+			rankingTimeText[3]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingTimeText[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.76f, 0));
 		}
 
@@ -99,7 +94,7 @@ void RunResult::Load() {
 	rankingSprite = new Sprite();
 	rankingSprite->SetScale(new Vector2(SCREEN_WIDTH*0.8f, SCREEN_HEIGHT*0.8f));
 	ranking = new GameObject();
-	rankingSprite->SetColor(new Color(255, 0, 0, 0));
+	rankingSprite->SetColor(new Color(255, 0, 0, 255));
 	ranking->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0));
 	ranking->AddComponent(rankingSprite);
 
@@ -108,7 +103,7 @@ void RunResult::Load() {
 	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
 	background = new GameObject();
 	background->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0));
-	backgroundSprite->SetColor(new Color(0, 0, 0, 0));
+	backgroundSprite->SetColor(new Color(0, 0, 0, 255));
 	background->AddComponent(backgroundSprite);
 
 	//順位表示
