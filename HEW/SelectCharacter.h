@@ -2,7 +2,7 @@
 #include "Scene.h"
 #include "Sprite.h"
 #include "Texture.h"
-class SelectCharacter :	public Scene {
+class SelectCharacter : public Scene {
 public:
 	SelectCharacter(string name);
 	~SelectCharacter();
@@ -20,6 +20,9 @@ private:
 	GameObject* playerBackgroundObject;
 	Sprite*  playerBackgroundSprite;
 
+	GameObject* selectCursorObject;
+	Sprite* selectCursorSprite;
+
 	GameObject* selectCharacterObject1;
 	GameObject* selectCharacterObject2;
 	GameObject* selectCharacterObject3;
@@ -29,4 +32,8 @@ private:
 	Sprite*  selectCharacterSprite2;
 	Sprite*  selectCharacterSprite3;
 	Sprite*  selectCharacterSprite4;
+
+	float cursorPosition = 0.0f;
+	int playerCount = 0;
+	vector<int> cursorPositions;
 };
