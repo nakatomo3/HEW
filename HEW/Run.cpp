@@ -234,7 +234,6 @@ void Run::UnLoad() {
 	ObjectManager::GetInstance().Destroy(replayRogoBackground);
 	ObjectManager::GetInstance().Destroy(runTime);
 	ObjectManager::GetInstance().Destroy(highlightBackground);
-	ObjectManager::GetInstance().Destroy(runHighlight);
 }
 
 void Run::Update() {
