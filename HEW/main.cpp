@@ -19,6 +19,7 @@
 #include "SelectCharacter.h"
 #include "Archery.h"
 #include "ArcheryTitle.h"
+#include "MegatonPunchResult.h"
 /*------------------------------------------------------------------------------
 グローバル変数宣言
 ------------------------------------------------------------------------------*/
@@ -159,11 +160,12 @@ bool Init(){
 	
 	Scene* megatonPunch = new MegatonPunch("megatonPunch");
 	Scene* megatonPunchTitle = new MegatonPunchTitle("megatonPunchTitle");
+	Scene* megatonPunchResult = new MegatonPunchResult("megatonPunchResult");
 
 	Scene* archery = new Archery("archery");
 	Scene* archeryTitle = new ArcheryTitle("archeryTitle");
 
-	SceneManager::GetInstance().LoadScene("run");//仮のScene遷移機能
+	SceneManager::GetInstance().LoadScene("megatonPunch");//仮のScene遷移機能
 	
 
 	//例。こんな感じで初期化する。シーンにまとめるのを推奨

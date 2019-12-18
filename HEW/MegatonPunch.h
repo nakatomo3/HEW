@@ -41,9 +41,17 @@ private :
 	Texture* pendulumTexture;
 	Texture* pendulumWhiteTexture;
 
+	GameObject* earthObject;
+	Sprite* earthSprite;
+	Texture* earth;
+	Sprite* breakingSprite;
+	Texture* breaking;
+
 	vector<bool> isWaitings;
 	bool isBreaking = false;
 
 	vector<Text*> texts;
+
+	float timer = 0;
 };
 

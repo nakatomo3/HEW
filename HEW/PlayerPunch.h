@@ -15,7 +15,8 @@ typedef enum MegatonMode {
 	AIMING,
 	PENDULUM,
 	WAIT,
-	BREAKING
+	BREAKING,
+	VIEWSCORE
 }MegatonMode;
 
 class PlayerPunch :	public ScriptBase {
@@ -66,5 +67,7 @@ private :
 	MegatonPunch* megatonPunch;
 
 	Text* text;
+
+	float waitTimer = 0;
 };
 

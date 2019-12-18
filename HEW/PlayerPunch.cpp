@@ -4,6 +4,7 @@
 #include "ObjectManager.h"
 #include "MegatonPunch.h"
 #include "SceneManager.h"
+#include "Time.h"
 
 PlayerPunch::PlayerPunch() {
 }
@@ -89,9 +90,17 @@ void PlayerPunch::Update() {
 			value = gaugeValue / 10 + (1 - aimingValue) * 100 + (1 - pendulumValue) * 100;
 			break;
 		case BREAKING:
+			sprite->SetActive(false);
+			waitTimer += Time::GetInstance().GetDeltaTime();
+			if (waitTimer >= 2) {
+				nowMode = VIEWSCORE;
+			}
+			break;
+		case VIEWSCORE:
 			text->SetActive(true);
 			int intValue = floor(value);
 			text->text = to_string(intValue) + "km";
+			VariableManager::GetInstance().SetInt("megatonScore" + to_string(playerNumber), value);
 			break;
 	}
 

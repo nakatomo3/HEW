@@ -1,6 +1,7 @@
 #include "MegatonPunch.h"
 #include "Setting.h"
-
+#include "Time.h"
+#include "SceneManager.h"
 
 MegatonPunch::MegatonPunch(string name) : Scene(name) {
 
@@ -25,6 +26,9 @@ void MegatonPunch::Load() {
 	pendulumCenterTexture = new Texture("assets/textures/MegatonPunch/UI/PendulumCenter.png");
 	pendulumTexture = new Texture("assets/textures/MegatonPunch/UI/Pendulum.png");
 	pendulumWhiteTexture = new Texture("assets/textures/MegatonPunch/UI/PendulumWhite.png");
+
+	earth = new Texture("assets/textures/MegatonPunch/UI/Earth.png");
+	breaking = new Texture("assets/textures/MegatonPunch/UI/Breaking.png");
 
 	const float PLAYER_WIDTH = SCREEN_WIDTH/10;
 
@@ -113,6 +117,19 @@ void MegatonPunch::Load() {
 		text->SetOutlineColor(new Color(0, 0, 0, 255));
 		text->outlineDistance = SCREEN_HEIGHT * 0.007f;
 		text->SetSize(SCREEN_HEIGHT*0.1f);
+
+		earthObject = new GameObject();
+		earthSprite = new Sprite(earth);
+		earthObject->AddComponent(earthSprite);
+		earthSprite->SetActive(false);
+		earthSprite->SetScale(new Vector2(SCREEN_HEIGHT * 0.9, SCREEN_HEIGHT * 0.9));
+		earthSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, -0.01));
+
+		breakingSprite = new Sprite(breaking);
+		breakingSprite->SetScale(new Vector2(SCREEN_WIDTH * 1.5, SCREEN_WIDTH * 0.75));
+		breakingSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, -0.01));
+		breakingSprite->SetActive(false);
+		earthObject->AddComponent(breakingSprite);
 	}
 
 
@@ -142,6 +159,7 @@ void MegatonPunch::Start() {
 		ObjectManager::GetInstance().Instantiate(gaugeObjects[i]);
 		
 	}
+	ObjectManager::GetInstance().Instantiate(earthObject);
 }
 
 void MegatonPunch::Update() {
@@ -158,6 +176,16 @@ void MegatonPunch::Update() {
 			players[i]->SetBreakingFlag();
 		}
 		isBreaking = true;
+	}
+
+	if (isBreaking == true) {
+		earthSprite->SetActive(true);
+		timer += Time::GetInstance().GetDeltaTime();
+		if(timer >= 5){
+			SceneManager::GetInstance().LoadScene("megatonPunchResult");
+		} else if (timer >= 1) {
+			breakingSprite->SetActive(true);
+		}
 	}
 }
 
