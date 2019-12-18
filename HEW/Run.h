@@ -17,7 +17,7 @@ public:
 
 	void Start();
 	void Load();
-	void Unload();
+	void UnLoad();
 
 	void Update();
 
