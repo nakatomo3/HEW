@@ -66,27 +66,21 @@ void Archery::Load() {
 		targetObject->AddComponent(target);
 
 		Sprite* scoretitle = new Sprite(/*scoretitleTexture*/);
-		scoretitle->SetScale(new Vector2(SD_WIDTH * 1, SD_HEIGHT * 0.5));
+		scoretitle->SetScale(new Vector2(SD_WIDTH * 1, SD_HEIGHT * 0.9));
 		scoretitle->SetPosition(new Vector3(SD_WIDTH * 0.5, SD_HEIGHT * (i * 2.5 + 0.25), -0.001));
 		scoretitles.emplace_back(scoretitle);
 		scoretitleObject->AddComponent(scoretitle);
 
-		Sprite* score = new Sprite();
-		score->SetScale(new Vector2(SD_WIDTH * 1, SD_HEIGHT * 0.5));
-		score->SetPosition(new Vector3(SD_WIDTH * 0.5, SD_HEIGHT * (i * 2.5 + 0.75), -0.001));
-		scores.emplace_back(score);
-		scoreObject->AddComponent(score);
-
 		Text* mark = new Text();
 		scoreObject->AddComponent(mark);
 		marks.emplace_back(mark);
-		mark->SetPosition(new Vector3(0, SD_HEIGHT * (i * 2.5 + 0.65), -0.002));
+		mark->SetPosition(new Vector3(0, SD_HEIGHT * (i * 2.5 + 0.8), -0.002));
 		mark->isOutline = true;
 		mark->isBeautifulOutline = true;
 		mark->SetOutlineColor(new Color(128, 128, 128, 255));
 		mark->outlineDistance = SD_HEIGHT * 0.02;
-		mark->SetSize(SD_HEIGHT * 0.3);
-
+		mark->SetSize(SD_HEIGHT * 0.6);
+		mark->text = to_string(0);
 		scoreValues.emplace_back(0);
 		//marks[i]->text = to_string(scoreValues[i]);
 	}

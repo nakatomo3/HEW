@@ -43,10 +43,6 @@ private:
 	vector<Texture*> scoretitleTexture;
 	vector<Sprite*> scoretitleSprite;
 
-	vector<Sprite*> scores;
-	vector<Text*> scoreText;
-	vector<Sprite*> scoreSprite;
-
 	vector<int> scoreValues;
 
 	int playerCount = 0;
