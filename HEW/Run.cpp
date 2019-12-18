@@ -232,7 +232,7 @@ void Run::Load() {
 
 }
 
-void Run::Unload() {
+void Run::UnLoad() {
 	ObjectManager::GetInstance().Destroy(balloon);
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Destroy(playerObjects[i]);
@@ -244,6 +244,7 @@ void Run::Unload() {
 	ObjectManager::GetInstance().Destroy(replayRogoBackground);
 	ObjectManager::GetInstance().Destroy(runTime);
 	ObjectManager::GetInstance().Destroy(highlightBackground);
+	ObjectManager::GetInstance().Destroy(runHighlight);
 }
 
 void Run::Update() {

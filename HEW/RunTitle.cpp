@@ -63,8 +63,10 @@ void RunTitle::Load() {
 	manualObject = new GameObject();
 	manualSprite = new Sprite();
 	manualObject->AddComponent(manualSprite);
-	/*manualSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
-	manualSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y));*/
+
+	manualSprite->SetScale(new Vector2(SD_WIDTH * 10.0f, SD_HEIGHT * 7.0f));
+	manualSprite->SetPosition(new Vector3(SD_WIDTH * 5.0f, SD_HEIGHT * 3.5f, -0.001));
+	manualSprite->SetColor(new Color(100, 100, 100, 200));
 
 	okTexture = new Texture("assets/textures/All/UI/OK.png");
 
@@ -206,6 +208,16 @@ void RunTitle::Update() {
 			if (playerCount >= 4) {
 				if (Input::GetInstance().GetKeyDown(DIK_F) == true) {// F‚ð‰Ÿ‚µ‚½‚çtrue
 					isReady[3] = true;
+				}
+			}
+
+			for (int i = 0; i < playerCount; i++) {
+
+				if (isReady[i] == false) {
+					oks[i]->SetColor(new Color(128, 128, 128, 255));
+				}
+				else {
+					oks[i]->SetColor(new Color(255, 255, 255, 255));
 				}
 			}
 
