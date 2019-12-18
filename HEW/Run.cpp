@@ -31,8 +31,6 @@ void Run::Start() {
 	ObjectManager::GetInstance().Instantiate(replayRogo);
 	//タイム表示のインスタンス
 	ObjectManager::GetInstance().Instantiate(runTime);
-	//ハイライトテキストのインスタンス
-	ObjectManager::GetInstance().Instantiate(runHighlight);
 }
 
 void Run::Load() {
@@ -203,9 +201,9 @@ void Run::Load() {
 	replayRogoBackground->SetActive(false);
 
 	//ハイライト背景の処理
-	highlightBackgroundSprite = new Sprite();
+	highlightBackgroundTexture = new Texture("assets/textures/Run/UI/Hilight.png");
+	highlightBackgroundSprite = new Sprite(highlightBackgroundTexture);
 	highlightBackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
-	highlightBackgroundSprite->SetColor(D3DCOLOR_RGBA(0, 128, 128, 0));
 	highlightBackground = new GameObject();
 	highlightBackground->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0.01f));
 	highlightBackground->AddComponent(highlightBackgroundSprite);
@@ -217,14 +215,6 @@ void Run::Load() {
 	runTimeText->SetPosition(new Vector3(SD_WIDTH*0.5, SD_HEIGHT*0.5));
 	runTime->AddComponent(runTimeText);
 	runTime->SetActive(false);
-
-	//ハイライトテキストの処理
-	runHighlightText = new Text();
-	runHighlight = new GameObject();
-	runHighlightText->SetPosition(new Vector3(SD_WIDTH*0.5, SD_HEIGHT*0.5, -0.1f));
-	runHighlight->AddComponent(runHighlightText);
-	runHighlight->SetActive(false);
-
 
 	for (int i = 0; i < 4; i++) {
 		times.emplace_back(-1);
@@ -255,18 +245,14 @@ void Run::Update() {
 		//いらないもの消す
 		background->SetActive(false);
 		lane->SetActive(false);
-		runHighlight->SetActive(false);
 		//ランキングをロードする
 		SceneManager::GetInstance().LoadScene("runResult");
 	} else/*ハイライトの処理*/ if (timer >= 23.0f) {//22.5
     if (isReady == true) {
 			//いらないもの消す
 			runTime->SetActive(false);
-			//背景とテキストの表示
+			//ハイライト背景とカメラの表示
 			highlightBackground->SetActive(true);
-			runHighlight->SetActive(true);
-			runHighlightText->text = "1位";
-			runHighlightText->SetSize(50);
 			//ハイライト映像の処理
 			laneSprite->SetScale(new Vector2(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.49f));
 			lane->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT, 0));
