@@ -225,6 +225,9 @@
     <ClCompile Include="MegatonPunchResult.cpp">
       <Filter>ソース ファイル\Scenes\MegatonPunch</Filter>
     </ClCompile>
+    <ClCompile Include="ArcheryResult.cpp">
+      <Filter>ソース ファイル\Scenes\Archery</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -370,6 +373,9 @@
     </ClInclude>
     <ClInclude Include="MegatonPunchResult.h">
       <Filter>ヘッダー ファイル\Scenes\MegatonPunch</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcheryResult.h">
+      <Filter>ヘッダー ファイル\Scenes\Archery</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
