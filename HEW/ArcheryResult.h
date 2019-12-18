@@ -11,5 +11,19 @@ public :
 	void Start();
 	void Load();
 	void UnLoad();
+
+private:
+
+	//ランキングのオブジェクト
+	GameObject* ranking;
+
+	//ランキングのスプライト
+	Sprite* rankingSprite;
+
+	//ランキング背景のオブジェクト
+	GameObject* rankingBackground;
+
+	//ランキング背景のスプライト
+	Sprite* rankingBackgroundSprite;
 };
 
