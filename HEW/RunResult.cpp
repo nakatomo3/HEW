@@ -119,6 +119,9 @@ void RunResult::Load() {
 void RunResult::UnLoad() {
 	ObjectManager::GetInstance().Destroy(ranking);
 	ObjectManager::GetInstance().Destroy(background);
+	for (int i = 0; i < playerCount; i++) {
+		ObjectManager::GetInstance().Destroy(rankingTime[i]);
+	}
 }
 
 void RunResult::Update() {
