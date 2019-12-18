@@ -232,7 +232,7 @@ void Run::Load() {
 
 }
 
-void Run::UnLoad() {
+void Run::Unload() {
 	ObjectManager::GetInstance().Destroy(balloon);
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Destroy(playerObjects[i]);
