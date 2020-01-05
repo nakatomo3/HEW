@@ -231,6 +231,9 @@
     <ClCompile Include="SelectPlayerCount.cpp">
       <Filter>ソース ファイル\Scenes\Title</Filter>
     </ClCompile>
+    <ClCompile Include="BalloonArchery.cpp">
+      <Filter>ソース ファイル\Scripts\Archery</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -382,6 +385,9 @@
     </ClInclude>
     <ClInclude Include="SelectPlayerCount.h">
       <Filter>ヘッダー ファイル\Scenes\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="BalloonArchery.h">
+      <Filter>ヘッダー ファイル\Scripts\Archery</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

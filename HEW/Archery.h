@@ -2,6 +2,7 @@
 #include <vector>
 #include "Scene.h"
 #include "Time.h"
+#include "BalloonArchery.h"
 #include <string>
 #include "HeroEngine.h"
 using namespace std;
@@ -16,10 +17,30 @@ public:
 	void Update();
 	void UnLoad();
 
+	double GetTimer();
+
+	void ChangePlayerCount(unsigned int num);
+	int GetPlayerCount();
+
+	Sprite* GetPlayerSprite(int playerID);
+
+	void SetSprite(Sprite* _sprite);
+
+	void SetTime(int playerNumber, float time);
+
+	double timer = -COUNT_DOWN_MAX;
+
 private:
+
+	const float COUNT_DOWN_MAX = 3;
 
 	GameObject* backgroundObject;
 	Sprite* backgroundSprite;
+
+	GameObject* balloon;
+	Texture* balloonTexture;
+	Sprite* balloonSprite;
+	BalloonArchery* balloonArchery;
 
 	GameObject* playerObject;
 	GameObject* numberObject;
@@ -47,5 +68,6 @@ private:
 
 	int playerCount = 0;
 	vector<Text*> marks;
+	vector<float> times;
 };
 

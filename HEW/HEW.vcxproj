@@ -148,6 +148,7 @@
     <ClCompile Include="ArcheryTitle.cpp" />
     <ClCompile Include="AudioClip.cpp" />
     <ClCompile Include="AudioSource.cpp" />
+    <ClCompile Include="BalloonArchery.cpp" />
     <ClCompile Include="BalloonRun.cpp" />
     <ClCompile Include="ChargeGaugeRun.cpp" />
     <ClCompile Include="Color.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="ArcheryTitle.h" />
     <ClInclude Include="AudioClip.h" />
     <ClInclude Include="AudioSource.h" />
+    <ClInclude Include="BalloonArchery.h" />
     <ClInclude Include="BalloonRun.h" />
     <ClInclude Include="ChargeGaugeRun.h" />
     <ClInclude Include="Color.h" />
