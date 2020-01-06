@@ -130,6 +130,12 @@ void Archery::Update() {
 
 void Archery::UnLoad() {
 	ObjectManager::GetInstance().Destroy(backgroundObject);
+	ObjectManager::GetInstance().Destroy(balloon);
+	ObjectManager::GetInstance().Destroy(playerObject);
+	ObjectManager::GetInstance().Destroy(numberObject);
+	ObjectManager::GetInstance().Destroy(targetObject);
+	ObjectManager::GetInstance().Destroy(scoretitleObject);
+	ObjectManager::GetInstance().Destroy(scoreObject);
 }
 
 double Archery::GetTimer() {

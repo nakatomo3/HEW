@@ -18,7 +18,10 @@ void BalloonArchery::Update() {
 		archery = dynamic_cast<Archery*>(SceneManager::GetInstance().GetNowScene());
 	}
 
-	if (archery->timer >= 17) {	//•\Ž¦‚ðÁ‚µ‚Ü‚·
+	if (archery->timer >= 19) {
+		SceneManager::GetInstance().LoadScene("ArcheryResult");
+	}
+	else if (archery->timer >= 17) {	//•\Ž¦‚ðÁ‚µ‚Ü‚·
 		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
 		sprite->SetTexture(textures[6]);
 		sprite->SetColor(new Color(0, 0, 0, 255));
