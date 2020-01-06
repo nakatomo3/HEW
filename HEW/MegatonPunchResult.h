@@ -17,20 +17,28 @@ public:
 private:
 	vector<int> scores;
 
-	//ƒ‰ƒ“ƒLƒ“ƒO‚ÌƒIƒuƒWƒFƒNƒg
+	//ãƒ©ãƒ³ã‚­ãƒ³ã‚°ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	GameObject* ranking;
 
-	//ƒ‰ƒ“ƒLƒ“ƒO‚ÌƒXƒvƒ‰ƒCƒg
+	//ãƒ©ãƒ³ã‚­ãƒ³ã‚°ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 	Sprite* rankingSprite;
 
-	//ƒ‰ƒ“ƒLƒ“ƒO”wŒi‚ÌƒIƒuƒWƒFƒNƒg
+	//ãƒ©ãƒ³ã‚­ãƒ³ã‚°èƒŒæ™¯ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	GameObject* rankingBackground;
 
-	//ƒ‰ƒ“ƒLƒ“ƒO”wŒi‚ÌƒXƒvƒ‰ƒCƒg
+	//ãƒ©ãƒ³ã‚­ãƒ³ã‚°èƒŒæ™¯ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆ
 	Sprite* rankingBackgroundSprite;
+
+	//é †ä½ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+	vector<GameObject*> rankingScore{};
+
+	//é †ä½ã®ãƒ†ã‚­ã‚¹ãƒˆ
+	vector<Text*> rankingScoreText{};
 
 	int playerCount = 0;
 
-	float timer = 0;
+	bool isRanking = false;
+
+  float timer = 0;
 };
 
