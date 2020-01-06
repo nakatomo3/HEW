@@ -15,9 +15,9 @@ ArcheryTitle::~ArcheryTitle() {
 
 
 void ArcheryTitle::Start() {
+	ObjectManager::GetInstance().Instantiate(archeryObject);
 	ObjectManager::GetInstance().Instantiate(backgroundObject);
 	ObjectManager::GetInstance().Instantiate(manualObject);
-
 	for (int i = 0; i < playerCount; i++) {
 		isReady.emplace_back(false);
 	}
@@ -33,8 +33,48 @@ void ArcheryTitle::Load() {
 	backgroundObject->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.001));
 	backgroundSprite->SetColor(new Color(0, 0, 0, 0));
 
+	archeryObject = new GameObject();
+	archerySprite = new Sprite();
+	archeryObject->AddComponent(archerySprite);
+
+	archeryTexture1 = new Texture("assets/textures/Archery/Title/Title1.png", "Title1");// 軌道
+	archeryLogo1 = new Sprite(archeryTexture1);
+	archeryObject->AddComponent(archeryLogo1);
+	archeryLogo1->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	archeryLogo1->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT, 0));
+
+	archeryTexture2 = new Texture("assets/textures/Archery/Title/Title2.png", "Title2");// 弓なしプレイヤー
+	archeryLogo2 = new Sprite(archeryTexture2);
+	archeryObject->AddComponent(archeryLogo2);
+	archeryLogo2->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+
+	archeryTexture3 = new Texture("assets/textures/Archery/Title/Title3.png", "Title3");//　弓ありプレイヤー
+	archeryLogo3 = new Sprite(archeryTexture3);
+	archeryObject->AddComponent(archeryLogo3);
+	archeryLogo3->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	archeryLogo3->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+
+	archeryTexture4 = new Texture("assets/textures/Archery/Title/Title4.png", "Title4");//　的
+	archeryLogo4 = new Sprite(archeryTexture4);
+	archeryObject->AddComponent(archeryLogo4);
+	archeryLogo4->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	archeryLogo4->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+
+	archeryTexture5 = new Texture("assets/textures/Archery/Title/Title5.png", "Title5");//　台座
+	archeryLogo5 = new Sprite(archeryTexture5);
+	archeryObject->AddComponent(archeryLogo5);
+	archeryLogo5->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	archeryLogo5->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+
+	archeryTexture6 = new Texture("assets/textures/Archery/Title/Title6.png", "Title6");//　クソデカロゴ
+	archeryLogo6 = new Sprite(archeryTexture6);
+	archeryObject->AddComponent(archeryLogo6);
+	archeryLogo6->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	archeryLogo6->SetPosition(new Vector3(SCREEN_WIDTH , SCREEN_HEIGHT , 0));
+
 
 	manualObject = new GameObject();
+	manualObject->SetActive(false);
 	manualSprite = new Sprite();
 	manualObject->AddComponent(manualSprite);
 
@@ -65,51 +105,78 @@ void ArcheryTitle::Load() {
 }
 
 void ArcheryTitle::Update() {
-	if (playerCount >= 1) {
-		if (Input::GetInstance().GetKeyDown(DIK_A) == true) {// Aを押したらtrue
-			isReady[0] = true;
-		}
+
+	timer += Time::GetInstance().GetDeltaTime();
+
+	if (timer > 2.0) {
+		archeryLogo1->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));// 軌道
+		archeryLogo2->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));// 弓なしプレイヤー
+		archeryLogo3->SetActive(false);//弓ありプレイヤーを消してる
 	}
-	if (playerCount >= 2) {
-		if (Input::GetInstance().GetKeyDown(DIK_S) == true) {// Sを押したらtrue
-			isReady[1] = true;
-		}
+	if (timer > 3.0) {
+		archeryLogo1->SetActive(false);//軌道を消している
+		archeryLogo4->SetActive(false);//的を消してる
 	}
-	if (playerCount >= 3) {
-		if (Input::GetInstance().GetKeyDown(DIK_D) == true) {// Dを押したらtrue
-			isReady[2] = true;
-		}
-	}
-	if (playerCount >= 4) {
-		if (Input::GetInstance().GetKeyDown(DIK_F) == true) {// Fを押したらtrue
-			isReady[3] = true;
-		}
+	if (timer > 5.0) {
+		archeryLogo6->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));//クソデカロゴ//左から右
 	}
 
-	for (int i = 0; i < playerCount; i++) {
 
-		if (isReady[i] == false) {
-			oks[i]->SetColor(new Color(128, 128, 128, 255));
+		if (playerCount >= 1) {
+			if (Input::GetInstance().GetKeyDown(DIK_A) == true) {// Aを押したらtrue
+				isReady[0] = true;
+			}
 		}
-		else {
-			oks[i]->SetColor(new Color(255, 255, 255, 255));
+		if (playerCount >= 2) {
+			if (Input::GetInstance().GetKeyDown(DIK_S) == true) {// Sを押したらtrue
+				isReady[1] = true;
+			}
 		}
-	}
+		if (playerCount >= 3) {
+			if (Input::GetInstance().GetKeyDown(DIK_D) == true) {// Dを押したらtrue
+				isReady[2] = true;
+			}
+		}
+		if (playerCount >= 4) {
+			if (Input::GetInstance().GetKeyDown(DIK_F) == true) {// Fを押したらtrue
+				isReady[3] = true;
+			}
+		}
 
-	bool isAllReady = true;
-	for (int i = 0; i < playerCount; i++) {
-		if (isReady[i] == false) {
-			isAllReady = false;
-			break;
-		}
-	}
+		for (int i = 0; i < playerCount; i++) {
 
-	if (isAllReady == true) {
-		SceneManager::GetInstance().LoadScene("archery");
-	}
+			if (isReady[i] == false) {
+				oks[i]->SetColor(new Color(128, 128, 128, 255));
+			} else {
+				oks[i]->SetColor(new Color(255, 255, 255, 255));
+			}
+		}
+
+		bool isAllReady = true;
+		for (int i = 0; i < playerCount; i++) {
+			if (isReady[i] == false) {
+				isAllReady = false;
+				break;
+			}
+		}
+		/*if (isAllReady == true) {
+			isManual = true;
+			ObjectManager::GetInstance().Instantiate(manualObject);
+			archeryObject->SetActive(false);
+			for (int i = 0; i < 4; i++) {
+				isReady[i] = false;
+			}
+		}*/
+		if (isAllReady == true) {
+			backgroundObject->SetActive(true);
+			manualObject->SetActive(true);
+
+		}
 }
 
 void ArcheryTitle::UnLoad() {
 	ObjectManager::GetInstance().Destroy(backgroundObject);
 	ObjectManager::GetInstance().Destroy(manualObject);
+	ObjectManager::GetInstance().Destroy(archeryObject);
+	LogWriter::GetInstance().Log("a");
 }

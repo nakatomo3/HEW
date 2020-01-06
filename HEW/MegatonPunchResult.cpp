@@ -1,5 +1,7 @@
 #include "MegatonPunchResult.h"
 #include "VariableManager.h"
+#include "Time.h"
+#include "SceneManager.h"
 #include <algorithm>
 
 MegatonPunchResult::MegatonPunchResult(string name) : Scene(name) {
@@ -98,5 +100,13 @@ void MegatonPunchResult::UnLoad() {
 	ObjectManager::GetInstance().Destroy(rankingBackground);
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Destroy(rankingScore[i]);
+	}
+}
+
+void MegatonPunchResult::Update() {
+	timer += Time::GetInstance().GetDeltaTime();
+
+	if (timer > 5) {
+		SceneManager::GetInstance().LoadScene("archeryTitle");// archeryTitle‚É‘JˆÚ
 	}
 }
