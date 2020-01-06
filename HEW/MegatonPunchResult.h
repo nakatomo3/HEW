@@ -12,6 +12,7 @@ public:
 	void Start();
 	void Load();
 	void UnLoad();
+	void Update();
 
 private:
 	vector<int> scores;
@@ -29,5 +30,7 @@ private:
 	Sprite* rankingBackgroundSprite;
 
 	int playerCount = 0;
+
+	float timer = 0;
 };
 
