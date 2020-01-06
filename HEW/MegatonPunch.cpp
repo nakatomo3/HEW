@@ -153,6 +153,14 @@ void MegatonPunch::Load() {
 
 }
 
+void MegatonPunch::UnLoad() {
+	for (int i = 0; i < VariableManager::GetInstance().GetInt("playerCount"); i++) {
+		ObjectManager::GetInstance().Destroy(playerObjects[i]);
+
+	}
+	ObjectManager::GetInstance().Destroy(earthObject);
+}
+
 void MegatonPunch::Start() {
 	for (int i = 0; i < VariableManager::GetInstance().GetInt("playerCount"); i++) {
 		ObjectManager::GetInstance().Instantiate(playerObjects[i]);

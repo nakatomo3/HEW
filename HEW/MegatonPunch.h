@@ -13,6 +13,7 @@ public:
 	~MegatonPunch();
 
 	void Load();
+	void UnLoad();
 	void Start();
 
 	void Update();

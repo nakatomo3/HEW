@@ -75,7 +75,7 @@ void RunResult::Start() {
 			rankingTimeText[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.76f, 0));
 		}
 
-		isRanking == true;
+		isRanking = true;
 
 	}
 
