@@ -41,6 +41,9 @@ public:
 
 	void Draw() override;
 
+	void SetTexturePosition(float _tx, float _ty);
+	void SetTextureScale(float _tw, float _th);
+
 protected :
 	Texture* texture;
 
@@ -54,7 +57,11 @@ protected :
 
 	void Draw(Texture* _texture);
 
-	float tx, ty, tw, th;
+	//テクスチャサンプル左上座標(0~1)
+	float tx, ty;
+
+	//テクスチャサンプルの大きさ(0~1)
+	float tw, th;
 	~Sprite();
 
 };

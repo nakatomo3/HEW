@@ -154,10 +154,10 @@ void Sprite::Draw() {
 		}
 
 		Vertex2D vertex[] = {
-			{D3DXVECTOR4(positionX + left, positionY + up, positionZ, 1.0f), g_Color, D3DXVECTOR2(0, 0)},
-			{D3DXVECTOR4(positionX + right, positionY + up, positionZ, 1.0f), g_Color, D3DXVECTOR2(1, 0)},
-			{D3DXVECTOR4(positionX + left, positionY + down, positionZ, 1.0f), g_Color, D3DXVECTOR2(0, 1)},
-			{D3DXVECTOR4(positionX + right, positionY + down, positionZ, 1.0f), g_Color, D3DXVECTOR2(1, 1)}
+			{D3DXVECTOR4(positionX + left, positionY + up, positionZ, 1.0f), g_Color, D3DXVECTOR2(tx, ty)},
+			{D3DXVECTOR4(positionX + right, positionY + up, positionZ, 1.0f), g_Color, D3DXVECTOR2(tx+tw, ty)},
+			{D3DXVECTOR4(positionX + left, positionY + down, positionZ, 1.0f), g_Color, D3DXVECTOR2(tx, ty+th)},
+			{D3DXVECTOR4(positionX + right, positionY + down, positionZ, 1.0f), g_Color, D3DXVECTOR2(tx+tw, ty+th)}
 		};
 
 		//テクスチャ座標計算
@@ -167,18 +167,15 @@ void Sprite::Draw() {
 		u[1] = (float)(tx + tw) / tw;
 		v[1] = (float)(ty + th) / th;    //ピクセル座標をテクスチャ座標に変換
 
-		float	lx = tw / 2.0f;
-		float	ly = th / 2.0f;
-
 		//g_pVertexBuffer->Lock(0, 0, (void**)&pv, 0);    //配列のポインタを受け取る
 
 		for (int i = 0; i < 4; i++) {
 			vertex[i].color = g_Color;
 		}
-		vertex[0].texcoord = D3DXVECTOR2(u[0], v[0]);
+		/*vertex[0].texcoord = D3DXVECTOR2(u[0], v[0]);
 		vertex[1].texcoord = D3DXVECTOR2(u[1], v[0]);
 		vertex[2].texcoord = D3DXVECTOR2(u[0], v[1]);
-		vertex[3].texcoord = D3DXVECTOR2(u[1], v[1]);
+		vertex[3].texcoord = D3DXVECTOR2(u[1], v[1]);*/
 
 		//g_pVertexBuffer->Unlock();//バーテックスバッファへの書き込み終了
 
@@ -252,6 +249,16 @@ void Sprite::Draw() {
 		//LogWriter::GetInstance().Log("テクスチャがnullです");
 		texture = nullTexture;
 	}
+}
+
+void Sprite::SetTexturePosition(float _tx, float _ty) {
+	tx = _tx;
+	ty = _ty;
+}
+
+void Sprite::SetTextureScale(float _tw, float _th) {
+	tw = _tw;
+	th = _th;
 }
 
 void Sprite::Draw(Texture * _texture) {
