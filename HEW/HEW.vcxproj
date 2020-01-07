@@ -179,6 +179,7 @@
     <ClCompile Include="ScriptBase.cpp" />
     <ClCompile Include="SelectCharacter.cpp" />
     <ClCompile Include="SelectPlayerCount.cpp" />
+    <ClCompile Include="SelectPlayerCountCursor.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -228,6 +229,7 @@
     <ClInclude Include="ScriptBase.h" />
     <ClInclude Include="SelectCharacter.h" />
     <ClInclude Include="SelectPlayerCount.h" />
+    <ClInclude Include="SelectPlayerCountCursor.h" />
     <ClInclude Include="Setting.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Sprite.h" />

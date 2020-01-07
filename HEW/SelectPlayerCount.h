@@ -1,6 +1,8 @@
 #pragma once
 #include "Scene.h"
 #include <string.h>
+#include "Sprite.h"
+#include <vector>
 using namespace std;
 class SelectPlayerCount : public Scene {
 public:
@@ -11,5 +13,14 @@ public:
 	void UnLoad();
 	void Start();
 	void Update();
+
+private:
+	GameObject* cursorObject;
+	Sprite* cursorSprite;
+	Texture* cursorTexture;
+
+	GameObject* playerCountObject;
+	vector<Sprite*> playerCountSprites;
+	vector<Texture*> playerCountTextures;
 };
 

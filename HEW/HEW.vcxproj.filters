@@ -97,6 +97,9 @@
     <Filter Include="ソース ファイル\Scripts\Archery">
       <UniqueIdentifier>{ba895d6a-5dc8-4668-a842-7b8c82614750}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scripts\SelectPlayerCount">
+      <UniqueIdentifier>{3301e056-0b9f-4d43-89a4-4cc51e78323e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -233,6 +236,9 @@
     </ClCompile>
     <ClCompile Include="BalloonArchery.cpp">
       <Filter>ソース ファイル\Scripts\Archery</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectPlayerCountCursor.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -388,6 +394,9 @@
     </ClInclude>
     <ClInclude Include="BalloonArchery.h">
       <Filter>ヘッダー ファイル\Scripts\Archery</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectPlayerCountCursor.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
