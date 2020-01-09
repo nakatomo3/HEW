@@ -21,7 +21,7 @@ private:
 	Sprite*  playerBackgroundSprite;
 
 	GameObject* selectCursorObject;
-	Sprite* selectCursorSprite;
+	vector<Sprite*> selectCursorSprite;
 
 	GameObject* selectCharacterObject1;
 	GameObject* selectCharacterObject2;
@@ -36,4 +36,7 @@ private:
 	float cursorPosition = 0.0f;
 	int playerCount = 0;
 	vector<int> cursorPositions;
+
+	vector<bool> isSelected;
+	vector<bool> isReadys;
 };

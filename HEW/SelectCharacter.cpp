@@ -8,7 +8,7 @@
 void SelectCharacter::Start() {
 
 	// ”wŒi
-	ObjectManager::GetInstance().Instantiate(backgroundObject);
+	//ObjectManager::GetInstance().Instantiate(backgroundObject);
 
 	// ƒvƒŒƒCƒ„[”wŒi
 	ObjectManager::GetInstance().Instantiate(playerBackgroundObject);
@@ -82,14 +82,18 @@ void SelectCharacter::Load() {//”wŒi@ã‚ªƒvƒŒƒCƒ„[”wŒi(1–‡)@‰º‚ªƒLƒƒƒ‰”wŒi(4–
 		cursorPositions.emplace_back(0);
 	}
 
+	selectCursorObject = new GameObject();
 	for (int i = 0; i < playerCount; i++) {
 		//ƒJ[ƒ\ƒ‹
-		selectCursorObject = new GameObject();
-		selectCursorSprite = new Sprite();
-		selectCursorObject->AddComponent(selectCursorSprite);
-		selectCursorSprite->SetScale(new Vector2(SCREEN_WIDTH *0.05, SCREEN_HEIGHT *0.08));// ƒJ[ƒ\ƒ‹‚Ì‘å‚«‚³
-		selectCursorSprite->SetColor(new Color(0, 0, 255, 255));// …F
+		selectCursorSprite.emplace_back(new Sprite());
+		selectCursorObject->AddComponent(selectCursorSprite[i]);
+		selectCursorSprite[i]->SetScale(new Vector2(SCREEN_WIDTH *0.05, SCREEN_HEIGHT *0.08));// ƒJ[ƒ\ƒ‹‚Ì‘å‚«‚³
+		selectCursorSprite[i]->SetColor(new Color(0, 0, 255, 255));// …F
 
+	}
+
+	for (int i = 0; i < 4; i++) {
+		isSelected.emplace_back(false);
 	}
 
 }
@@ -109,54 +113,84 @@ void SelectCharacter::Update() {
 				cursorPositions[0]++;
 			}
 		}
-		selectCursorSprite->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[0] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6, -0.01));
+		selectCursorSprite[0]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[0] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6, -0.01));
+
+		if (Input::GetInstance().GetKeyDown(DIK_A) && isSelected[cursorPositions[0]] == false) {
+			isSelected[cursorPositions[0]] = true;
+			isReady[0] = true;
+		}
 	}
 
 	if (playerCount >= 2) {// ƒvƒŒƒCƒ„[‚ª2l‚Ì
-		if (Input::GetInstance().GetKeyDown(DIK_1)) {// 1‚ğ‰Ÿ‚µ‚½‚Æ‚« ¶
+		if (Input::GetInstance().GetKeyDown(DIK_3)) {// 1‚ğ‰Ÿ‚µ‚½‚Æ‚« ¶
 			if (cursorPositions[1] >= 1) {
 				cursorPositions[1]--;
 			}
 		}
 
-		if (Input::GetInstance().GetKeyDown(DIK_2)) {// 2‚ğ‰Ÿ‚µ‚½‚Æ‚« ‰E
+		if (Input::GetInstance().GetKeyDown(DIK_4)) {// 2‚ğ‰Ÿ‚µ‚½‚Æ‚« ‰E
 			if (cursorPositions[1] <= 2) {
 				cursorPositions[1]++;
 			}
 		}
-		selectCursorSprite->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[1] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6, -0.01));
+		selectCursorSprite[1]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[1] + 1) + SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6, -0.01));
+	
+		if (Input::GetInstance().GetKeyDown(DIK_S) && isSelected[cursorPositions[1]] == false) {
+			isSelected[cursorPositions[1]] = true;
+			isReady[1] = true;
+		}
 	}
 
 	if (playerCount >= 3) {// ƒvƒŒƒCƒ„[‚ª3l‚Ì
-		if (Input::GetInstance().GetKeyDown(DIK_1)) {// 1‚ğ‰Ÿ‚µ‚½‚Æ‚« ¶
+		if (Input::GetInstance().GetKeyDown(DIK_5)) {// 1‚ğ‰Ÿ‚µ‚½‚Æ‚« ¶
 			if (cursorPositions[2] >= 1) {
 				cursorPositions[2]--;
 			}
 		}
 
-		if (Input::GetInstance().GetKeyDown(DIK_2)) {// 2‚ğ‰Ÿ‚µ‚½‚Æ‚« ‰E
+		if (Input::GetInstance().GetKeyDown(DIK_6)) {// 2‚ğ‰Ÿ‚µ‚½‚Æ‚« ‰E
 			if (cursorPositions[2] <= 2) {
 				cursorPositions[2]++;
 			}
 		}
-		selectCursorSprite->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[2] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6, -0.01));
+		selectCursorSprite[2]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[2] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.25 , -0.01));
+	
+		if (Input::GetInstance().GetKeyDown(DIK_D) && isSelected[cursorPositions[2]] == false) {
+			isSelected[cursorPositions[2]] = true;
+			isReady[2] = true;
+		}
 	}
 
 	if (playerCount >= 4) {// ƒvƒŒƒCƒ„[‚ª4l‚Ì
-		if (Input::GetInstance().GetKeyDown(DIK_1)) {// 1‚ğ‰Ÿ‚µ‚½‚Æ‚« ¶
+		if (Input::GetInstance().GetKeyDown(DIK_7)) {// 1‚ğ‰Ÿ‚µ‚½‚Æ‚« ¶
 			if (cursorPositions[3] >= 1) {
 				cursorPositions[3]--;
 			}
 		}
 
-		if (Input::GetInstance().GetKeyDown(DIK_2)) {// 2‚ğ‰Ÿ‚µ‚½‚Æ‚« ‰E
+		if (Input::GetInstance().GetKeyDown(DIK_8)) {// 2‚ğ‰Ÿ‚µ‚½‚Æ‚« ‰E
 			if (cursorPositions[3] <= 2) {
 				cursorPositions[3]++;
 			}
 		}
-		selectCursorSprite->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[3] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6, -0.01));
+		selectCursorSprite[3]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[3] + 1) + SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.25, -0.01));
 	}
 
+	if (Input::GetInstance().GetKeyDown(DIK_F) && isSelected[cursorPositions[3]] == false) {
+		isSelected[cursorPositions[3]] = true;
+		isReady[3] = true;
+	}
+
+	bool isAllReady = true;
+	for (int i = 0; i < playerCount; i++) {
+		if (isReady[i] == false) {
+			isAllReady = false;
+		}
+	}
+
+	if (isAllReady == true) {
+		SceneManager::GetInstance().LoadScene("runTitle");
+	}
 }
 
 SelectCharacter::SelectCharacter(string name) : Scene(name) {
