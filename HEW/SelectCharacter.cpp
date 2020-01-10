@@ -212,6 +212,15 @@ void SelectCharacter::Update() {
 	}
 }
 
+void SelectCharacter::UnLoad() {
+	ObjectManager::GetInstance().Destroy(playerBackgroundObject);
+	ObjectManager::GetInstance().Destroy(selectCharacterObject1);
+	ObjectManager::GetInstance().Destroy(selectCharacterObject2);
+	ObjectManager::GetInstance().Destroy(selectCharacterObject3);
+	ObjectManager::GetInstance().Destroy(selectCharacterObject4);
+	ObjectManager::GetInstance().Destroy(selectCursorObject);
+}
+
 SelectCharacter::SelectCharacter(string name) : Scene(name) {
 
 }
