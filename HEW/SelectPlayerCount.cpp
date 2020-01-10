@@ -10,10 +10,10 @@ SelectPlayerCount::~SelectPlayerCount() {
 
 void SelectPlayerCount::Load() {
 	cursorObject = new GameObject();
-	//cursorTexture = new Texture("");
-	cursorSprite = new Sprite();
+	cursorTexture = new Texture("assets/textures/System/SelectPlayerCount/Cursor.png");
+	cursorSprite = new Sprite(cursorTexture);
 	cursorObject->AddComponent(cursorSprite);
-	cursorSprite->SetScale(new Vector2(100, 100));
+	cursorSprite->SetScale(new Vector2(SCREEN_HEIGHT*0.1, SCREEN_HEIGHT*0.1));
 	cursorObject->AddComponent(new SelectPlayerCountCursor());
 
 	playerCountObject = new GameObject();
@@ -25,9 +25,9 @@ void SelectPlayerCount::Load() {
 	playerCountSprites.emplace_back(new Sprite(playerCountTextures[1]));
 	playerCountSprites.emplace_back(new Sprite(playerCountTextures[2]));
 
-	playerCountSprites[0]->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_HEIGHT*0.2f, -0.01f));
-	playerCountSprites[1]->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_HEIGHT*0.5f, -0.01f));
-	playerCountSprites[2]->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_HEIGHT*0.8f, -0.01f));
+	playerCountSprites[0]->SetPosition(new Vector3(SCREEN_CENTER_X*1.05f, SCREEN_HEIGHT*0.2f, -0.01f));
+	playerCountSprites[1]->SetPosition(new Vector3(SCREEN_CENTER_X*1.05f, SCREEN_HEIGHT*0.5f, -0.01f));
+	playerCountSprites[2]->SetPosition(new Vector3(SCREEN_CENTER_X*1.05f, SCREEN_HEIGHT*0.8f, -0.01f));
 
 	playerCountSprites[0]->SetScale(new Vector2(SCREEN_HEIGHT*0.6f, SCREEN_HEIGHT*0.3f));
 	playerCountSprites[1]->SetScale(new Vector2(SCREEN_HEIGHT*0.6f, SCREEN_HEIGHT*0.3f));
