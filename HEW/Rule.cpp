@@ -106,7 +106,7 @@ void Rule::Update() {
 	}
 
 	if (isAllReady == true) {
-		SceneManager::GetInstance().LoadScene("selectCharacter");
+		SceneManager::GetInstance().LoadScene("selectPlayerCount");
 	}
 
 }
