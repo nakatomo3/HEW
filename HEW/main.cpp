@@ -169,7 +169,7 @@ bool Init(){
 	Scene* archeryTitle = new ArcheryTitle("archeryTitle");
 	Scene* archeryResult = new ArcheryResult("ArcheryResult");
 
-	SceneManager::GetInstance().LoadScene("run");//仮のScene遷移機能
+	SceneManager::GetInstance().LoadScene("Title");//仮のScene遷移機能
 	
 
 	//例。こんな感じで初期化する。シーンにまとめるのを推奨
