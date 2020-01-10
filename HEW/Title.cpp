@@ -142,7 +142,7 @@ void Title::Update() {
 	}
 
 	if (timer >= 8) {
-		SceneManager::GetInstance().LoadScene("Rule");
+		SceneManager::GetInstance().LoadScene("selectPlayerCount");
 	}
 
 }
