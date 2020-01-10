@@ -141,10 +141,6 @@ void Title::Update() {
 		}
 	}
 
-	if (Input::GetInstance().GetKey(DIK_Q)) {
-		SceneManager::GetInstance().LoadScene("runTitle");
-	}
-
 	if (timer >= 8) {
 		SceneManager::GetInstance().LoadScene("Rule");
 	}
