@@ -32,7 +32,6 @@ void RunTitle::Load() {
 	backgroundObject = new GameObject();
 	backgroundSprite = new Sprite();
 	backgroundObject->AddComponent(backgroundSprite);
-
 	backgroundObject->SetPosition(new Vector3(1, 1, 0));
 	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
 
