@@ -186,6 +186,7 @@
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleAnimation.cpp" />
+    <ClCompile Include="TotalResult.cpp" />
     <ClCompile Include="VariableManager.cpp" />
     <ClCompile Include="VisualComponent.cpp" />
   </ItemGroup>
@@ -238,6 +239,7 @@
     <ClInclude Include="Time.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="TitleAnimation.h" />
+    <ClInclude Include="TotalResult.h" />
     <ClInclude Include="VariableManager.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />

@@ -103,6 +103,12 @@
     <Filter Include="ヘッダー ファイル\Scripts\SelectPlayerCount">
       <UniqueIdentifier>{1e9b055d-b3e5-4a85-9145-149b872c6e58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scenes\Result">
+      <UniqueIdentifier>{572f5a02-7bb7-4f0d-a063-a917d4621abd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scenes\Result">
+      <UniqueIdentifier>{7b956c84-d8ca-47a2-b9a2-4cea3a5042d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -242,6 +248,9 @@
     </ClCompile>
     <ClCompile Include="SelectPlayerCountCursor.cpp">
       <Filter>ソース ファイル\Scripts\SelectPlayerCount</Filter>
+    </ClCompile>
+    <ClCompile Include="TotalResult.cpp">
+      <Filter>ソース ファイル\Scenes\Result</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -400,6 +409,9 @@
     </ClInclude>
     <ClInclude Include="SelectPlayerCountCursor.h">
       <Filter>ヘッダー ファイル\Scripts\SelectPlayerCount</Filter>
+    </ClInclude>
+    <ClInclude Include="TotalResult.h">
+      <Filter>ヘッダー ファイル\Scenes\Result</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

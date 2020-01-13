@@ -22,6 +22,7 @@
 #include "ArcheryTitle.h"
 #include "MegatonPunchResult.h"
 #include "ArcheryResult.h"
+#include "TotalResult.h"
 /*------------------------------------------------------------------------------
 グローバル変数宣言
 ------------------------------------------------------------------------------*/
@@ -168,6 +169,8 @@ bool Init(){
 	Scene* archery = new Archery("archery");
 	Scene* archeryTitle = new ArcheryTitle("archeryTitle");
 	Scene* archeryResult = new ArcheryResult("ArcheryResult");
+
+	Scene* totalReslt = new TotalResult("totalResult");
 
 	SceneManager::GetInstance().LoadScene("Title");//仮のScene遷移機能
 	
