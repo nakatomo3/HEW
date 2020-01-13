@@ -37,6 +37,7 @@ void Run::Load() {
 	Texture* normalGaugeTexture = new Texture("assets/textures/Run/UI/gauge.png");
 	Texture* brokenGaugeTexture = new Texture("assets/textures/Run/UI/gauge2.png");
 	
+	playerCount = VariableManager::GetInstance().GetInt("playerCount");
 
 	for (int i = 0; i < playerCount; i++) {//プレイヤーのカウント(playerCount)の数によってゲージの表示
 		ChargeGaugeRun* gauge = new ChargeGaugeRun();
