@@ -15,8 +15,6 @@ Run::~Run() {
 void Run::Start() {
 	//背景のインスタンス
 	ObjectManager::GetInstance().Instantiate(background);
-	//リプレイロゴ背景のインスタンス
-	ObjectManager::GetInstance().Instantiate(replayRogoBackground);
 	//ハイライト背景のインスタンス
 	ObjectManager::GetInstance().Instantiate(highlightBackground);
 	//レーンのインスタンス
@@ -31,6 +29,8 @@ void Run::Start() {
 	ObjectManager::GetInstance().Instantiate(replayRogo);
 	//タイム表示のインスタンス
 	ObjectManager::GetInstance().Instantiate(runTime);
+	//リプレイロゴ背景のインスタンス
+	ObjectManager::GetInstance().Instantiate(replayRogoBackground);
 }
 
 void Run::Load() {
