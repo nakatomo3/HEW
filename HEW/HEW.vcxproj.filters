@@ -252,6 +252,9 @@
     <ClCompile Include="TotalResult.cpp">
       <Filter>ソース ファイル\Scenes\Result</Filter>
     </ClCompile>
+    <ClCompile Include="MegatonPunchRule.cpp">
+      <Filter>ソース ファイル\Scenes\MegatonPunch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -412,6 +415,9 @@
     </ClInclude>
     <ClInclude Include="TotalResult.h">
       <Filter>ヘッダー ファイル\Scenes\Result</Filter>
+    </ClInclude>
+    <ClInclude Include="MegatonPunchRule.h">
+      <Filter>ヘッダー ファイル\Scenes\MegatonPunch</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

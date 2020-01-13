@@ -23,6 +23,7 @@
 #include "MegatonPunchResult.h"
 #include "ArcheryResult.h"
 #include "TotalResult.h"
+#include "MegatonPunchRule.h"
 /*------------------------------------------------------------------------------
 グローバル変数宣言
 ------------------------------------------------------------------------------*/
@@ -164,6 +165,7 @@ bool Init(){
 	
 	Scene* megatonPunch = new MegatonPunch("megatonPunch");
 	Scene* megatonPunchTitle = new MegatonPunchTitle("megatonPunchTitle");
+	Scene* megatonPunchRule = new MegatonPunchRule("megatonPunchRule");
 	Scene* megatonPunchResult = new MegatonPunchResult("megatonPunchResult");
 
 	Scene* archery = new Archery("archery");

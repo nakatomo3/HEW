@@ -159,6 +159,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MegatonPunch.cpp" />
     <ClCompile Include="MegatonPunchResult.cpp" />
+    <ClCompile Include="MegatonPunchRule.cpp" />
     <ClCompile Include="MegatonPunchTitle.cpp" />
     <ClCompile Include="MyDirect3D.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -208,6 +209,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="MegatonPunch.h" />
     <ClInclude Include="MegatonPunchResult.h" />
+    <ClInclude Include="MegatonPunchRule.h" />
     <ClInclude Include="MegatonPunchTitle.h" />
     <ClInclude Include="MyDirect3D.h" />
     <ClInclude Include="GameObject.h" />
