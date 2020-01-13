@@ -190,12 +190,14 @@ void SelectCharacter::Update() {
 			selectCursorSprite[3]->SetColor(new Color(0, 0, 128, 255));
 		}
 		selectCursorSprite[3]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[3] + 1) + SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.25, -0.02f));
+
+		if (Input::GetInstance().GetKeyDown(DIK_F) && isSelected[cursorPositions[3]] == false) {
+			isSelected[cursorPositions[3]] = true;
+			isReady[3] = true;
+		}
 	}
 
-	if (Input::GetInstance().GetKeyDown(DIK_F) && isSelected[cursorPositions[3]] == false) {
-		isSelected[cursorPositions[3]] = true;
-		isReady[3] = true;
-	}
+
 
 	bool isAllReady = true;
 	for (int i = 0; i < playerCount; i++) {
