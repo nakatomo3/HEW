@@ -101,28 +101,30 @@ void Archery::Load() {
 void Archery::Update() {
 	timer += Time::GetInstance().GetDeltaTime();
 
-	if (playerCount >= 1) {
-		if (Input::GetInstance().GetKeyDown(DIK_A) == true) {// A‚ð‰Ÿ‚µ‚½‚çtrue
-			scoreValues[0] += 100;
-			marks[0]->text = to_string(scoreValues[0]);
+	if (timer >= 4 && timer < 14) {
+		if (playerCount >= 1) {
+			if (Input::GetInstance().GetKeyDown(DIK_A) == true) {// A‚ð‰Ÿ‚µ‚½‚çtrue
+				scoreValues[0] += 100;
+				marks[0]->text = to_string(scoreValues[0]);
+			}
 		}
-	}
-	if (playerCount >= 2) {
-		if (Input::GetInstance().GetKeyDown(DIK_S) == true) {// S‚ð‰Ÿ‚µ‚½‚çtrue
-			scoreValues[1] += 100;
-			marks[1]->text = to_string(scoreValues[1]);
+		if (playerCount >= 2) {
+			if (Input::GetInstance().GetKeyDown(DIK_S) == true) {// S‚ð‰Ÿ‚µ‚½‚çtrue
+				scoreValues[1] += 100;
+				marks[1]->text = to_string(scoreValues[1]);
+			}
 		}
-	}
-	if (playerCount >= 3) {
-		if (Input::GetInstance().GetKeyDown(DIK_D) == true) {// D‚ð‰Ÿ‚µ‚½‚çtrue
-			scoreValues[2] += 100;
-			marks[2]->text = to_string(scoreValues[2]);
+		if (playerCount >= 3) {
+			if (Input::GetInstance().GetKeyDown(DIK_D) == true) {// D‚ð‰Ÿ‚µ‚½‚çtrue
+				scoreValues[2] += 100;
+				marks[2]->text = to_string(scoreValues[2]);
+			}
 		}
-	}
-	if (playerCount >= 4) {
-		if (Input::GetInstance().GetKeyDown(DIK_F) == true) {// F‚ð‰Ÿ‚µ‚½‚çtrue
-			scoreValues[3] += 100;
-			marks[3]->text = to_string(scoreValues[3]);
+		if (playerCount >= 4) {
+			if (Input::GetInstance().GetKeyDown(DIK_F) == true) {// F‚ð‰Ÿ‚µ‚½‚çtrue
+				scoreValues[3] += 100;
+				marks[3]->text = to_string(scoreValues[3]);
+			}
 		}
 	}
 }
