@@ -15,8 +15,8 @@ ArcheryTitle::~ArcheryTitle() {
 
 
 void ArcheryTitle::Start() {
-	ObjectManager::GetInstance().Instantiate(archeryObject);
 	ObjectManager::GetInstance().Instantiate(backgroundObject);
+	ObjectManager::GetInstance().Instantiate(archeryObject);
 	for (int i = 0; i < playerCount; i++) {
 		isReady.emplace_back(false);
 	}
