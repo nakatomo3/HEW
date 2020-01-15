@@ -127,6 +127,11 @@ void Archery::Update() {
 			}
 		}
 	}
+
+	for (int i = 0; i < playerCount; i++){
+		int intValue = floor(scoreValues[i]);
+		VariableManager::GetInstance().SetInt("archeryScore" + to_string(i), scoreValues[i]);
+	}
 }
 
 
