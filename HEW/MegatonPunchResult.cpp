@@ -76,7 +76,6 @@ void MegatonPunchResult::Load() {
 	ranking = new GameObject();
 	rankingSprite->SetColor(new Color(255, 0, 0, 255));
 	ranking->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0));
-	//ranking->AddComponent(rankingSprite);
 
 	//ランキング背景表示
 	rankingBackgroundSprite = new Sprite();
@@ -84,7 +83,6 @@ void MegatonPunchResult::Load() {
 	rankingBackground = new GameObject();
 	rankingBackground->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0.01));
 	rankingBackgroundSprite->SetColor(new Color(0, 0, 0, 255));
-	//rankingBackground->AddComponent(rankingBackgroundSprite);
 
 	//順位表示
 	for (int i = 0; i < playerCount; i++) {
