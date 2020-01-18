@@ -29,7 +29,7 @@ void BalloonArchery::Update() {
 
 	else if (archery->timer >= 14) { // 終了の表示
 		sprite->SetScale(new Vector2(SD_HEIGHT * 6, SD_HEIGHT * 6));
-		sprite->SetTexture(textures[5]);
+		sprite->SetTexture(textures[0]);
 	}
 
 	else if (archery->timer >= 13) { //残り1s
@@ -55,12 +55,12 @@ void BalloonArchery::Update() {
 
 	else if (archery->timer >= 4) { //A連打の表示
 		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
-		sprite->SetTexture(textures[2]);
+		sprite->SetTexture(textures[0]);
 	}
 
 	else if (archery->timer >= 3) { //Goの表示
 		sprite->SetScale(new Vector2(SD_HEIGHT * 6, SD_HEIGHT * 6));
-		sprite->SetTexture(textures[1]);
+		sprite->SetTexture(textures[0]);
 	}
 
 	else if (archery->timer >= 0) { //Readyの表示
