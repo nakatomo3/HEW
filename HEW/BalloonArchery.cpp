@@ -23,34 +23,133 @@ void BalloonArchery::Update() {
 	}
 	else if (archery->timer >= 17) {	//表示を消します
 		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
-		sprite->SetTexture(textures[6]);
 		sprite->SetColor(new Color(0, 0, 0, 255));
 	}
 
 	else if (archery->timer >= 14) { // 終了の表示
 		sprite->SetScale(new Vector2(SD_HEIGHT * 6, SD_HEIGHT * 6));
-		sprite->SetTexture(textures[6]);
+		sprite->SetTexture(textures[7]);
 	}
 
 	else if (archery->timer >= 13) { //残り1s
 		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
-		sprite->SetTexture(textures[5]);
+		sprite->SetTexture(textures[6]);
 	}
 
 	else if (archery->timer >= 12) { //残り2s
 		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
-		sprite->SetTexture(textures[4]);
+		sprite->SetTexture(textures[5]);
 	}
 
 	else if (archery->timer >= 11) { //残り3s
 		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
-		sprite->SetTexture(textures[3]);
+		sprite->SetTexture(textures[4]);
 		sprite->SetColor(new Color(255, 255, 255, 255));
 	}
 
-	else if (archery->timer >= 7) { //表示を消します
+	else if (archery->timer >= 5.01) { //表示を消します
 		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
 		sprite->SetColor(new Color(0, 0, 0, 255));
+	}
+
+	else if (archery->timer >= 5) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[3]);
+	}
+
+	else if (archery->timer >= 4.95) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[2]);
+	}
+
+	else if (archery->timer >= 4.9) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[3]);
+	}
+
+	else if (archery->timer >= 4.85) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[2]);
+	}
+
+	else if (archery->timer >= 4.8) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[3]);
+	}
+
+	else if (archery->timer >= 4.75) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[2]);
+	}
+
+	else if (archery->timer >= 4.7) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[2]);
+	}
+
+	else if (archery->timer >= 4.65) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[3]);
+	}
+
+	else if (archery->timer >= 4.6) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[2]);
+	}
+
+	else if (archery->timer >= 4.55) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[3]);
+	}
+
+	else if (archery->timer >= 4.5) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[2]);
+	}
+
+	else if (archery->timer >= 4.45) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[3]);
+	}
+
+	else if (archery->timer >= 4.4) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[2]);
+	}
+
+	else if (archery->timer >= 4.35) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[3]);
+	}
+
+	else if (archery->timer >= 4.3) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[2]);
+	}
+
+	else if (archery->timer >= 4.25) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[3]);
+	}
+
+	else if (archery->timer >= 4.2) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[2]);
+	}
+
+	else if (archery->timer >= 4.15) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[3]);
+	}
+
+	else if (archery->timer >= 4.1) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[2]);
+	}
+
+	else if (archery->timer >= 4.05) { //A連打の表示
+		sprite->SetScale(new Vector2(SD_HEIGHT * 5, SD_HEIGHT * 5));
+		sprite->SetTexture(textures[3]);
 	}
 
 	else if (archery->timer >= 4) { //A連打の表示

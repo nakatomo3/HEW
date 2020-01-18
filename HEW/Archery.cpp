@@ -54,7 +54,8 @@ void Archery::Load() {
 
 	balloonArchery->SetTexture(new Texture("assets/textures/Archery/UI/Ready.png", "ready"));
 	balloonArchery->SetTexture(new Texture("assets/textures/Archery/UI/Go.png", "go"));
-	balloonArchery->SetTexture(new Texture("assets/textures/Archery/UI/HitA.png", "hita"));
+	balloonArchery->SetTexture(new Texture("assets/textures/Archery/UI/button1.png", "hit1"));
+	balloonArchery->SetTexture(new Texture("assets/textures/Archery/UI/button2.png", "hit2"));
 	balloonArchery->SetTexture(new Texture("assets/textures/Archery/UI/CountDown3.png", "3"));
 	balloonArchery->SetTexture(new Texture("assets/textures/Archery/UI/CountDown2.png", "2"));
 	balloonArchery->SetTexture(new Texture("assets/textures/Archery/UI/CountDown1.png", "1"));
