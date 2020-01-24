@@ -209,6 +209,9 @@ void SelectCharacter::Update() {
 	if (isAllReady == true) {
 
 		if (Input::GetInstance().GetKey(DIK_SPACE) || Input::GetInstance().GetKey(DIK_RETURN)) {
+			for (int i = 0; i < playerCount; i++) {
+				VariableManager::GetInstance().SetInt("character" + to_string(i), i);
+			}
 			SceneManager::GetInstance().LoadScene("runTitle");
 		}
 	}
