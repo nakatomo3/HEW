@@ -18,10 +18,30 @@ PlayerRun::~PlayerRun() {
 }
 
 void PlayerRun::Start() {
-	playerTexture = new Texture("assets/textures/Run/Player/sennpai1.png", "sennpai1");
+	string path = "";
+
+	switch (characterID) {
+	case 0:
+		path = ""; //‚±‚±‚ð‰æ‘œ–¼‚É•Ï‚¦‚é
+		break;
+	case 1:
+		path = ""; //‚±‚±‚ð‰æ‘œ–¼‚É•Ï‚¦‚é
+		break;
+	case 2:
+		path = ""; //‚±‚±‚ð‰æ‘œ–¼‚É•Ï‚¦‚é
+		break;
+	case 3:
+		path = ""; //‚±‚±‚ð‰æ‘œ–¼‚É•Ï‚¦‚é
+		break;
+	}
+
+	playerTexture = new Texture(path /*+ŒÂ•Ê‰æ‘œ–¼*/);
 	sprite->SetTexture(playerTexture);
-	playerTexture2 = new Texture("assets/textures/Run/Player/sennpai2.png", "sennpai2");
-	playerTexture3 = new Texture("assets/textures/Run/Player/sennpai3.png", "sennpai3");	
+	playerTexture2 = new Texture(path /*+ŒÂ•Ê‰æ‘œ–¼*/);
+	playerTexture3 = new Texture(path /*+ŒÂ•Ê‰æ‘œ–¼*/);
+
+	runTextureA = new Texture(path /*+ run.png‚Æ‚©‰æ‘œ–¼*/);
+	runTextureB = new Texture(path /*+ run.png‚Æ‚©‰æ‘œ–¼*/);
 }
 
 float PlayerRun::GetCharge() {
@@ -97,4 +117,8 @@ void PlayerRun::SetSprite(Sprite * _sprite){
 
 void PlayerRun::SetScene(Run * _run){
 	run = _run;
+}
+
+void PlayerRun::SetCharacterID(int id) {
+	characterID = id;
 }

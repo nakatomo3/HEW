@@ -63,6 +63,8 @@ void Run::Load() {
 		playerObjects[i]->AddComponent(player);
 		playerObjects[i]->AddComponent(playerSprite[i]);
 		charges.emplace_back(0);
+		VariableManager::GetInstance().GetInt("character" + to_string(i));
+
 
 		gauge->SetPlayer(player);
 		gauge->SetBrokenTexture(brokenGaugeTexture);

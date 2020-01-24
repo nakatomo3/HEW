@@ -18,10 +18,14 @@ public:
 	void SetSprite(Sprite* sprite);
 	void SetScene(Run* run);
 
+	void SetCharacterID(int id);
+
 private:
 	float charge = 0;
 
 	int playerID = 0;
+
+	int characterID = 0;
 
 	Sprite* sprite;
 	Run* run = NULL;
@@ -29,7 +33,8 @@ private:
 	Texture* playerTexture;
 	Texture* playerTexture2;
 	Texture* playerTexture3;
-	Texture* runTexture;
+	Texture* runTextureA;
+	Texture* runTextureB;
 
 	bool isReplay;
 };
