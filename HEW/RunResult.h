@@ -37,6 +37,12 @@ private:
 	//順位のテキスト
 	vector<Text*> rankingTimeText{};
 
+	//順位ポイントのオブジェクト
+	vector<GameObject*> rankingPoint{};
+
+	//順位ポイントのテキスト
+	vector<Text*> rankingPointText{};
+
 	RunResult* runResult;
 
 	float timer = 0;
@@ -45,4 +51,5 @@ private:
 
 	vector<float> times;
 	vector<int> ranks;
+	vector<int> point;
 };
