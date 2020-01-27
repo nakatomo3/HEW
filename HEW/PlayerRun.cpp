@@ -21,27 +21,28 @@ void PlayerRun::Start() {
 	string path = "";
 
 	switch (characterID) {
-	case 0:
-		path = ""; //ここを画像名に変える
+	case 0://ウルフ
+		path = "assets/textures/Run/Player/masukudourufu/"; //ここを画像名に変える　　各ファイルまでぶち込み
 		break;
-	case 1:
-		path = ""; //ここを画像名に変える
+	case 1://かしこま
+		path = "assets/textures/Run/Player/kasikomk2/"; //ここを画像名に変える
 		break;
-	case 2:
-		path = ""; //ここを画像名に変える
+	case 2://せん
+		path = "assets/textures/Run/Player/senntyann/"; //ここを画像名に変える
 		break;
-	case 3:
-		path = ""; //ここを画像名に変える
+	case 3://宇宙
+		path = "assets/textures/Run/Player/utyuujinn/"; //ここを画像名に変える
 		break;
 	}
 
-	playerTexture = new Texture(path /*+個別画像名*/);
+	playerTexture = new Texture(path + "waiting1.png"/*+個別画像名*/);//画像の名前は統一しそれをぶち込む  クラウチング
 	sprite->SetTexture(playerTexture);
-	playerTexture2 = new Texture(path /*+個別画像名*/);
-	playerTexture3 = new Texture(path /*+個別画像名*/);
+	playerTexture2 = new Texture(path + "waiting2.png"/*+個別画像名*/);
+	playerTexture3 = new Texture(path + "waiting3.png"/*+個別画像名*/);
 
-	runTextureA = new Texture(path /*+ run.pngとか画像名*/);
-	runTextureB = new Texture(path /*+ run.pngとか画像名*/);
+	runTextureA = new Texture(path + "runA.png"/*+ run.pngとか画像名*/);//走ってる
+	runTextureB = new Texture(path + "runB.png"/*+ run.pngとか画像名*/);
+	runTextureC = new Texture(path + "runC.png");
 }
 
 float PlayerRun::GetCharge() {
@@ -83,7 +84,7 @@ void PlayerRun::Update() {
 	}
 
 	if (charge >= 600.0f) {
-		sprite->SetTexture(playerTexture3); 
+		sprite->SetTexture(playerTexture3);
 	}
 
 	else if (charge >= 300.0f) {
