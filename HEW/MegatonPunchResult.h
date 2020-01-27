@@ -15,6 +15,7 @@ public:
 	void Update();
 
 private:
+	//瓦割のスコア変数
 	vector<int> scores;
 
 	//ランキングのオブジェクト
@@ -35,10 +36,20 @@ private:
 	//順位のテキスト
 	vector<Text*> rankingScoreText{};
 
+	//順位ポイントのオブジェクト
+	vector<GameObject*> rankingPoint{};
+
+	//順位ポイントのテキスト
+	vector<Text*> rankingPointText{};
+
+	MegatonPunchResult* megatonpunchresult;
+
 	int playerCount = 0;
 
 	bool isRanking = false;
 
   float timer = 0;
+
+  vector<int> point;
 };
 
