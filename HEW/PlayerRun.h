@@ -37,5 +37,6 @@ private:
 	Texture* runTextureB;
 	Texture* runTextureC;
 
+	bool isReady = false;
 	bool isReplay;
 };
