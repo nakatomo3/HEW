@@ -10,6 +10,7 @@ public :
 
 	void Start();
 	void Load();
+	void Update();
 	void UnLoad();
 
 private:
@@ -33,6 +34,8 @@ private:
 
 	//順位のテキスト
 	vector<Text*> rankingScoreText{};
+	
+	float timer;
 
 	int playerCount = 0;
 

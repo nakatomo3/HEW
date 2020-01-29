@@ -47,25 +47,25 @@ void MegatonPunchResult::Start() {
 
 	int intPoint;
 	for (int i = 0; i < playerCount; i++) {
-		if (sortScores[3].second == i) {
+		if (sortScores[0].second == i) {
 			point[i] += 3;
-			intPoint = floor(point[sortScores[3].second]);
-			rankingPointText[sortScores[3].second]->text = to_string(intPoint);
-		}
-		if (sortScores[2].second == i) {
-			point[i] += 2;
-			intPoint = floor(point[sortScores[2].second]);
-			rankingPointText[sortScores[2].second]->text = to_string(intPoint);
+			intPoint = floor(point[sortScores[0].second]);
+			rankingPointText[sortScores[0].second]->text = to_string(intPoint);
 		}
 		if (sortScores[1].second == i) {
-			point[i] += 1;
+			point[i] += 2;
 			intPoint = floor(point[sortScores[1].second]);
 			rankingPointText[sortScores[1].second]->text = to_string(intPoint);
 		}
-		if (sortScores[0].second == i) {
+		if (sortScores[2].second == i) {
+			point[i] += 1;
+			intPoint = floor(point[sortScores[2].second]);
+			rankingPointText[sortScores[2].second]->text = to_string(intPoint);
+		}
+		if (sortScores[3].second == i) {
 			point[i] = point[i];
-			intPoint = floor(point[sortScores[0].second]);
-			rankingPointText[sortScores[0].second]->text = to_string(intPoint);
+			intPoint = floor(point[sortScores[3].second]);
+			rankingPointText[sortScores[3].second]->text = to_string(intPoint);
 		}
 		VariableManager::GetInstance().SetInt("point" + to_string(i), point[i]);
 		LogWriter::GetInstance().Log("+point:%d\nplayerNumber:%d", point[i], i);
@@ -81,9 +81,9 @@ void MegatonPunchResult::Start() {
 			rankingScoreText[0]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.34f, -0.01));
 
-			rankingPoint[3]->SetActive(true);
-			rankingPointText[sortScores[3].second]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingPointText[sortScores[3].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.34f, 0));
+			rankingPoint[0]->SetActive(true);
+			rankingPointText[sortScores[0].second]->SetSize(SCREEN_HEIGHT*0.1f);
+			rankingPointText[sortScores[0].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.34f, 0));
 		}
 
 		if (playerCount >= 2) {
@@ -91,9 +91,9 @@ void MegatonPunchResult::Start() {
 			rankingScoreText[1]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.48f, -0.01));
 
-			rankingPoint[2]->SetActive(true);
-			rankingPointText[sortScores[2].second]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingPointText[sortScores[2].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.48f, 0));
+			rankingPoint[1]->SetActive(true);
+			rankingPointText[sortScores[1].second]->SetSize(SCREEN_HEIGHT*0.1f);
+			rankingPointText[sortScores[1].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.48f, 0));
 		}
 
 		if (playerCount >= 3) {
@@ -101,9 +101,9 @@ void MegatonPunchResult::Start() {
 			rankingScoreText[2]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.62f, -0.01));
 
-			rankingPoint[1]->SetActive(true);
-			rankingPointText[sortScores[1].second]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingPointText[sortScores[1].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.62f, 0));
+			rankingPoint[2]->SetActive(true);
+			rankingPointText[sortScores[2].second]->SetSize(SCREEN_HEIGHT*0.1f);
+			rankingPointText[sortScores[2].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.62f, 0));
 		}
 
 		if (playerCount >= 4) {
@@ -112,9 +112,9 @@ void MegatonPunchResult::Start() {
 			rankingScoreText[3]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.76f, -0.01));
 			//順位ポイント表示
-			rankingPoint[0]->SetActive(true);
-			rankingPointText[sortScores[0].second]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingPointText[sortScores[0].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.76f, 0));
+			rankingPoint[3]->SetActive(true);
+			rankingPointText[sortScores[3].second]->SetSize(SCREEN_HEIGHT*0.1f);
+			rankingPointText[sortScores[3].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.76f, 0));
 		}
 
 		isRanking = true;

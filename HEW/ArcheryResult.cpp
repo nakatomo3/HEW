@@ -1,6 +1,8 @@
 #include "ArcheryResult.h"
+#include "SceneManager.h"
 #include "VariableManager.h"
 #include "Archery.h"
+#include "Time.h"
 #include <algorithm>
 
 ArcheryResult::ArcheryResult(string name) : Scene(name) {
@@ -92,6 +94,17 @@ void ArcheryResult::Load() {
 		rankingScore[i]->AddComponent(rankingScoreText[i]);
 		int intValue = floor(sortScores[i].first);
 	}
+}
+
+void ArcheryResult::Update() {
+
+	timer += Time::GetInstance().GetDeltaTime();
+
+	if (timer >= 5) {
+		SceneManager::GetInstance().LoadScene("totalResult");
+	}
+	
+
 }
 
 void ArcheryResult::UnLoad() {
