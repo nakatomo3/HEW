@@ -86,7 +86,7 @@ void MegatonPunchTitle::Update() {
 
 	}
 	if (timer > 5.5) {
-		SceneManager::GetInstance().LoadScene("megatonPunch");// megatonPunch‚É‘JˆÚ
+		SceneManager::GetInstance().LoadScene("megatonPunchRule");// megatonPunch‚É‘JˆÚ
 	}
 
 }
