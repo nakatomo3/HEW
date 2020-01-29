@@ -43,6 +43,8 @@ void PlayerRun::Start() {
 	runTextureA = new Texture(path + "runA.png"/*+ run.pngとか画像名*/);//走ってる
 	runTextureB = new Texture(path + "runB.png"/*+ run.pngとか画像名*/);
 	runTextureC = new Texture(path + "runC.png");
+
+	ZeroMemory(&state, sizeof(XINPUT_STATE));
 }
 
 float PlayerRun::GetCharge() {
@@ -60,10 +62,14 @@ void PlayerRun::Update() {
 		run = (Run*)(SceneManager::GetInstance().GetNowScene());
 	}
 
+	DWORD dwResult = XInputGetState(playerID, &state);
+
 	switch (playerID) {
 	case 0:
-		if (Input::GetInstance().GetKey(DIK_A) && run->timer >= 4 && run->timer <= 10) { // 左上ゲージ 小さい振ってが表示されると同時にAキーでチャージ可能
-			charge += 10.0f; // 値は調整                                                                         よーいが表示されるとチャージは不可能
+		if (run->timer >= 4 && run->timer <= 10) {
+			if (Input::GetInstance().GetKey(DIK_A)) { // 左上ゲージ 小さい振ってが表示されると同時にAキーでチャージ可能
+				charge += 10.0f; // 値は調整                                                                         よーいが表示されるとチャージは不可能
+			}
 		}
 		break;
 	case 1:
@@ -81,6 +87,9 @@ void PlayerRun::Update() {
 			charge += 10.0f; // 値は調整                                                                         よーいが表示されるとチャージは不可能
 		}
 		break;
+	}
+	if (run->timer >= 4 && run->timer <= 10) {
+		charge += abs(state.Gamepad.bRightTrigger - 128) * 0.03f;
 	}
 
 	if (charge >= 600.0f) {

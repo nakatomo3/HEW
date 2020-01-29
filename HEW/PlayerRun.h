@@ -2,6 +2,7 @@
 #include "ScriptBase.h"
 #include "SceneManager.h"
 #include "Sprite.h"
+#include <XInput.h>
 
 class Run;
 class PlayerRun : public ScriptBase {
@@ -38,4 +39,6 @@ private:
 	Texture* runTextureC;
 
 	bool isReplay;
+
+	XINPUT_STATE state;
 };

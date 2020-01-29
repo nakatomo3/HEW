@@ -2,6 +2,7 @@
 #pragma comment(lib,"d3dx9.lib")
 #pragma comment(lib,"dxguid.lib")
 #pragma comment(lib,"dinput8.lib")
+#pragma comment(lib,"xinput.lib")
 #define _CRT_SECURE_NO_WARNINGS
 #include "main.h"
 

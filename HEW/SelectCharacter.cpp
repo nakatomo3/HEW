@@ -2,7 +2,7 @@
 #include "VariableManager.h"
 #include "Input.h"
 #include "SceneManager.h"
-
+#include <XInput.h>
 
 
 void SelectCharacter::Start() {
@@ -94,6 +94,7 @@ void SelectCharacter::Load() {//îwåiÅ@è„Ç™ÉvÉåÉCÉÑÅ[îwåi(1ñá)Å@â∫Ç™ÉLÉÉÉâîwåi(4ñ
 
 	for (int i = 0; i < 4; i++) {
 		isSelected.emplace_back(false);
+		wasInput.emplace_back(false);
 	}
 
 }
@@ -108,18 +109,36 @@ void SelectCharacter::Update() {
 					cursorPositions[0]--;
 				}
 			}
-
 			if (Input::GetInstance().GetKeyDown(DIK_2)) {// 2ÇâüÇµÇΩÇ∆Ç´ âE
 				if (cursorPositions[0] <= 2) {// 2à»è„Ç…ÇµÇ»Ç¢
 					cursorPositions[0]++;
 				}
 			}
+
+			if (Input::GetInstance().GetController(0).Gamepad.sThumbLX > 5000) {
+				if (wasInput[0] == false) {
+					if (cursorPositions[0] <= 2) {// 2à»è„Ç…ÇµÇ»Ç¢
+						cursorPositions[0]++;
+					}
+				}
+				wasInput[0] = true;
+			} else if(Input::GetInstance().GetController(0).Gamepad.sThumbLX < -5000){
+				if (wasInput[0] == false) {
+					if (cursorPositions[0] >= 1) {// 1à»â∫Ç…ÇµÇ»Ç¢
+						cursorPositions[0]--;
+					}
+				}
+				wasInput[0] = true;
+			} else {
+				wasInput[0] = false;
+			}
+
 		} else {
 			selectCursorSprite[0]->SetColor(new Color(0, 0, 128, 255));
 		}
 		selectCursorSprite[0]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[0] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6, -0.02f));
 
-		if (Input::GetInstance().GetKeyDown(DIK_A) && isSelected[cursorPositions[0]] == false) {
+		if ((Input::GetInstance().GetKeyDown(DIK_A) || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_Y) && isSelected[cursorPositions[0]] == false) {
 			isSelected[cursorPositions[0]] = true;
 			isReady[0] = true;
 		}
@@ -138,12 +157,30 @@ void SelectCharacter::Update() {
 					cursorPositions[1]++;
 				}
 			}
+
+			if (Input::GetInstance().GetController(1).Gamepad.sThumbLX > 5000) {
+				if (wasInput[1] == false) {
+					if (cursorPositions[1] <= 2) {// 2à»è„Ç…ÇµÇ»Ç¢
+						cursorPositions[1]++;
+					}
+				}
+				wasInput[1] = true;
+			} else if (Input::GetInstance().GetController(1).Gamepad.sThumbLX < -5000) {
+				if (wasInput[1] == false) {
+					if (cursorPositions[1] >= 1) {// 1à»â∫Ç…ÇµÇ»Ç¢
+						cursorPositions[1]--;
+					}
+				}
+				wasInput[1] = true;
+			} else {
+				wasInput[1] = false;
+			}
 		} else {
 			selectCursorSprite[1]->SetColor(new Color(0, 0, 128, 255));
 		}
 		selectCursorSprite[1]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[1] + 1) + SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6, -0.02f));
 	
-		if (Input::GetInstance().GetKeyDown(DIK_S) && isSelected[cursorPositions[1]] == false) {
+		if ((Input::GetInstance().GetKeyDown(DIK_S) || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_Y) && isSelected[cursorPositions[1]] == false) {
 			isSelected[cursorPositions[1]] = true;
 			isReady[1] = true;
 		}
@@ -162,12 +199,30 @@ void SelectCharacter::Update() {
 					cursorPositions[2]++;
 				}
 			}
+
+			if (Input::GetInstance().GetController(2).Gamepad.sThumbLX > 5000) {
+				if (wasInput[2] == false) {
+					if (cursorPositions[2] <= 2) {// 2à»è„Ç…ÇµÇ»Ç¢
+						cursorPositions[2]++;
+					}
+				}
+				wasInput[2] = true;
+			} else if (Input::GetInstance().GetController(2).Gamepad.sThumbLX < -5000) {
+				if (wasInput[2] == false) {
+					if (cursorPositions[2] >= 1) {// 1à»â∫Ç…ÇµÇ»Ç¢
+						cursorPositions[2]--;
+					}
+				}
+				wasInput[2] = true;
+			} else {
+				wasInput[2] = false;
+			}
 		} else {
 			selectCursorSprite[2]->SetColor(new Color(0, 0, 128, 255));
 		}
 		selectCursorSprite[2]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[2] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.25 , -0.02f));
 	
-		if (Input::GetInstance().GetKeyDown(DIK_D) && isSelected[cursorPositions[2]] == false) {
+		if ((Input::GetInstance().GetKeyDown(DIK_D) || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_Y) && isSelected[cursorPositions[2]] == false) {
 			isSelected[cursorPositions[2]] = true;
 			isReady[2] = true;
 		}
@@ -186,12 +241,30 @@ void SelectCharacter::Update() {
 					cursorPositions[3]++;
 				}
 			}
+
+			if (Input::GetInstance().GetController(3).Gamepad.sThumbLX > 5000) {
+				if (wasInput[3] == false) {
+					if (cursorPositions[3] <= 2) {// 2à»è„Ç…ÇµÇ»Ç¢
+						cursorPositions[3]++;
+					}
+				}
+				wasInput[3] = true;
+			} else if (Input::GetInstance().GetController(3).Gamepad.sThumbLX < -5000) {
+				if (wasInput[3] == false) {
+					if (cursorPositions[3] >= 1) {// 1à»â∫Ç…ÇµÇ»Ç¢
+						cursorPositions[3]--;
+					}
+				}
+				wasInput[3] = true;
+			} else {
+				wasInput[3] = false;
+			}
 		} else {
 			selectCursorSprite[3]->SetColor(new Color(0, 0, 128, 255));
 		}
 		selectCursorSprite[3]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[3] + 1) + SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.25, -0.02f));
 
-		if (Input::GetInstance().GetKeyDown(DIK_F) && isSelected[cursorPositions[3]] == false) {
+		if ((Input::GetInstance().GetKeyDown(DIK_F) || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_Y) && isSelected[cursorPositions[3]] == false) {
 			isSelected[cursorPositions[3]] = true;
 			isReady[3] = true;
 		}

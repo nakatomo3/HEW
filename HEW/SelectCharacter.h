@@ -39,4 +39,6 @@ private:
 	vector<int> cursorPositions;
 
 	vector<bool> isSelected;
+
+	vector<bool> wasInput;
 };

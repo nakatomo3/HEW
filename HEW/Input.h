@@ -3,6 +3,9 @@
 #define DIRECTINPUT_VERSION (0x0800)
 #include <dinput.h>
 #include <Windows.h>
+#include <XInput.h>
+#include <vector>
+using namespace std;
 
 #define	NUM_KEY_MAX	(256)	// キーの最大数
 
@@ -20,6 +23,8 @@ public:
 	bool GetKeyDown(int key);
 	bool GetKeyUp(int key);
 
+	XINPUT_STATE GetController(int index);
+
 private:
 	LPDIRECTINPUT8			input = NULL;					// DirectInputオブジェクトへのポインタ
 	LPDIRECTINPUTDEVICE8	DevKeyboard = NULL;				// 入力デバイス(キーボード)へのポインタ
@@ -32,6 +37,8 @@ private:
 
 	bool InitKeyboard(HINSTANCE hInstance, HWND hWnd);
 	void UninitKeyboard();
+
+	vector<XINPUT_STATE> controllers;
 
 	Input();
 	~Input();

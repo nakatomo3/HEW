@@ -75,6 +75,11 @@ void Input::Init(HINSTANCE hInstance, HWND hWnd) {
 	InitKeyboard(hInstance, hWnd);
 
 	//ゲームパッドなどの初期化も追加予定
+	for (int i = 0; i < 4; i++) {
+		XINPUT_STATE state;
+		controllers.emplace_back(state);
+		ZeroMemory(&controllers[i], sizeof(XINPUT_STATE));
+	}
 }
 
 void Input::Uninit() {
@@ -106,6 +111,10 @@ void Input::Update() {
 		// キーボードへのアクセス権を取得
 		DevKeyboard->Acquire();
 	}
+
+	for (int i = 0; i < 4; i++) {
+		XInputGetState(i, &controllers[i]);
+	}
 }
 
 bool Input::GetKey(int key) {
@@ -118,6 +127,10 @@ bool Input::GetKeyDown(int key) {
 
 bool Input::GetKeyUp(int key) {
 	return (KeyStateUp[key] & 0x80) ? true : false;
+}
+
+XINPUT_STATE Input::GetController(int index) {
+	return controllers[index];
 }
 
 Input::Input() {
