@@ -51,17 +51,17 @@ void RunResult::Start() {
 			intPoint = floor(point[sortTimes[0].second]);
 			rankingPointText[sortTimes[0].second]->text = to_string(intPoint);
 		}
-		if (sortTimes[1].second == i&&playerCount==2) {
+		if (sortTimes[1].second == i&&playerCount>=2) {
 			point[i] = 100002;
 			intPoint = floor(point[sortTimes[1].second]);
 			rankingPointText[sortTimes[1].second]->text = to_string(intPoint);
 		}
-		if (sortTimes[2].second == i && playerCount == 3) {
+		if (sortTimes[2].second == i && playerCount >= 3) {
 			point[i] = 100001;
 			intPoint = floor(point[sortTimes[2].second]);
 			rankingPointText[sortTimes[2].second]->text = to_string(intPoint);
 		}
-		if (sortTimes[3].second == i&&playerCount==4) {
+		if (sortTimes[3].second == i&&playerCount>=4) {
 			point[i] = 100000;
 			intPoint = floor(point[sortTimes[3].second]);
 			rankingPointText[sortTimes[3].second]->text = to_string(intPoint);
