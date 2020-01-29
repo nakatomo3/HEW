@@ -9,9 +9,15 @@ MegatonPunchRule::MegatonPunchRule(string name) : Scene(name){
 MegatonPunchRule::~MegatonPunchRule() {
 }
 
+void MegatonPunchRule::Start() {
+	ObjectManager::GetInstance().Instantiate(manualObject);
+	for (int i = 0; i < playerCount; i++) {
+		isReady.emplace_back(false);
+	}
+}
+
 void MegatonPunchRule::Load() {
 	manualObject = new GameObject();
-	manualObject->SetActive(false);
 	manualSprite = new Sprite();
 	manualObject->AddComponent(manualSprite);
 
@@ -40,13 +46,6 @@ void MegatonPunchRule::Load() {
 		ok->SetColor(new Color(127, 127, 127, 255));
 		oks.emplace_back(ok);
 		manualObject->AddComponent(ok);
-	}
-}
-
-void MegatonPunchRule::Start() {
-	ObjectManager::GetInstance().Instantiate(manualObject);
-	for (int i = 0; i < playerCount; i++) {
-		isReady.emplace_back(false);
 	}
 }
 
