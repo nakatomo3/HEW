@@ -100,6 +100,48 @@ void PlayerRun::Update() {
 		sprite->SetTexture(playerTexture2);
 	}
 
+	if (run->timer > 12.0f) {
+		isReady = true;
+	} else if(run->timer>17.0f) {
+		isReady = false;
+	}
+
+	if (isReady == true) {
+		switch (characterID) {
+		default:
+			break;
+		case 0://ウルフ
+			float animationTimer = run->timer;
+			float animationInterval = 0.2f;//アニメーション速度
+			while (animationTimer > animationInterval) {
+				animationTimer -= animationInterval;
+			}
+			if (animationTimer <= 0.1f) {
+				sprite->SetTexture(runTextureA);
+			}
+			if (animationTimer >= 0.1f) {
+				sprite->SetTexture(runTextureB);
+			}
+			break;
+		case 1://かしこま
+			//アニメーションなし
+			break;
+		case 2://せんちゃん
+			//アニメーションなし
+			break;
+		case 3://宇宙
+			if (charge <= 300) {//ゲージのチャージ段階で変更
+				sprite->SetTexture(runTextureA);
+			}
+			if (charge >= 600) {
+				sprite->SetTexture(runTextureB);
+			}
+			if (charge >= 900) {
+				sprite->SetTexture(runTextureC);
+			}
+		}
+	}
+	
 	//角度8度ぐらいを0.1秒で移動
 	if (run->timer >= 12 && isReplay == false) {
 		gameObject->Move(Vector3(charge * 0.03f * SCREEN_WIDTH/1024, charge * -0.00f  * SCREEN_HEIGHT/576, 0));

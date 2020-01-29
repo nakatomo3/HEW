@@ -38,6 +38,7 @@ private:
 	Texture* runTextureB;
 	Texture* runTextureC;
 
+	bool isReady = false;
 	bool isReplay;
 
 	XINPUT_STATE state;
