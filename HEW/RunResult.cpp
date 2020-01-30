@@ -15,8 +15,8 @@ RunResult::~RunResult() {
 
 void RunResult::Start() {
 
-	ObjectManager::GetInstance().Instantiate(background);
 	ObjectManager::GetInstance().Instantiate(ranking);
+	ObjectManager::GetInstance().Instantiate(background);
 
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Instantiate(rankingTime[i]);
@@ -61,7 +61,7 @@ void RunResult::Start() {
 			intPoint = floor(point[sortTimes[2].second]);
 			rankingPointText[sortTimes[2].second]->text = to_string(intPoint);
 		}
-		if (sortTimes[3].second == i&&playerCount>=4) {
+		if (sortTimes[3].second == i&&playerCount==4) {
 			point[i] = 100000;
 			intPoint = floor(point[sortTimes[3].second]);
 			rankingPointText[sortTimes[3].second]->text = to_string(intPoint);
@@ -84,41 +84,41 @@ void RunResult::Start() {
 		if (playerCount >= 1) {
 			rankingTime[0]->SetActive(true);
 			rankingTimeText[0]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingTimeText[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.34f, 0));
+			rankingTimeText[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.36f, 0));
 
 			rankingPoint[0]->SetActive(true);
 			rankingPointText[sortTimes[0].second]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingPointText[sortTimes[0].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.34f, 0));
+			rankingPointText[sortTimes[0].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.36f, 0));
 		}
 
 		if (playerCount >= 2) {
 			rankingTime[1]->SetActive(true);
 			rankingTimeText[1]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingTimeText[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.48f, 0));
+			rankingTimeText[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.5f, 0));
 
 			rankingPoint[1]->SetActive(true);
 			rankingPointText[sortTimes[1].second]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingPointText[sortTimes[1].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.48f, 0));
+			rankingPointText[sortTimes[1].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.5f, 0));
 		}
 
 		if (playerCount >= 3) {
 			rankingTime[2]->SetActive(true);
 			rankingTimeText[2]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingTimeText[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.62f, 0));
+			rankingTimeText[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.64f, 0));
 
 			rankingPoint[2]->SetActive(true);
 			rankingPointText[sortTimes[2].second]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingPointText[sortTimes[2].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.62f, 0));
+			rankingPointText[sortTimes[2].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.64f, 0));
 		}
 
 		if (playerCount >= 4) {
 			rankingTime[3]->SetActive(true);
 			rankingTimeText[3]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingTimeText[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.5f, SCREEN_HEIGHT*0.76f, 0));
+			rankingTimeText[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.78f, 0));
 
 			rankingPoint[3]->SetActive(true);
 			rankingPointText[sortTimes[3].second]->SetSize(SCREEN_HEIGHT*0.1f);
-			rankingPointText[sortTimes[3].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.76f, 0));
+			rankingPointText[sortTimes[3].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.78f, 0));
 		}
 
 		isRanking = true;
@@ -137,10 +137,11 @@ void RunResult::Load() {
 	playerCount = VariableManager::GetInstance().GetInt("playerCount");
 
 	//ƒ‰ƒ“ƒLƒ“ƒO‰æ–Ê•\Ž¦
-	rankingSprite = new Sprite();
-	rankingSprite->SetScale(new Vector2(SCREEN_WIDTH*0.8f, SCREEN_HEIGHT*0.8f));
 	ranking = new GameObject();
-	rankingSprite->SetColor(new Color(255, 0, 0, 255));
+	rankingTexture = new Texture("assets/textures/All/UI/ranking.png");
+	rankingSprite = new Sprite(rankingTexture);
+	rankingSprite->SetScale(new Vector2(SCREEN_WIDTH*1.1f, SCREEN_HEIGHT*1.1f));
+	rankingSprite->SetColor(new Color(255, 255, 255, 255));
 	ranking->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0));
 	ranking->AddComponent(rankingSprite);
 
