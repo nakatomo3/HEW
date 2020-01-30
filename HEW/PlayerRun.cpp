@@ -20,6 +20,8 @@ PlayerRun::~PlayerRun() {
 void PlayerRun::Start() {
 	string path = "";
 
+	characterID = VariableManager::GetInstance().GetInt("character" + to_string(playerID));
+
 	switch (characterID) {
 	case 0://ウルフ
 		path = "assets/textures/Run/Player/masukudourufu/"; //ここを画像名に変える　　各ファイルまでぶち込み
@@ -106,13 +108,13 @@ void PlayerRun::Update() {
 		isReady = false;
 	}
 
+	float animationTimer = run->timer;
+	float animationInterval = 0.2f;//アニメーション速度
 	if (isReady == true) {
 		switch (characterID) {
 		default:
 			break;
 		case 0://ウルフ
-			float animationTimer = run->timer;
-			float animationInterval = 0.2f;//アニメーション速度
 			while (animationTimer > animationInterval) {
 				animationTimer -= animationInterval;
 			}
