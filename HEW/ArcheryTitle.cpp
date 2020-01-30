@@ -191,23 +191,22 @@ void ArcheryTitle::Update() {
 		} else {
 
 			if (playerCount >= 1) {
-				if (Input::GetInstance().GetKeyDown(DIK_A) == true) {// A‚ð‰Ÿ‚µ‚½‚çtrue
+				if (Input::GetInstance().GetKeyDown(DIK_A) == true || ((Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_Y))) {// A‚ð‰Ÿ‚µ‚½‚çtrue
 					isReady[0] = true;
 				}
 			}
-
 			if (playerCount >= 2) {
-				if (Input::GetInstance().GetKeyDown(DIK_S) == true) {// S‚ð‰Ÿ‚µ‚½‚çtrue
+				if (Input::GetInstance().GetKeyDown(DIK_S) == true || (Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_Y)) {// S‚ð‰Ÿ‚µ‚½‚çtrue
 					isReady[1] = true;
 				}
 			}
 			if (playerCount >= 3) {
-				if (Input::GetInstance().GetKeyDown(DIK_D) == true) {// D‚ð‰Ÿ‚µ‚½‚çtrue
+				if (Input::GetInstance().GetKeyDown(DIK_D) == true || (Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_Y)) {// D‚ð‰Ÿ‚µ‚½‚çtrue
 					isReady[2] = true;
 				}
 			}
 			if (playerCount >= 4) {
-				if (Input::GetInstance().GetKeyDown(DIK_F) == true) {// F‚ð‰Ÿ‚µ‚½‚çtrue
+				if (Input::GetInstance().GetKeyDown(DIK_F) == true || (Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_Y)) {// F‚ð‰Ÿ‚µ‚½‚çtrue
 					isReady[3] = true;
 				}
 			}
