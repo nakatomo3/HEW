@@ -63,7 +63,7 @@ void PlayerPunch::Update() {
 		default:
 			break;
 		case GAUGE:
-			if (Input::GetInstance().GetKeyDown(KEY)) {
+			if (Input::GetInstance().GetKeyDown(KEY) || (Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_Y) == true) {
 				gaugeValue = gauge->GetValue();
 				ObjectManager::GetInstance().Destroy(gauge->GetGameObject());
 				ObjectManager::GetInstance().Instantiate(aiming->GetGameObject());
@@ -71,7 +71,7 @@ void PlayerPunch::Update() {
 			}
 			break;
 		case AIMING:
-			if (Input::GetInstance().GetKeyDown(KEY)) {
+			if (Input::GetInstance().GetKeyDown(KEY) || (Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_Y) == true) {
 				aimingValue = aiming->GetValue();
 				ObjectManager::GetInstance().Destroy(aiming->GetGameObject());
 				ObjectManager::GetInstance().Instantiate(pendulum->GetGameObject());
@@ -79,7 +79,7 @@ void PlayerPunch::Update() {
 			}
 			break;
 		case PENDULUM:
-			if (Input::GetInstance().GetKeyDown(KEY)) {
+			if (Input::GetInstance().GetKeyDown(KEY) || (Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(playerNumber).Gamepad.wButtons & XINPUT_GAMEPAD_Y) == true) {
 				pendulumValue = pendulum->GetValue();
 				ObjectManager::GetInstance().Destroy(pendulum->GetGameObject());
 				nowMode = WAIT;
