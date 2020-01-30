@@ -23,6 +23,9 @@ private:
 	//ランキングのスプライト
 	Sprite* rankingSprite;
 
+	//ランキングのテクスチャ
+	Texture* rankingTexture;
+
 	//ランキング背景のオブジェクト
 	GameObject* rankingBackground;
 
@@ -34,11 +37,21 @@ private:
 
 	//順位のテキスト
 	vector<Text*> rankingScoreText{};
+
+	//順位ポイントのオブジェクト
+	vector<GameObject*> rankingPoint{};
+
+	//順位ポイントのテキスト
+	vector<Text*> rankingPointText{};
+
+	ArcheryResult* archeryresult;
 	
 	float timer;
 
 	int playerCount = 0;
 
 	bool isRanking = false;
+
+	vector<int> point;
 };
 

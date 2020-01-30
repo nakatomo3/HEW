@@ -24,6 +24,9 @@ private:
 	//ランキングのスプライト
 	Sprite* rankingSprite;
 
+	//ランキングのテクスチャ
+	Texture* rankingTexture;
+
 	//ランキング背景のオブジェクト
 	GameObject* rankingBackground;
 
