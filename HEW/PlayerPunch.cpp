@@ -91,8 +91,12 @@ void PlayerPunch::Update() {
 			break;
 		case BREAKING:
 			sprite->SetActive(false);
-			waitTimer += Time::GetInstance().GetDeltaTime();
-			if (waitTimer >= 2) {
+			if (waitTimer * value / 300 * 5 < 1) {
+				waitTimer += Time::GetInstance().GetDeltaTime();
+			}
+			breaking->SetScale(new Vector2(SCREEN_WIDTH * 0.05, SCREEN_HEIGHT * waitTimer * 3));
+			breaking->SetTextureScale(1, waitTimer * value / 300 * 5);
+			if (waitTimer >= 5) {
 				nowMode = VIEWSCORE;
 			}
 			break;
@@ -112,4 +116,8 @@ void PlayerPunch::SetBreakingFlag() {
 
 void PlayerPunch::SetText(Text * _text) {
 	text = _text;
+}
+
+void PlayerPunch::SetBreaking(Sprite * sprite) {
+	breaking = sprite;
 }

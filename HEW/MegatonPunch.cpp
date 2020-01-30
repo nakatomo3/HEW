@@ -30,10 +30,12 @@ void MegatonPunch::Load() {
 	earth = new Texture("assets/textures/MegatonPunch/UI/Earth.png");
 	breaking = new Texture("assets/textures/MegatonPunch/UI/Breaking.png");
 
-	const float PLAYER_WIDTH = SCREEN_WIDTH/10;
+	breakingEarthTexture = new Texture("assets/textures/MegatonPunch/UI/BreakingEarth.png");
 
-	const float GAUGE_WIDTH = SCREEN_WIDTH/20;
-	const float GAUGE_HEIGHT = SCREEN_HEIGHT/5*2;
+	const float PLAYER_WIDTH = SCREEN_WIDTH / 10;
+
+	const float GAUGE_WIDTH = SCREEN_WIDTH / 20;
+	const float GAUGE_HEIGHT = SCREEN_HEIGHT / 5 * 2;
 
 	const float AIMING_WIDTH = SCREEN_WIDTH / 15;
 
@@ -43,7 +45,7 @@ void MegatonPunch::Load() {
 		auto playerObject = new GameObject();
 		playerObjects.push_back(playerObject);
 		playerObject->AddComponent(player);
-		playerObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i+1) + PLAYER_WIDTH * (0.5f+i), SCREEN_HEIGHT / 2, 0));
+		playerObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i), SCREEN_HEIGHT / 2, 0));
 		auto playerSprite = new Sprite();
 		player->SetSprite(playerSprite);
 		playerObject->AddComponent(playerSprite);
@@ -64,9 +66,9 @@ void MegatonPunch::Load() {
 		gaugeScalerSprite->SetCriterion(DOWN);
 		gaugeSprite->SetScale(new Vector2(GAUGE_WIDTH*0.9f, GAUGE_HEIGHT*0.95f));
 		gaugeScalerSprite->SetScale(new Vector2(GAUGE_WIDTH, GAUGE_HEIGHT));
-		gaugeObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i) - SCREEN_WIDTH/10, SCREEN_HEIGHT / 3*2, 0));
+		gaugeObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i) - SCREEN_WIDTH / 10, SCREEN_HEIGHT / 3 * 2, 0));
 		gauge->SetSprite(gaugeSprite);
-		gaugeSprite->SetPosition(new Vector3(0,-SCREEN_HEIGHT*0.01f,0));
+		gaugeSprite->SetPosition(new Vector3(0, -SCREEN_HEIGHT * 0.01f, 0));
 		player->SetGauge(gauge);
 
 		auto aiming = new AimingPunch();
@@ -83,7 +85,7 @@ void MegatonPunch::Load() {
 		aiming->SetSprite(false, aimingSpriteB);
 		aimingSpriteA->SetScale(new Vector2(AIMING_WIDTH, AIMING_WIDTH));
 		aimingSpriteB->SetScale(new Vector2(AIMING_WIDTH, AIMING_WIDTH));
-		aimingObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i), SCREEN_HEIGHT / 2 + SCREEN_HEIGHT* 0.2f, 0));
+		aimingObject->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i), SCREEN_HEIGHT / 2 + SCREEN_HEIGHT * 0.2f, 0));
 		aiming->SetNormalTexture(aimingTexture);
 		aiming->SetWhiteTexture(aimingWhiteTexture);
 
@@ -93,7 +95,7 @@ void MegatonPunch::Load() {
 		auto pendulumCenterSprite = new Sprite();
 		auto pendulumSprite = new Sprite();
 		pendulumCenterSprite->SetTexture(pendulumCenterTexture);
-		pendulumCenterSprite->SetColor(new Color(255,50,50));
+		pendulumCenterSprite->SetColor(new Color(255, 50, 50));
 		pendulumSprite->SetTexture(pendulumTexture);
 		player->SetPendulum(pendulum);
 		pendulum->SetSprite(pendulumSprite);
@@ -111,26 +113,37 @@ void MegatonPunch::Load() {
 		playerObject->AddComponent(text);
 		texts.emplace_back(text);
 		player->SetText(text);
-		text->SetPosition(new Vector3(-SCREEN_WIDTH * 0.1f,-SCREEN_HEIGHT * 0.2,0));
+		text->SetPosition(new Vector3(-SCREEN_WIDTH * 0.1f, -SCREEN_HEIGHT * 0.2, 0));
 		text->isOutline = true;
 		text->isBeautifulOutline = true;
 		text->SetOutlineColor(new Color(0, 0, 0, 255));
 		text->outlineDistance = SCREEN_HEIGHT * 0.007f;
 		text->SetSize(SCREEN_HEIGHT*0.1f);
 
-		earthObject = new GameObject();
-		earthSprite = new Sprite(earth);
-		earthObject->AddComponent(earthSprite);
-		earthSprite->SetActive(false);
-		earthSprite->SetScale(new Vector2(SCREEN_HEIGHT * 0.9, SCREEN_HEIGHT * 0.9));
-		earthSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, -0.01));
-
-		breakingSprite = new Sprite(breaking);
-		breakingSprite->SetScale(new Vector2(SCREEN_WIDTH * 1.5, SCREEN_WIDTH * 0.75));
-		breakingSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, -0.01));
-		breakingSprite->SetActive(false);
-		earthObject->AddComponent(breakingSprite);
+		auto breakingEarth = new GameObject();
+		breakingEarths.emplace_back(breakingEarth);
+		auto breakingEarthSprite = new Sprite(breakingEarthTexture);
+		breakingEarthSprites.emplace_back(breakingEarthSprite);
+		breakingEarth->AddComponent(breakingEarthSprite);
+		breakingEarthSprite->SetTextureScale(1, 0);
+		breakingEarthSprite->SetScale(new Vector2(SCREEN_WIDTH * 0.1f, SCREEN_HEIGHT * 0.0f));
+		breakingEarthSprite->SetPosition(new Vector3(SCREEN_WIDTH * 0.48f + SCREEN_WIDTH * 0.04f * i / (playerCount - 1), SCREEN_HEIGHT * 0.063f));
+		breakingEarthSprite->SetCriterion(UP);
+		player->SetBreaking(breakingEarthSprite);
 	}
+
+	earthObject = new GameObject();
+	earthSprite = new Sprite(earth);
+	earthObject->AddComponent(earthSprite);
+	earthSprite->SetActive(false);
+	earthSprite->SetScale(new Vector2(SCREEN_HEIGHT * 0.9, SCREEN_HEIGHT * 0.9));
+	earthSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, -0.01));
+
+	breakingSprite = new Sprite(breaking);
+	breakingSprite->SetScale(new Vector2(SCREEN_WIDTH * 1.5, SCREEN_WIDTH * 0.75));
+	breakingSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, -0.01));
+	breakingSprite->SetActive(false);
+	earthObject->AddComponent(breakingSprite);
 
 
 	//キャラスプライト周りと位置調節
@@ -165,7 +178,7 @@ void MegatonPunch::Start() {
 	for (int i = 0; i < VariableManager::GetInstance().GetInt("playerCount"); i++) {
 		ObjectManager::GetInstance().Instantiate(playerObjects[i]);
 		ObjectManager::GetInstance().Instantiate(gaugeObjects[i]);
-		
+		ObjectManager::GetInstance().Instantiate(breakingEarths[i]);
 	}
 	ObjectManager::GetInstance().Instantiate(earthObject);
 }

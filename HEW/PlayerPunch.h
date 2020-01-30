@@ -40,6 +40,8 @@ public:
 
 	void SetText(Text* _text);
 
+	void SetBreaking(Sprite* sprite);
+
 private :
 	Player thisPlayer;
 
@@ -63,6 +65,8 @@ private :
 	double value = 0;
 
 	int KEY;
+
+	Sprite* breaking;
 
 	MegatonPunch* megatonPunch;
 
