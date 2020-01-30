@@ -5,6 +5,7 @@
 #include "BalloonArchery.h"
 #include <string>
 #include "HeroEngine.h"
+#include "Input.h"
 using namespace std;
 
 class Archery : public Scene {
@@ -69,5 +70,7 @@ private:
 	int playerCount = 0;
 	vector<Text*> marks;
 	vector<float> times;
+
+	vector<bool> wasInput;
 };
 

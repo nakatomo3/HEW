@@ -97,6 +97,8 @@ void Archery::Load() {
 		mark->SetSize(SD_HEIGHT * 0.6);
 		mark->text = to_string(0);
 		scoreValues.emplace_back(0);
+		
+		wasInput.emplace_back(false);
 	}
 
 }
@@ -106,27 +108,47 @@ void Archery::Update() {
 
 	if (timer >= 4 && timer < 14) {
 		if (playerCount >= 1) {
-			if ((Input::GetInstance().GetKeyDown(DIK_A) || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_Y)  == true) {// A,B,X,Y‚ð‰Ÿ‚µ‚½‚çtrue
-				scoreValues[0] += 100;
-				marks[0]->text = to_string(scoreValues[0]);
+			if ((Input::GetInstance().GetKeyDown(DIK_A) || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_Y) == true) {
+				if (wasInput[0] == false) {// A,B,X,Y‚ð‰Ÿ‚µ‚½‚çtrue
+					scoreValues[0] += 100;
+					marks[0]->text = to_string(scoreValues[0]);
+				}
+				wasInput[0] = true;
+			} else {
+				wasInput[0] = false;
 			}
 		}
 		if (playerCount >= 2) {
 			if ((Input::GetInstance().GetKeyDown(DIK_S) || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_Y) == true) {// A,B,X,Y‚ð‰Ÿ‚µ‚½‚çtrue
-				scoreValues[1] += 100;
-				marks[1]->text = to_string(scoreValues[1]);
+				if (wasInput[1] == false) {
+					scoreValues[1] += 100;
+					marks[1]->text = to_string(scoreValues[1]);
+				}
+				wasInput[1] = true;
+			} else {
+				wasInput[1] = false;
 			}
 		}
 		if (playerCount >= 3) {
-			if ((Input::GetInstance().GetKeyDown(DIK_D) || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_Y) == true) {// A,B,X,Y‚ð‰Ÿ‚µ‚½‚çtrue
-				scoreValues[2] += 100;
-				marks[2]->text = to_string(scoreValues[2]);
+			if ((Input::GetInstance().GetKeyDown(DIK_D) || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_Y) == true && wasInput[2] == false) {// A,B,X,Y‚ð‰Ÿ‚µ‚½‚çtrue
+				if (wasInput[2] == false) {
+					scoreValues[2] += 100;
+					marks[2]->text = to_string(scoreValues[2]);
+				}
+				wasInput[2] = true;
+			} else {
+				wasInput[2] = false;
 			}
 		}
 		if (playerCount >= 4) {
-			if ((Input::GetInstance().GetKeyDown(DIK_F) || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_Y) == true) {// A,B,X,Y‚ð‰Ÿ‚µ‚½‚çtrue
-				scoreValues[3] += 100;
-				marks[3]->text = to_string(scoreValues[3]);
+			if ((Input::GetInstance().GetKeyDown(DIK_F) || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_Y) == true && wasInput[3] == false) {// A,B,X,Y‚ð‰Ÿ‚µ‚½‚çtrue
+				if (wasInput[3] == false) {
+					scoreValues[3] += 100;
+					marks[3]->text = to_string(scoreValues[3]);
+				}
+				wasInput[3] = true;
+			} else {
+				wasInput[3] = false;
 			}
 		}
 	}
