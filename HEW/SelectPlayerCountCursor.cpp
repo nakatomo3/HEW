@@ -8,13 +8,25 @@ void SelectPlayerCountCursor::Update() {
 	if (Input::GetInstance().GetKeyDown(DIK_S)) {
 		cursorPosition++;
 	}
+	if (Input::GetInstance().GetController(0).Gamepad.sThumbLY > 5000) {
+		if (wasInput == false) {
+			cursorPosition++;
+		}
+		wasInput = true;
+	}
 	if (Input::GetInstance().GetKeyDown(DIK_W)) {
 		cursorPosition--;
+	}
+	if (Input::GetInstance().GetController(0).Gamepad.sThumbLY < -5000) {
+		if (wasInput == false) {
+			cursorPosition--;
+		}
+		wasInput = true;
 	}
 
 	cursorPosition = (cursorPosition + 3) % 3;
 
-	if (Input::GetInstance().GetKeyDown(DIK_SPACE) || Input::GetInstance().GetKeyDown(DIK_RETURN)) {
+	if (Input::GetInstance().GetKeyDown(DIK_SPACE) || Input::GetInstance().GetKeyDown(DIK_RETURN) || Input::GetInstance().GetController(0).Gamepad.wButtons & VK_GAMEPAD_A || Input::GetInstance().GetController(0).Gamepad.wButtons & VK_GAMEPAD_B || Input::GetInstance().GetController(0).Gamepad.wButtons & VK_GAMEPAD_X || Input::GetInstance().GetController(0).Gamepad.wButtons & VK_GAMEPAD_Y) {
 		VariableManager::GetInstance().SetInt("playerCount", cursorPosition + 2);
 		SceneManager::GetInstance().LoadScene("selectCharacter");
 

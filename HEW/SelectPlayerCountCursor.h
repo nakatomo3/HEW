@@ -7,5 +7,7 @@ class SelectPlayerCountCursor : public ScriptBase {
 public :
 	void Update();
 	int cursorPosition = 0; //2l‚ÌˆÊ’u
+
+	bool wasInput = false;
 };
 
