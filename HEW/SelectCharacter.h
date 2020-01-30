@@ -34,6 +34,8 @@ private:
 	Sprite*  selectCharacterSprite3;
 	Sprite*  selectCharacterSprite4;
 
+	Texture* characterSelect;
+
 	float cursorPosition = 0.0f;
 	int playerCount = 0;
 	vector<int> cursorPositions;

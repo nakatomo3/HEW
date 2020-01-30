@@ -42,12 +42,13 @@ void SelectCharacter::Load() {//”wŒi@ã‚ªƒvƒŒƒCƒ„[”wŒi(1–‡)@‰º‚ªƒLƒƒƒ‰”wŒi(4–
 	backgroundSprite->SetColor(new Color(0, 0, 0, 255));// •F”wŒi
 
 	// ƒvƒŒƒCƒ„[”wŒi
+	characterSelect = new Texture("assets/textures/System/characterSelect.png", "characterSelect");
 	playerBackgroundObject = new GameObject();
-	playerBackgroundSprite = new Sprite();
+	playerBackgroundSprite = new Sprite(characterSelect);
 	playerBackgroundObject->AddComponent(playerBackgroundSprite);
 	playerBackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH*0.6f, SCREEN_HEIGHT *0.54f));// ”wŒi‚Ì‘å‚«‚³
 	playerBackgroundSprite->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3.55f, -0.01f));// ”wŒi‚ÌˆÊ’u
-	playerBackgroundSprite->SetColor(new Color(255, 255, 255, 255));// ”’F”wŒi
+
 
 	// ƒLƒƒƒ‰”wŒi
 	selectCharacterObject1 = new GameObject();
