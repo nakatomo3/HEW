@@ -39,36 +39,36 @@ void ArcheryTitle::Load() {
 	archeryTexture1 = new Texture("assets/textures/Archery/Title/Title1.png", "Title1");// 軌道
 	archeryLogo1 = new Sprite(archeryTexture1);
 	archeryObject->AddComponent(archeryLogo1);
-	archeryLogo1->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	archeryLogo1->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*2));
 	archeryLogo1->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT, 0));
 
 	archeryTexture2 = new Texture("assets/textures/Archery/Title/Title2.png", "Title2");// 弓なしプレイヤー
 	archeryLogo2 = new Sprite(archeryTexture2);
 	archeryObject->AddComponent(archeryLogo2);
-	archeryLogo2->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	archeryLogo2->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*2));
 
 	archeryTexture3 = new Texture("assets/textures/Archery/Title/Title3.png", "Title3");// 弓ありプレイヤー
 	archeryLogo3 = new Sprite(archeryTexture3);
 	archeryObject->AddComponent(archeryLogo3);
-	archeryLogo3->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
-	archeryLogo3->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+	archeryLogo3->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*2));
+	archeryLogo3->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT /10, 0));
 
 	archeryTexture4 = new Texture("assets/textures/Archery/Title/Title4.png", "Title4");// 的
 	archeryLogo4 = new Sprite(archeryTexture4);
 	archeryObject->AddComponent(archeryLogo4);
-	archeryLogo4->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
-	archeryLogo4->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+	archeryLogo4->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*2));
+	archeryLogo4->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 10, 0));
 
 	archeryTexture5 = new Texture("assets/textures/Archery/Title/Title5.png", "Title5");// 台座
 	archeryLogo5 = new Sprite(archeryTexture5);
 	archeryObject->AddComponent(archeryLogo5);
-	archeryLogo5->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
-	archeryLogo5->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));
+	archeryLogo5->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*2));
+	archeryLogo5->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 10, 0));
 
 	archeryTexture6 = new Texture("assets/textures/Archery/Title/Title6.png", "Title6");// クソデカロゴ
 	archeryLogo6 = new Sprite(archeryTexture6);
 	archeryObject->AddComponent(archeryLogo6);
-	archeryLogo6->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	archeryLogo6->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*2));
 	archeryLogo6->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT, 0));
 
 
@@ -107,16 +107,19 @@ void ArcheryTitle::Update() {
 	timer += Time::GetInstance().GetDeltaTime();
 
 	if (timer > 2.0) {
-		archeryLogo1->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));// 軌道
-		archeryLogo2->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));// 弓なしプレイヤー
-		archeryLogo3->SetActive(false);// 弓ありプレイヤーを消してる
+		archeryLogo1->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 10, 0));// 軌道
+		
 	}
-	if (timer > 3.0) {
+	if (timer > 2.8) {
+		archeryLogo2->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 10, 0));// 弓なしプレイヤー
+		archeryLogo3->SetActive(false);// 弓ありプレイヤーを消してる
 		archeryLogo1->SetActive(false);// 軌道を消している
+	}
+	if (timer > 3.0) {//+0.2
 		archeryLogo4->SetActive(false);// 的を消してる
 	}
-	if (timer > 5.0) {
-		archeryLogo6->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));// クソデカロゴ//左から右
+	if (timer > 3.0) {//+0.2
+		archeryLogo6->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 10, 0));// クソデカロゴ//左から右
 	}
 	if (timer > 10.0) {
 		archeryLogo2->SetActive(false);// 弓なしプレイヤー
