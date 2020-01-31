@@ -50,7 +50,8 @@ private:
 	GameObject* scoreObject;
 	
 	vector<Sprite*> players;
-	vector<Texture*> playerTexture;
+	vector<Texture*> waitingPlayerTexture;
+	vector<Texture*> shotPlayerTexture;
 	vector<Sprite*> playerSprites;
 
 	vector<Sprite*> numbers;

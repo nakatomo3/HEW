@@ -99,6 +99,29 @@ void Archery::Load() {
 		scoreValues.emplace_back(0);
 		
 		wasInput.emplace_back(false);
+
+		string path = "";
+
+		int characterID = VariableManager::GetInstance().GetInt("character" + to_string(i));
+
+		switch (characterID) {
+		case 0://ウルフ
+			path = "assets/textures/Archery/Player/masukudourufu/"; //ここを画像名に変える　　各ファイルまでぶち込み
+			break;
+		case 1://かしこま
+			path = "assets/textures/Archery/Player/kasikomk2/"; //ここを画像名に変える
+			break;
+		case 2://せん
+			path = "assets/textures/Archery/Player/senntyann/"; //ここを画像名に変える
+			break;
+		case 3://宇宙
+			path = "assets/textures/Archery/Player/utyuujinn/"; //ここを画像名に変える
+			break;
+		}
+
+		waitingPlayerTexture[i] = new Texture(path + "waiting.png"/*+個別画像名*/);//画像の名前は統一しそれをぶち込む  クラウチング
+		player->SetTexture(waitingPlayerTexture[i]);
+		shotPlayerTexture[i] = new Texture(path + "shot.png"/*+個別画像名*/);
 	}
 
 }
@@ -114,8 +137,10 @@ void Archery::Update() {
 					marks[0]->text = to_string(scoreValues[0]);
 				}
 				wasInput[0] = true;
+				players[0]->SetTexture(shotPlayerTexture[0]);
 			} else {
 				wasInput[0] = false;
+				players[0]->SetTexture(waitingPlayerTexture[0]);
 			}
 		}
 		if (playerCount >= 2) {
@@ -125,8 +150,10 @@ void Archery::Update() {
 					marks[1]->text = to_string(scoreValues[1]);
 				}
 				wasInput[1] = true;
+				players[1]->SetTexture(shotPlayerTexture[1]);
 			} else {
 				wasInput[1] = false;
+				players[1]->SetTexture(waitingPlayerTexture[1]);
 			}
 		}
 		if (playerCount >= 3) {
@@ -136,8 +163,10 @@ void Archery::Update() {
 					marks[2]->text = to_string(scoreValues[2]);
 				}
 				wasInput[2] = true;
+				players[2]->SetTexture(shotPlayerTexture[2]);
 			} else {
 				wasInput[2] = false;
+				players[2]->SetTexture(waitingPlayerTexture[2]);
 			}
 		}
 		if (playerCount >= 4) {
@@ -147,8 +176,10 @@ void Archery::Update() {
 					marks[3]->text = to_string(scoreValues[3]);
 				}
 				wasInput[3] = true;
+				players[3]->SetTexture(shotPlayerTexture[3]);
 			} else {
 				wasInput[3] = false;
+				players[3]->SetTexture(waitingPlayerTexture[3]);
 			}
 		}
 	}
