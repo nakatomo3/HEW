@@ -116,9 +116,9 @@ void MegatonPunch::Load() {
 		text->outlineDistance = SCREEN_HEIGHT * 0.007f;
 		text->SetSize(SCREEN_HEIGHT*0.1f);
 
-		auto breakingEarth = new GameObject();
+		GameObject* breakingEarth = new GameObject();
 		breakingEarths.emplace_back(breakingEarth);
-		auto breakingEarthSprite = new Sprite(breakingEarthTexture);
+		Sprite* breakingEarthSprite = new Sprite(breakingEarthTexture);
 		breakingEarthSprites.emplace_back(breakingEarthSprite);
 		breakingEarth->AddComponent(breakingEarthSprite);
 		breakingEarthSprite->SetTextureScale(1, 0);
@@ -165,9 +165,10 @@ void MegatonPunch::Load() {
 void MegatonPunch::UnLoad() {
 	for (int i = 0; i < VariableManager::GetInstance().GetInt("playerCount"); i++) {
 		ObjectManager::GetInstance().Destroy(playerObjects[i]);
-
+		ObjectManager::GetInstance().Destroy(breakingEarths[i]);
 	}
 	ObjectManager::GetInstance().Destroy(earthObject);
+	breakingEarths.clear();
 }
 
 void MegatonPunch::Start() {
@@ -198,7 +199,7 @@ void MegatonPunch::Update() {
 	if (isBreaking == true) {
 		earthSprite->SetActive(true);
 		timer += Time::GetInstance().GetDeltaTime();
-		if(timer >= 5){
+		if(timer >= 10){
 			SceneManager::GetInstance().LoadScene("megatonPunchResult");
 		} else if (timer >= 1) {
 			breakingSprite->SetActive(true);
