@@ -12,10 +12,6 @@ MegatonPunch::~MegatonPunch() {
 }
 
 void MegatonPunch::Load() {
-	/*playerTextures[0] = new Texture("");
-	playerTextures[1] = new Texture("");
-	playerTextures[2] = new Texture("");
-	playerTextures[3] = new Texture("");*/
 
 	playerCount = VariableManager::GetInstance().GetInt("playerCount");
 	gaugeTexture = new Texture("assets/textures/Run/UI/gauge.png");

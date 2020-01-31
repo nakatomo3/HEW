@@ -55,6 +55,29 @@ void PlayerPunch::Start() {
 		break;
 	}
 
+	string path = "";
+
+	int characterID = VariableManager::GetInstance().GetInt("character" + to_string(playerNumber));
+
+	switch (characterID) {
+	case 0://ウルフ
+		path = "assets/textures/MegatonPunch/Player/masukudourufu/"; //ここを画像名に変える　　各ファイルまでぶち込み
+		break;
+	case 1://かしこま
+		path = "assets/textures/MegatonPunch/Player/kasikomk2/"; //ここを画像名に変える
+		break;
+	case 2://せん
+		path = "assets/textures/MegatonPunch/Player/senntyann/"; //ここを画像名に変える
+		break;
+	case 3://宇宙
+		path = "assets/textures/MegatonPunch/Player/utyuujinn/"; //ここを画像名に変える
+		break;
+	}
+
+	readyTexture = new Texture(path + "ready.png"/*+個別画像名*/);//画像の名前は統一しそれをぶち込む  クラウチング
+	sprite->SetTexture(readyTexture);
+	punchTexture = new Texture(path + "punch.png"/*+個別画像名*/);
+
 	megatonPunch = (MegatonPunch*)SceneManager::GetInstance().GetNowScene();
 }
 

@@ -49,8 +49,8 @@ private :
 
 	Sprite* sprite;
 
-	Texture* readySprite;
-	Texture* punchSprite;
+	Texture* readyTexture;
+	Texture* punchTexture;
 
 	MegatonMode nowMode = GAUGE;
 
