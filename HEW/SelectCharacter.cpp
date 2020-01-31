@@ -362,6 +362,12 @@ void SelectCharacter::UnLoad() {
 	ObjectManager::GetInstance().Destroy(selectCharacterObject3);
 	ObjectManager::GetInstance().Destroy(selectCharacterObject4);
 	ObjectManager::GetInstance().Destroy(selectCursorObject);
+
+	ObjectManager::GetInstance().Destroy(selectingCharacterObject);
+
+	ObjectManager::GetInstance().Destroy(bannerObject);
+
+	ObjectManager::GetInstance().Destroy(backgroundObject);
 }
 
 SelectCharacter::SelectCharacter(string name) : Scene(name) {
