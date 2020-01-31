@@ -51,33 +51,37 @@ void SelectCharacter::Load() {//îwåiÅ@è„Ç™ÉvÉåÉCÉÑÅ[îwåi(1ñá)Å@â∫Ç™ÉLÉÉÉâîwåi(4ñ
 
 
 	// ÉLÉÉÉâîwåi
+	characterMask = new Texture("assets/textures/All/CharacterSelection/Mask.png", "characterMask");
 	selectCharacterObject1 = new GameObject();
-	selectCharacterSprite1 = new Sprite();
+	selectCharacterSprite1 = new Sprite(characterMask);
 	selectCharacterObject1->AddComponent(selectCharacterSprite1);
 	selectCharacterSprite1->SetScale(new Vector2(SCREEN_HEIGHT * 0.3f, SCREEN_HEIGHT * 0.3f));// îwåiÇÃëÂÇ´Ç≥       // édólèëÇÃ3äÑ=0.3
-	selectCharacterSprite1->SetPosition(new Vector3(SCREEN_WIDTH *0.2f, SCREEN_HEIGHT / 1.4f, -0.01f));// îwåiÇÃà íu
-	selectCharacterSprite1->SetColor(new Color(255, 255, 255, 255));// îíêFîwåi
+	selectCharacterSprite1->SetPosition(new Vector3(SCREEN_WIDTH *0.2f, SCREEN_HEIGHT / 1.4f + SD_HEIGHT * 0.5, -0.01f));// îwåiÇÃà íu
+	//selectCharacterSprite1->SetColor(new Color(255, 255, 255, 255));// îíêFîwåi
 
+	characterRobot = new Texture("assets/textures/All/CharacterSelection/Robot.png", "characterRobot");
 	selectCharacterObject2 = new GameObject();
-	selectCharacterSprite2 = new Sprite();
+	selectCharacterSprite2 = new Sprite(characterRobot);
 	selectCharacterObject2->AddComponent(selectCharacterSprite2);
 	selectCharacterSprite2->SetScale(new Vector2(SCREEN_HEIGHT * 0.3f, SCREEN_HEIGHT * 0.3f));// îwåiÇÃëÂÇ´Ç≥
-	selectCharacterSprite2->SetPosition(new Vector3(SCREEN_WIDTH *0.4f, SCREEN_HEIGHT / 1.4f, -0.01f));// îwåiÇÃà íu
-	selectCharacterSprite2->SetColor(new Color(255, 255, 0, 255));// ê‘êFîwåi
+	selectCharacterSprite2->SetPosition(new Vector3(SCREEN_WIDTH *0.4f, SCREEN_HEIGHT / 1.4f + SD_HEIGHT * 0.5, -0.01f));// îwåiÇÃà íu
+	//selectCharacterSprite2->SetColor(new Color(255, 255, 0, 255));// ê‘êFîwåi
 
+	characterWitch = new Texture("assets/textures/All/CharacterSelection/Witch.png", "characterWitch");
 	selectCharacterObject3 = new GameObject();
-	selectCharacterSprite3 = new Sprite();
+	selectCharacterSprite3 = new Sprite(characterWitch);
 	selectCharacterObject3->AddComponent(selectCharacterSprite3);
 	selectCharacterSprite3->SetScale(new Vector2(SCREEN_HEIGHT * 0.3f, SCREEN_HEIGHT *0.3f));// îwåiÇÃëÂÇ´Ç≥
-	selectCharacterSprite3->SetPosition(new Vector3(SCREEN_WIDTH *0.6f, SCREEN_HEIGHT / 1.4f, -0.01f));// îwåiÇÃà íu
-	selectCharacterSprite3->SetColor(new Color(255, 255, 255, 255));// îíêFîwåi
+	selectCharacterSprite3->SetPosition(new Vector3(SCREEN_WIDTH *0.6f, SCREEN_HEIGHT / 1.4f + SD_HEIGHT * 0.5, -0.01f));// îwåiÇÃà íu
+	//selectCharacterSprite3->SetColor(new Color(255, 255, 255, 255));// îíêFîwåi
 
+	characterAlien = new Texture("assets/textures/All/CharacterSelection/Alien.png", "characterAlien");
 	selectCharacterObject4 = new GameObject();
-	selectCharacterSprite4 = new Sprite();
+	selectCharacterSprite4 = new Sprite(characterAlien);
 	selectCharacterObject4->AddComponent(selectCharacterSprite4);
 	selectCharacterSprite4->SetScale(new Vector2(SCREEN_HEIGHT * 0.3f, SCREEN_HEIGHT * 0.3f));// îwåiÇÃëÂÇ´Ç≥
-	selectCharacterSprite4->SetPosition(new Vector3(SCREEN_WIDTH *0.8f, SCREEN_HEIGHT / 1.4f, -0.01f));// îwåiÇÃà íu
-	selectCharacterSprite4->SetColor(new Color(255, 255, 0, 255));// ê‘êFîwåi
+	selectCharacterSprite4->SetPosition(new Vector3(SCREEN_WIDTH *0.8f, SCREEN_HEIGHT / 1.4f + SD_HEIGHT * 0.5, -0.01f));// îwåiÇÃà íu
+	//selectCharacterSprite4->SetColor(new Color(255, 255, 0, 255));// ê‘êFîwåi
 
 	for (int i = 0; i < playerCount; i++) {
 		cursorPositions.emplace_back(0);
@@ -137,7 +141,7 @@ void SelectCharacter::Update() {
 		} else {
 			selectCursorSprite[0]->SetColor(new Color(0, 0, 128, 255));
 		}
-		selectCursorSprite[0]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[0] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6, -0.02f));
+		selectCursorSprite[0]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[0] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6 + SD_HEIGHT * 0.5, -0.02f));
 
 		if ((Input::GetInstance().GetKeyDown(DIK_A) || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(0).Gamepad.wButtons & XINPUT_GAMEPAD_Y) && isSelected[cursorPositions[0]] == false) {
 			isSelected[cursorPositions[0]] = true;
@@ -179,7 +183,7 @@ void SelectCharacter::Update() {
 		} else {
 			selectCursorSprite[1]->SetColor(new Color(0, 0, 128, 255));
 		}
-		selectCursorSprite[1]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[1] + 1) + SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6, -0.02f));
+		selectCursorSprite[1]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[1] + 1) + SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.6 + SD_HEIGHT * 0.5, -0.02f));
 	
 		if ((Input::GetInstance().GetKeyDown(DIK_S) || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(1).Gamepad.wButtons & XINPUT_GAMEPAD_Y) && isSelected[cursorPositions[1]] == false) {
 			isSelected[cursorPositions[1]] = true;
@@ -221,7 +225,7 @@ void SelectCharacter::Update() {
 		} else {
 			selectCursorSprite[2]->SetColor(new Color(0, 0, 128, 255));
 		}
-		selectCursorSprite[2]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[2] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.25 , -0.02f));
+		selectCursorSprite[2]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[2] + 1) - SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.25 + SD_HEIGHT * 0.5, -0.02f));
 	
 		if ((Input::GetInstance().GetKeyDown(DIK_D) || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(2).Gamepad.wButtons & XINPUT_GAMEPAD_Y) && isSelected[cursorPositions[2]] == false) {
 			isSelected[cursorPositions[2]] = true;
@@ -263,7 +267,7 @@ void SelectCharacter::Update() {
 		} else {
 			selectCursorSprite[3]->SetColor(new Color(0, 0, 128, 255));
 		}
-		selectCursorSprite[3]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[3] + 1) + SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.25, -0.02f));
+		selectCursorSprite[3]->SetPosition(new Vector3(SCREEN_WIDTH * 0.2 * (cursorPositions[3] + 1) + SCREEN_HEIGHT * 0.15, SCREEN_HEIGHT / 1.25 + SD_HEIGHT * 0.5, -0.02f));
 
 		if ((Input::GetInstance().GetKeyDown(DIK_F) || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_A || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_B || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_X || Input::GetInstance().GetController(3).Gamepad.wButtons & XINPUT_GAMEPAD_Y) && isSelected[cursorPositions[3]] == false) {
 			isSelected[cursorPositions[3]] = true;
