@@ -74,7 +74,7 @@ void PlayerPunch::Start() {
 		break;
 	}
 
-	readyTexture = new Texture(path + "ready.png"/*+個別画像名*/);//画像の名前は統一しそれをぶち込む  クラウチング
+	readyTexture = new Texture(path + "ready.png"/*+個別画像名*/);//画像の名前は統一しそれをぶち込む
 	sprite->SetTexture(readyTexture);
 	punchTexture = new Texture(path + "punch.png"/*+個別画像名*/);
 
@@ -106,11 +106,30 @@ void PlayerPunch::Update() {
 				pendulumValue = pendulum->GetValue();
 				ObjectManager::GetInstance().Destroy(pendulum->GetGameObject());
 				nowMode = WAIT;
+				isBreaking = true;
 			}
 			break;
 		case WAIT:
 			megatonPunch->SetWaiting(playerNumber);
 			value = gaugeValue / 10 + (1 - aimingValue) * 100 + (1 - pendulumValue) * 100;
+			if (isBreaking == true) {
+				switch (characterID) {
+				default:
+					break;
+				case 0://ウルフ
+					sprite->SetTexture(punchTexture);
+					break;
+				case 1://かしこま
+					sprite->SetTexture(punchTexture);
+					break;
+				case 2://せんちゃん
+					sprite->SetTexture(punchTexture);
+					break;
+				case 3://宇宙
+					sprite->SetTexture(punchTexture);
+					break;
+				}
+			}
 			break;
 		case BREAKING:
 			sprite->SetActive(false);
@@ -119,10 +138,6 @@ void PlayerPunch::Update() {
 				breaking->SetScale(new Vector2(SCREEN_WIDTH * 0.05, SCREEN_HEIGHT * waitTimer * 3));
 				breaking->SetTextureScale(1, waitTimer * value / 300 * 5);
 			}
-			if(waitTimer > 3){
-				nowMode = VIEWSCORE;
-			}
-			break;
 		case VIEWSCORE:
 			text->SetActive(true);
 			int intValue = floor(value);
@@ -130,7 +145,7 @@ void PlayerPunch::Update() {
 			VariableManager::GetInstance().SetInt("megatonScore" + to_string(playerNumber), value);
 			break;
 	}
-
+	
 }
 
 void PlayerPunch::SetBreakingFlag() {
