@@ -10,9 +10,6 @@ TotalResult::~TotalResult() {
 }
 
 void TotalResult::Load() {
-	titleObject = new GameObject();
-	titleSprite = new Sprite();
-	titleObject->AddComponent(titleSprite);
 
 	backgroundObject = new GameObject();
 	backgroundSprite = new Sprite();
@@ -22,6 +19,10 @@ void TotalResult::Load() {
 	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
 
 	// 背景
+	titleObject = new GameObject();
+	titleSprite = new Sprite();
+	titleObject->AddComponent(titleSprite);
+
 	titleSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_WIDTH));// 背景の大きさ
 	titleSprite->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0));// 背景の位置
 	titleSprite->SetColor(new Color(0, 0, 0, 0));// 黒色背景
@@ -72,9 +73,15 @@ void TotalResult::Load() {
 	titleObject->AddComponent(totalresultLogo6);
 	totalresultLogo6->SetScale(new Vector2(SD_WIDTH *2.0f, SD_WIDTH *2.0f));// 画像の横、横の大きさ
 	totalresultLogo6->SetPosition(new Vector3(SCREEN_WIDTH *0.91, SCREEN_HEIGHT *-0.2, 0));// 開始位置 x,y,z座標
-
-
 	//----------------------------------------------------------------------------------------------総合結果発表↑
+
+	//表彰台
+	totalresultTableTexture = new Texture("assets/textures/TotalResult/表彰台.png", "表彰台");
+	totalresultTableSprite = new Sprite(totalresultTableTexture);
+	titleObject->AddComponent(totalresultTableSprite);
+	totalresultTableSprite->SetScale(new Vector2(SCREEN_WIDTH *0.6, SCREEN_HEIGHT*0.5));//表彰台の大きさ
+	totalresultTableSprite->SetPosition(new Vector3(SCREEN_WIDTH *4, SCREEN_HEIGHT *0.75, 0));//表彰台の位置
+
 }
 
 void TotalResult::Start() {
@@ -172,6 +179,18 @@ void TotalResult::Update() {
 		if (totalresultLogo6->GetPosition()->GetY() > SCREEN_HEIGHT / 2) {
 			totalresultLogo6->SetPosition(new Vector3(SCREEN_WIDTH *0.91, SCREEN_HEIGHT / 2, 0));// 動かす位置
 		}
+	}
+
+	if (timer >		5.5f) {
+		totalresultLogo1->SetActive(false);
+		totalresultLogo2->SetActive(false);
+		totalresultLogo3->SetActive(false);
+		totalresultLogo4->SetActive(false);
+		totalresultLogo5->SetActive(false);
+		totalresultLogo6->SetActive(false);
+	}
+	if (timer > 5.5f) {//とりあえずこの時間にしてる
+		totalresultTableSprite->SetPosition(new Vector3(SCREEN_WIDTH *0.35, SCREEN_HEIGHT *0.75, 0));//表彰台が瞬間移動
 	}
 
 	//------------------------------------------------------------------------------------------------------------------------------------------------------
