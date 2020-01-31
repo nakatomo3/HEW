@@ -16,11 +16,11 @@ void SelectCharacter::Start() {
 	//ƒJ[ƒ\ƒ‹
 	ObjectManager::GetInstance().Instantiate(selectCursorObject);
 
-	//ƒoƒi[
-	ObjectManager::GetInstance().Instantiate(bannerObject);	
-
 	//Œ»Ý‘I‘ð‚µ‚Ä‚¢‚éƒLƒƒƒ‰ƒNƒ^[
 	ObjectManager::GetInstance().Instantiate(selectingCharacterObject);
+
+	//ƒoƒi[
+	ObjectManager::GetInstance().Instantiate(bannerObject);	
 
 	// ”wŒi
 	ObjectManager::GetInstance().Instantiate(backgroundObject);
@@ -130,8 +130,8 @@ void SelectCharacter::Load() {//”wŒi@ã‚ªƒvƒŒƒCƒ„[”wŒi(1–‡)@‰º‚ªƒLƒƒƒ‰”wŒi(4–
 
 	selectingCharacterSprites[0]->SetPosition(new Vector3(SCREEN_WIDTH * 0.35f, SCREEN_HEIGHT * 0.15f, -0.01f));
 	selectingCharacterSprites[1]->SetPosition(new Vector3(SCREEN_WIDTH * 0.65f, SCREEN_HEIGHT * 0.15f, -0.01f));
-	selectingCharacterSprites[2]->SetPosition(new Vector3(SCREEN_WIDTH * 0.35f, SCREEN_HEIGHT * 0.4f, -0.01f));
-	selectingCharacterSprites[3]->SetPosition(new Vector3(SCREEN_WIDTH * 0.65f, SCREEN_HEIGHT * 0.4f, -0.01f));
+	selectingCharacterSprites[2]->SetPosition(new Vector3(SCREEN_WIDTH * 0.35f, SCREEN_HEIGHT * 0.41f, -0.01f));
+	selectingCharacterSprites[3]->SetPosition(new Vector3(SCREEN_WIDTH * 0.65f, SCREEN_HEIGHT * 0.41f, -0.01f));
 
 }
 
