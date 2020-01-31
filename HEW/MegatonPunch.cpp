@@ -27,6 +27,7 @@ void MegatonPunch::Load() {
 	breaking = new Texture("assets/textures/MegatonPunch/UI/Breaking.png");
 
 	breakingEarthTexture = new Texture("assets/textures/MegatonPunch/UI/BreakingEarth.png");
+	backgroundTexture = new Texture("assets/textures/MegatonPunch/UI/backgroundTexture.png");
 
 	const float PLAYER_WIDTH = SCREEN_WIDTH / 10;
 
@@ -141,6 +142,13 @@ void MegatonPunch::Load() {
 	breakingSprite->SetActive(false);
 	earthObject->AddComponent(breakingSprite);
 
+	background = new GameObject();
+	backgroundSprite = new Sprite(backgroundTexture);
+	background->AddComponent(backgroundSprite);
+	backgroundSprite->SetActive(false);
+	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	backgroundSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, -0.0));
+
 
 	//キャラスプライト周りと位置調節
 	if (playerCount >= 1) {
@@ -168,6 +176,7 @@ void MegatonPunch::UnLoad() {
 		ObjectManager::GetInstance().Destroy(breakingEarths[i]);
 	}
 	ObjectManager::GetInstance().Destroy(earthObject);
+	ObjectManager::GetInstance().Destroy(background);
 	breakingEarths.clear();
 }
 
@@ -178,6 +187,7 @@ void MegatonPunch::Start() {
 		ObjectManager::GetInstance().Instantiate(breakingEarths[i]);
 	}
 	ObjectManager::GetInstance().Instantiate(earthObject);
+	ObjectManager::GetInstance().Instantiate(background);
 }
 
 void MegatonPunch::Update() {
@@ -197,6 +207,7 @@ void MegatonPunch::Update() {
 	}
 
 	if (isBreaking == true) {
+		backgroundSprite->SetActive(true);
 		earthSprite->SetActive(true);
 		timer += Time::GetInstance().GetDeltaTime();
 		if(timer >= 10){
