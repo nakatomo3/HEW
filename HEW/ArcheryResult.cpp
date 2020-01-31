@@ -13,12 +13,13 @@ ArcheryResult::~ArcheryResult() {
 
 void ArcheryResult::Start() {
 
-	ObjectManager::GetInstance().Instantiate(ranking);
 	ObjectManager::GetInstance().Instantiate(rankingBackground);
+	ObjectManager::GetInstance().Instantiate(ranking);
 	
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Instantiate(rankingScore[i]);
 		ObjectManager::GetInstance().Instantiate(rankingPoint[i]);
+		ObjectManager::GetInstance().Instantiate(medal[i]);
 	}
 
 	//前の種目(瓦割)の順位点数の引き継ぎ処理
@@ -84,24 +85,36 @@ void ArcheryResult::Start() {
 			rankingScore[0]->SetActive(true);
 			rankingScoreText[0]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.36f, 0));
+
+			medal[0]->SetActive(true);
+			medal[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.412f, 0));
 		}
 
 		if (playerCount >= 2) {
 			rankingScore[1]->SetActive(true);
 			rankingScoreText[1]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.5f, 0));
+
+			medal[1]->SetActive(true);
+			medal[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.552f, 0));
 		}
 
 		if (playerCount >= 3) {
 			rankingScore[2]->SetActive(true);
 			rankingScoreText[2]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.5f, 0));
+
+			medal[2]->SetActive(true);
+			medal[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.692f, 0));
 		}
 
 		if (playerCount >= 4) {
 			rankingScore[3]->SetActive(true);
 			rankingScoreText[3]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.64f, 0));
+
+			medal[3]->SetActive(true);
+			medal[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.833f, 0));
 		}
 
 		isRanking = true;
@@ -142,6 +155,26 @@ void ArcheryResult::Load() {
 		rankingPoint.emplace_back(new GameObject());
 		rankingPoint[i]->AddComponent(rankingPointText[i]);
 		rankingPoint[i]->SetActive(false);
+
+		//メダル表示
+		medal.emplace_back(new GameObject());
+		if (playerCount >= 1) {
+			medalTexture.emplace_back(new Texture("assets/textures/All/UI/medal_1st.png"));
+		}
+		if (playerCount >= 2) {
+			medalTexture.emplace_back(new Texture("assets/textures/All/UI/medal_2nd.png"));
+		}
+		if (playerCount >= 3) {
+			medalTexture.emplace_back(new Texture("assets/textures/All/UI/medal_3rd.png"));
+		}
+		if (playerCount >= 4) {
+			medalTexture.emplace_back(new Texture("assets/textures/All/UI/medal_4th.png"));
+		}
+		medalSprite.emplace_back(new Sprite(medalTexture[i]));
+		medalSprite[i]->SetScale(new Vector2(SD_HEIGHT*1.4f, SD_HEIGHT*1.4f));
+		medalSprite[i]->SetColor(new Color(255, 255, 255, 255));
+		medal[i]->AddComponent(medalSprite[i]);
+		medal[i]->SetActive(false);
 	}
 }
 
@@ -161,8 +194,7 @@ void ArcheryResult::UnLoad() {
 	ObjectManager::GetInstance().Destroy(rankingBackground);
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Destroy(rankingScore[i]);
-	}
-	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Destroy(rankingPoint[i]);
+		ObjectManager::GetInstance().Destroy(medal[i]);
 	}
 }

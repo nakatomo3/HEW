@@ -44,6 +44,15 @@ private:
 	//順位ポイントのテキスト
 	vector<Text*> rankingPointText{};
 
+	//メダルのオブジェクト
+	vector <GameObject*> medal{};
+
+	//メダルのスプライト
+	vector <Sprite*> medalSprite{};
+
+	//メダルのテクスチャ
+	vector <Texture*> medalTexture{};
+
 	ArcheryResult* archeryresult;
 	
 	float timer;
