@@ -106,13 +106,18 @@ void SelectCharacter::Load() {//îwåiÅ@è„Ç™ÉvÉåÉCÉÑÅ[îwåi(1ñá)Å@â∫Ç™ÉLÉÉÉâîwåi(4ñ
 	backgroundSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0.05));
 
 	selectCursorObject = new GameObject();
+	selectCursorTextures.emplace_back(new Texture("assets/textures/All/UI/1Pcursor.png"));
+	selectCursorTextures.emplace_back(new Texture("assets/textures/All/UI/2Pcursor.png"));
+	selectCursorTextures.emplace_back(new Texture("assets/textures/All/UI/3Pcursor.png"));
+	selectCursorTextures.emplace_back(new Texture("assets/textures/All/UI/4Pcursor.png"));
 	for (int i = 0; i < playerCount; i++) {
 		//ÉJÅ[É\Éã
 		selectCursorSprite.emplace_back(new Sprite());
+		selectCursorSprite[i] = new Sprite();
 		selectCursorObject->AddComponent(selectCursorSprite[i]);
+		selectCursorSprite[i]->SetTexture(selectCursorTextures[i]);
 		selectCursorSprite[i]->SetScale(new Vector2(SCREEN_WIDTH *0.05f, SCREEN_HEIGHT *0.08f));// ÉJÅ[É\ÉãÇÃëÂÇ´Ç≥
-		selectCursorSprite[i]->SetColor(new Color(0, 0, 255, 255));// êÖêF
-
+		selectCursorSprite[i]->SetColor(new Color(255, 255, 255, 255));// êÖêF
 	}
 
 	selectingCharacterObject = new GameObject();
