@@ -20,6 +20,9 @@ private:
 	GameObject* backgroundObject;
 	Sprite* backgroundSprite;
 
+	Sprite* totalresultTableSprite;
+	Texture* totalresultTableTexture;
+
 	Sprite* totalresultLogo;
 	Sprite* totalresultLogo1;
 	Sprite* totalresultLogo2;
