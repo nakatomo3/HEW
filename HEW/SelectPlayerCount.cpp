@@ -37,16 +37,25 @@ void SelectPlayerCount::Load() {
 	playerCountObject->AddComponent(playerCountSprites[1]);
 	playerCountObject->AddComponent(playerCountSprites[2]);
 
+	backGroundTexture = new Texture("assets/textures/System/SelectPlayerCount/selectPlayerCount.png");
+	backGroundObject = new GameObject();
+	backGroundSprite = new Sprite(backGroundTexture);
+	backGroundSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0.01f));
+	backGroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	backGroundObject->AddComponent(backGroundSprite);
+
 }
 
 void SelectPlayerCount::UnLoad() {
 	ObjectManager::GetInstance().Destroy(cursorObject);
 	ObjectManager::GetInstance().Destroy(playerCountObject);
+	ObjectManager::GetInstance().Destroy(backGroundObject);
 }
 
 void SelectPlayerCount::Start() {
 	ObjectManager::GetInstance().Instantiate(cursorObject);
 	ObjectManager::GetInstance().Instantiate(playerCountObject);
+	ObjectManager::GetInstance().Instantiate(backGroundObject);
 }
 
 void SelectPlayerCount::Update() {

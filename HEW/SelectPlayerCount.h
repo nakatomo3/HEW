@@ -22,5 +22,9 @@ private:
 	GameObject* playerCountObject;
 	vector<Sprite*> playerCountSprites;
 	vector<Texture*> playerCountTextures;
+
+	GameObject* backGroundObject;
+	Sprite* backGroundSprite;
+	Texture* backGroundTexture;
 };
 
