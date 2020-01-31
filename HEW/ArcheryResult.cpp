@@ -117,7 +117,7 @@ void ArcheryResult::Load() {
 	ranking = new GameObject();
 	rankingTexture = new Texture("assets/textures/All/UI/ranking.png");
 	rankingSprite = new Sprite(rankingTexture);
-	rankingSprite->SetScale(new Vector2(SCREEN_WIDTH*0.8f, SCREEN_HEIGHT*0.8f));
+	rankingSprite->SetScale(new Vector2(SCREEN_WIDTH*1.1f, SCREEN_HEIGHT*1.1f));
 	rankingSprite->SetColor(new Color(255, 255, 255, 255));
 	ranking->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0));
 	ranking->AddComponent(rankingSprite);
