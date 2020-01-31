@@ -7,12 +7,6 @@
 
 void SelectCharacter::Start() {
 
-	// ”wŒi
-	//ObjectManager::GetInstance().Instantiate(backgroundObject);
-
-	// ƒvƒŒƒCƒ„[”wŒi
-	ObjectManager::GetInstance().Instantiate(playerBackgroundObject);
-
 	// ƒLƒƒƒ‰”wŒi
 	ObjectManager::GetInstance().Instantiate(selectCharacterObject1);
 	ObjectManager::GetInstance().Instantiate(selectCharacterObject2);
@@ -21,6 +15,19 @@ void SelectCharacter::Start() {
 
 	//ƒJ[ƒ\ƒ‹
 	ObjectManager::GetInstance().Instantiate(selectCursorObject);
+
+	//ƒoƒi[
+	ObjectManager::GetInstance().Instantiate(bannerObject);	
+
+	//Œ»İ‘I‘ğ‚µ‚Ä‚¢‚éƒLƒƒƒ‰ƒNƒ^[
+	ObjectManager::GetInstance().Instantiate(selectingCharacterObject);
+
+	// ”wŒi
+	ObjectManager::GetInstance().Instantiate(backgroundObject);
+
+	// ƒvƒŒƒCƒ„[”wŒi
+	ObjectManager::GetInstance().Instantiate(playerBackgroundObject);
+
 
 	for (int i = 0; i < playerCount; i++) {
 		isReady.emplace_back(false);
@@ -33,22 +40,18 @@ void SelectCharacter::Load() {//”wŒi@ã‚ªƒvƒŒƒCƒ„[”wŒi(1–‡)@‰º‚ªƒLƒƒƒ‰”wŒi(4–
 
 	playerCount = VariableManager::GetInstance().GetInt("playerCount");
 
-	// ”wŒi
-	backgroundObject = new GameObject();
-	backgroundSprite = new Sprite();
-	backgroundObject->AddComponent(backgroundSprite);
-	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));// ”wŒi‚Ì‘å‚«‚³ // •,‚‚³
-	backgroundSprite->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0.01f));// ”wŒi‚ÌˆÊ’u
-	backgroundSprite->SetColor(new Color(0, 0, 0, 255));// •F”wŒi
-
 	// ƒvƒŒƒCƒ„[”wŒi
 	characterSelect = new Texture("assets/textures/System/characterSelect.png", "characterSelect");
 	playerBackgroundObject = new GameObject();
+	selectingPlayerBackground = new Sprite();
+	selectingPlayerBackground->SetScale(new Vector2(SCREEN_WIDTH*0.6f, SCREEN_HEIGHT *0.54f));
+	selectingPlayerBackground->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3.55f, -0.01f));
+	selectingPlayerBackground->SetColor(new Color(128, 128, 128));
+	playerBackgroundObject->AddComponent(selectingPlayerBackground);
 	playerBackgroundSprite = new Sprite(characterSelect);
 	playerBackgroundObject->AddComponent(playerBackgroundSprite);
 	playerBackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH*0.6f, SCREEN_HEIGHT *0.54f));// ”wŒi‚Ì‘å‚«‚³
-	playerBackgroundSprite->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3.55f, -0.01f));// ”wŒi‚ÌˆÊ’u
-
+	playerBackgroundSprite->SetPosition(new Vector3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3.55f, -0.02f));// ”wŒi‚ÌˆÊ’u
 
 	// ƒLƒƒƒ‰”wŒi
 	characterMask = new Texture("assets/textures/All/CharacterSelection/Mask.png", "characterMask");
@@ -87,6 +90,21 @@ void SelectCharacter::Load() {//”wŒi@ã‚ªƒvƒŒƒCƒ„[”wŒi(1–‡)@‰º‚ªƒLƒƒƒ‰”wŒi(4–
 		cursorPositions.emplace_back(0);
 	}
 
+	bannerObject = new GameObject();
+	selectBannerTexture = new Texture("assets/textures/System/banner.png");
+	readyBannerTexture = new Texture("assets/textures/System/ReadyToFight.png");
+	bannerSprite = new Sprite(selectBannerTexture);
+	bannerSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	bannerSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, -0.03f));
+	bannerObject->AddComponent(bannerSprite);
+
+	backgroundObject = new GameObject();
+	backgroundTexture = new Texture("assets/textures/System/characterSelectBackground.png");
+	backgroundSprite = new Sprite(backgroundTexture);
+	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	backgroundObject->AddComponent(backgroundSprite);
+	backgroundSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0.05));
+
 	selectCursorObject = new GameObject();
 	for (int i = 0; i < playerCount; i++) {
 		//ƒJ[ƒ\ƒ‹
@@ -97,10 +115,23 @@ void SelectCharacter::Load() {//”wŒi@ã‚ªƒvƒŒƒCƒ„[”wŒi(1–‡)@‰º‚ªƒLƒƒƒ‰”wŒi(4–
 
 	}
 
+	selectingCharacterObject = new GameObject();
+
 	for (int i = 0; i < 4; i++) {
 		isSelected.emplace_back(false);
 		wasInput.emplace_back(false);
+		selectingCharacterSprites.emplace_back(new Sprite());
+		selectingCharacterObject->AddComponent(selectingCharacterSprites[i]);
+		selectingCharacterSprites[i]->SetScale(new Vector2(SCREEN_WIDTH * 0.13f, SCREEN_WIDTH * 0.13f));
+		if (i >= playerCount) {
+			selectingCharacterSprites[i]->SetActive(false);
+		}
 	}
+
+	selectingCharacterSprites[0]->SetPosition(new Vector3(SCREEN_WIDTH * 0.35f, SCREEN_HEIGHT * 0.15f, -0.01f));
+	selectingCharacterSprites[1]->SetPosition(new Vector3(SCREEN_WIDTH * 0.65f, SCREEN_HEIGHT * 0.15f, -0.01f));
+	selectingCharacterSprites[2]->SetPosition(new Vector3(SCREEN_WIDTH * 0.35f, SCREEN_HEIGHT * 0.4f, -0.01f));
+	selectingCharacterSprites[3]->SetPosition(new Vector3(SCREEN_WIDTH * 0.65f, SCREEN_HEIGHT * 0.4f, -0.01f));
 
 }
 
@@ -275,6 +306,33 @@ void SelectCharacter::Update() {
 		}
 	}
 
+	for (int i = 0; i < playerCount; i++) {
+		int cursorPos = cursorPositions[i];
+		Texture* texture;
+		switch (cursorPos) {
+		default :
+			texture = characterMask;
+			break;
+		case 0:
+			texture = characterMask;
+			break;
+		case 1:
+			texture = characterRobot;
+			break;
+		case 2:
+			texture = characterWitch;
+			break;
+		case 3:
+			texture = characterAlien;
+			break;
+		}
+		selectingCharacterSprites[i]->SetTexture(texture);
+		if (isReady[i] == true) {
+			selectingCharacterSprites[i]->SetColor(new Color(255, 255, 255, 255));
+		}else{
+			selectingCharacterSprites[i]->SetColor(new Color(128, 128, 128, 255));
+		}
+	}
 
 
 	bool isAllReady = true;
@@ -285,13 +343,15 @@ void SelectCharacter::Update() {
 	}
 
 	if (isAllReady == true) {
-
+		bannerSprite->SetTexture(readyBannerTexture);
 		if (Input::GetInstance().GetKey(DIK_SPACE) || Input::GetInstance().GetKey(DIK_RETURN)) {
 			for (int i = 0; i < playerCount; i++) {
 				VariableManager::GetInstance().SetInt("character" + to_string(i), cursorPositions[i]);
 			}
 			SceneManager::GetInstance().LoadScene("runTitle");
 		}
+	} else {
+		bannerSprite->SetTexture(selectBannerTexture);
 	}
 }
 

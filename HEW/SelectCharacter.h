@@ -17,9 +17,11 @@ private:
 
 	GameObject* backgroundObject;
 	Sprite* backgroundSprite;
+	Texture* backgroundTexture;
 
 	GameObject* playerBackgroundObject;
-	Sprite*  playerBackgroundSprite;
+	Sprite* playerBackgroundSprite;
+	Sprite* selectingPlayerBackground;
 
 	GameObject* selectCursorObject;
 	vector<Sprite*> selectCursorSprite;
@@ -33,6 +35,9 @@ private:
 	Sprite*  selectCharacterSprite2;
 	Sprite*  selectCharacterSprite3;
 	Sprite*  selectCharacterSprite4;
+
+	GameObject* selectingCharacterObject;
+	vector<Sprite*> selectingCharacterSprites;
 
 	Texture* characterSelect;
 
@@ -48,4 +53,10 @@ private:
 	vector<bool> isSelected;
 
 	vector<bool> wasInput;
+
+	GameObject* bannerObject;
+	Sprite* bannerSprite;
+	Texture* readyBannerTexture;
+	Texture* selectBannerTexture;
+
 };
