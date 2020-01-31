@@ -59,4 +59,10 @@ private:
 	Texture* readyBannerTexture;
 	Texture* selectBannerTexture;
 
+	vector<Texture*> selectCursorTextures;
+
+	Texture*  selectplayerCursorTexture_1;
+	Texture*  selectplayerCursorTexture_2;
+	Texture*  selectplayerCursorTexture_3;
+	Texture*  selectplayerCursorTexture_4;
 };
