@@ -52,6 +52,10 @@ private :
 	vector<Sprite*> breakingEarthSprites;
 	Texture* breakingEarthTexture;
 
+	GameObject* background;
+	Sprite* backgroundSprite;
+	Texture* backgroundTexture;
+
 	vector<bool> isWaitings;
 	bool isBreaking = false;
 
