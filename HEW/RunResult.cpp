@@ -15,12 +15,13 @@ RunResult::~RunResult() {
 
 void RunResult::Start() {
 
-	ObjectManager::GetInstance().Instantiate(ranking);
 	ObjectManager::GetInstance().Instantiate(background);
+	ObjectManager::GetInstance().Instantiate(ranking);
 
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Instantiate(rankingTime[i]);
 		ObjectManager::GetInstance().Instantiate(rankingPoint[i]);
+		ObjectManager::GetInstance().Instantiate(medal[i]);
 	}
 
 
@@ -89,6 +90,9 @@ void RunResult::Start() {
 			rankingPoint[0]->SetActive(true);
 			rankingPointText[sortTimes[0].second]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingPointText[sortTimes[0].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.36f, 0));
+
+			medal[0]->SetActive(true);
+			medal[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.412f, 0));
 		}
 
 		if (playerCount >= 2) {
@@ -99,6 +103,9 @@ void RunResult::Start() {
 			rankingPoint[1]->SetActive(true);
 			rankingPointText[sortTimes[1].second]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingPointText[sortTimes[1].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.5f, 0));
+
+			medal[1]->SetActive(true);
+			medal[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.552f, 0));
 		}
 
 		if (playerCount >= 3) {
@@ -109,6 +116,9 @@ void RunResult::Start() {
 			rankingPoint[2]->SetActive(true);
 			rankingPointText[sortTimes[2].second]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingPointText[sortTimes[2].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.64f, 0));
+
+			medal[2]->SetActive(true);
+			medal[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.692f, 0));
 		}
 
 		if (playerCount >= 4) {
@@ -119,6 +129,9 @@ void RunResult::Start() {
 			rankingPoint[3]->SetActive(true);
 			rankingPointText[sortTimes[3].second]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingPointText[sortTimes[3].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.78f, 0));
+
+			medal[3]->SetActive(true);
+			medal[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.833f, 0));
 		}
 
 		isRanking = true;
@@ -166,6 +179,26 @@ void RunResult::Load() {
 		rankingPoint.emplace_back(new GameObject());
 		rankingPoint[i]->AddComponent(rankingPointText[i]);
 		rankingPoint[i]->SetActive(false);
+
+		//ƒƒ_ƒ‹•\Ž¦
+		medal.emplace_back(new GameObject());
+		if (playerCount >= 1) {	
+			medalTexture.emplace_back(new Texture("assets/textures/All/UI/medal_1st.png"));	
+		}
+		if (playerCount >= 2) {
+			medalTexture.emplace_back(new Texture("assets/textures/All/UI/medal_2nd.png"));
+		}
+		if (playerCount >= 3) {
+			medalTexture.emplace_back(new Texture("assets/textures/All/UI/medal_3rd.png"));
+		}
+		if (playerCount >= 4) {
+			medalTexture.emplace_back(new Texture("assets/textures/All/UI/medal_4th.png"));
+		}
+		medalSprite.emplace_back(new Sprite(medalTexture[i]));
+		medalSprite[i]->SetScale(new Vector2(SD_HEIGHT*1.4f, SD_HEIGHT*1.4f));
+		medalSprite[i]->SetColor(new Color(255, 255, 255, 255));
+		medal[i]->AddComponent(medalSprite[i]);
+		medal[i]->SetActive(false);
 	}
 	
 }
@@ -175,9 +208,8 @@ void RunResult::UnLoad() {
 	ObjectManager::GetInstance().Destroy(background);
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Destroy(rankingTime[i]);
-	}
-	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Destroy(rankingPoint[i]);
+		ObjectManager::GetInstance().Destroy(medal[i]);
 	}
 }
 
