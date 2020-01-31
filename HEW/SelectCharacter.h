@@ -36,6 +36,11 @@ private:
 
 	Texture* characterSelect;
 
+	Texture* characterMask;
+	Texture* characterRobot;
+	Texture* characterWitch;
+	Texture* characterAlien;
+
 	float cursorPosition = 0.0f;
 	int playerCount = 0;
 	vector<int> cursorPositions;
