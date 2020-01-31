@@ -46,6 +46,7 @@ private :
 	Player thisPlayer;
 
 	int playerNumber;
+	int characterID = 0;
 
 	Sprite* sprite;
 
@@ -73,5 +74,6 @@ private :
 	Text* text;
 
 	float waitTimer = 0;
+	bool isBreaking = false;
 };
 
