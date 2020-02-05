@@ -381,9 +381,9 @@ void Run::Update() {
 	} else /*走っている時の処理（後半）*/ if (timer >= 12.5f) {
 
 		//レーンの表示
-		laneSprite->SetColor(D3DCOLOR_RGBA(126, 15, 133, 0));
+		laneSprite->SetColor(D3DCOLOR_RGBA(255, 255, 255, 255));
 		//背景の表示
-		backgroundSprite->SetColor(D3DCOLOR_RGBA(76, 108, 179, 0));
+		backgroundSprite->SetColor(D3DCOLOR_RGBA(255, 255, 255, 255));
 
 		//プレイヤーの走る処理
 		if (isGoalCamera == false) {
