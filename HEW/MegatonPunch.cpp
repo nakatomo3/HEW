@@ -46,7 +46,7 @@ void MegatonPunch::Load() {
 		auto playerSprite = new Sprite();
 		player->SetSprite(playerSprite);
 		playerObject->AddComponent(playerSprite);
-		playerSprite->SetScale(new Vector2(PLAYER_WIDTH, 100));
+		playerSprite->SetScale(new Vector2(PLAYER_WIDTH*2, 200));//‚±‚êˆÈã‘å‚«‚­‚·‚é‚ÆƒQ[ƒW‚Æ”í‚é
 		player->SetPlayerNumber(i);
 		isWaitings.emplace_back(false);
 
