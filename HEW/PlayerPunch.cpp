@@ -106,30 +106,30 @@ void PlayerPunch::Update() {
 				pendulumValue = pendulum->GetValue();
 				ObjectManager::GetInstance().Destroy(pendulum->GetGameObject());
 				nowMode = WAIT;
-				isBreaking = true;
+				isBreaking = true;//true‚É‚·‚é
+				if (isBreaking == true) {//true‚É‚È‚Á‚½Žž
+					switch (characterID) {
+					default:
+						break;
+					case 0://ƒEƒ‹ƒt
+						sprite->SetTexture(punchTexture);
+						break;
+					case 1://‚©‚µ‚±‚Ü
+						sprite->SetTexture(punchTexture);
+						break;
+					case 2://‚¹‚ñ‚¿‚á‚ñ
+						sprite->SetTexture(punchTexture);
+						break;
+					case 3://‰F’ˆ
+						sprite->SetTexture(punchTexture);
+						break;
+					}
+				}
 			}
 			break;
 		case WAIT:
 			megatonPunch->SetWaiting(playerNumber);
 			value = gaugeValue / 10 + (1 - aimingValue) * 100 + (1 - pendulumValue) * 100;
-			if (isBreaking == true) {
-				switch (characterID) {
-				default:
-					break;
-				case 0://ƒEƒ‹ƒt
-					sprite->SetTexture(punchTexture);
-					break;
-				case 1://‚©‚µ‚±‚Ü
-					sprite->SetTexture(punchTexture);
-					break;
-				case 2://‚¹‚ñ‚¿‚á‚ñ
-					sprite->SetTexture(punchTexture);
-					break;
-				case 3://‰F’ˆ
-					sprite->SetTexture(punchTexture);
-					break;
-				}
-			}
 			break;
 		case BREAKING:
 			sprite->SetActive(false);
