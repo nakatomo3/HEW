@@ -152,18 +152,18 @@ void Run::Load() {
 	balloonRun->SetTexture(new Texture("assets/textures/Run/UI/Start.png", "start"));
 
 	//レーンの処理
-	laneSprite = new Sprite();
+	laneTexture = new Texture("assets/textures/Run/UI/lane.png", "lane");
+	laneSprite = new Sprite(laneTexture);
 	laneSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*0.7f));
-	laneSprite->SetColor(D3DCOLOR_RGBA(125, 200, 233, 0));
 	lane = new GameObject();
 	lane->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.65f, 0));
 	lane->AddComponent(laneSprite);
 	lane->SetActive(false);
 
 	//背景の処理
-	backgroundSprite = new Sprite();
+	backgroundTexture = new Texture("assets/textures/Run/UI/background.png", "background");
+	backgroundSprite = new Sprite(backgroundTexture);
 	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*0.3f));
-	backgroundSprite->SetColor(D3DCOLOR_RGBA(94, 186, 83, 0));
 	background = new GameObject();
 	background->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.15f, 0));
 	background->AddComponent(backgroundSprite);
@@ -304,10 +304,8 @@ void Run::Update() {
 			replayRogo->SetActive(false);
 			//レーンの表示
 			lane->SetActive(true);
-			laneSprite->SetColor(D3DCOLOR_RGBA(126, 15, 133, 0));
 			//背景の表示
 			background->SetActive(true);
-			backgroundSprite->SetColor(D3DCOLOR_RGBA(76, 108, 179, 0));
 
 			//リプレイロゴ中はプレイヤー消す
 			for (int i = 0; i < playerCount; i++) {
