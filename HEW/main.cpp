@@ -212,7 +212,7 @@ void Draw() {
 	static LPDIRECT3DDEVICE9 pDevice = MyDirect3D::GetInstance().GetDevice();
 
 	// 画面のクリア
-	pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_RGBA(80, 80, 80, 255), 1.0f, 0);
+	pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_RGBA(0, 0, 0, 255), 1.0f, 0);
 
 	// 描画バッチ命令の開始
 	pDevice->BeginScene();

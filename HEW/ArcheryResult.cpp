@@ -13,8 +13,8 @@ ArcheryResult::~ArcheryResult() {
 
 void ArcheryResult::Start() {
 
-	ObjectManager::GetInstance().Instantiate(rankingBackground);
 	ObjectManager::GetInstance().Instantiate(ranking);
+	ObjectManager::GetInstance().Instantiate(rankingBackground);
 	
 	for (int i = 0; i < playerCount; i++) {
 		ObjectManager::GetInstance().Instantiate(rankingScore[i]);
@@ -48,7 +48,7 @@ void ArcheryResult::Start() {
 		//sortTimes[i].first	-> i番目のプレイヤーのタイム
 		//sortTimes[i].second	-> i番目のプレイヤーのプレイヤー番号
 		LogWriter::GetInstance().Log("sortArchery:%d\nplayerNumber:%d", sortScores[i].first, sortScores[i].second);
-		rankingScoreText[playerCount - 1 - i]->text = to_string(sortScores[i].first) + "km";
+		rankingScoreText[playerCount - 1 - i]->text = to_string(sortScores[i].first) + "点";
 		point.emplace_back(0);
 	}
 
