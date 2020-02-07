@@ -44,6 +44,15 @@ private:
 	//順位ポイントのテキスト
 	vector<Text*> rankingPointText{};
 
+	//プレイヤー順位のオブジェクト
+	vector<GameObject*> rankingPlayer{};
+
+	//プレイヤー順位のスプライト
+	vector<Sprite*> rankingPlayerSprite{};
+
+	//プレイヤー順位のテクスチャ
+	vector <Texture*> rankingPlayerTexture{};
+
 	//メダルのオブジェクト
 	vector <GameObject*> medal{};
 

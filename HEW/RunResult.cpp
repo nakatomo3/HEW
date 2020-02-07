@@ -18,8 +18,6 @@ void RunResult::Start() {
 	ObjectManager::GetInstance().Instantiate(ranking);
 	
 	for (int i = 0; i < playerCount; i++) {
-
-		
 		ObjectManager::GetInstance().Instantiate(rankingTime[i]);
 		ObjectManager::GetInstance().Instantiate(rankingPoint[i]);
 		ObjectManager::GetInstance().Instantiate(medal[i]);
