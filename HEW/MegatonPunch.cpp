@@ -29,6 +29,8 @@ void MegatonPunch::Load() {
 	breakingEarthTexture = new Texture("assets/textures/MegatonPunch/UI/BreakingEarth.png");
 	backgroundTexture = new Texture("assets/textures/MegatonPunch/UI/backgroundTexture.png");
 
+	foundationTexture = new Texture("assets/textures/MegatonPunch/UI/Foundation.png");
+
 	const float PLAYER_WIDTH = SCREEN_WIDTH / 10;
 
 	const float GAUGE_WIDTH = SCREEN_WIDTH / 20;
@@ -105,6 +107,12 @@ void MegatonPunch::Load() {
 		pendulum->SetNormalTexture(pendulumTexture);
 		pendulum->SetWhiteTexutre(pendulumWhiteTexture);
 
+		foundationObject = new GameObject();
+		foundationSprite = new Sprite(foundationTexture);
+		foundationObject->AddComponent(foundationSprite);
+		foundationSprite->SetScale(new Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4));
+		foundationSprite->SetPosition(new Vector3((SCREEN_WIDTH - PLAYER_WIDTH * 4) / 5 * (i + 1) + PLAYER_WIDTH * (0.5f + i), SCREEN_HEIGHT / 2, 0));
+
 		Text* text = new Text();
 		text->SetActive(false);
 		playerObject->AddComponent(text);
@@ -149,6 +157,62 @@ void MegatonPunch::Load() {
 	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
 	backgroundSprite->SetPosition(new Vector3(SCREEN_CENTER_X, SCREEN_CENTER_Y, -0.0));
 
+	//瓦
+	if (playerCount >= 2) {
+		//瓦2
+		foundationObject = new GameObject();
+		foundationSprite = new Sprite(foundationTexture);
+		foundationObject->AddComponent(foundationSprite);
+		foundationSprite->SetScale(new Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4));
+		foundationSprite->SetPosition(new Vector3(SCREEN_CENTER_X / 2.9, SCREEN_CENTER_Y / 0.7, -0.0));
+
+		foundationSprite1 = new Sprite(foundationTexture);
+		foundationObject->AddComponent(foundationSprite1);
+		foundationSprite1->SetScale(new Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4));
+		foundationSprite1->SetPosition(new Vector3(SCREEN_CENTER_X / 1.275, SCREEN_CENTER_Y / 0.7, -0.0));
+	}
+	if (playerCount >= 3) {
+		//瓦3
+		foundationObject = new GameObject();
+		foundationSprite = new Sprite(foundationTexture);
+		foundationObject->AddComponent(foundationSprite);
+		foundationSprite->SetScale(new Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4));
+		foundationSprite->SetPosition(new Vector3(SCREEN_CENTER_X / 2.9, SCREEN_CENTER_Y / 0.7, -0.0));
+
+		foundationSprite1 = new Sprite(foundationTexture);
+		foundationObject->AddComponent(foundationSprite1);
+		foundationSprite1->SetScale(new Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4));
+		foundationSprite1->SetPosition(new Vector3(SCREEN_CENTER_X / 1.275, SCREEN_CENTER_Y / 0.7, -0.0));
+
+		foundationSprite2 = new Sprite(foundationTexture);
+		foundationObject->AddComponent(foundationSprite2);
+		foundationSprite2->SetScale(new Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4));
+		foundationSprite2->SetPosition(new Vector3(SCREEN_CENTER_X*1.23, SCREEN_CENTER_Y / 0.7, -0.0));
+	}
+	if (playerCount >= 4) {
+		//瓦4
+		foundationObject = new GameObject();
+		foundationSprite = new Sprite(foundationTexture);
+		foundationObject->AddComponent(foundationSprite);
+		foundationSprite->SetScale(new Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4));
+		foundationSprite->SetPosition(new Vector3(SCREEN_CENTER_X / 2.9, SCREEN_CENTER_Y / 0.7, -0.0));
+
+		foundationSprite1 = new Sprite(foundationTexture);
+		foundationObject->AddComponent(foundationSprite1);
+		foundationSprite1->SetScale(new Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4));
+		foundationSprite1->SetPosition(new Vector3(SCREEN_CENTER_X / 1.275, SCREEN_CENTER_Y / 0.7, -0.0));
+
+		foundationSprite2 = new Sprite(foundationTexture);
+		foundationObject->AddComponent(foundationSprite2);
+		foundationSprite2->SetScale(new Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4));
+		foundationSprite2->SetPosition(new Vector3(SCREEN_CENTER_X*1.23, SCREEN_CENTER_Y / 0.7, -0.0));
+
+		foundationSprite3 = new Sprite(foundationTexture);
+		foundationObject->AddComponent(foundationSprite3);
+		foundationSprite3->SetScale(new Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4));
+		foundationSprite3->SetPosition(new Vector3(SCREEN_CENTER_X*1.66, SCREEN_CENTER_Y / 0.7, -0.0));
+	}
+
 
 	//キャラスプライト周りと位置調節
 	if (playerCount >= 1) {
@@ -177,6 +241,7 @@ void MegatonPunch::UnLoad() {
 	}
 	ObjectManager::GetInstance().Destroy(earthObject);
 	ObjectManager::GetInstance().Destroy(background);
+	ObjectManager::GetInstance().Destroy(foundationObject);
 	breakingEarths.clear();
 }
 
@@ -188,6 +253,7 @@ void MegatonPunch::Start() {
 	}
 	ObjectManager::GetInstance().Instantiate(earthObject);
 	ObjectManager::GetInstance().Instantiate(background);
+	ObjectManager::GetInstance().Instantiate(foundationObject);
 }
 
 void MegatonPunch::Update() {
