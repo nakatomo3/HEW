@@ -56,6 +56,13 @@ private :
 	Sprite* backgroundSprite;
 	Texture* backgroundTexture;
 
+	GameObject* foundationObject;
+	Sprite* foundationSprite;
+	Sprite* foundationSprite1;
+	Sprite* foundationSprite2;
+	Sprite* foundationSprite3;
+	Texture* foundationTexture;
+
 	vector<bool> isWaitings;
 	bool isBreaking = false;
 
