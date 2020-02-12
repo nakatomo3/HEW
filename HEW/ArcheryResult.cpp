@@ -87,6 +87,10 @@ void ArcheryResult::Start() {
 			rankingScoreText[0]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.36f, 0));
 
+			rankingPoint[playerCount - 1]->SetActive(true);
+			rankingPointText[sortScores[playerCount - 1].second]->SetSize(SCREEN_HEIGHT*0.1f);
+			rankingPointText[sortScores[playerCount - 1].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.36f, 0));
+
 			medal[0]->SetActive(true);
 			medal[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.412f, 0));
 
@@ -98,6 +102,10 @@ void ArcheryResult::Start() {
 			rankingScore[1]->SetActive(true);
 			rankingScoreText[1]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.5f, 0));
+
+			rankingPoint[playerCount - 2]->SetActive(true);
+			rankingPointText[sortScores[playerCount - 2].second]->SetSize(SCREEN_HEIGHT*0.1f);
+			rankingPointText[sortScores[playerCount - 2].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.5f, 0));
 
 			medal[1]->SetActive(true);
 			medal[1]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.552f, 0));
@@ -111,6 +119,10 @@ void ArcheryResult::Start() {
 			rankingScoreText[2]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.64f, 0));
 
+			rankingPoint[playerCount - 3]->SetActive(true);
+			rankingPointText[sortScores[playerCount - 3].second]->SetSize(SCREEN_HEIGHT*0.1f);
+			rankingPointText[sortScores[playerCount - 3].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.64f, 0));
+
 			medal[2]->SetActive(true);
 			medal[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.692f, 0));
 
@@ -123,6 +135,10 @@ void ArcheryResult::Start() {
 			rankingScore[3]->SetActive(true);
 			rankingScoreText[3]->SetSize(SCREEN_HEIGHT*0.1f);
 			rankingScoreText[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.43f, SCREEN_HEIGHT*0.78f, -0.02));
+
+			rankingPoint[playerCount - 4]->SetActive(true);
+			rankingPointText[sortScores[playerCount - 4].second]->SetSize(SCREEN_HEIGHT*0.1f);
+			rankingPointText[sortScores[playerCount - 4].second]->SetPosition(new Vector3(SCREEN_WIDTH*0.73f, SCREEN_HEIGHT*0.78f, 0));
 
 			medal[3]->SetActive(true);
 			medal[3]->SetPosition(new Vector3(SCREEN_WIDTH*0.064f, SCREEN_HEIGHT*0.833f, 0));
