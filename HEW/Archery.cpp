@@ -119,7 +119,7 @@ void Archery::Load() {
 			break;
 		}
 
-		waitingPlayerTexture.emplace_back(new Texture(path + "waiting.png"/*+個別画像名*/));//画像の名前は統一しそれをぶち込む  クラウチング
+		waitingPlayerTexture.emplace_back(new Texture(path + "waiting.png"/*+個別画像名*/));//画像の名前は統一しそれをぶち込む
 		player->SetTexture(waitingPlayerTexture[i]);
 		shotPlayerTexture.emplace_back(new Texture(path + "shot.png"/*+個別画像名*/));
 	}
