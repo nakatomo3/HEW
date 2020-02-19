@@ -154,7 +154,7 @@ void Run::Load() {
 	//レーンの処理
 	laneTexture = new Texture("assets/textures/Run/UI/lane.png", "lane");
 	laneSprite = new Sprite(laneTexture);
-	laneSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*0.7f));
+	laneSprite->SetScale(new Vector2(SCREEN_WIDTH*2, SCREEN_HEIGHT*0.7f));
 	lane = new GameObject();
 	lane->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.65f, 0));
 	lane->AddComponent(laneSprite);
@@ -163,7 +163,7 @@ void Run::Load() {
 	//背景の処理
 	backgroundTexture = new Texture("assets/textures/Run/UI/background.png", "background");
 	backgroundSprite = new Sprite(backgroundTexture);
-	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT*0.3f));
+	backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH*2, SCREEN_HEIGHT*0.3f));
 	background = new GameObject();
 	background->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT*0.15f, 0));
 	background->AddComponent(backgroundSprite);
@@ -256,7 +256,7 @@ void Run::Update() {
 			highlightBackground->SetActive(true);
 			//ハイライト映像の処理
 			laneSprite->SetScale(new Vector2(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.49f));
-			lane->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT, 0));
+			lane->SetPosition(new Vector3(SCREEN_WIDTH , SCREEN_HEIGHT, 0));
 			laneSprite->SetCriterion(DOWN_RIGHT);
 			backgroundSprite->SetScale(new Vector2(SCREEN_WIDTH*0.7f, SCREEN_HEIGHT*0.21f));
 			backgroundSprite->SetCriterion(DOWN_RIGHT);
@@ -304,8 +304,10 @@ void Run::Update() {
 			replayRogo->SetActive(false);
 			//レーンの表示
 			lane->SetActive(true);
+			lane->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT*0.65f, 0));
 			//背景の表示
 			background->SetActive(true);
+			background->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT*0.15f, 0));
 
 			//リプレイロゴ中はプレイヤー消す
 			for (int i = 0; i < playerCount; i++) {
@@ -382,8 +384,12 @@ void Run::Update() {
 
 		//レーンの表示
 		laneSprite->SetColor(D3DCOLOR_RGBA(255, 255, 255, 255));
+		lane->SetActive(true);
+		lane->SetPosition(new Vector3(SCREEN_WIDTH - SCREEN_WIDTH, SCREEN_HEIGHT*0.65f, 0));
 		//背景の表示
 		backgroundSprite->SetColor(D3DCOLOR_RGBA(255, 255, 255, 255));
+		background->SetActive(true);
+		background->SetPosition(new Vector3(SCREEN_WIDTH-SCREEN_WIDTH, SCREEN_HEIGHT*0.15f, 0));
 
 		//プレイヤーの走る処理
 		if (isGoalCamera == false) {
@@ -414,8 +420,10 @@ void Run::Update() {
 
 		//レーンの表示
 		lane->SetActive(true);
+		lane->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT*0.65f, 0));
 		//背景の表示
 		background->SetActive(true);
+		background->SetPosition(new Vector3(SCREEN_WIDTH, SCREEN_HEIGHT*0.15f, 0));
 
 		//プレイヤーの走る処理
 		if (isReady == false) {
