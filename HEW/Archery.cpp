@@ -18,9 +18,12 @@ void Archery::Start() {
 	ObjectManager::GetInstance().Instantiate(balloon);
 	ObjectManager::GetInstance().Instantiate(playerObject);
 	ObjectManager::GetInstance().Instantiate(numberObject);
-	ObjectManager::GetInstance().Instantiate(targetObject);
 	ObjectManager::GetInstance().Instantiate(scoretitleObject);
 	ObjectManager::GetInstance().Instantiate(scoreObject);
+
+	for (int i = 0; i < playerCount; i++) {
+		ObjectManager::GetInstance().Instantiate(targetObject[i]);
+	}
 }
 
 void Archery::Load() {
@@ -39,7 +42,7 @@ void Archery::Load() {
 
 	playerObject = new GameObject();
 	numberObject = new GameObject();
-	targetObject = new GameObject();
+	//targetObject = new GameObject();
 	scoretitleObject = new GameObject();
 	scoreObject = new GameObject();
 
@@ -74,11 +77,14 @@ void Archery::Load() {
 		numbers.emplace_back(number);
 		numberObject->AddComponent(number);
 
-		Sprite* target = new Sprite(/*targetTexture*/);
-		target->SetScale(new Vector2(SD_HEIGHT * 2, SD_HEIGHT * 2));
-		target->SetPosition(new Vector3(SD_WIDTH * 9 , SD_HEIGHT * (i * 2.5 + 1.25), -0.001));
-		targets.emplace_back(target);
-		targetObject->AddComponent(target);
+		//“I
+		targetTexture1 = new Texture("assets/textures/Archery/UI/target.png", "target.png");
+		targetTexture2 = new Texture("assets/textures/Archery/UI/breakingtarget.png", "breakingtarget.png");
+		targetObject.emplace_back(new GameObject());
+		targetSprites.emplace_back(new Sprite(targetTexture1));
+		targetSprites[i]->SetScale(new Vector2(SD_HEIGHT * 2/2, SD_HEIGHT * 2));
+		targetSprites[i]->SetPosition(new Vector3(SD_WIDTH * 9 , SD_HEIGHT * (i * 2.5 + 1.25), -0.001));
+		targetObject[i]->AddComponent(targetSprites[i]);
 
 		Sprite* scoretitle = new Sprite(/*scoretitleTexture*/);
 		scoretitle->SetScale(new Vector2(SD_WIDTH * 1, SD_HEIGHT * 0.9));
@@ -138,9 +144,11 @@ void Archery::Update() {
 				}
 				wasInput[0] = true;
 				players[0]->SetTexture(shotPlayerTexture[0]);
+				targetSprites[0]->SetTexture(targetTexture2);
 			} else {
 				wasInput[0] = false;
 				players[0]->SetTexture(waitingPlayerTexture[0]);
+				targetSprites[0]->SetTexture(targetTexture1);
 			}
 		}
 		if (playerCount >= 2) {
@@ -151,9 +159,11 @@ void Archery::Update() {
 				}
 				wasInput[1] = true;
 				players[1]->SetTexture(shotPlayerTexture[1]);
+				targetSprites[1]->SetTexture(targetTexture2);
 			} else {
 				wasInput[1] = false;
 				players[1]->SetTexture(waitingPlayerTexture[1]);
+				targetSprites[1]->SetTexture(targetTexture1);
 			}
 		}
 		if (playerCount >= 3) {
@@ -164,9 +174,11 @@ void Archery::Update() {
 				}
 				wasInput[2] = true;
 				players[2]->SetTexture(shotPlayerTexture[2]);
+				targetSprites[2]->SetTexture(targetTexture2);
 			} else {
 				wasInput[2] = false;
 				players[2]->SetTexture(waitingPlayerTexture[2]);
+				targetSprites[2]->SetTexture(targetTexture1);
 			}
 		}
 		if (playerCount >= 4) {
@@ -177,9 +189,11 @@ void Archery::Update() {
 				}
 				wasInput[3] = true;
 				players[3]->SetTexture(shotPlayerTexture[3]);
+				targetSprites[3]->SetTexture(targetTexture2);
 			} else {
 				wasInput[3] = false;
 				players[3]->SetTexture(waitingPlayerTexture[3]);
+				targetSprites[3]->SetTexture(targetTexture1);
 			}
 		}
 	}
@@ -196,9 +210,11 @@ void Archery::UnLoad() {
 	ObjectManager::GetInstance().Destroy(balloon);
 	ObjectManager::GetInstance().Destroy(playerObject);
 	ObjectManager::GetInstance().Destroy(numberObject);
-	ObjectManager::GetInstance().Destroy(targetObject);
 	ObjectManager::GetInstance().Destroy(scoretitleObject);
 	ObjectManager::GetInstance().Destroy(scoreObject);
+	for (int i = 0; i < playerCount; i++) {
+		ObjectManager::GetInstance().Destroy(targetObject[i]);
+	}
 }
 
 double Archery::GetTimer() {
