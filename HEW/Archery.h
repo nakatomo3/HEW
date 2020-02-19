@@ -45,7 +45,7 @@ private:
 
 	GameObject* playerObject;
 	GameObject* numberObject;
-	GameObject* targetObject;
+	vector <GameObject*> targetObject{};
 	GameObject* scoretitleObject;
 	GameObject* scoreObject;
 	
@@ -58,9 +58,10 @@ private:
 	vector<Texture*> numberTexture;
 	vector<Sprite*> numberSprites;
 
-	vector<Sprite*> targets;
-	vector<Texture*> targetTexture;
-	vector<Sprite*> targetSprites;
+	
+	Texture* targetTexture1;
+	Texture* targetTexture2;
+	vector<Sprite*> targetSprites{};
 
 	vector<Sprite*> scoretitles;
 	vector<Texture*> scoretitleTexture;
