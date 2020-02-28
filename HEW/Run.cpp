@@ -13,6 +13,12 @@ Run::~Run() {
 
 
 void Run::Start() {
+	//ゲージ背景のインスタンス
+	for (int i = 0; i < 4; i++) {
+		ObjectManager::GetInstance().Instantiate(startbackground[i]);
+	}
+	//スタート背景十字のインスタンス
+	ObjectManager::GetInstance().Instantiate(crossbackground);
 	//背景のインスタンス
 	ObjectManager::GetInstance().Instantiate(background);
 	//ハイライト背景のインスタンス
@@ -68,6 +74,47 @@ void Run::Load() {
 		gauge->SetBrokenTexture(brokenGaugeTexture);
 	}
 
+	//十字背景の処理
+	crossbackgroundTexture = new Texture("assets/textures/Run/UI/gaugebackground.png");
+	crossbackground = new GameObject();
+	crossbackgroundSprite = new Sprite(crossbackgroundTexture);
+	crossbackgroundSprite->SetScale(new Vector2(SCREEN_WIDTH, SCREEN_HEIGHT));
+	crossbackgroundSprite->SetColor(new Color(255, 0, 0, 255));
+	crossbackground->AddComponent(crossbackgroundSprite);
+	crossbackground->SetPosition(new Vector3(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, -0.01f));
+	crossbackground->SetActive(true);
+	
+
+
+	//スタート背景の処理
+	
+	for (int i = 0; i < 4; i++) {
+		if (i == 0 || i == 2) {
+			startbackgroundTexture.emplace_back (new Texture("assets/textures/Run/UI/gaugelane_1.png"));
+		}
+		if (i == 1 || i == 3) {
+			startbackgroundTexture.emplace_back(new Texture("assets/textures/Run/UI/gaugelane_2.png"));
+		}
+		startbackground.emplace_back(new GameObject());
+		startbackgroundSprite.emplace_back(new Sprite(startbackgroundTexture[i]));
+		startbackgroundSprite[i]->SetScale(new Vector2 (SCREEN_WIDTH, 279));
+		startbackground[i]->AddComponent(startbackgroundSprite[i]);
+		startbackground[i]->SetActive(false);
+	}
+
+	//スタート背景の表示
+	startbackground[0]->SetActive(true);
+	startbackground[0]->SetPosition(new Vector3(SCREEN_WIDTH*0.45f, SCREEN_HEIGHT*0.25f, 0.01f));
+
+	startbackground[1]->SetActive(true);
+	startbackground[1]->SetPosition(new Vector3(SCREEN_WIDTH*1.0f, SCREEN_HEIGHT*0.25f, 0.01f));
+
+	startbackground[2]->SetActive(true);
+	startbackground[2]->SetPosition(new Vector3(SCREEN_WIDTH*0.45f, SCREEN_HEIGHT*0.74f, 0.01f));
+
+	startbackground[3]->SetActive(true);
+	startbackground[3]->SetPosition(new Vector3(SCREEN_WIDTH*1.0f, SCREEN_HEIGHT*0.74f, 0.01f));
+
 	//このコメントの下にゲージ関連の処理を追加
 	float gaugeWidth = SD_WIDTH * 0.5f;		//ゲージの横の大きさ
 	float gaugeHeight = SD_HEIGHT * 2.5f;	//ゲージの縦の大きさ
@@ -104,7 +151,7 @@ void Run::Load() {
 	if (playerCount >= 1) {
 		//一番目のプレイヤー
 		playerSprite[0]->SetScale(new Vector2(SD_HEIGHT * 4.0f, SD_HEIGHT * 4.0f));
-		playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 2.3f, 0));
+		playerObjects[0]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 2.4f, 0));
 		players[0]->SetSprite(playerSprite[0]);
 		players[0]->SetScene(this);
 		
@@ -113,7 +160,7 @@ void Run::Load() {
 	if (playerCount >= 2) {
 		//二番目のプレイヤー
 		playerSprite[1]->SetScale(new Vector2(SD_HEIGHT * 4.0f, SD_HEIGHT * 4.0f));
-		playerObjects[1]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 2.3f, 0));
+		playerObjects[1]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 2.4f, 0));
 		players[1]->SetSprite(playerSprite[1]);
 		players[1]->SetScene(this);
 	}
@@ -121,7 +168,7 @@ void Run::Load() {
 	if (playerCount >= 3) {
 		//三番目のプレイヤー
 		playerSprite[2]->SetScale(new Vector2(SD_HEIGHT * 4.0f, SD_HEIGHT * 4.0f));
-		playerObjects[2]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 7.3f, 0));
+		playerObjects[2]->SetPosition(new Vector3(SD_WIDTH * 2.5f, SD_HEIGHT * 7.4f, 0));
 		players[2]->SetSprite(playerSprite[2]);
 		players[2]->SetScene(this);
 	}
@@ -129,7 +176,7 @@ void Run::Load() {
 	if (playerCount >= 4) {
 		//四番目のプレイヤー
 		playerSprite[3]->SetScale(new Vector2(SD_HEIGHT * 4.0f, SD_HEIGHT * 4.0f));
-		playerObjects[3]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 7.3f, 0));
+		playerObjects[3]->SetPosition(new Vector3(SD_WIDTH * 7.5f, SD_HEIGHT * 7.4f, 0));
 		players[3]->SetSprite(playerSprite[3]);
 		players[3]->SetScene(this);
 	}
@@ -235,6 +282,10 @@ void Run::UnLoad() {
 	ObjectManager::GetInstance().Destroy(replayRogoBackground);
 	ObjectManager::GetInstance().Destroy(runTime);
 	ObjectManager::GetInstance().Destroy(highlightBackground);
+	for (int i = 0; i < 4; i++) {
+		ObjectManager::GetInstance().Destroy(startbackground[i]);
+	}
+	ObjectManager::GetInstance().Destroy(crossbackground);
 }
 
 void Run::Update() {
@@ -417,6 +468,8 @@ void Run::Update() {
 		isGoalCamera = true;
 		//isReady = false;
 	} else /*走っている時の処理（前半）*/if (timer >= 12.0f) {
+		//スタート背景系の非表示
+		crossbackground->SetActive(false);
 
 		//レーンの表示
 		lane->SetActive(true);

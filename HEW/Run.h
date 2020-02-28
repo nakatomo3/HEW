@@ -51,6 +51,24 @@ private:
 	//吹き出しのテクスチャー
 	Texture* balloonTexture;
 
+	//スタート背景十字のオブジェクト
+	GameObject* crossbackground;
+
+	//スタート背景十字のスプライト
+	Sprite* crossbackgroundSprite;
+
+	//スタート背景十字のテクスチャー
+	Texture* crossbackgroundTexture;
+
+	//スタート背景のオブジェクト
+	vector<GameObject*> startbackground{};
+
+	//スタート背景のスプライト
+	vector<Sprite*> startbackgroundSprite{};
+
+	//スタート背景のテクスチャー
+	vector <Texture*> startbackgroundTexture;
+
 	BalloonRun* balloonRun;
 
 	//プレイヤースクリプト
